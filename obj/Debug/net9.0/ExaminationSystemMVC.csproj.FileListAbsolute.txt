@@ -323,3 +323,8 @@ D:\ITI9Months\MVC\Project\ExaminationSystemMVC\ExaminationSystemMVC\obj\Debug\ne
 D:\ITI9Months\MVC\Project\ExaminationSystemMVC\ExaminationSystemMVC\obj\Debug\net9.0\ref\ExaminationSystemMVC.dll
 D:\ITI9Months\MVC\Project\ExaminationSystemMVC\ExaminationSystemMVC\bin\Debug\net9.0\Castle.Core.dll
 D:\ITI9Months\MVC\Project\ExaminationSystemMVC\ExaminationSystemMVC\bin\Debug\net9.0\Microsoft.EntityFrameworkCore.Proxies.dll
+D:\ITI9Months\MVC\Project\ExaminationSystemMVC\ExaminationSystemMVC\bin\Debug\net9.0\BCrypt.Net-Next.dll
+D:\ITI9Months\MVC\Project\ExaminationSystemMVC\ExaminationSystemMVC\bin\Debug\net9.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+D:\ITI9Months\MVC\Project\ExaminationSystemMVC\ExaminationSystemMVC\bin\Debug\net9.0\Microsoft.AspNetCore.Authorization.dll
+D:\ITI9Months\MVC\Project\ExaminationSystemMVC\ExaminationSystemMVC\bin\Debug\net9.0\Microsoft.AspNetCore.Metadata.dll
+D:\ITI9Months\MVC\Project\ExaminationSystemMVC\ExaminationSystemMVC\obj\Debug\net9.0\ExaminationSystemMVC.sourcelink.json
