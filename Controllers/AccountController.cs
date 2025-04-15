@@ -44,6 +44,10 @@ namespace ExaminationSystemMVC.Controllers
                 LastName = model.LastName,
                 Email = model.Email,
                 Password = BCrypt.Net.BCrypt.HashPassword(model.Password),
+                City = model.City,
+                Governate = model.Governate,
+                Street = model.Street,
+                Birthdate = model.Birthdate,
                 role = "Student"
             };
 
@@ -62,16 +66,31 @@ namespace ExaminationSystemMVC.Controllers
         }
 
         [HttpGet]
-        public IActionResult Login() => View();
+        public IActionResult Login()
+        {
+            var token = Request.Cookies["jwt"];
+
+            if (!string.IsNullOrEmpty(token))
+            {
+                var principal = _jwt.ValidateToken(token);
+                if (principal != null)
+                {
+                    return RedirectToAction("Index", "Home");
+                }
+            }
+
+            return View();
+        }
 
         [HttpPost]
         public async Task<IActionResult> Login(LoginUserVM model)
         {
+
             var user = (_unit.UserRepo).GetByEmail(model.Email);
 
             if (user == null || !BCrypt.Net.BCrypt.Verify(model.Password, user.Password))
             {
-                ModelState.AddModelError(string.Empty, "Invalid credentials");
+                ModelState.AddModelError(string.Empty, "Invalid email or password");
                 return View(model);
             }
 

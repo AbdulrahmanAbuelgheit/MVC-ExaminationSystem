@@ -8,10 +8,14 @@ namespace ExaminationSystemMVC.DTOs.AuthDTO
         {
             [Required]
             [StringLength(50)]
+            [RegularExpression(@"^[a-zA-Z\s]+$", ErrorMessage = "First name must contain only letters.")]
+
             public string FirstName { get; set; }
 
             [Required]
             [StringLength(50)]
+            [RegularExpression(@"^[a-zA-Z\s]+$", ErrorMessage = "First name must contain only letters.")]
+
             public string LastName { get; set; }
 
             [Required]
@@ -37,14 +41,20 @@ namespace ExaminationSystemMVC.DTOs.AuthDTO
 
             [Required]
             [StringLength(50)]
+            [RegularExpression(@"^[a-zA-Z\s]+$", ErrorMessage = "First name must contain only letters.")]
+
             public string Street { get; set; }
 
             [Required]
             [StringLength(50)]
+            [RegularExpression(@"^[a-zA-Z\s]+$", ErrorMessage = "First name must contain only letters.")]
+
             public string Governate { get; set; }
 
             [Required]
             [StringLength(50)]
+            [RegularExpression(@"^[a-zA-Z\s]+$", ErrorMessage = "First name must contain only letters.")]
+
             public string City { get; set; }
         }
 

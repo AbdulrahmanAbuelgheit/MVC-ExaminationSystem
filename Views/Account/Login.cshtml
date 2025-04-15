@@ -24,6 +24,9 @@
                 <input asp-for="Password" type="password" class="form-input" placeholder="Enter your password" />
                 <span asp-validation-for="Password" class="validation-error"></span>
             </div>
+            <div class="text-danger">
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            </div>
 
             @* <div class="form-options animate-fade-in" style="--delay: 0.4s"> *@
                
@@ -271,6 +274,7 @@
 
 @section Scripts {
     @{
-        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+        <script src="~/lib/jquery-validation/dist/jquery.validate.js"></script>
+        <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"></script>
     }
 }
