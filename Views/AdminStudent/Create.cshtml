@@ -1,0 +1,39 @@
+﻿@using ExaminationSystemMVC.DTOs.AdminDTOs.StudentDTOs
+@model CreateStudentDTO
+@{
+    ViewData["Title"] = "Add Student";
+}
+
+<div class="container mt-4">
+    <h2>Add New Student</h2>
+
+    <form asp-action="Create" method="post" class="mt-4">
+        <div class="mb-3">
+            <label asp-for="StdID" class="form-label"></label>
+            <select asp-for="StdID" asp-items="ViewBag.users" class="form-select"></select>
+            <span asp-validation-for="StdID" class="text-danger"></span>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="IntakeYear" class="form-label"></label>
+            <input asp-for="IntakeYear" class="form-control" />
+            <span asp-validation-for="IntakeYear" class="text-danger"></span>
+        </div>
+
+
+        <div class="mb-3">
+            <label asp-for="BranchID" class="form-label"></label>
+            <select asp-for="BranchID" asp-items="ViewBag.Branches" class="form-select"></select>
+            <span asp-validation-for="BranchID" class="text-danger"></span>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="TrackID" class="form-label"></label>
+            <select asp-for="TrackID" asp-items="ViewBag.Tracks" class="form-select"></select>
+            <span asp-validation-for="TrackID" class="text-danger"></span>
+        </div>
+
+        <button type="submit" class="btn btn-success">Save</button>
+        <a asp-action="Index" class="btn btn-secondary ms-2">Back</a>
+    </form>
+</div>

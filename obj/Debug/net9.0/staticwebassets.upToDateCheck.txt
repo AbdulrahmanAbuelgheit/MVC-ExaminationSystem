@@ -1,65 +1,100 @@
-D:\ITI9Months\MVC\Project\ExaminationSystemMVC\ExaminationSystemMVC\wwwroot\lib\jquery-validation\dist\additional-methods.js
-D:\ITI9Months\MVC\Project\ExaminationSystemMVC\ExaminationSystemMVC\wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.js.map
-D:\ITI9Months\MVC\Project\ExaminationSystemMVC\ExaminationSystemMVC\wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.min.css.map
-D:\ITI9Months\MVC\Project\ExaminationSystemMVC\ExaminationSystemMVC\wwwroot\lib\jquery-validation-unobtrusive\dist\jquery.validate.unobtrusive.js
-D:\ITI9Months\MVC\Project\ExaminationSystemMVC\ExaminationSystemMVC\wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.rtl.min.css.map
-D:\ITI9Months\MVC\Project\ExaminationSystemMVC\ExaminationSystemMVC\wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.rtl.min.css.map
-D:\ITI9Months\MVC\Project\ExaminationSystemMVC\ExaminationSystemMVC\wwwroot\lib\jquery-validation-unobtrusive\LICENSE.txt
-D:\ITI9Months\MVC\Project\ExaminationSystemMVC\ExaminationSystemMVC\wwwroot\lib\bootstrap\dist\css\bootstrap.css
-D:\ITI9Months\MVC\Project\ExaminationSystemMVC\ExaminationSystemMVC\wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.rtl.min.css
-D:\ITI9Months\MVC\Project\ExaminationSystemMVC\ExaminationSystemMVC\wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.js
-D:\ITI9Months\MVC\Project\ExaminationSystemMVC\ExaminationSystemMVC\wwwroot\lib\bootstrap\dist\js\bootstrap.min.js
-D:\ITI9Months\MVC\Project\ExaminationSystemMVC\ExaminationSystemMVC\wwwroot\lib\jquery\dist\jquery.min.js
-D:\ITI9Months\MVC\Project\ExaminationSystemMVC\ExaminationSystemMVC\wwwroot\lib\bootstrap\dist\css\bootstrap.min.css
-D:\ITI9Months\MVC\Project\ExaminationSystemMVC\ExaminationSystemMVC\wwwroot\lib\bootstrap\dist\css\bootstrap-grid.min.css
-D:\ITI9Months\MVC\Project\ExaminationSystemMVC\ExaminationSystemMVC\wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.rtl.css.map
-D:\ITI9Months\MVC\Project\ExaminationSystemMVC\ExaminationSystemMVC\wwwroot\lib\jquery\LICENSE.txt
-D:\ITI9Months\MVC\Project\ExaminationSystemMVC\ExaminationSystemMVC\wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.min.css
-D:\ITI9Months\MVC\Project\ExaminationSystemMVC\ExaminationSystemMVC\wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.min.css
-D:\ITI9Months\MVC\Project\ExaminationSystemMVC\ExaminationSystemMVC\wwwroot\css\site.css
-D:\ITI9Months\MVC\Project\ExaminationSystemMVC\ExaminationSystemMVC\wwwroot\lib\bootstrap\dist\css\bootstrap-grid.min.css.map
-D:\ITI9Months\MVC\Project\ExaminationSystemMVC\ExaminationSystemMVC\wwwroot\lib\bootstrap\dist\css\bootstrap-grid.rtl.min.css.map
-D:\ITI9Months\MVC\Project\ExaminationSystemMVC\ExaminationSystemMVC\wwwroot\lib\bootstrap\dist\js\bootstrap.esm.js
-D:\ITI9Months\MVC\Project\ExaminationSystemMVC\ExaminationSystemMVC\wwwroot\lib\bootstrap\dist\css\bootstrap-grid.rtl.css.map
-D:\ITI9Months\MVC\Project\ExaminationSystemMVC\ExaminationSystemMVC\wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.rtl.css.map
-D:\ITI9Months\MVC\Project\ExaminationSystemMVC\ExaminationSystemMVC\wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.rtl.min.css
-D:\ITI9Months\MVC\Project\ExaminationSystemMVC\ExaminationSystemMVC\wwwroot\js\site.js
-D:\ITI9Months\MVC\Project\ExaminationSystemMVC\ExaminationSystemMVC\wwwroot\lib\jquery\dist\jquery.slim.min.js
-D:\ITI9Months\MVC\Project\ExaminationSystemMVC\ExaminationSystemMVC\wwwroot\lib\bootstrap\dist\js\bootstrap.esm.js.map
-D:\ITI9Months\MVC\Project\ExaminationSystemMVC\ExaminationSystemMVC\wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.min.css.map
-D:\ITI9Months\MVC\Project\ExaminationSystemMVC\ExaminationSystemMVC\wwwroot\lib\jquery-validation\dist\jquery.validate.min.js
-D:\ITI9Months\MVC\Project\ExaminationSystemMVC\ExaminationSystemMVC\wwwroot\lib\jquery\dist\jquery.min.map
-D:\ITI9Months\MVC\Project\ExaminationSystemMVC\ExaminationSystemMVC\wwwroot\favicon.ico
-D:\ITI9Months\MVC\Project\ExaminationSystemMVC\ExaminationSystemMVC\wwwroot\lib\bootstrap\dist\js\bootstrap.esm.min.js.map
-D:\ITI9Months\MVC\Project\ExaminationSystemMVC\ExaminationSystemMVC\wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.rtl.css
-D:\ITI9Months\MVC\Project\ExaminationSystemMVC\ExaminationSystemMVC\wwwroot\lib\bootstrap\dist\css\bootstrap-grid.rtl.min.css
-D:\ITI9Months\MVC\Project\ExaminationSystemMVC\ExaminationSystemMVC\wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.rtl.css
-D:\ITI9Months\MVC\Project\ExaminationSystemMVC\ExaminationSystemMVC\wwwroot\lib\bootstrap\dist\js\bootstrap.esm.min.js
-D:\ITI9Months\MVC\Project\ExaminationSystemMVC\ExaminationSystemMVC\wwwroot\lib\jquery-validation-unobtrusive\dist\jquery.validate.unobtrusive.min.js
-D:\ITI9Months\MVC\Project\ExaminationSystemMVC\ExaminationSystemMVC\wwwroot\lib\jquery-validation\dist\jquery.validate.js
-D:\ITI9Months\MVC\Project\ExaminationSystemMVC\ExaminationSystemMVC\wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.css.map
-D:\ITI9Months\MVC\Project\ExaminationSystemMVC\ExaminationSystemMVC\wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.min.js
-D:\ITI9Months\MVC\Project\ExaminationSystemMVC\ExaminationSystemMVC\wwwroot\lib\jquery\dist\jquery.js
-D:\ITI9Months\MVC\Project\ExaminationSystemMVC\ExaminationSystemMVC\wwwroot\lib\jquery\dist\jquery.slim.js
-D:\ITI9Months\MVC\Project\ExaminationSystemMVC\ExaminationSystemMVC\wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.css.map
-D:\ITI9Months\MVC\Project\ExaminationSystemMVC\ExaminationSystemMVC\wwwroot\lib\bootstrap\dist\css\bootstrap.rtl.css
-D:\ITI9Months\MVC\Project\ExaminationSystemMVC\ExaminationSystemMVC\wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.min.js.map
-D:\ITI9Months\MVC\Project\ExaminationSystemMVC\ExaminationSystemMVC\wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.css
-D:\ITI9Months\MVC\Project\ExaminationSystemMVC\ExaminationSystemMVC\wwwroot\lib\bootstrap\dist\js\bootstrap.js.map
-D:\ITI9Months\MVC\Project\ExaminationSystemMVC\ExaminationSystemMVC\wwwroot\lib\bootstrap\dist\css\bootstrap-grid.css.map
-D:\ITI9Months\MVC\Project\ExaminationSystemMVC\ExaminationSystemMVC\wwwroot\lib\bootstrap\dist\js\bootstrap.min.js.map
-D:\ITI9Months\MVC\Project\ExaminationSystemMVC\ExaminationSystemMVC\wwwroot\lib\bootstrap\dist\css\bootstrap-grid.rtl.css
-D:\ITI9Months\MVC\Project\ExaminationSystemMVC\ExaminationSystemMVC\wwwroot\lib\bootstrap\dist\css\bootstrap.rtl.min.css
-D:\ITI9Months\MVC\Project\ExaminationSystemMVC\ExaminationSystemMVC\wwwroot\lib\bootstrap\dist\css\bootstrap.min.css.map
-D:\ITI9Months\MVC\Project\ExaminationSystemMVC\ExaminationSystemMVC\wwwroot\lib\bootstrap\dist\css\bootstrap.css.map
-D:\ITI9Months\MVC\Project\ExaminationSystemMVC\ExaminationSystemMVC\wwwroot\lib\bootstrap\dist\js\bootstrap.js
-D:\ITI9Months\MVC\Project\ExaminationSystemMVC\ExaminationSystemMVC\wwwroot\lib\jquery\dist\jquery.slim.min.map
-D:\ITI9Months\MVC\Project\ExaminationSystemMVC\ExaminationSystemMVC\wwwroot\lib\bootstrap\dist\css\bootstrap.rtl.css.map
-D:\ITI9Months\MVC\Project\ExaminationSystemMVC\ExaminationSystemMVC\wwwroot\lib\jquery-validation\dist\additional-methods.min.js
-D:\ITI9Months\MVC\Project\ExaminationSystemMVC\ExaminationSystemMVC\wwwroot\lib\jquery-validation\LICENSE.md
-D:\ITI9Months\MVC\Project\ExaminationSystemMVC\ExaminationSystemMVC\wwwroot\lib\bootstrap\dist\css\bootstrap.rtl.min.css.map
-D:\ITI9Months\MVC\Project\ExaminationSystemMVC\ExaminationSystemMVC\wwwroot\lib\bootstrap\dist\css\bootstrap-grid.css
-D:\ITI9Months\MVC\Project\ExaminationSystemMVC\ExaminationSystemMVC\wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.css
+E:\ITI\9-Month Professional Web\MVC\Project\wwwroot\lib\jquery-validation\dist\additional-methods.js
+E:\ITI\9-Month Professional Web\MVC\Project\wwwroot\lib\font-awesome\css\all.css
+E:\ITI\9-Month Professional Web\MVC\Project\wwwroot\lib\font-awesome\sprites\regular.svg
+E:\ITI\9-Month Professional Web\MVC\Project\wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.js.map
+E:\ITI\9-Month Professional Web\MVC\Project\wwwroot\lib\font-awesome\css\svg-with-js.min.css
+E:\ITI\9-Month Professional Web\MVC\Project\wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.min.css.map
+E:\ITI\9-Month Professional Web\MVC\Project\wwwroot\lib\jquery-validation-unobtrusive\dist\jquery.validate.unobtrusive.js
+E:\ITI\9-Month Professional Web\MVC\Project\wwwroot\lib\font-awesome\sprites\solid.svg
+E:\ITI\9-Month Professional Web\MVC\Project\wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.rtl.min.css.map
+E:\ITI\9-Month Professional Web\MVC\Project\wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.rtl.min.css.map
+E:\ITI\9-Month Professional Web\MVC\Project\wwwroot\lib\jquery-validation-unobtrusive\LICENSE.txt
+E:\ITI\9-Month Professional Web\MVC\Project\wwwroot\lib\font-awesome\css\v4-font-face.min.css
+E:\ITI\9-Month Professional Web\MVC\Project\wwwroot\lib\bootstrap\dist\css\bootstrap.css
+E:\ITI\9-Month Professional Web\MVC\Project\wwwroot\lib\font-awesome\js\brands.js
+E:\ITI\9-Month Professional Web\MVC\Project\wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.rtl.min.css
+E:\ITI\9-Month Professional Web\MVC\Project\wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.js
+E:\ITI\9-Month Professional Web\MVC\Project\wwwroot\lib\bootstrap\dist\js\bootstrap.min.js
+E:\ITI\9-Month Professional Web\MVC\Project\wwwroot\lib\jquery\dist\jquery.min.js
+E:\ITI\9-Month Professional Web\MVC\Project\wwwroot\lib\font-awesome\js\v4-shims.js
+E:\ITI\9-Month Professional Web\MVC\Project\wwwroot\lib\font-awesome\sprites\brands.svg
+E:\ITI\9-Month Professional Web\MVC\Project\wwwroot\lib\bootstrap\dist\css\bootstrap.min.css
+E:\ITI\9-Month Professional Web\MVC\Project\wwwroot\lib\bootstrap\dist\css\bootstrap-grid.min.css
+E:\ITI\9-Month Professional Web\MVC\Project\wwwroot\lib\font-awesome\js\regular.js
+E:\ITI\9-Month Professional Web\MVC\Project\wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.rtl.css.map
+E:\ITI\9-Month Professional Web\MVC\Project\wwwroot\lib\jquery\LICENSE.txt
+E:\ITI\9-Month Professional Web\MVC\Project\wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.min.css
+E:\ITI\9-Month Professional Web\MVC\Project\wwwroot\lib\font-awesome\css\all.min.css
+E:\ITI\9-Month Professional Web\MVC\Project\wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.min.css
+E:\ITI\9-Month Professional Web\MVC\Project\wwwroot\css\site.css
+E:\ITI\9-Month Professional Web\MVC\Project\wwwroot\lib\bootstrap\dist\css\bootstrap-grid.min.css.map
+E:\ITI\9-Month Professional Web\MVC\Project\wwwroot\lib\bootstrap\dist\css\bootstrap-grid.rtl.min.css.map
+E:\ITI\9-Month Professional Web\MVC\Project\wwwroot\lib\bootstrap\dist\js\bootstrap.esm.js
+E:\ITI\9-Month Professional Web\MVC\Project\wwwroot\lib\bootstrap\dist\css\bootstrap-grid.rtl.css.map
+E:\ITI\9-Month Professional Web\MVC\Project\wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.rtl.css.map
+E:\ITI\9-Month Professional Web\MVC\Project\wwwroot\lib\font-awesome\css\brands.css
+E:\ITI\9-Month Professional Web\MVC\Project\wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.rtl.min.css
+E:\ITI\9-Month Professional Web\MVC\Project\wwwroot\js\site.js
+E:\ITI\9-Month Professional Web\MVC\Project\wwwroot\lib\jquery\dist\jquery.slim.min.js
+E:\ITI\9-Month Professional Web\MVC\Project\wwwroot\lib\font-awesome\css\v5-font-face.min.css
+E:\ITI\9-Month Professional Web\MVC\Project\wwwroot\lib\font-awesome\js\all.min.js
+E:\ITI\9-Month Professional Web\MVC\Project\wwwroot\lib\font-awesome\js\conflict-detection.min.js
+E:\ITI\9-Month Professional Web\MVC\Project\wwwroot\lib\font-awesome\js\solid.js
+E:\ITI\9-Month Professional Web\MVC\Project\wwwroot\lib\bootstrap\dist\js\bootstrap.esm.js.map
+E:\ITI\9-Month Professional Web\MVC\Project\wwwroot\lib\font-awesome\js\brands.min.js
+E:\ITI\9-Month Professional Web\MVC\Project\wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.min.css.map
+E:\ITI\9-Month Professional Web\MVC\Project\wwwroot\lib\jquery-validation\dist\jquery.validate.min.js
+E:\ITI\9-Month Professional Web\MVC\Project\wwwroot\lib\font-awesome\js\fontawesome.js
+E:\ITI\9-Month Professional Web\MVC\Project\wwwroot\lib\jquery\dist\jquery.min.map
+E:\ITI\9-Month Professional Web\MVC\Project\wwwroot\favicon.ico
+E:\ITI\9-Month Professional Web\MVC\Project\wwwroot\lib\bootstrap\dist\js\bootstrap.esm.min.js.map
+E:\ITI\9-Month Professional Web\MVC\Project\wwwroot\lib\font-awesome\js\regular.min.js
+E:\ITI\9-Month Professional Web\MVC\Project\wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.rtl.css
+E:\ITI\9-Month Professional Web\MVC\Project\wwwroot\lib\bootstrap\dist\css\bootstrap-grid.rtl.min.css
+E:\ITI\9-Month Professional Web\MVC\Project\wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.rtl.css
+E:\ITI\9-Month Professional Web\MVC\Project\wwwroot\lib\font-awesome\css\solid.min.css
+E:\ITI\9-Month Professional Web\MVC\Project\wwwroot\lib\bootstrap\dist\js\bootstrap.esm.min.js
+E:\ITI\9-Month Professional Web\MVC\Project\wwwroot\lib\jquery-validation-unobtrusive\dist\jquery.validate.unobtrusive.min.js
+E:\ITI\9-Month Professional Web\MVC\Project\wwwroot\lib\jquery-validation\dist\jquery.validate.js
+E:\ITI\9-Month Professional Web\MVC\Project\wwwroot\lib\font-awesome\css\svg-with-js.css
+E:\ITI\9-Month Professional Web\MVC\Project\wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.css.map
+E:\ITI\9-Month Professional Web\MVC\Project\wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.min.js
+E:\ITI\9-Month Professional Web\MVC\Project\wwwroot\lib\jquery\dist\jquery.js
+E:\ITI\9-Month Professional Web\MVC\Project\wwwroot\lib\font-awesome\js\conflict-detection.js
+E:\ITI\9-Month Professional Web\MVC\Project\wwwroot\lib\jquery\dist\jquery.slim.js
+E:\ITI\9-Month Professional Web\MVC\Project\wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.css.map
+E:\ITI\9-Month Professional Web\MVC\Project\wwwroot\lib\bootstrap\dist\css\bootstrap.rtl.css
+E:\ITI\9-Month Professional Web\MVC\Project\wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.min.js.map
+E:\ITI\9-Month Professional Web\MVC\Project\wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.css
+E:\ITI\9-Month Professional Web\MVC\Project\wwwroot\lib\bootstrap\dist\js\bootstrap.js.map
+E:\ITI\9-Month Professional Web\MVC\Project\wwwroot\lib\font-awesome\css\fontawesome.css
+E:\ITI\9-Month Professional Web\MVC\Project\wwwroot\lib\font-awesome\css\v4-shims.min.css
+E:\ITI\9-Month Professional Web\MVC\Project\wwwroot\lib\bootstrap\dist\css\bootstrap-grid.css.map
+E:\ITI\9-Month Professional Web\MVC\Project\wwwroot\lib\font-awesome\js\solid.min.js
+E:\ITI\9-Month Professional Web\MVC\Project\wwwroot\lib\bootstrap\dist\js\bootstrap.min.js.map
+E:\ITI\9-Month Professional Web\MVC\Project\wwwroot\lib\bootstrap\dist\css\bootstrap-grid.rtl.css
+E:\ITI\9-Month Professional Web\MVC\Project\wwwroot\lib\font-awesome\css\v4-shims.css
+E:\ITI\9-Month Professional Web\MVC\Project\wwwroot\lib\bootstrap\dist\css\bootstrap.rtl.min.css
+E:\ITI\9-Month Professional Web\MVC\Project\wwwroot\lib\bootstrap\dist\css\bootstrap.min.css.map
+E:\ITI\9-Month Professional Web\MVC\Project\wwwroot\lib\bootstrap\dist\css\bootstrap.css.map
+E:\ITI\9-Month Professional Web\MVC\Project\wwwroot\lib\font-awesome\js\all.js
+E:\ITI\9-Month Professional Web\MVC\Project\wwwroot\lib\bootstrap\dist\js\bootstrap.js
+E:\ITI\9-Month Professional Web\MVC\Project\wwwroot\lib\font-awesome\css\v5-font-face.css
+E:\ITI\9-Month Professional Web\MVC\Project\wwwroot\lib\jquery\dist\jquery.slim.min.map
+E:\ITI\9-Month Professional Web\MVC\Project\wwwroot\lib\font-awesome\css\regular.min.css
+E:\ITI\9-Month Professional Web\MVC\Project\wwwroot\lib\bootstrap\dist\css\bootstrap.rtl.css.map
+E:\ITI\9-Month Professional Web\MVC\Project\wwwroot\lib\jquery-validation\dist\additional-methods.min.js
+E:\ITI\9-Month Professional Web\MVC\Project\wwwroot\lib\jquery-validation\LICENSE.md
+E:\ITI\9-Month Professional Web\MVC\Project\wwwroot\lib\font-awesome\css\regular.css
+E:\ITI\9-Month Professional Web\MVC\Project\wwwroot\lib\font-awesome\css\solid.css
+E:\ITI\9-Month Professional Web\MVC\Project\wwwroot\lib\font-awesome\js\v4-shims.min.js
+E:\ITI\9-Month Professional Web\MVC\Project\wwwroot\lib\font-awesome\js\fontawesome.min.js
+E:\ITI\9-Month Professional Web\MVC\Project\wwwroot\lib\bootstrap\dist\css\bootstrap.rtl.min.css.map
+E:\ITI\9-Month Professional Web\MVC\Project\wwwroot\lib\font-awesome\css\fontawesome.min.css
+E:\ITI\9-Month Professional Web\MVC\Project\wwwroot\lib\bootstrap\dist\css\bootstrap-grid.css
+E:\ITI\9-Month Professional Web\MVC\Project\wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.css
+E:\ITI\9-Month Professional Web\MVC\Project\wwwroot\lib\font-awesome\css\v4-font-face.css
+E:\ITI\9-Month Professional Web\MVC\Project\wwwroot\lib\font-awesome\css\brands.min.css
 wwwroot\css\site.css
 wwwroot\favicon.ico
 wwwroot\js\site.js
@@ -108,6 +143,49 @@ wwwroot\lib\bootstrap\dist\js\bootstrap.js.map
 wwwroot\lib\bootstrap\dist\js\bootstrap.min.js
 wwwroot\lib\bootstrap\dist\js\bootstrap.min.js.map
 wwwroot\lib\bootstrap\LICENSE
+wwwroot\lib\font-awesome\css\all.css
+wwwroot\lib\font-awesome\css\all.min.css
+wwwroot\lib\font-awesome\css\brands.css
+wwwroot\lib\font-awesome\css\brands.min.css
+wwwroot\lib\font-awesome\css\fontawesome.css
+wwwroot\lib\font-awesome\css\fontawesome.min.css
+wwwroot\lib\font-awesome\css\regular.css
+wwwroot\lib\font-awesome\css\regular.min.css
+wwwroot\lib\font-awesome\css\solid.css
+wwwroot\lib\font-awesome\css\solid.min.css
+wwwroot\lib\font-awesome\css\svg-with-js.css
+wwwroot\lib\font-awesome\css\svg-with-js.min.css
+wwwroot\lib\font-awesome\css\v4-font-face.css
+wwwroot\lib\font-awesome\css\v4-font-face.min.css
+wwwroot\lib\font-awesome\css\v4-shims.css
+wwwroot\lib\font-awesome\css\v4-shims.min.css
+wwwroot\lib\font-awesome\css\v5-font-face.css
+wwwroot\lib\font-awesome\css\v5-font-face.min.css
+wwwroot\lib\font-awesome\js\all.js
+wwwroot\lib\font-awesome\js\all.min.js
+wwwroot\lib\font-awesome\js\brands.js
+wwwroot\lib\font-awesome\js\brands.min.js
+wwwroot\lib\font-awesome\js\conflict-detection.js
+wwwroot\lib\font-awesome\js\conflict-detection.min.js
+wwwroot\lib\font-awesome\js\fontawesome.js
+wwwroot\lib\font-awesome\js\fontawesome.min.js
+wwwroot\lib\font-awesome\js\regular.js
+wwwroot\lib\font-awesome\js\regular.min.js
+wwwroot\lib\font-awesome\js\solid.js
+wwwroot\lib\font-awesome\js\solid.min.js
+wwwroot\lib\font-awesome\js\v4-shims.js
+wwwroot\lib\font-awesome\js\v4-shims.min.js
+wwwroot\lib\font-awesome\sprites\brands.svg
+wwwroot\lib\font-awesome\sprites\regular.svg
+wwwroot\lib\font-awesome\sprites\solid.svg
+wwwroot\lib\font-awesome\webfonts\fa-brands-400.ttf
+wwwroot\lib\font-awesome\webfonts\fa-brands-400.woff2
+wwwroot\lib\font-awesome\webfonts\fa-regular-400.ttf
+wwwroot\lib\font-awesome\webfonts\fa-regular-400.woff2
+wwwroot\lib\font-awesome\webfonts\fa-solid-900.ttf
+wwwroot\lib\font-awesome\webfonts\fa-solid-900.woff2
+wwwroot\lib\font-awesome\webfonts\fa-v4compatibility.ttf
+wwwroot\lib\font-awesome\webfonts\fa-v4compatibility.woff2
 wwwroot\lib\jquery\dist\jquery.js
 wwwroot\lib\jquery\dist\jquery.min.js
 wwwroot\lib\jquery\dist\jquery.min.map

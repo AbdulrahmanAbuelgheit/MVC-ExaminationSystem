@@ -1,0 +1,13 @@
+﻿@using ExaminationSystemMVC.DTOs.AdminDTOs.BranchDTOs
+@model CreateBranchDTO
+@{
+    ViewData["Title"] = "Create Branch";
+}
+<div class="container mt-4">
+    <h2>Add New Branch</h2>
+
+    <form asp-action="Create" method="post" class="mt-4">
+        <partial name="_BranchForm" />
+    </form>
+</div>
+

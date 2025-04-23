@@ -1,0 +1,33 @@
+﻿@model TransferStudentViewModel
+
+@{
+    ViewData["Title"] = "Transfer Student";
+}
+
+<div class="container my-5">
+    <div class="text-center mb-4">
+        <h2 class="fw-bold text-primary">Transfer Student</h2>
+        <p class="lead">Move <strong>@Model.StudentName</strong> to another track</p>
+        <hr class="w-25 mx-auto border-primary" />
+    </div>
+
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card shadow-sm">
+                <div class="card-body">
+                    <form asp-action="TransferStudent" method="post">
+                        <input type="hidden" name="studentId" asp-for="StudentId" />
+                        <input type="hidden" asp-for="CurrentTrackId" />
+
+                        <div class="mb-3">
+                            <label asp-for="NewTrackId" class="form-label">Select New Track</label>
+                            <select asp-for="NewTrackId" asp-items="Model.AvailableTracks" class="form-select"></select>
+                        </div>
+
+                        <button type="submit" class="btn btn-outline-primary w-100">Transfer Student</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

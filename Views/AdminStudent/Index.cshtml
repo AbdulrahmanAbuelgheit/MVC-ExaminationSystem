@@ -1,0 +1,75 @@
+﻿@using ExaminationSystemMVC.DTOs.AdminDTOs.StudentDTOs
+@model IEnumerable<DisplayStudentDTO>
+@{
+    ViewData["Title"] = "Students";
+}
+
+<div class="container my-5">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2 class="fw-bold text-primary mb-0">Available Students</h2>
+        <a asp-action="Create" class="btn btn-outline-primary shadow-sm">
+            <i class="bi bi-plus-circle"></i> + Add Student
+        </a>
+    </div>
+
+  @if (Model.Any())
+    {
+        <div class="table-responsive shadow-sm rounded">
+            <table class="table table-hover align-middle">
+                <thead class="table-primary text-center">
+                    <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Intake Year</th>
+                        <th>Is Active</th>
+                        <th>Branch</th>
+                        <th>Track</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody class="text-center">
+                    @foreach (var s in Model)
+                    {
+                        <tr>
+                            <td class="fw-semibold">@s.StdID</td>
+                            <td>@s.Name</td>
+                            <td>@s.IntakeYear</td>
+                            <td>
+                                @if (s.IsActive == "Active")
+                                {
+                                    <span class="badge bg-success">Yes</span>
+                                }
+                                else
+                                {
+                                    <span class="badge bg-secondary">No</span>
+                                }
+                            </td>
+                            <td>@s.BranchName</td>
+                            <td>@s.TrackName</td>
+                            <td>
+                                <a href="@Url.Action("GetById", new { id = s.StdID })" class="btn btn-sm btn-outline-primary me-1">
+                                    <i class="fas fa-eye"></i>
+                                </a>
+                                <a href="@Url.Action("Edit", new { id = s.StdID })" class="btn btn-sm btn-outline-warning me-1">
+                                    <i class="fas fa-edit"></i>
+                                </a>
+                                <a asp-action="Delete" asp-route-id="@s.StdID" asp-controller="AdminStudent"
+                                   class="btn btn-sm btn-outline-danger" onclick="return confirm('Are you sure you want to delete this student?')">
+                                    <i class="fas fa-trash-alt"></i>
+                                </a>
+                            </td>
+                        </tr>
+                    }
+                 
+                </tbody>
+            </table>
+        </div>
+    }
+    else
+    {
+        <div class="alert alert-info text-center shadow-sm mt-4">
+            No tracks found. Click <strong>Add Track</strong> to get started.
+        </div>
+    }
+    </div>
+    

@@ -1,0 +1,42 @@
+﻿@using ExaminationSystemMVC.DTOs.AdminDTOs.BranchDTOs
+@model CreateBranchDTO
+
+        <div class="mb-3">
+            <label asp-for="BranchName" class="form-label"></label>
+            <input asp-for="BranchName" class="form-control" />
+            <span asp-validation-for="BranchName" class="text-danger"></span>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="Governate" class="form-label"></label>
+            <input asp-for="Governate" class="form-control" />
+            <span asp-validation-for="Governate" class="text-danger"></span>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="City" class="form-label"></label>
+            <input asp-for="City" class="form-control" />
+            <span asp-validation-for="City" class="text-danger"></span>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="Street" class="form-label"></label>
+            <input asp-for="Street" class="form-control" />
+            <span asp-validation-for="Street" class="text-danger"></span>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="Tel" class="form-label"></label>
+            <input asp-for="Tel" class="form-control" />
+            <span asp-validation-for="Tel" class="text-danger"></span>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="ManagerID" class="form-label">Manager</label>
+            <select asp-for="ManagerID" asp-items="ViewBag.Instructors" class="form-select"></select>
+            <span asp-validation-for="ManagerID" class="text-danger"></span>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Save</button>
+        <a asp-action="Index" class="btn btn-secondary ms-2">Cancel</a>
+

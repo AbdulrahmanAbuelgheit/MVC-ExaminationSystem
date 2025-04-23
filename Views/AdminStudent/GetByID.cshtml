@@ -1,0 +1,39 @@
+﻿@model ExaminationSystemMVC.Models.Student
+
+@{
+    ViewData["Title"] = "Student Details";
+}
+
+<div class="container mt-5">
+    <h2 class="mb-4">Student Details</h2>
+
+    <div class="card shadow-sm">
+        <div class="card-body">
+
+            <dl class="row">
+                <dt class="col-sm-3">Student ID</dt>
+                <dd class="col-sm-9">@Model.StdID</dd>
+
+                <dt class="col-sm-3">Full Name</dt>
+                <dd class="col-sm-9">@Model.Std?.FirstName @Model.Std?.LastName</dd>
+
+                <dt class="col-sm-3">Email</dt>
+                <dd class="col-sm-9">@Model.Std?.Email</dd>
+
+                <dt class="col-sm-3">Intake Year</dt>
+                <dd class="col-sm-9">@Model.IntakeYear</dd>
+
+                <dt class="col-sm-3">Active</dt>
+                <dd class="col-sm-9">@((Model.IsActive == "T") ? "Yes" : "No")</dd>
+
+                <dt class="col-sm-3">Branch</dt>
+                <dd class="col-sm-9">@Model.Branch?.BranchName</dd>
+
+                <dt class="col-sm-3">Track</dt>
+                <dd class="col-sm-9">@Model.Track?.TrackName</dd>
+            </dl>
+
+            <a asp-action="Index" class="btn btn-secondary mt-3">Back to List</a>
+        </div>
+    </div>
+</div>

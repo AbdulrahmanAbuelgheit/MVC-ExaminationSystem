@@ -1,0 +1,27 @@
+﻿@using ExaminationSystemMVC.DTOs.AdminDTOs.TrackDTOs
+@model AddInstructorToTrackDTO
+
+@{
+    ViewData["Title"] = "Add Instructor";
+}
+
+<div class="container mt-4">
+    <h3>Add Instructor to Track</h3>
+
+    <form asp-action="AddInstructor" method="post" class="mt-3">
+        <input type="hidden" asp-for="TrackID" />
+
+        <div class="mb-3">
+            <label asp-for="InsID" class="form-label">Instructor</label>
+            <select asp-for="InsID" asp-items="ViewBag.InstructorsList" class="form-select">
+				<option value="">Select an instructor</option>
+            </select>
+            <span asp-validation-for="InsID" class="text-danger"></span>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Add Instructor</button>
+        <a asp-action="GetById" asp-route-id="@Model.TrackID" class="btn btn-secondary ms-2">Back</a>
+    </form>
+</div>
+
+

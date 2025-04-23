@@ -1,0 +1,59 @@
+﻿@using ExaminationSystemMVC.DTOs.AdminDTOs.BranchDTOs
+@model DisplayBranchDTO
+
+@{
+    ViewData["Title"] = "Branch Details";
+}
+
+<div class="container my-5">
+    <div class="text-center mb-4">
+        <h2 class="fw-bold text-primary">Branch Details</h2>
+        <hr class="w-25 mx-auto border-primary" />
+    </div>
+
+    <div class="card shadow-sm mb-5">
+        <div class="card-body">
+            <h3 class="card-title text-secondary">@Model.BranchName</h3>
+            <p class="card-text mb-2"><strong>Governate:</strong> @Model.Governate</p>
+            <p class="card-text mb-2"><strong>City:</strong> @Model.City</p>
+            <p class="card-text mb-2"><strong>Street:</strong> @Model.Street</p>
+            <p class="card-text mb-2"><strong>Telephone:</strong> @Model.Tel</p>
+            <p class="card-text"><strong>Manager:</strong> @Model.ManagerName</p>
+        </div>
+    </div>
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <h4 class="text-info">Tracks in this Branch</h4>
+        <a asp-action="AddTrack" asp-route-id="@Model.BranchID" class="btn btn-sm btn-outline-primary">+ Add Track</a>
+    </div>
+
+    @if (Model.Tracks != null && Model.Tracks.Any())
+    {
+        <table class="table table-bordered table-hover shadow-sm mt-3">
+            <thead class="table-light">
+                <tr>
+                    <th>Name</th>
+                    <th>Duration</th>
+                    <th>Capacity</th>
+                    <th>Track Supervisor</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var track in Model.Tracks)
+                {
+                    <tr>
+                        <td>@track.TrackName</td>
+                        <td>@track.Duration</td>
+                        <td>@track.Capacity</td>
+                        <td>@track.Supervisor.Ins.FirstName @track.Supervisor.Ins.LastName</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+    else
+    {
+        <p class="text-muted mt-3">This branch has no tracks assigned.</p>
+    }
+
+    <a asp-action="Index" class="btn btn-secondary mt-3">Back to List</a>
+</div>

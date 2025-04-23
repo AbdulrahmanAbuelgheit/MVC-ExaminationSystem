@@ -1,0 +1,13 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\Controllers",
+    "\\DTOs",
+    "\\DTOs\\UserDTO",
+    "\\UnitOfWorks",
+    "\\Views",
+    "\\Views\\Users"
+  ],
+  "SelectedNode": "\\ExaminationSystemMVC.csproj",
+  "PreviewInSolutionExplorer": false
+}

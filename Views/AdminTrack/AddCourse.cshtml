@@ -1,0 +1,22 @@
+﻿@model AddCourseToTrackDTO
+
+@{
+    ViewData["Title"] = "Add Course to Track";
+}
+
+<div class="container mt-4">
+    <h3>Add Course to Track</h3>
+
+    <form asp-action="AddCourse" method="post" class="mt-3">
+        <input type="hidden" asp-for="TrackID" />
+
+        <div class="mb-3">
+            <label asp-for="CourseID" class="form-label">Course</label>
+            <select asp-for="CourseID" asp-items="ViewBag.AvailableCourses" class="form-select"></select>
+            <span asp-validation-for="CourseID" class="text-danger"></span>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Add Course</button>
+        <a asp-action="GetById" asp-route-id="@Model.TrackID" class="btn btn-secondary ms-2">Back</a>
+    </form>
+</div>
