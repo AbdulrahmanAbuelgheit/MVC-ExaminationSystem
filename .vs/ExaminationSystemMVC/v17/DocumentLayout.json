@@ -3,6 +3,10 @@
   "WorkspaceRootPath": "F:\\MVC - Examination System\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{8E37184C-1207-2929-66F8-D4D153605B76}|ExaminationSystemMVC.csproj|f:\\mvc - examination system\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8E37184C-1207-2929-66F8-D4D153605B76}|ExaminationSystemMVC.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{8E37184C-1207-2929-66F8-D4D153605B76}|ExaminationSystemMVC.csproj|f:\\mvc - examination system\\views\\student\\courses.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{8E37184C-1207-2929-66F8-D4D153605B76}|ExaminationSystemMVC.csproj|solutionrelative:views\\student\\courses.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
@@ -30,8 +34,21 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 3,
+          "SelectedChildIndex": 0,
           "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Program.cs",
+              "DocumentMoniker": "F:\\MVC - Examination System\\Program.cs",
+              "RelativeDocumentMoniker": "Program.cs",
+              "ToolTip": "F:\\MVC - Examination System\\Program.cs",
+              "RelativeToolTip": "Program.cs",
+              "ViewState": "AgIAAFUAAAAAAAAAAAAQwCkAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-24T17:45:17.867Z",
+              "EditorCaption": ""
+            },
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{b1e99781-ab81-11d0-b683-00aa00a3ee26}"
@@ -42,7 +59,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 4,
               "Title": "StudentController.cs",
               "DocumentMoniker": "F:\\MVC - Examination System\\Controllers\\StudentController.cs",
               "RelativeDocumentMoniker": "Controllers\\StudentController.cs",
@@ -54,20 +71,20 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "Courses.cshtml",
               "DocumentMoniker": "F:\\MVC - Examination System\\Views\\Student\\Courses.cshtml",
               "RelativeDocumentMoniker": "Views\\Student\\Courses.cshtml",
               "ToolTip": "F:\\MVC - Examination System\\Views\\Student\\Courses.cshtml",
               "RelativeToolTip": "Views\\Student\\Courses.cshtml",
-              "ViewState": "AgIAAFEAAAAAAAAAAAAAAGUAAAAkAAAAAAAAAA==",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAAGsAAAAjAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2025-04-15T21:30:01.656Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "Exams.cshtml",
               "DocumentMoniker": "F:\\MVC - Examination System\\Views\\Student\\Exams.cshtml",
               "RelativeDocumentMoniker": "Views\\Student\\Exams.cshtml",
@@ -79,7 +96,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "Details.cshtml",
               "DocumentMoniker": "F:\\MVC - Examination System\\Views\\Student\\Details.cshtml",
               "RelativeDocumentMoniker": "Views\\Student\\Details.cshtml",
@@ -91,7 +108,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 5,
               "Title": "IStudentRepo.cs",
               "DocumentMoniker": "F:\\MVC - Examination System\\Reposatories\\IStudentRepo.cs",
               "RelativeDocumentMoniker": "Reposatories\\IStudentRepo.cs",

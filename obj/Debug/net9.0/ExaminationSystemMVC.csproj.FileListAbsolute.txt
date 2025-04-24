@@ -323,6 +323,7 @@ D:\ITI9Months\MVC\Project\ExaminationSystemMVC\ExaminationSystemMVC\obj\Debug\ne
 D:\ITI9Months\MVC\Project\ExaminationSystemMVC\ExaminationSystemMVC\obj\Debug\net9.0\ref\ExaminationSystemMVC.dll
 D:\ITI9Months\MVC\Project\ExaminationSystemMVC\ExaminationSystemMVC\bin\Debug\net9.0\Castle.Core.dll
 D:\ITI9Months\MVC\Project\ExaminationSystemMVC\ExaminationSystemMVC\bin\Debug\net9.0\Microsoft.EntityFrameworkCore.Proxies.dll
+<<<<<<< HEAD
 F:\MVC - Examination System\bin\Debug\net9.0\appsettings.Development.json
 F:\MVC - Examination System\bin\Debug\net9.0\appsettings.json
 F:\MVC - Examination System\bin\Debug\net9.0\efpt.config.json
@@ -649,3 +650,10 @@ F:\MVC - Examination System\obj\Debug\net9.0\refint\ExaminationSystemMVC.dll
 F:\MVC - Examination System\obj\Debug\net9.0\ExaminationSystemMVC.pdb
 F:\MVC - Examination System\obj\Debug\net9.0\ExaminationSystemMVC.genruntimeconfig.cache
 F:\MVC - Examination System\obj\Debug\net9.0\ref\ExaminationSystemMVC.dll
+=======
+D:\ITI9Months\MVC\Project\ExaminationSystemMVC\ExaminationSystemMVC\bin\Debug\net9.0\BCrypt.Net-Next.dll
+D:\ITI9Months\MVC\Project\ExaminationSystemMVC\ExaminationSystemMVC\bin\Debug\net9.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+D:\ITI9Months\MVC\Project\ExaminationSystemMVC\ExaminationSystemMVC\bin\Debug\net9.0\Microsoft.AspNetCore.Authorization.dll
+D:\ITI9Months\MVC\Project\ExaminationSystemMVC\ExaminationSystemMVC\bin\Debug\net9.0\Microsoft.AspNetCore.Metadata.dll
+D:\ITI9Months\MVC\Project\ExaminationSystemMVC\ExaminationSystemMVC\obj\Debug\net9.0\ExaminationSystemMVC.sourcelink.json
+>>>>>>> d81d7f0076f5f1832a94dd9c6d3a3dbc16637476

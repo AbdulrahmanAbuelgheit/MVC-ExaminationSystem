@@ -2,6 +2,7 @@
 using ExaminationSystemMVC.DTOs.UserDTO;
 using ExaminationSystemMVC.Models;
 using ExaminationSystemMVC.UnitOfWorks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ExaminationSystemMVC.Controllers
@@ -15,10 +16,11 @@ namespace ExaminationSystemMVC.Controllers
             _map = map;
             _unit = unit;
         }
+        [Authorize(Roles = "Admin")]
         public IActionResult GetAll()
         {
             List<User> users = _unit.UserRepo.GetAll();
-            var mappedUsers = _map.Map<List<DisplayUserDTO>>(users);
+            var mappedUsers = _map.Map<List<DisplayUserVM>>(users);
             return View(mappedUsers);
         }
 
