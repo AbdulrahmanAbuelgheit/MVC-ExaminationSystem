@@ -1,5 +1,6 @@
 using ExaminationSystemMVC.MappingConfig;
 using ExaminationSystemMVC.Models;
+using ExaminationSystemMVC.Reposatories;
 using ExaminationSystemMVC.UnitOfWorks;
 using Microsoft.EntityFrameworkCore;
 
@@ -13,10 +14,11 @@ namespace ExaminationSystemMVC
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();
-            builder.Services.AddDbContext<DBContext>(options =>
+            builder.Services.AddDbContext<DBContext>(options => 
                options.UseLazyLoadingProxies().UseSqlServer(builder.Configuration.GetConnectionString("con1")));
             builder.Services.AddAutoMapper(typeof(MappingProfile));
             builder.Services.AddScoped<UnitOfWork>();
+            builder.Services.AddScoped<IStudentRepo, StudentRepo>();
 
 
             var app = builder.Build();
