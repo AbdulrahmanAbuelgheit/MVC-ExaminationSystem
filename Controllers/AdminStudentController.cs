@@ -2,12 +2,14 @@
 using ExaminationSystemMVC.DTOs.AdminDTOs.StudentDTOs;
 using ExaminationSystemMVC.Models;
 using ExaminationSystemMVC.UnitOfWorks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 
 namespace ExaminationSystemMVC.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class AdminStudentController : Controller
     {
         IMapper _map;

@@ -1,12 +1,16 @@
 ﻿using AutoMapper;
+using static ExaminationSystemMVC.DTOs.AuthDTO.Auth;
 
 namespace ExaminationSystemMVC.MappingConfig
 {
-    public class MappingProfile:Profile
+    public class MappingProfile : Profile
     {
         public MappingProfile()
         {
-            CreateMap<User,DisplayUserDTO>();
+        
+            CreateMap<User, DisplayUserVM>();
+            CreateMap<RegisterUserVM, User>();
+
             CreateMap<Student, DisplayStudentDTO>()
                .ForMember(dest => dest.Name, opt => opt.MapFrom(src => src.Std.FirstName + ' ' + src.Std.LastName))
                .ForMember(dest => dest.Email, opt => opt.MapFrom(src => src.Std.Email))
@@ -40,7 +44,7 @@ namespace ExaminationSystemMVC.MappingConfig
             CreateMap<Instructor, DisplayInstructorDTO>()
                 .ForMember(dest => dest.InsName, opt => opt.MapFrom(src => src.Ins.FirstName + ' ' + src.Ins.LastName))
                 .ForMember(dest => dest.Email, opt => opt.MapFrom(src => src.Ins.Email));
-                
+
             CreateMap<Course, DisplayCourseDTO>();
 
 

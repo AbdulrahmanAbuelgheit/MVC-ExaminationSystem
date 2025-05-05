@@ -2,11 +2,13 @@
 using ExaminationSystemMVC.DTOs.AdminDTOs.BranchDTOs;
 using ExaminationSystemMVC.Models;
 using ExaminationSystemMVC.UnitOfWorks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace ExaminationSystemMVC.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class AdminBranchController : Controller
     {
         IMapper _map;

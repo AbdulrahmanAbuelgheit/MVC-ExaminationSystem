@@ -1,10 +1,12 @@
 ﻿using AutoMapper;
 using ExaminationSystemMVC.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace ExaminationSystemMVC.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class AdminTrackController : Controller
     {
         private UnitOfWork _unit;

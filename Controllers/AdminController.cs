@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 
 namespace ExaminationSystemMVC.Controllers
 {
@@ -9,6 +10,7 @@ namespace ExaminationSystemMVC.Controllers
         {
             _unit = unit;
         }
+        [Authorize(Roles = "Admin")]
         public IActionResult Dashboard()
         {
             ViewBag.StudentCount = _unit.StudentRepo.GetAll().Count();
