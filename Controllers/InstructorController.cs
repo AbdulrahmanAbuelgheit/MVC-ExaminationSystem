@@ -24,7 +24,10 @@ namespace ExaminationSystemMVC.Controllers
             _userRepository=userrepository;
         }
 
-
+        public IActionResult Index()
+        {
+            return View();
+        }
         private string GetCurrentUserEmail()
         {
             if (Request == null)
