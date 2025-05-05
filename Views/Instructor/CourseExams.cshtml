@@ -1,0 +1,152 @@
+﻿
+@model IEnumerable<ExaminationSystemMVC.Models.Exam>
+@{
+    ViewData["Title"] = "Course Exams";
+    Layout = "~/Views/Shared/_InstructorLayout.cshtml";
+}
+
+<div class="container-fluid py-4">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h1 class="h3 mb-0 text-gray-800">
+            <i class="fas fa-file-alt text-primary mr-2"></i>Exams for Course: @ViewBag.CourseName
+        </h1>
+        <a href="@Url.Action("GenerateExam", "Instructor")" class="btn btn-primary">
+            <i class="fas fa-plus mr-2"></i>Create New Exam
+        </a>
+    </div>
+    <div class="card shadow">
+        <div class="card-header py-3 bg-white d-flex justify-content-between align-items-center">
+            <h6 class="m-0 font-weight-bold text-primary">Exam List</h6>
+            <span class="badge badge-primary">@Model.Count() Exams</span>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered table-hover" id="dataTable" width="100%" cellspacing="0">
+                    <thead class="thead-light">
+                        <tr>
+                            <th>Exam ID</th>
+                            <th>Course</th>
+                            <th>Date & Time</th>
+                            <th>Duration (min)</th>
+                            <th>Status</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @if (Model != null && Model.Any())
+                        {
+                            foreach (var exam in Model)
+                            {
+                                <tr>
+                                    <td>@exam.ExamID</td>
+                                    <td>@(exam.Crs?.CrsName ?? "N/A")</td>
+                                    <td>@exam.ExamDatetime.ToString("MMM dd, yyyy hh:mm tt")</td>
+                                    <td>@exam.ExamDuration</td>
+                                    <td>
+                                        @if (exam.IsActive == "1")
+                                        {
+                                            <span class="badge badge-success">Active</span>
+                                        }
+                                        else
+                                        {
+                                            <span class="badge badge-secondary">Inactive</span>
+                                        }
+                                    </td>
+                                    <td>
+                                        <div class="btn-group" role="group">
+                                            <a href="@Url.Action("GeneratedExamDetails", new { id = exam.ExamID })"
+                                               class="btn btn-sm btn-info" title="View Details">
+                                                <i class="fas fa-eye"></i>
+                                            </a>
+                                            <button onclick="confirmDelete(@exam.ExamID)"
+                                                    class="btn btn-sm btn-danger" title="Delete">
+                                                <i class="fas fa-trash"></i>
+                                            </button>
+                                        </div>
+                                    </td>
+                                </tr>
+                            }
+                        }
+                        else
+                        {
+                            <tr>
+                                <td colspan="6" class="text-center py-5">
+                                    <div class="d-flex flex-column align-items-center">
+                                        <i class="fas fa-file-alt fa-3x text-gray-400 mb-3"></i>
+                                        <h5 class="text-gray-600">No exams found</h5>
+                                        <p class="text-gray-500">Create your first exam using the button above</p>
+                                    </div>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+        function confirmDelete(examId) {
+            Swal.fire({
+                title: 'Are you sure?',
+                text: "You won't be able to revert this!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes, delete it!'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    window.location.href = '/Instructor/DeleteExam/' + examId;
+                }
+            })
+        }
+    </script>
+}
+
+@section Styles {
+    <style>
+        .card {
+            border-radius: 0.35rem;
+            border: 1px solid #e3e6f0;
+        }
+
+        .card-header {
+            border-bottom: 1px solid #e3e6f0;
+        }
+
+        .table thead th {
+            vertical-align: middle;
+            border-bottom: 2px solid #e3e6f0;
+        }
+
+        .table td {
+            vertical-align: middle;
+        }
+
+        .badge {
+            font-size: 0.75em;
+            font-weight: 600;
+            padding: 0.35em 0.65em;
+        }
+
+        .btn-sm {
+            padding: 0.25rem 0.5rem;
+            font-size: 0.75rem;
+        }
+
+        #dataTable {
+            width: 100% !important;
+        }
+
+        .badge-success,
+        .badge-info,
+        .badge-light,
+        .badge-secondary {
+            color: dimgrey !important;
+        }
+    </style>
+}

@@ -1,0 +1,74 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Instructor Dashboard</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <style>
+        body {
+            display: flex;
+            min-height: 100vh;
+            margin: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        .sidebar {
+            width: 250px;
+            background: linear-gradient(180deg, #2c2e80, #4e54c8);
+            color: white;
+            padding-top: 20px;
+            box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+            .sidebar h4 {
+                margin-bottom: 30px;
+                font-weight: bold;
+            }
+
+            .sidebar a {
+                color: white;
+                padding: 12px 25px;
+                display: block;
+                text-decoration: none;
+                transition: background 0.3s, padding-left 0.3s;
+            }
+
+                .sidebar a:hover {
+                    background-color: rgba(255, 255, 255, 0.2);
+                    padding-left: 30px;
+                }
+
+        .main-content {
+            flex-grow: 1;
+            padding: 30px;
+            background-color: #f8f9fa;
+        }
+    </style>
+    @RenderSection("Styles", required: false)
+</head>
+<body>
+    <div class="sidebar">
+        <h4 class="text-center">🎓 Instructor</h4>
+        <a href="@Url.Action("Dashboard", "Instructor")">🏠 Dashboard</a>
+        <a href="@Url.Action("InstructorCoursesSummary", "Instructor")">📚 My Courses</a>
+        <a href="@Url.Action("Exams", "Instructor")">📝 Exams</a>
+        <a href="@Url.Action("GenerateExam", "Instructor")">⚙️ Generate Exam</a>
+        <form action="@Url.Action("Logout", "Account")" method="post" class="logout-form mt-auto">
+            <button type="submit" class="btn w-100 text-white" style="background-color: #3b3f99;">
+                🚪 Logout
+            </button>
+        </form>
+    </div>
+
+    <div class="main-content">
+        @RenderBody()
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    @RenderSection("Scripts", required: false)
+</body>
+</html>

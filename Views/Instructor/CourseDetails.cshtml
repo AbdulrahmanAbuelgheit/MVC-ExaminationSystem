@@ -1,0 +1,35 @@
+﻿
+
+@model dynamic
+@{
+    ViewData["Title"] = "Course Details";
+    Layout = "~/Views/Shared/_InstructorLayout.cshtml";
+}
+
+<div class="container-fluid py-4">
+    <div class="card shadow">
+        <div class="card-header bg-white">
+            <h2 class="h4 text-primary">@Model.Name</h2>
+        </div>
+        <div class="card-body">
+            <dl class="row">
+                <dt class="col-sm-3">Description:</dt>
+                <dd class="col-sm-9">@Model.Description</dd>
+
+                <dt class="col-sm-3">Duration:</dt>
+                <dd class="col-sm-9">@Model.Duration hours</dd>
+
+                <dt class="col-sm-3">Students Enrolled:</dt>
+                <dd class="col-sm-9">@Model.NumberOfStudents</dd>
+
+                <dt class="col-sm-3">Exams Created:</dt>
+                <dd class="col-sm-9">@Model.NumberOfExams</dd>
+            </dl>
+
+            <div class="mt-4">
+                <canvas id="examScoresChart" width="400" height="200"></canvas>
+            </div>
+        </div>
+    </div>
+</div>
+}

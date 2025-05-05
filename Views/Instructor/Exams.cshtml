@@ -1,0 +1,162 @@
+﻿@model List<ExaminationSystemMVC.Models.Exam>
+@{
+    ViewData["Title"] = "Manage Exams";
+    Layout = "~/Views/Shared/_InstructorLayout.cshtml";
+}
+
+<div class="container-fluid py-4">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h1 class="display-6 fw-bold text-primary">📋 Exam Management</h1>
+        <a href="@Url.Action("GenerateExam", "Instructor")" class="btn btn-primary">
+            <i class="fas fa-plus me-2"></i>Create Exam
+        </a>
+    </div>
+
+    <div class="card shadow-sm mb-4">
+        <div class="card-header bg-white">
+            <h5 class="mb-0">Filter Exams</h5>
+        </div>
+        <div class="card-body">
+            <form method="get" action="@Url.Action("Exams")" class="row g-3">
+                <div class="col-md-6">
+                    <label for="courseSelect" class="form-label">Select Course</label>
+                    <select name="courseId" id="courseSelect" class="form-select" onchange="this.form.submit()">
+                        <option value="">-- All Courses --</option>
+                        @foreach (var course in ViewBag.Courses as List<SelectListItem>)
+                        {
+                            <option value="@course.Value" selected="@(course.Value == ViewBag.CourseId?.ToString() ? "selected" : "")">
+                                @course.Text
+                            </option>
+                        }
+                    </select>
+                </div>
+                <div class="col-md-6 d-flex align-items-end">
+                    <button type="submit" class="btn btn-outline-primary">
+                        <i class="fas fa-filter me-2"></i>Apply Filter
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="card shadow-sm">
+        <div class="card-header bg-white d-flex justify-content-between align-items-center">
+            <h5 class="mb-0">Exam List</h5>
+            <div class="text-muted">Showing @Model.Count exams</div>
+        </div>
+        <div class="card-body p-0">
+            <div class="table-responsive">
+                <table class="table table-hover mb-0">
+                    <thead class="table-light">
+                        <tr>
+                            <th>Exam ID</th>
+                            <th>Course</th>
+                            <th>Date & Time</th>
+                            <th>Duration</th>
+                            <th>Status</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @if (Model != null && Model.Count > 0)
+                        {
+                            @foreach (var exam in Model)
+                            {
+                                <tr>
+                                    <td class="fw-bold">#@exam.ExamID</td>
+                                    <td>@(exam.Crs?.CrsName ?? "N/A")</td>
+                                    <td>@exam.ExamDatetime.ToString("MMM dd, yyyy hh:mm tt")</td>
+                                    <td>@exam.ExamDuration mins</td>
+                                    <td>
+                                        @if (exam.IsActive == "1")
+                                        {
+                                            <span class="badge bg-success">Active</span>
+                                        }
+                                        else
+                                        {
+                                            <span class="badge bg-secondary">Inactive</span>
+                                        }
+                                    </td>
+                                    <td>
+                                        <div class="d-flex gap-2">
+                                            <a href="@Url.Action("GeneratedExamDetails", new { id = exam.ExamID })"
+                                               class="btn btn-sm btn-outline-info" title="View Details">
+                                                <i class="fas fa-eye">Details</i>
+                                            </a>
+                                            <button onclick="confirmDelete(@exam.ExamID)"
+                                                    class="btn btn-sm btn-outline-danger" title="Deactivate">
+                                                <i class="fas fa-trash-alt">DeActive</i>
+                                            </button>
+                                        </div>
+                                    </td>
+                                </tr>
+                            }
+                        }
+                        else
+                        {
+                            <tr>
+                                <td colspan="6" class="text-center py-4">
+                                    <div class="d-flex flex-column align-items-center">
+                                        <i class="fas fa-file-alt fa-3x text-muted mb-3"></i>
+                                        <h5 class="text-muted">No exams found</h5>
+                                        <p class="text-muted">Create your first exam using the button above</p>
+                                    </div>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+        function confirmDelete(examId) {
+            Swal.fire({
+                title: 'Confirm Deactivation',
+                text: "This will deactivate the exam. You can reactivate it later.",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#d33',
+                cancelButtonColor: '#3085d6',
+                confirmButtonText: 'Yes, deactivate',
+                cancelButtonText: 'Cancel'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    window.location.href = '/Instructor/DeleteExam/' + examId;
+                }
+            })
+        }
+    </script>
+}
+
+@section Styles {
+    <style>
+        .table-hover tbody tr:hover {
+            background-color: rgba(0, 0, 0, 0.02);
+        }
+
+        .table th {
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 0.8rem;
+            letter-spacing: 0.5px;
+        }
+
+        .badge {
+            font-size: 0.75rem;
+            padding: 0.35em 0.65em;
+        }
+    </style>
+}
+
+
+
+
+
+
+
+
