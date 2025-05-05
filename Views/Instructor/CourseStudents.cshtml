@@ -1,0 +1,203 @@
+﻿
+
+@model IEnumerable<dynamic>
+@{
+    Layout = "~/Views/Shared/_InstructorLayout.cshtml";
+    int courseId = ViewBag.CourseId;
+    var selectedTrackId = Context.Request.Query["trackId"].ToString();
+}
+
+<div class="container-fluid py-4">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h1 class="h3 mb-0 text-gray-800">
+            <i class="fas fa-user-graduate text-primary mr-2"></i>Students in Course: @ViewBag.CourseName
+        </h1>
+        <div>
+            <a href="@Url.Action("CourseExams", new { courseId = courseId })" class="btn btn-outline-secondary mr-2">
+                <i class="fas fa-file-alt mr-2"></i>View Exams
+            </a>
+            <a href="@Url.Action("CourseDetails", new { courseId = courseId })" class="btn btn-outline-info">
+                <i class="fas fa-info-circle mr-2"></i>Course Details
+            </a>
+        </div>
+    </div>
+
+    <div class="card shadow mb-4">
+        <div class="card-header py-3 bg-white">
+            <h6 class="m-0 font-weight-bold text-primary">Filter Students</h6>
+        </div>
+        <div class="card-body">
+            <form method="get" asp-action="CourseStudents" asp-controller="Instructor" class="form-inline">
+                <input type="hidden" name="courseId" value="@courseId" />
+                <div class="form-group mr-3 mb-2">
+                    <label for="trackId" class="mr-2">Select Track:</label>
+                    <select name="trackId" class="form-control" style="min-width: 250px;" onchange="this.form.submit()">
+                        <option value="">-- All Tracks --</option>
+                        @if (ViewBag.TrackList != null)
+                        {
+                            foreach (var item in (SelectList)ViewBag.TrackList)
+                            {
+                                <option value="@item.Value" selected="@(selectedTrackId == item.Value ? "selected" : null)">
+                                    @item.Text
+                                </option>
+                            }
+                        }
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-primary mb-2">
+                    <i class="fas fa-filter mr-2"></i>Apply Filter
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <div class="card shadow">
+        <div class="card-header py-3 bg-white d-flex justify-content-between align-items-center">
+            <h6 class="m-0 font-weight-bold text-primary">Student List</h6>
+            <span class="badge badge-primary">@Model.Count() Students</span>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered table-hover" id="studentsTable" width="100%" cellspacing="0">
+                    <thead class="thead-light">
+                        <tr>
+                            <th>Student ID</th>
+                            <th>Student Name</th>
+                            <th>Track</th>
+                            <th>Grade</th>
+                            <th>Performance</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @if (Model != null && Model.Any())
+                        {
+                            foreach (var s in Model)
+                            {
+                                <tr>
+                                    <td>@s.StdID</td>
+                                    <td>
+                                        <a href="#" data-toggle="tooltip" title="View student details">
+                                            @(s.Std.FirstName + " " + s.Std.LastName)
+                                        </a>
+                                    </td>
+                                    <td>@s.Track.TrackName</td>
+                                    <td>
+                                        @if (s.Grade != null)
+                                        {
+                                            <span class="@GetGradeClass(s.Grade)">@s.Grade</span>
+                                        }
+                                        else
+                                        {
+                                            <span class="text-muted">Not graded</span>
+                                        }
+                                    </td>
+                                    <td>
+                                        <div class="progress" style="height: 20px;">
+                                            @{
+                                                var progressValue = s.Grade != null ? Convert.ToInt32(s.Grade) : 0;
+                                                var progressClass = progressValue >= 70 ? "bg-success" :
+                                                progressValue >= 50 ? "bg-warning" : "bg-danger";
+                                            }
+                                            <div class="progress-bar @progressClass"
+                                                 role="progressbar"
+                                                 style="width: @progressValue%"
+                                                 aria-valuenow="@progressValue"
+                                                 aria-valuemin="0"
+                                                 aria-valuemax="100">
+                                                @progressValue%
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                            }
+                        }
+                        else
+                        {
+                            <tr>
+                                <td colspan="5" class="text-center py-5">
+                                    <div class="d-flex flex-column align-items-center">
+                                        <i class="fas fa-user-graduate fa-3x text-gray-400 mb-3"></i>
+                                        <h5 class="text-gray-600">No students found</h5>
+                                        <p class="text-gray-500">No students are enrolled in this course</p>
+                                    </div>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+@functions {
+    public string GetGradeClass(dynamic grade)
+    {
+        if (grade == null) return "text-muted";
+        decimal numericGrade;
+        if (!decimal.TryParse(grade.ToString(), out numericGrade)) return "";
+
+        if (numericGrade >= 85) return "text-success font-weight-bold";
+        if (numericGrade >= 70) return "text-primary";
+        if (numericGrade >= 50) return "text-warning";
+        return "text-danger";
+    }
+}
+
+@section Scripts {
+    <script>
+        $(document).ready(function() {
+            $('[data-toggle="tooltip"]').tooltip();
+
+            $('#studentsTable').DataTable({
+                responsive: true,
+                columnDefs: [
+                    { orderable: false, targets: [4] } 
+                ]
+            });
+        });
+    </script>
+}
+
+@section Styles {
+    <style>
+        .card {
+            border-radius: 0.35rem;
+            border: 1px solid #e3e6f0;
+        }
+
+        .card-header {
+            border-bottom: 1px solid #e3e6f0;
+        }
+
+        .table thead th {
+            vertical-align: middle;
+            border-bottom: 2px solid #e3e6f0;
+        }
+
+        .table td {
+            vertical-align: middle;
+        }
+
+        .progress {
+            border-radius: 10px;
+            background-color: #f8f9fc;
+        }
+
+        .progress-bar {
+            border-radius: 10px;
+            font-size: 0.75rem;
+            line-height: 20px;
+        }
+
+        .badge {
+            font-size: 0.75em;
+            font-weight: 600;
+            padding: 0.35em 0.65em;
+        }
+
+        #studentsTable {
+            width: 100% !important;
+        }
+    </style>
+}

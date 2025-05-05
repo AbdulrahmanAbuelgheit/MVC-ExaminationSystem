@@ -1,0 +1,238 @@
+﻿@model GeneratedExamDetailsViewModel
+@{
+    ViewData["Title"] = "Exam Details";
+    Layout = "~/Views/Shared/_InstructorLayout.cshtml";
+}
+
+<div class="container-fluid py-4">
+    <div class="card shadow mb-4">
+        <div class="card-header py-3 bg-white">
+            <div class="d-flex justify-content-between align-items-center">
+                <h2 class="h4 font-weight-bold text-primary">
+                    <i class="fas fa-file-alt mr-2"></i>Exam Generated Successfully
+                </h2>
+                <div class="badge badge-success badge-pill py-2 px-3">
+                    <i class="fas fa-check mr-1"></i>Ready
+                </div>
+            </div>
+        </div>
+        <div class="card-body">
+            <div class="row mb-4">
+                <div class="col-md-6">
+                    <div class="exam-meta">
+                        <div class="d-flex mb-2">
+                            <div class="font-weight-bold text-muted mr-2" style="width: 120px;">Exam ID:</div>
+                            <div>@Model.ExamID</div>
+                        </div>
+                        <div class="d-flex mb-2">
+                            <div class="font-weight-bold text-muted mr-2" style="width: 120px;">Course:</div>
+                            <div>@Model.CourseName</div>
+                        </div>
+                        <div class="d-flex mb-2">
+                            <div class="font-weight-bold text-muted mr-2" style="width: 120px;">Date:</div>
+                            <div>@Model.ExamDateTime.ToString("f")</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="exam-meta">
+                        <div class="d-flex mb-2">
+                            <div class="font-weight-bold text-muted mr-2" style="width: 120px;">Duration:</div>
+                            <div>@Model.Duration minutes</div>
+                        </div>
+                        <div class="d-flex mb-2">
+                            <div class="font-weight-bold text-muted mr-2" style="width: 120px;">Total Questions:</div>
+                            <div>
+                                @(Model.NumTF + Model.NumMCQ)
+                                <span class="badge badge-info">T/F: @Model.NumTF</span>
+                                <span class="badge badge-info">MCQ: @Model.NumMCQ</span>
+                            </div>
+                        </div>
+                        <div class="d-flex mb-2">
+                            <div class="font-weight-bold text-muted mr-2" style="width: 120px;">Total Points:</div>
+                            <div>@Model.Questions.Sum(q => q.Points)</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <hr class="my-4" />
+
+            <h4 class="mb-3">
+                <i class="fas fa-question-circle mr-2"></i>Exam Questions
+                <span class="badge badge-primary badge-pill">@Model.Questions.Count</span>
+            </h4>
+
+            <div class="accordion" id="questionsAccordion">
+                @for (int i = 0; i < Model.Questions.Count; i++)
+                {
+                    var q = Model.Questions[i];
+                    <div class="card mb-3 border-left-@(q.QuestionType == "TF" ? "primary" : "success") border-left-3">
+                        <div class="card-header" id="heading@(i)">
+                            <h5 class="mb-0">
+                                <button class="btn btn-link text-dark w-100 text-left d-flex justify-content-between align-items-center"
+                                        type="button" data-toggle="collapse"
+                                        data-target="#collapse@(i)"
+                                        aria-expanded="true"
+                                        aria-controls="collapse@(i)">
+                                    <span>
+                                        <span class="badge badge-@(q.QuestionType == "TF" ? "primary" : "success") mr-2">
+                                            @q.QuestionType
+                                        </span>
+                                        <span>Question #@(i + 1)</span>
+                                    </span>
+                                    <span class="badge badge-light">
+                                        @q.Points point@(q.Points > 1 ? "s" : "")
+                                    </span>
+                                </button>
+                            </h5>
+                        </div>
+
+                        <div id="collapse@(i)" class="collapse show" aria-labelledby="heading@(i)" data-parent="#questionsAccordion">
+                            <div class="card-body">
+                                <div class="question-text mb-3">
+                                    <p class="font-weight-bold">@q.QuestionText</p>
+                                </div>
+
+                                <div class="options-list">
+                                    <ul class="list-group">
+                                        @for (int j = 0; j < q.Options.Count; j++)
+                                        {
+                                            var isCorrect = (j + 1 == q.CorrectOption);
+                                            <li class="list-group-item @(isCorrect ? "list-group-item-success" : "")">
+                                                <div class="d-flex align-items-center">
+                                                    <span class="mr-2">@(char.ConvertFromUtf32(65 + j)).</span>
+                                                    <span>@q.Options[j]</span>
+                                                    @if (isCorrect)
+                                                    {
+                                                        <span class="badge badge-success ml-auto">
+                                                            <i class="fas fa-check"></i> Correct
+                                                        </span>
+                                                    }
+                                                </div>
+                                            </li>
+                                        }
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+
+            <div class="mt-5 d-flex justify-content-between">
+                <a href="@Url.Action("Exams", "Instructor")" class="btn btn-secondary">
+                    <i class="fas fa-arrow-left mr-2"></i>Back to Exams
+                </a>
+                <div>
+                    <button id="printPdfBtn" class="btn btn-primary mr-2">
+                        <i class="fas fa-file-pdf mr-2"></i>Print Exam
+                    </button>
+                    <button id="copyExamBtn" class="btn btn-outline-primary">
+                        <i class="fas fa-copy mr-2"></i>Copy Exam
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        document.getElementById("printPdfBtn").addEventListener("click", function() {
+            window.print();
+        });
+
+        document.getElementById("copyExamBtn").addEventListener("click", function() {
+            let examText = `Exam: ${document.querySelector('.card-header h2').innerText}\n\n`;
+            examText += `Course: ${document.querySelectorAll('.exam-meta div div')[1].innerText}\n`;
+            examText += `Date: ${document.querySelectorAll('.exam-meta div div')[2].innerText}\n\n`;
+
+            const questions = document.querySelectorAll('.question-text p');
+            questions.forEach((q, index) => {
+                examText += `Question ${index + 1}: ${q.innerText}\n`;
+
+                const options = q.closest('.card-body').querySelectorAll('.options-list li');
+                options.forEach((opt, optIndex) => {
+                    examText += `   ${String.fromCharCode(65 + optIndex)}. ${opt.innerText.replace(' Correct', '')}\n`;
+                });
+
+                examText += '\n';
+            });
+
+            navigator.clipboard.writeText(examText).then(() => {
+                const toast = `<div class="toast show position-fixed" style="bottom: 20px; right: 20px;" role="alert" aria-live="assertive" aria-atomic="true">
+                    <div class="toast-header bg-success text-white">
+                        <strong class="mr-auto">Success</strong>
+                        <button type="button" class="ml-2 mb-1 close text-white" data-dismiss="toast" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="toast-body">
+                        Exam questions copied to clipboard!
+                    </div>
+                </div>`;
+
+                document.body.insertAdjacentHTML('beforeend', toast);
+                setTimeout(() => {
+                    document.querySelector('.toast').remove();
+                }, 3000);
+            });
+        });
+
+        $(function () {
+            $('[data-toggle="tooltip"]').tooltip();
+        });
+    </script>
+}
+
+@section Styles {
+    <style>
+        .card-header {
+            background-color: #f8f9fc;
+            cursor: pointer;
+        }
+
+        .border-left-3 {
+            border-left-width: 3px !important;
+        }
+
+        .options-list .list-group-item {
+            border-left: none;
+            border-right: none;
+        }
+
+            .options-list .list-group-item:first-child {
+                border-top: none;
+            }
+
+        .question-text {
+            font-size: 1.1rem;
+            line-height: 1.6;
+        }
+
+        .exam-meta {
+            background-color: #f8f9fa;
+            padding: 15px;
+            border-radius: 5px;
+        }
+
+        @@media print {
+            .card-header button {
+                display: none;
+            }
+
+            .collapse {
+                display: block !important;
+            }
+
+            .btn {
+                display: none !important;
+            }
+
+            .badge {
+                border: 1px solid #000;
+            }
+        }
+    </style>
+}
