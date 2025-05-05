@@ -104,7 +104,7 @@ namespace ExaminationSystemMVC.Controllers
 
             if (user.role == "Admin")
             {
-                return RedirectToAction("Dashboard", "Admin");
+                return RedirectToAction("AdminHome", "Admin");
             }
 
             return RedirectToAction("Index", "Home");

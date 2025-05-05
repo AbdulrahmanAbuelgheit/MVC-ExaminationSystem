@@ -1,10 +1,12 @@
 ﻿
 global using ExaminationSystemMVC.Models;
-global using ExaminationSystemMVC.DTOs.AdminDTOs.BranchDTOs;
-global using ExaminationSystemMVC.DTOs.AdminDTOs.TrackDTOs;
-global using ExaminationSystemMVC.DTOs.AdminDTOs.CourseDTOs;
-global using ExaminationSystemMVC.DTOs.AdminDTOs.InstructorDTOs;
-global using ExaminationSystemMVC.DTOs.AdminDTOs.StudentDTOs;
+
+global using ExaminationSystemMVC.ViewModels.AdminVMs.BranchVMs;
+global using ExaminationSystemMVC.ViewModels.AdminVMs.TrackVMs;
+global using ExaminationSystemMVC.ViewModels.AdminVMs.CourseVMs;
+global using ExaminationSystemMVC.ViewModels.AdminVMs.InstructorVMs;
+global using ExaminationSystemMVC.ViewModels.AdminVMs.StudentVMs;
+
 global using ExaminationSystemMVC.DTOs.UserDTO;
 global using ExaminationSystemMVC.UnitOfWorks;
 global using ExaminationSystemMVC.Reposatories;

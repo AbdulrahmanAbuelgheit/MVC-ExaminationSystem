@@ -11,27 +11,27 @@ namespace ExaminationSystemMVC.MappingConfig
             CreateMap<User, DisplayUserVM>();
             CreateMap<RegisterUserVM, User>();
 
-            CreateMap<Student, DisplayStudentDTO>()
+            CreateMap<Student, DisplayStudentVM>()
                .ForMember(dest => dest.Name, opt => opt.MapFrom(src => src.Std.FirstName + ' ' + src.Std.LastName))
                .ForMember(dest => dest.Email, opt => opt.MapFrom(src => src.Std.Email))
                .ForMember(dest => dest.TrackName, opt => opt.MapFrom(src => src.Track.TrackName))
                 .ForMember(dest => dest.BranchName, opt => opt.MapFrom(src => src.Branch.BranchName))
                 .ForMember(dest => dest.IsActive, opt => opt.MapFrom(src => src.IsActive == "T" ? "Active" : "Inactive"));
 
-            CreateMap<CreateStudentDTO, Student>();
-            CreateMap<Student, UpdateStudentDTO>()
+            CreateMap<CreateStudentVM, Student>();
+            CreateMap<Student, UpdateStudentVM>()
                .ForMember(dest => dest.FullName, opt => opt.MapFrom(src => src.Std.FirstName + ' ' + src.Std.LastName))
                .ForMember(dest => dest.Email, opt => opt.MapFrom(src => src.Std.Email))
                .ReverseMap();
 
-            CreateMap<Branch, DisplayBranchDTO>()
+            CreateMap<Branch, DisplayBranchVM>()
                 .ForMember(dest => dest.ManagerName, opt => opt.MapFrom(src => src.Manager.Ins.FirstName + ' ' + src.Manager.Ins.LastName))
                 .ForMember(dest => dest.Tracks, opt => opt.MapFrom(src => src.Tracks));
 
-            CreateMap<Branch, CreateBranchDTO>().ReverseMap();
-            CreateMap<Branch, UpdateBranchDTO>().ReverseMap();
+            CreateMap<Branch, CreateBranchVM>().ReverseMap();
+            CreateMap<Branch, UpdateBranchVM>().ReverseMap();
 
-            CreateMap<Track, DisplayTrackDTO>()
+            CreateMap<Track, DisplayTrackVM>()
                 .ForMember(dest => dest.SupervisorID, opt => opt.MapFrom(src => src.Supervisor.InsID))
                 .ForMember(dest => dest.SupervisorName, opt => opt.MapFrom(src => src.Supervisor.Ins.FirstName + ' ' + src.Supervisor.Ins.LastName))
                 .ForMember(dest => dest.Instructors, opt => opt.MapFrom(src => src.Ins))
@@ -41,11 +41,11 @@ namespace ExaminationSystemMVC.MappingConfig
                 .ReverseMap();
 
 
-            CreateMap<Instructor, DisplayInstructorDTO>()
+            CreateMap<Instructor, DisplayInstructorVM>()
                 .ForMember(dest => dest.InsName, opt => opt.MapFrom(src => src.Ins.FirstName + ' ' + src.Ins.LastName))
                 .ForMember(dest => dest.Email, opt => opt.MapFrom(src => src.Ins.Email));
 
-            CreateMap<Course, DisplayCourseDTO>();
+            CreateMap<Course, DisplayCourseVM>();
 
 
         }

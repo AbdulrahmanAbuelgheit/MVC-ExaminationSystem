@@ -1,10 +1,10 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace ExaminationSystemMVC.DTOs.AdminDTOs.BranchDTOs
+namespace ExaminationSystemMVC.ViewModels.AdminVMs.BranchVMs
 {
-    public class CreateBranchDTO
+    public class CreateBranchVM
     {
-        public int BranchID { get; set; }
+        public int? BranchID { get; set; }
         [Required, StringLength(50)]
         public string BranchName { get; set; }
 

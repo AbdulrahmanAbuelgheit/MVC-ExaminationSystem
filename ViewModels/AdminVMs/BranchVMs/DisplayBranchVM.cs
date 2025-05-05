@@ -1,8 +1,8 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace ExaminationSystemMVC.DTOs.AdminDTOs.BranchDTOs
+namespace ExaminationSystemMVC.ViewModels.AdminVMs.BranchVMs
 {
-    public class DisplayBranchDTO
+    public class DisplayBranchVM
     {
         public int BranchID { get; set; }
         public string BranchName { get; set; }

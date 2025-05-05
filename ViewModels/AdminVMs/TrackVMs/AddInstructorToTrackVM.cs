@@ -1,10 +1,8 @@
 ﻿using System.ComponentModel.DataAnnotations;
-using Microsoft.AspNetCore.Mvc.ModelBinding;
-using Microsoft.AspNetCore.Mvc.Rendering;
 
-namespace ExaminationSystemMVC.DTOs.AdminDTOs.TrackDTOs
+namespace ExaminationSystemMVC.ViewModels.AdminVMs.TrackVMs
 {
-    public class AddInstructorToTrackDTO
+    public class AddInstructorToTrackVM
     {
         public int TrackID { get; set; }
         [Required(ErrorMessage = "Please select an instructor.")]

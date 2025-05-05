@@ -1,6 +1,6 @@
-﻿namespace ExaminationSystemMVC.DTOs.AdminDTOs.CourseDTOs
+﻿namespace ExaminationSystemMVC.ViewModels.AdminVMs.CourseVMs
 {
-    public class DisplayCourseDTO
+    public class DisplayCourseVM
     {
         public int CrsID { get; set; }
         public string CrsName { get; set; }

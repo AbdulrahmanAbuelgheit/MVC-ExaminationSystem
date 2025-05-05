@@ -1,4 +1,4 @@
-﻿@model DisplayTrackDTO
+﻿@model DisplayTrackVM
 
 @{
     ViewData["Title"] = "Track Details";
@@ -27,14 +27,21 @@
 
     <div class="mb-5">
         <h4 class="text-success mb-3"><i class="bi bi-geo-alt-fill me-2"></i>Branches Offering This Track</h4>
-        <div class="list-group shadow-sm">
-            @foreach (var _branch in Model.Branches)
-            {
-                <div class="list-group-item list-group-item-action">
-                    @_branch.BranchName
-                </div>
-            }
-        </div>
+        @if (Model.Branches != null && Model.Branches.Any())
+         {
+            <div class="list-group shadow-sm">
+                @foreach (var _branch in Model.Branches)
+                {
+                    <div class="list-group-item list-group-item-action">
+                        @_branch.BranchName
+                    </div>
+                }
+            </div>
+         }
+        else
+        {
+          <p class="text-muted mt-3">This branch has no tracks assigned.</p>
+        }
     </div>
 
 
@@ -47,6 +54,8 @@
         </div>
 
         <div class="table-responsive shadow-sm">
+            @if(Model.Courses != null && Model.Courses.Any())
+            {
             <table class="table table-bordered align-middle">
                 <thead class="table-light">
                     <tr>
@@ -56,6 +65,7 @@
                     </tr>
                 </thead>
                 <tbody>
+                    
                     @foreach (var course in Model.Courses)
                     {
                         <tr>
@@ -73,8 +83,15 @@
                             </td>
                         </tr>
                     }
+                    
+                    
                 </tbody>
             </table>
+            }
+            else
+            {
+                <p class="text-muted mt-3">This branch has no Courses assigned.</p>
+            }
         </div>
     </div>
 
@@ -87,6 +104,8 @@
         </div>
 
         <div class="table-responsive shadow-sm">
+            @if (Model.Instructors != null && Model.Instructors.Any())
+            {
             <table class="table table-bordered align-middle">
                 <thead class="table-light">
                     <tr>
@@ -134,6 +153,11 @@
                     }
                 </tbody>
             </table>
+            }
+            else
+            {
+                <p class="text-muted mt-3">This branch has no instructors assigned.</p>
+            }
         </div>
     </div>
 <div class="mb-5">

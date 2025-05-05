@@ -1,11 +1,7 @@
 ﻿using AutoMapper;
-using ExaminationSystemMVC.DTOs.AdminDTOs.StudentDTOs;
-using ExaminationSystemMVC.Models;
-using ExaminationSystemMVC.UnitOfWorks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.EntityFrameworkCore;
 
 namespace ExaminationSystemMVC.Controllers
 {
@@ -22,7 +18,7 @@ namespace ExaminationSystemMVC.Controllers
         public IActionResult Index()
         {
             var students = _unit.StudentRepo.GetAllWithBranchAndTrack();
-            var mappedStudents = _map.Map<List<DisplayStudentDTO>>(students);
+            var mappedStudents = _map.Map<List<DisplayStudentVM>>(students);
             return View(mappedStudents);
         }
 
@@ -57,7 +53,7 @@ namespace ExaminationSystemMVC.Controllers
         }
 
         [HttpPost]
-        public IActionResult Create(CreateStudentDTO student)
+        public IActionResult Create(CreateStudentVM student)
         {
             if (!ModelState.IsValid)
             {
@@ -93,7 +89,7 @@ namespace ExaminationSystemMVC.Controllers
             {
                 return NotFound();
             }
-            var mappedStudent = _map.Map<UpdateStudentDTO>(student);
+            var mappedStudent = _map.Map<UpdateStudentVM>(student);
             ViewBag.Branches = new SelectList(_unit.BranchRepo.GetAll(), "BranchID", "BranchName", mappedStudent.BranchID);
             ViewBag.Tracks = new SelectList(_unit.TrackRepo.GetAll(), "TrackID", "TrackName", mappedStudent.TrackID);
 
@@ -101,23 +97,23 @@ namespace ExaminationSystemMVC.Controllers
         }
 
         [HttpPost]
-        public IActionResult Edit(UpdateStudentDTO studentDTO)
+        public IActionResult Edit(UpdateStudentVM studentVM)
         {
             if (!ModelState.IsValid)
             {
 
-                var student = _unit.StudentRepo.GetById(studentDTO.StdID);
+                var student = _unit.StudentRepo.GetById(studentVM.StdID);
                 if (student != null)
                 {
-                    studentDTO.FullName = student.Std.FirstName + " " + student.Std.LastName;
-                    studentDTO.Email = student.Std.Email;
+                    studentVM.FullName = student.Std.FirstName + " " + student.Std.LastName;
+                    studentVM.Email = student.Std.Email;
                 }
 
-                ViewBag.Branches = new SelectList(_unit.BranchRepo.GetAll(), "BranchID", "BranchName", studentDTO.BranchID);
-                ViewBag.Tracks = new SelectList(_unit.TrackRepo.GetAll(), "TrackID", "TrackName", studentDTO.TrackID);
-                return View(studentDTO);
+                ViewBag.Branches = new SelectList(_unit.BranchRepo.GetAll(), "BranchID", "BranchName", studentVM.BranchID);
+                ViewBag.Tracks = new SelectList(_unit.TrackRepo.GetAll(), "TrackID", "TrackName", studentVM.TrackID);
+                return View(studentVM);
             }
-            var mappedStudent = _map.Map<Student>(studentDTO);
+            var mappedStudent = _map.Map<Student>(studentVM);
             _unit.StudentRepo.Update(mappedStudent);
             _unit.Save();
             return RedirectToAction("Index");

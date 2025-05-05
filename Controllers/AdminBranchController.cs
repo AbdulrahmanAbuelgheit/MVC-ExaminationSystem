@@ -1,7 +1,4 @@
 ﻿using AutoMapper;
-using ExaminationSystemMVC.DTOs.AdminDTOs.BranchDTOs;
-using ExaminationSystemMVC.Models;
-using ExaminationSystemMVC.UnitOfWorks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -25,7 +22,7 @@ namespace ExaminationSystemMVC.Controllers
         public IActionResult Index()
         {
             var branches = _unit.BranchRepo.GetAll().ToList();
-            var branchesDTO = _map.Map<List<DisplayBranchDTO>>(branches);
+            var branchesDTO = _map.Map<List<DisplayBranchVM>>(branches);
             return View(branchesDTO);
         }
 
@@ -44,11 +41,11 @@ namespace ExaminationSystemMVC.Controllers
 
 
         [HttpPost]
-        public  IActionResult Create(CreateBranchDTO dto)
+        public  IActionResult Create(CreateBranchVM vm)
         {
             if (ModelState.IsValid)
             {
-                var branch = _map.Map<Branch>(dto);
+                var branch = _map.Map<Branch>(vm);
                 _unit.BranchRepo.Add(branch);
                 _unit.Save();
                 return RedirectToAction("Index");
@@ -62,7 +59,7 @@ namespace ExaminationSystemMVC.Controllers
                })
                .ToList();
             ViewBag.Instructors = new SelectList(instructors, "InsID", "Name");
-            return View(dto);
+            return View(vm);
         }
 
         public IActionResult Edit(int id)
@@ -81,21 +78,21 @@ namespace ExaminationSystemMVC.Controllers
                })
                .ToList();
             ViewBag.Instructors = new SelectList(instructors, "InsID", "Name", branch.ManagerID);
-            var branchDTO = _map.Map<UpdateBranchDTO>(branch);
+            var branchDTO = _map.Map<UpdateBranchVM>(branch);
             return View(branchDTO);
         }
 
         [HttpPost]
-        public IActionResult Edit(UpdateBranchDTO dto)
+        public IActionResult Edit(UpdateBranchVM vm)
         {
             if (ModelState.IsValid)
             {
-                var branch = _unit.BranchRepo.GetById(dto.BranchID);
+                var branch = _unit.BranchRepo.GetById(vm.BranchID.Value);
                 if (branch == null)
                 {
                     return NotFound();
                 }
-                _map.Map(dto, branch);
+                _map.Map(vm, branch);
                 _unit.BranchRepo.Update(branch);
                 _unit.Save();
                 return RedirectToAction("Index");
@@ -108,8 +105,8 @@ namespace ExaminationSystemMVC.Controllers
                    Name = $"{i.Ins.FirstName} {i.Ins.LastName}"
                })
                .ToList();
-            ViewBag.Instructors = new SelectList(instructors, "InsID", "Name", dto.ManagerID);
-            return View(dto);
+            ViewBag.Instructors = new SelectList(instructors, "InsID", "Name", vm.ManagerID);
+            return View(vm);
         }
 
         [HttpGet]
@@ -120,7 +117,7 @@ namespace ExaminationSystemMVC.Controllers
             {
                 return NotFound();
             }
-            var branchDTO = _map.Map<DisplayBranchDTO>(branch);
+            var branchDTO = _map.Map<DisplayBranchVM>(branch);
             return View(branchDTO);
         }
 
@@ -147,30 +144,30 @@ namespace ExaminationSystemMVC.Controllers
             var AvailableTracks = _unit.TrackRepo.GetAll()
                 .Where(t => !branch.Tracks.Any(bt => bt.TrackID == t.TrackID)).ToList();
 
-            var dto = new AddTrackToBranchDTO
+            var vm = new AddTrackToBranchVM
             {
                 BranchID = id,
             };
 
-            dto.AvailableTracks = new SelectList(AvailableTracks, "TrackID", "TrackName");
-            return View(dto);
+            vm.AvailableTracks = new SelectList(AvailableTracks, "TrackID", "TrackName");
+            return View(vm);
 
         }
         [HttpPost]
-        public IActionResult AddTrack(AddTrackToBranchDTO dto)
+        public IActionResult AddTrack(AddTrackToBranchVM vm)
         {
-            var branch = _unit.BranchRepo.GetBranchByIdWithTracks(dto.BranchID);
+            var branch = _unit.BranchRepo.GetBranchByIdWithTracks(vm.BranchID);
             if (branch == null)
                 return NotFound();
 
-            var track = _unit.TrackRepo.GetById(dto.TrackID);
+            var track = _unit.TrackRepo.GetById(vm.TrackID);
             if (track == null)
                 return NotFound();
 
             branch.Tracks.Add(track);
             _unit.BranchRepo.Update(branch);
             _unit.Save();
-            return RedirectToAction("Details", new { id = dto.BranchID });
+            return RedirectToAction("Details", new { id = vm.BranchID });
         }
 
         [HttpGet]

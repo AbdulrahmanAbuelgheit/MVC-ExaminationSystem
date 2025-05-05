@@ -1,8 +1,8 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace ExaminationSystemMVC.DTOs.AdminDTOs.StudentDTOs
+namespace ExaminationSystemMVC.ViewModels.AdminVMs.StudentVMs
 {
-    public class CreateStudentDTO
+    public class CreateStudentVM
     {
         [Required]
         public int StdID { get; set; }

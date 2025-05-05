@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using Microsoft.AspNetCore.Mvc.Rendering;
 
-namespace ExaminationSystemMVC.Models
+namespace ExaminationSystemMVC.ViewModels.AdminVMs.TrackVMs
 {
     public class TransferStudentViewModel
     {

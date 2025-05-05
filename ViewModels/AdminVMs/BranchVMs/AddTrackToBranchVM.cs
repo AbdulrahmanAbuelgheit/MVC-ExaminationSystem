@@ -1,8 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc.Rendering;
 
-namespace ExaminationSystemMVC.DTOs.AdminDTOs.BranchDTOs
+namespace ExaminationSystemMVC.ViewModels.AdminVMs.BranchVMs
 {
-    public class AddTrackToBranchDTO
+    public class AddTrackToBranchVM
     {
         public int BranchID { get; set; }
         public int TrackID { get; set; }

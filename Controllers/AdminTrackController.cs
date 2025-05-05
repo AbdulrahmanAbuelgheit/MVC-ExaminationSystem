@@ -1,5 +1,4 @@
 ﻿using AutoMapper;
-using ExaminationSystemMVC.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -20,8 +19,8 @@ namespace ExaminationSystemMVC.Controllers
         public IActionResult Index()
         {
             var tracks = _unit.TrackRepo.GetAll().ToList();
-            var tracksDTO = _map.Map<List<DisplayTrackDTO>>(tracks);
-            return View(tracksDTO);
+            var tracksVM = _map.Map<List<DisplayTrackVM>>(tracks);
+            return View(tracksVM);
         }
 
         public IActionResult Details(int id, int? intakeYear, string sortOrder)
@@ -32,17 +31,17 @@ namespace ExaminationSystemMVC.Controllers
                 return NotFound();
             }
 
-            var trackDTO = _map.Map<DisplayTrackDTO>(track);
+            var trackVM = _map.Map<DisplayTrackVM>(track);
 
             if (intakeYear.HasValue)
-                trackDTO.Students = trackDTO.Students.Where(s => s.IntakeYear == intakeYear.Value).ToList();
+                trackVM.Students = trackVM.Students.Where(s => s.IntakeYear == intakeYear.Value).ToList();
 
             if (!string.IsNullOrEmpty(sortOrder))
-                trackDTO.Students = sortOrder.ToLower() == "asc"
-                    ? trackDTO.Students.OrderBy(s => s.IntakeYear).ToList()
-                    : trackDTO.Students.OrderByDescending(s => s.IntakeYear).ToList();
+                trackVM.Students = sortOrder.ToLower() == "asc"
+                    ? trackVM.Students.OrderBy(s => s.IntakeYear).ToList()
+                    : trackVM.Students.OrderByDescending(s => s.IntakeYear).ToList();
 
-            return View(trackDTO);
+            return View(trackVM);
         }
 
         [HttpGet]
@@ -64,7 +63,7 @@ namespace ExaminationSystemMVC.Controllers
                 return View("Error");
             }
 
-            var addCourseToTrackDTO = new AddCourseToTrackDTO
+            var addCourseToTrackVM = new AddCourseToTrackVM
             {
                 TrackID = id,
 
@@ -72,13 +71,13 @@ namespace ExaminationSystemMVC.Controllers
 
             ViewBag.AvailableCourses = new SelectList(availableCourses, "CrsID", "CrsName");
 
-            return View(addCourseToTrackDTO);
+            return View(addCourseToTrackVM);
         }
 
         [HttpPost]
-        public IActionResult AddCourse(AddCourseToTrackDTO dto)
+        public IActionResult AddCourse(AddCourseToTrackVM vm)
         {
-            var track = _unit.TrackRepo.GetTrackWithCourses(dto.TrackID);
+            var track = _unit.TrackRepo.GetTrackWithCourses(vm.TrackID);
 
             if (ModelState.IsValid)
             {
@@ -87,7 +86,7 @@ namespace ExaminationSystemMVC.Controllers
                     return NotFound();
                 }
 
-                var course = _unit.CourseRepo.GetById(dto.CourseID);
+                var course = _unit.CourseRepo.GetById(vm.CourseID);
                 if (course == null)
                 {
                     return NotFound();
@@ -96,14 +95,14 @@ namespace ExaminationSystemMVC.Controllers
                 track.Crs.Add(course);
                 _unit.TrackRepo.Update(track);
                 _unit.Save();
-                return RedirectToAction("Details", new { id = dto.TrackID });
+                return RedirectToAction("Details", new { id = vm.TrackID });
             }
 
             var availableCourses = _unit.CourseRepo.GetAll()
                 .Where(c => !track.Crs.Any(tc => tc.CrsID == c.CrsID))
                 .ToList();
             ViewBag.AvailableCourses = new SelectList(availableCourses, "CrsID", "CrsName");
-            return View(dto);
+            return View(vm);
         }
 
         [HttpGet]
@@ -178,33 +177,33 @@ namespace ExaminationSystemMVC.Controllers
                 .Select(i => new { i.InsID, FullName = i.Ins.FirstName + " " + i.Ins.LastName })
                 .ToList();
 
-            var addInstructorToTrackDTO = new AddInstructorToTrackDTO
+            var addInstructorToTrackVM = new AddInstructorToTrackVM
             {
                 TrackID = id,
 
             };
             ViewBag.InstructorsList = new SelectList(availableInstructors, "InsID", "FullName");
-            return View(addInstructorToTrackDTO);
+            return View(addInstructorToTrackVM);
         }
 
         [HttpPost]
-        public IActionResult AddInstructor(AddInstructorToTrackDTO dto)
+        public IActionResult AddInstructor(AddInstructorToTrackVM vm)
         {
 
-            var track = _unit.TrackRepo.GetTrackWithInstructors(dto.TrackID);
+            var track = _unit.TrackRepo.GetTrackWithInstructors(vm.TrackID);
             if (track == null)
                 return NotFound();
 
             if (ModelState.IsValid)
             {
-                var instructor = _unit.InstructorRepo.GetById(dto.InsID);
+                var instructor = _unit.InstructorRepo.GetById(vm.InsID);
                 if (instructor == null)
                     return NotFound();
 
                 track.Ins.Add(instructor);
                 _unit.TrackRepo.Update(track);
                 _unit.Save();
-                return RedirectToAction("Details", new { id = dto.TrackID });
+                return RedirectToAction("Details", new { id = vm.TrackID });
             }
 
 
@@ -213,9 +212,9 @@ namespace ExaminationSystemMVC.Controllers
                 .Select(i => new { i.InsID, FullName = i.Ins.FirstName + " " + i.Ins.LastName })
                 .ToList();
 
-            Console.WriteLine("InsID from form: " + dto.InsID);
+            Console.WriteLine("InsID from form: " + vm.InsID);
             ViewBag.InstructorsList = new SelectList(availableInstructors, "InsID", "FullName");
-            return View(dto);
+            return View(vm);
         }
 
         [HttpPost]
@@ -259,33 +258,33 @@ namespace ExaminationSystemMVC.Controllers
                 .Select(i => new { i.InsID, FullName = i.Ins.FirstName + " " + i.Ins.LastName })
                 .ToList();
 
-            var createTrackDTO = new CreateTrackDTO
+            var createTrackVM = new CreateTrackVM
             {
                 AvailableInstructors = new SelectList(availableInstructors, "InsID", "FullName")
             };
 
-            return View(createTrackDTO);
+            return View(createTrackVM);
         }
 
 
         [HttpPost]
-        public IActionResult Create(CreateTrackDTO dto)
+        public IActionResult Create(CreateTrackVM vm)
         {
             if (!ModelState.IsValid)
             {
                 var availableInstructors = _unit.InstructorRepo.GetAllInstructors()
                     .Select(i => new { i.InsID, FullName = i.Ins.FirstName + " " + i.Ins.LastName })
                     .ToList();
-                dto.AvailableInstructors = new SelectList(availableInstructors, "InsID", "FullName");
-                return View(dto);
+                vm.AvailableInstructors = new SelectList(availableInstructors, "InsID", "FullName");
+                return View(vm);
             }
 
             var track = new Track
             {
-                TrackName = dto.TrackName,
-                Duration = dto.Duration,
-                Capacity = dto.Capacity,
-                SupervisorID = dto.SupervisorID
+                TrackName = vm.TrackName,
+                Duration = vm.Duration,
+                Capacity = vm.Capacity,
+                SupervisorID = vm.SupervisorID
             };
 
             _unit.TrackRepo.Add(track);
@@ -305,7 +304,7 @@ namespace ExaminationSystemMVC.Controllers
                 return NotFound();
             }
 
-            var editTrackDTO = new EditTrackDTO
+            var editTrackVM = new EditTrackVM
             {
                 TrackID = track.TrackID,
                 TrackName = track.TrackName,
@@ -313,26 +312,26 @@ namespace ExaminationSystemMVC.Controllers
                 Capacity = track.Capacity
             };
 
-            return View(editTrackDTO);
+            return View(editTrackVM);
         }
 
         [HttpPost]
-        public IActionResult EditTrack(EditTrackDTO dto)
+        public IActionResult EditTrack(EditTrackVM vm)
         {
             if (!ModelState.IsValid)
             {
-                return View(dto);
+                return View(vm);
             }
 
-            var track = _unit.TrackRepo.GetById(dto.TrackID);
+            var track = _unit.TrackRepo.GetById(vm.TrackID);
             if (track == null)
             {
                 return NotFound();
             }
 
-            track.TrackName = dto.TrackName;
-            track.Duration = dto.Duration;
-            track.Capacity = dto.Capacity;
+            track.TrackName = vm.TrackName;
+            track.Duration = vm.Duration;
+            track.Capacity = vm.Capacity;
 
             _unit.TrackRepo.Update(track);
             _unit.Save();

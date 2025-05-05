@@ -1,6 +1,6 @@
-﻿namespace ExaminationSystemMVC.DTOs.AdminDTOs.StudentDTOs
+﻿namespace ExaminationSystemMVC.ViewModels.AdminVMs.StudentVMs
 {
-    public class DisplayStudentDTO
+    public class DisplayStudentVM
     {
         public int StdID { get; set; }
         public string Name { get; set; }
