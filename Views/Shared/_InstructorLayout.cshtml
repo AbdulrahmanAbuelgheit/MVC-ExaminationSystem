@@ -57,6 +57,11 @@
         <a href="@Url.Action("InstructorCoursesSummary", "Instructor")">📚 My Courses</a>
         <a href="@Url.Action("Exams", "Instructor")">📝 Exams</a>
         <a href="@Url.Action("GenerateExam", "Instructor")">⚙️ Generate Exam</a>
+        <form action="@Url.Action("Logout", "Account")" method="post" class="logout-form mt-auto">
+            <button type="submit" class="btn w-100 text-white" style="background-color: #3b3f99;">
+                🚪 Logout
+            </button>
+        </form>
     </div>
 
     <div class="main-content">
