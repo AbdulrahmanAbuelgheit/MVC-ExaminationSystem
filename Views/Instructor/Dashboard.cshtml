@@ -1,0 +1,290 @@
+﻿
+@model dynamic
+@using System.Text.Json
+@{
+    ViewData["Title"] = "Instructor Portal";
+    Layout = "~/Views/Shared/_InstructorLayout.cshtml";
+}
+
+<div class="container-fluid py-4">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <div>
+            <h1 class="h3 mb-1 text-gray-800">Welcome, @Model.Name!</h1>
+            <p class="mb-0 text-muted">@DateTime.Now.ToString("dddd, MMMM dd, yyyy")</p>
+        </div>
+    </div>
+
+    <ul class="nav nav-tabs mb-4" id="instructorTabs" role="tablist">
+        <li class="nav-item">
+            <a class="nav-link active" id="dashboard-tab" data-toggle="tab" href="#dashboard" role="tab">
+                <i class="fas fa-tachometer-alt mr-1"></i>Dashboard
+            </a>
+        </li>
+
+    </ul>
+
+    <div class="tab-content" id="instructorTabsContent">
+        <div class="tab-pane fade show active" id="dashboard" role="tabpanel">
+            <div class="row mb-4">
+                <div class="col-xl-3 col-md-6 mb-4">
+                    <div class="card border-left-primary shadow h-100 py-2">
+                        <div class="card-body">
+                            <div class="row no-gutters align-items-center">
+                                <div class="col mr-2">
+                                    <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                                        Courses
+                                    </div>
+                                    <div class="h5 mb-0 font-weight-bold text-gray-800">@Model.CoursesCount</div>
+                                </div>
+                                <div class="col-auto">
+                                    <i class="fas fa-book fa-2x text-gray-300"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-xl-3 col-md-6 mb-4">
+                    <div class="card border-left-success shadow h-100 py-2">
+                        <div class="card-body">
+                            <div class="row no-gutters align-items-center">
+                                <div class="col mr-2">
+                                    <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
+                                        Total Students
+                                    </div>
+                                    <div class="h5 mb-0 font-weight-bold text-gray-800">@Model.TotalStudents</div>
+                                </div>
+                                <div class="col-auto">
+                                    <i class="fas fa-user-graduate fa-2x text-gray-300"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-xl-3 col-md-6 mb-4">
+                    <div class="card border-left-info shadow h-100 py-2">
+                        <div class="card-body">
+                            <div class="row no-gutters align-items-center">
+                                <div class="col mr-2">
+                                    <div class="text-xs font-weight-bold text-info text-uppercase mb-1">
+                                        Salary
+                                    </div>
+                                    <div class="h5 mb-0 font-weight-bold text-gray-800">
+                                        @if (Model.TotalSalary != null)
+                                        {
+                                            @string.Format("{0:C}", Model.TotalSalary)
+                                        }
+                                        else
+                                        {
+                                            <text>N/A</text>
+                                        }
+                                    </div>
+                                </div>
+                                <div class="col-auto">
+                                    <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="card shadow mb-4">
+                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                    <h6 class="m-0 font-weight-bold text-primary">Students per Course</h6>
+                    <div class="dropdown no-arrow">
+                        <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
+                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in"
+                             aria-labelledby="dropdownMenuLink">
+                            <div class="dropdown-header">Chart Options:</div>
+                            <a class="dropdown-item" href="#" onclick="changeChartType('bar')">Bar Chart</a>
+                            <a class="dropdown-item" href="#" onclick="changeChartType('line')">Line Chart</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="chart-area">
+                        @if (Model.CourseNames != null && Model.CourseNames.Count > 0)
+                        {
+                            <canvas id="coursesChart"></canvas>
+                        }
+                        else
+                        {
+                            <div class="text-center py-5">
+                                <i class="fas fa-chart-bar fa-3x text-gray-400 mb-3"></i>
+                                <h5 class="text-gray-600">No course data available</h5>
+                                <p class="text-gray-500">Student distribution will appear here when courses are available</p>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+@section Scripts {
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        var coursesChart, reportsChart;
+        var courseLabels = @Html.Raw(JsonSerializer.Serialize(Model.CourseNames ?? new List<string>()));
+        var studentCounts = @Html.Raw(JsonSerializer.Serialize(Model.StudentCounts ?? new List<int>()));
+
+        function initDashboardCharts() {
+            var coursesCtx = document.getElementById('coursesChart');
+            if (coursesCtx && courseLabels.length > 0 && studentCounts.length > 0) {
+                coursesChart = new Chart(coursesCtx, {
+                    type: 'bar',
+                    data: {
+                        labels: courseLabels,
+                        datasets: [{
+                            label: 'Students',
+                            data: studentCounts,
+                            backgroundColor: 'rgba(54, 162, 235, 0.7)',
+                            borderColor: 'rgba(54, 162, 235, 1)',
+                            borderWidth: 1,
+                            borderRadius: 4
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: {
+                            legend: {
+                                display: false
+                            },
+                            tooltip: {
+                                callbacks: {
+                                    label: function(context) {
+                                        return context.parsed.y + ' students';
+                                    }
+                                }
+                            }
+                        },
+                        scales: {
+                            y: {
+                                beginAtZero: true,
+                                ticks: {
+                                    precision: 0
+                                }
+                            }
+                        }
+                    }
+                });
+            }
+        }
+
+        function changeChartType(type) {
+            if (coursesChart) {
+                coursesChart.destroy();
+                var ctx = document.getElementById('coursesChart').getContext('2d');
+                coursesChart = new Chart(ctx, {
+                    type: type,
+                    data: {
+                        labels: courseLabels,
+                        datasets: [{
+                            label: 'Students',
+                            data: studentCounts,
+                            backgroundColor: 'rgba(54, 162, 235, 0.7)',
+                            borderColor: 'rgba(54, 162, 235, 1)',
+                            borderWidth: 1,
+                            borderRadius: type === 'bar' ? 4 : 0
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: {
+                            legend: {
+                                display: false
+                            },
+                            tooltip: {
+                                callbacks: {
+                                    label: function(context) {
+                                        return context.parsed.y + ' students';
+                                    }
+                                }
+                            }
+                        },
+                        scales: {
+                            y: {
+                                beginAtZero: true,
+                                ticks: {
+                                    precision: 0
+                                }
+                            }
+                        }
+                    }
+                });
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            initDashboardCharts();
+            initReportsChart();
+
+            $('a[data-toggle="tab"]').on('shown.bs.tab', function(e) {
+                if ($(e.target).attr('href') === '#reports' && reportsChart) {
+                    reportsChart.resize();
+                } else if (coursesChart) {
+                    coursesChart.resize();
+                }
+            });
+        });
+    </script>
+}
+
+@section Styles {
+    <style>
+        .card {
+            transition: all 0.3s ease;
+            border-radius: 0.35rem;
+        }
+
+            .card:hover {
+                transform: translateY(-3px);
+                box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            }
+
+        .border-left-primary {
+            border-left: 4px solid #4e73df !important;
+        }
+
+        .border-left-success {
+            border-left: 4px solid #1cc88a !important;
+        }
+
+        .border-left-info {
+            border-left: 4px solid #36b9cc !important;
+        }
+
+        .border-left-warning {
+            border-left: 4px solid #f6c23e !important;
+        }
+
+        .chart-area {
+            position: relative;
+            height: 300px;
+        }
+
+        .nav-tabs .nav-link {
+            color: #6c757d;
+            font-weight: 500;
+        }
+
+            .nav-tabs .nav-link.active {
+                color: #4e73df;
+                font-weight: 600;
+            }
+
+        .dropdown-item {
+            font-weight: 500;
+        }
+    </style>
+}

@@ -5,19 +5,19 @@ namespace ExaminationSystemMVC.UnitOfWorks
 {
     public class UnitOfWork
     {
-        GenericRepo<User> _userRepo;
+        UsersRepo _userRepo;
         DBContext _db;
         public UnitOfWork(DBContext db)
         {
             _db = db;
         }
-        public GenericRepo<User> UserRepo
+        public UsersRepo UserRepo
         {
             get
             {
                 if (_userRepo == null)
                 {
-                    _userRepo = new GenericRepo<User>(_db);
+                    _userRepo = new UsersRepo(_db);
                 }
                 return _userRepo;
             }

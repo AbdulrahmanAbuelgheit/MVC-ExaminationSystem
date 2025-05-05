@@ -1,0 +1,298 @@
+﻿@using static ExaminationSystemMVC.DTOs.AuthDTO.Auth
+@model RegisterUserVM
+
+@{
+    ViewData["Title"] = "Register";
+}
+
+<div class="register-container">
+    <div class="register-card">
+        <div class="register-header">
+            <h2>Create Your Account</h2>
+            <p>Join us today! Fill in your details to get started.</p>
+        </div>
+
+        <form asp-action="Register" method="post" class="register-form">
+            <div class="form-grid">
+                <div class="form-group animate-fade-in" style="--delay: 0.1s">
+                    <label asp-for="FirstName"></label>
+                    <input asp-for="FirstName" class="form-input" placeholder="Enter your first name" />
+                    <span asp-validation-for="FirstName" class="validation-error"></span>
+                </div>
+
+                <div class="form-group animate-fade-in" style="--delay: 0.2s">
+                    <label asp-for="LastName"></label>
+                    <input asp-for="LastName" class="form-input" placeholder="Enter your last name" />
+                    <span asp-validation-for="LastName" class="validation-error"></span>
+                </div>
+
+                <div class="form-group animate-fade-in" style="--delay: 0.3s">
+                    <label asp-for="Email"></label>
+                    <input asp-for="Email" class="form-input" placeholder="Enter your email" />
+                    <span asp-validation-for="Email" class="validation-error"></span>
+                </div>
+
+                <div class="form-group animate-fade-in" style="--delay: 0.4s">
+                    <label asp-for="Password"></label>
+                    <input asp-for="Password" type="password" class="form-input" placeholder="Create a strong password" />
+                    <span asp-validation-for="Password" class="validation-error"></span>
+                </div>
+
+                <div class="form-group animate-fade-in" style="--delay: 0.45s">
+                    <label asp-for="ConfirmPassword"></label>
+                    <input asp-for="ConfirmPassword" type="password" class="form-input" placeholder="Confirm your password" />
+                    <span asp-validation-for="ConfirmPassword" class="validation-error"></span>
+                </div>
+
+                <div class="form-group animate-fade-in" style="--delay: 0.5s">
+                    <label asp-for="Birthdate"></label>
+                    <input asp-for="Birthdate" type="date" class="form-input" />
+                    <span asp-validation-for="Birthdate" class="validation-error"></span>
+                </div>
+
+                <div class="form-group animate-fade-in" style="--delay: 0.6s">
+                    <label asp-for="Street"></label>
+                    <input asp-for="Street" class="form-input" placeholder="Enter your street address" />
+                    <span asp-validation-for="Street" class="validation-error"></span>
+                </div>
+
+                <div class="form-group animate-fade-in" style="--delay: 0.7s">
+                    <label asp-for="Governate"></label>
+                    <input asp-for="Governate" class="form-input" placeholder="Enter your governate" />
+                    <span asp-validation-for="Governate" class="validation-error"></span>
+                </div>
+
+                <div class="form-group animate-fade-in" style="--delay: 0.8s">
+                    <label asp-for="City"></label>
+                    <input asp-for="City" class="form-input" placeholder="Enter your city" />
+                    <span asp-validation-for="City" class="validation-error"></span>
+                </div>
+            </div>
+
+            <button type="submit" class="register-button animate-fade-in" style="--delay: 0.9s">
+                Register Now
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M5 12h14M12 5l7 7-7 7"></path>
+                </svg>
+            </button>
+        </form>
+
+
+        <div class="register-footer animate-fade-in" style="--delay: 1s">
+            <p>Already have an account? <a asp-action="Login">Sign in</a></p>
+        </div>
+    </div>
+</div>
+
+    <style>
+        :root {
+        --primary-color: #4e91fc; /* Soft Sky Blue */
+        --primary-light: #a8c9ff; /* Lighter blue */
+        --secondary-color: #7f5af0; /* Soft violet */
+
+            --dark-color: #1a1a2e;
+            --light-color: #f8f9fa;
+            --success-color: #4cc9f0;
+            --error-color: #f72585;
+            --border-radius: 8px;
+            --box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background: linear-gradient(135deg, #f0f4ff 0%, #e4ecfc 100%);
+        color: var(--dark-color);
+            line-height: 1.6;
+        }
+
+        .register-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 2rem;
+            background: linear-gradient(135deg, #f5f7ff 0%, #e8ecff 100%);
+        }
+
+        .register-card {
+            background: white;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            width: 100%;
+            max-width: 800px;
+            padding: 2.5rem;
+            transition: var(--transition);
+            transform: translateY(0);
+            animation: card-enter 0.6s ease-out;
+        }
+
+        .register-card:hover {
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+            transform: translateY(-5px);
+        }
+
+        .register-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .register-header h2 {
+            color: var(--primary-color);
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+        }
+
+        .register-header p {
+            color: #666;
+            font-size: 0.95rem;
+        }
+
+        .register-form {
+            margin-top: 1.5rem;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group {
+            margin-bottom: 0.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: var(--dark-color);
+            font-size: 0.9rem;
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 0.75rem 1rem;
+            border: 1px solid #ddd;
+            border-radius: var(--border-radius);
+            font-size: 0.95rem;
+            transition: var(--transition);
+            background-color: #f9fafc;
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: var(--primary-light);
+            box-shadow: 0 0 0 3px rgba(67, 97, 238, 0.2);
+            background-color: white;
+        }
+
+        .validation-error {
+            display: block;
+            color: var(--error-color);
+            font-size: 0.8rem;
+            margin-top: 0.3rem;
+            height: 1rem;
+        }
+
+        .register-button {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            padding: 1rem;
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: var(--border-radius);
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            margin-top: 1rem;
+        }
+
+        .register-button:hover {
+            background-color: var(--secondary-color);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(63, 55, 201, 0.3);
+        }
+
+        .register-button svg {
+            margin-left: 0.5rem;
+            transition: var(--transition);
+        }
+
+        .register-button:hover svg {
+            transform: translateX(3px);
+        }
+
+        .register-footer {
+            text-align: center;
+            margin-top: 1.5rem;
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        .register-footer a {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+
+        .register-footer a:hover {
+            color: var(--secondary-color);
+            text-decoration: underline;
+        }
+
+        /* Animations */
+        @@keyframes card-enter {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animate-fade-in {
+            opacity: 0;
+            animation: fadeIn 0.5s ease-out forwards;
+            animation-delay: var(--delay);
+        }
+
+        @@keyframes fadeIn {
+            to {
+                opacity: 1;
+            }
+        }
+
+        /* Responsive adjustments */
+        @@media (max-width: 768px) {
+            .register-card {
+                padding: 1.5rem;
+            }
+
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

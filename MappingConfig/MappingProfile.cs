@@ -1,15 +1,18 @@
-﻿using AutoMapper;
-using ExaminationSystemMVC.DTOs.UserDTO;
-using ExaminationSystemMVC.Models;
+﻿    using AutoMapper;
+    using ExaminationSystemMVC.DTOs.UserDTO;
+    using ExaminationSystemMVC.Models;
+using static ExaminationSystemMVC.DTOs.AuthDTO.Auth;
 
-namespace ExaminationSystemMVC.MappingConfig
-{
-    public class MappingProfile:Profile
+    namespace ExaminationSystemMVC.MappingConfig
     {
-        public MappingProfile()
+        public class MappingProfile:Profile
         {
-            CreateMap<User,DisplayUserDTO>();
+            public MappingProfile()
+            {
+                CreateMap<User,DisplayUserVM>();
+                CreateMap<RegisterUserVM, User>();
+
 
         }
     }
-}
+    }

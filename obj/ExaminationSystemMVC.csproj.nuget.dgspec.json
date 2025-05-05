@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "D:\\ITI9Months\\MVC\\Project\\ExaminationSystemMVC\\ExaminationSystemMVC\\ExaminationSystemMVC.csproj": {}
+    "C:\\Users\\Rawan Labeb\\Desktop\\MVC\\MVC-ExaminationSystem\\ExaminationSystemMVC.csproj": {}
   },
   "projects": {
-    "D:\\ITI9Months\\MVC\\Project\\ExaminationSystemMVC\\ExaminationSystemMVC\\ExaminationSystemMVC.csproj": {
+    "C:\\Users\\Rawan Labeb\\Desktop\\MVC\\MVC-ExaminationSystem\\ExaminationSystemMVC.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\ITI9Months\\MVC\\Project\\ExaminationSystemMVC\\ExaminationSystemMVC\\ExaminationSystemMVC.csproj",
+        "projectUniqueName": "C:\\Users\\Rawan Labeb\\Desktop\\MVC\\MVC-ExaminationSystem\\ExaminationSystemMVC.csproj",
         "projectName": "ExaminationSystemMVC",
-        "projectPath": "D:\\ITI9Months\\MVC\\Project\\ExaminationSystemMVC\\ExaminationSystemMVC\\ExaminationSystemMVC.csproj",
-        "packagesPath": "C:\\Users\\abdelrahman\\.nuget\\packages\\",
-        "outputPath": "D:\\ITI9Months\\MVC\\Project\\ExaminationSystemMVC\\ExaminationSystemMVC\\obj\\",
+        "projectPath": "C:\\Users\\Rawan Labeb\\Desktop\\MVC\\MVC-ExaminationSystem\\ExaminationSystemMVC.csproj",
+        "packagesPath": "C:\\Users\\Rawan Labeb\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Rawan Labeb\\Desktop\\MVC\\MVC-ExaminationSystem\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\abdelrahman\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Rawan Labeb\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -54,6 +54,18 @@
               "target": "Package",
               "version": "[14.0.0, )"
             },
+            "BCrypt.Net-Next": {
+              "target": "Package",
+              "version": "[4.0.3, )"
+            },
+            "Microsoft.AspNetCore.Authentication.JwtBearer": {
+              "target": "Package",
+              "version": "[9.0.4, )"
+            },
+            "Microsoft.AspNetCore.Authorization": {
+              "target": "Package",
+              "version": "[9.0.4, )"
+            },
             "Microsoft.EntityFrameworkCore.Proxies": {
               "target": "Package",
               "version": "[9.0.4, )"
@@ -65,6 +77,10 @@
             "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
               "target": "Package",
               "version": "[9.0.0, )"
+            },
+            "System.IdentityModel.Tokens.Jwt": {
+              "target": "Package",
+              "version": "[8.8.0, )"
             }
           },
           "imports": [

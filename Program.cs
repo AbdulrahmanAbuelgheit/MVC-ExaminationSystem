@@ -1,7 +1,13 @@
+using System.IdentityModel.Tokens.Jwt;
+using System.Text;
 using ExaminationSystemMVC.MappingConfig;
 using ExaminationSystemMVC.Models;
+using ExaminationSystemMVC.Models.JWT;
+using ExaminationSystemMVC.Reposatories;
 using ExaminationSystemMVC.UnitOfWorks;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
 
 namespace ExaminationSystemMVC
 {
@@ -18,6 +24,21 @@ namespace ExaminationSystemMVC
             builder.Services.AddAutoMapper(typeof(MappingProfile));
             builder.Services.AddScoped<UnitOfWork>();
 
+            builder.Services.AddScoped<IInstructorRepository, InstructorRepository>();
+            builder.Services.AddScoped<UsersRepo>();
+
+
+            builder.Services.AddHttpContextAccessor();
+
+
+            builder.Services.AddAuthentication("JwtCookie")
+              .AddCookie("JwtCookie", options =>
+              {
+                  options.LoginPath = "/Account/Login";
+                  options.AccessDeniedPath = "/Account/AccessDenied";
+              });
+            builder.Services.AddScoped<JwtHelper>();
+
 
             var app = builder.Build();
 
@@ -32,12 +53,47 @@ namespace ExaminationSystemMVC
             app.UseHttpsRedirection();
             app.UseRouting();
 
+            app.Use(async (context, next) =>
+            {
+                var token = context.Request.Cookies["jwt"];
+                if (!string.IsNullOrEmpty(token))
+                {
+                    var tokenHandler = new JwtSecurityTokenHandler();
+                    var key = Encoding.UTF8.GetBytes(builder.Configuration["Jwt:Key"]);
+
+                    try
+                    {
+                        var principal = tokenHandler.ValidateToken(token, new TokenValidationParameters
+                        {
+                            ValidateIssuerSigningKey = true,
+                            ValidateIssuer = true,
+                            ValidateAudience = true,
+                            ValidIssuer = builder.Configuration["Jwt:Issuer"],
+                            ValidAudience = builder.Configuration["Jwt:Audience"],
+                            IssuerSigningKey = new SymmetricSecurityKey(key),
+                            ClockSkew = TimeSpan.Zero
+                        }, out SecurityToken validatedToken);
+
+                        context.User = principal;
+                    }
+                    catch(Exception ex)
+                    {
+                        Console.WriteLine($"JWT Validation Failed: {ex.Message}");
+                        context.Response.Cookies.Delete("jwt");
+                        context.Response.Redirect("/Account/Login");
+
+                    }
+                }
+
+                await next();
+            });
+
             app.UseAuthorization();
 
             app.MapStaticAssets();
             app.MapControllerRoute(
                 name: "default",
-                pattern: "{controller=Home}/{action=Index}/{id?}")
+                pattern: "{controller=Account}/{action=Login}/{id?}")
                 .WithStaticAssets();
 
             app.Run();
