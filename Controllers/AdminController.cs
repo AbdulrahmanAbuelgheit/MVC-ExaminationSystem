@@ -13,14 +13,22 @@ namespace ExaminationSystemMVC.Controllers
         [Authorize(Roles = "Admin")]
         public IActionResult Dashboard()
         {
-            ViewBag.StudentCount = _unit.StudentRepo.GetAll().Count();
-            ViewBag.TrackCount = _unit.TrackRepo.GetAll().Count();
-            ViewBag.BranchCount = _unit.BranchRepo.GetAll().Count();
-            ViewBag.InstructorCount = _unit.InstructorRepo.GetAllInstructors().Count();
-            ViewBag.CourseCount = _unit.CourseRepo.GetAll().Count();
-            ViewBag.UserCount = _unit.UserRepo.GetAll().Count();
+            ViewBag.StudentsCount = _unit.StudentRepo.GetAll().Count();
+            ViewBag.TracksCount = _unit.TrackRepo.GetAll().Count();
+            ViewBag.BranchesCount = _unit.BranchRepo.GetAll().Count();
+            ViewBag.InstructorsCount = _unit.InstructorRepo.GetAllInstructors().Count();
+            ViewBag.CoursesCount = _unit.CourseRepo.GetAll().Count();
+            ViewBag.UsersCount = _unit.UserRepo.GetAll().Count();
 
             return View();
         }
+
+        [Route("Admin/Home")]
+        public IActionResult AdminHome()
+        {
+            ViewData["Layout"] = "~/Views/Shared/_AdminLayout.cshtml";
+            return View("~/Views/Home/Index.cshtml");
+        }
+
     }
 }

@@ -10,6 +10,12 @@
         : null;
 }
 
+@if (ViewData["Layout"] != null)
+{
+    Layout = ViewData["Layout"].ToString();
+}
+
+
 <div class="welcome-container">
     <div class="welcome-card">
         <div class="welcome-header">

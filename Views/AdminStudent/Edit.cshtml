@@ -2,58 +2,76 @@
 @model UpdateStudentDTO
 
 @{
-    ViewData["Title"] = "Edit";
-}
-@{
     ViewBag.Title = "Edit Student";
+    Layout = "_AdminLayout";
 }
 
-<div class="container mt-4">
-    <h2>Edit Student</h2>
+<div class="container mt-5" style="max-width: 700px;">
+    <div class="mb-4 text-center">
+        <h2 class="fw-bold" style="color: var(--primary-color);">Edit Student</h2>
+        <hr style="width: 80px; border-top: 3px solid var(--primary-light); margin: 0 auto;" />
+    </div>
 
-    <form asp-action="Edit" method="post" class="mt-4">
-        <input type="hidden" asp-for="StdID" />
+    <div class="card shadow-sm border-0" style="border-radius: var(--border-radius); box-shadow: var(--box-shadow);">
+        <div class="card-body p-4">
+            <form asp-action="Edit" method="post" novalidate>
+                <input type="hidden" asp-for="StdID" />
 
-        <div class="mb-3">
-            <label class="form-label">Full Name</label>
-            <input class="form-control" asp-for="@Model.FullName" readonly />
-            <input type="hidden" asp-for="@Model.FullName" />
+                <!-- Full Name -->
+                <div class="mb-3">
+                    <label class="form-label">Full Name</label>
+                    <input class="form-control bg-light" asp-for="FullName" readonly />
+                    <input type="hidden" asp-for="FullName" />
+                </div>
+
+                <!-- Email -->
+                <div class="mb-3">
+                    <label class="form-label">Email</label>
+                    <input class="form-control bg-light" asp-for="Email" readonly />
+                    <input type="hidden" asp-for="Email" />
+                </div>
+
+                <!-- Intake Year -->
+                <div class="mb-3">
+                    <label asp-for="IntakeYear" class="form-label"></label>
+                    <input asp-for="IntakeYear" class="form-control" />
+                    <span asp-validation-for="IntakeYear" class="text-danger small"></span>
+                </div>
+
+                <!-- Is Active -->
+                <div class="mb-3">
+                    <label asp-for="IsActive" class="form-label"></label>
+                    <select asp-for="IsActive" class="form-select">
+                        <option value="T">Yes</option>
+                        <option value="F">No</option>
+                    </select>
+                    <span asp-validation-for="IsActive" class="text-danger small"></span>
+                </div>
+
+                <!-- Branch -->
+                <div class="mb-3">
+                    <label asp-for="BranchID" class="form-label"></label>
+                    <select asp-for="BranchID" asp-items="ViewBag.Branches" class="form-select"></select>
+                    <span asp-validation-for="BranchID" class="text-danger small"></span>
+                </div>
+
+                <!-- Track -->
+                <div class="mb-4">
+                    <label asp-for="TrackID" class="form-label"></label>
+                    <select asp-for="TrackID" asp-items="ViewBag.Tracks" class="form-select"></select>
+                    <span asp-validation-for="TrackID" class="text-danger small"></span>
+                </div>
+
+                <!-- Buttons -->
+                <div class="d-flex justify-content-end">
+                    <button type="submit" class="btn"
+                            style="background-color: var(--primary-color); color: white; border-radius: var(--border-radius);">
+                        Update
+                    </button>
+                    <a asp-action="Index" class="btn btn-outline-secondary ms-2"
+                       style="border-radius: var(--border-radius);">Cancel</a>
+                </div>
+            </form>
         </div>
-
-        <div class="mb-3">
-            <label class="form-label">Email</label>
-            <input class="form-control" asp-for="@Model.Email" readonly />
-            <input type="hidden" asp-for="@Model.Email" />
-        </div>
-
-        <div class="mb-3">
-            <label asp-for="IntakeYear" class="form-label"></label>
-            <input asp-for="IntakeYear" class="form-control" />
-            <span asp-validation-for="IntakeYear" class="text-danger"></span>
-        </div>
-
-        <div class="mb-3">
-            <label asp-for="IsActive" class="form-label"></label>
-            <select asp-for="IsActive" class="form-select">
-                <option value="T">Yes</option>
-                <option value="F">No</option>
-            </select>
-            <span asp-validation-for="IsActive" class="text-danger"></span>
-        </div>
-
-        <div class="mb-3">
-            <label asp-for="BranchID" class="form-label"></label>
-            <select asp-for="BranchID" asp-items="ViewBag.Branches" class="form-select"></select>
-            <span asp-validation-for="BranchID" class="text-danger"></span>
-        </div>
-
-        <div class="mb-3">
-            <label asp-for="TrackID" class="form-label"></label>
-            <select asp-for="TrackID" asp-items="ViewBag.Tracks" class="form-select"></select>
-            <span asp-validation-for="TrackID" class="text-danger"></span>
-        </div>
-
-        <button type="submit" class="btn btn-primary">Update</button>
-        <a asp-action="Index" class="btn btn-secondary ms-2">Cancel</a>
-    </form>
+    </div>
 </div>

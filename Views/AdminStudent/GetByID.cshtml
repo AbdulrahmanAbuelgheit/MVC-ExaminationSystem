@@ -2,38 +2,38 @@
 
 @{
     ViewData["Title"] = "Student Details";
+    Layout = "_AdminLayout";
 }
 
-<div class="container mt-5">
-    <h2 class="mb-4">Student Details</h2>
+<div class="container my-5" style="max-width: 400px;">
+    <div class="text-center mb-4">
+        <h2 class="fw-bold" style="color: var(--primary-color);">Student Details</h2>
+        <hr class="mx-auto" style="width: 80px; border-top: 3px solid var(--primary-light);" />
+    </div>
 
-    <div class="card shadow-sm">
-        <div class="card-body">
+    <div class="card shadow-sm border-0" style="border-radius: var(--border-radius); box-shadow: var(--box-shadow);">
+        <div class="card-body p-4">
+            <h4 class="mb-4" style="color: var(--primary-color); font-weight: 600;">
+                @Model.Std.FirstName @Model.Std.LastName
+            </h4>
 
-            <dl class="row">
-                <dt class="col-sm-3">Student ID</dt>
-                <dd class="col-sm-9">@Model.StdID</dd>
+            <ul class="list-unstyled lh-lg mb-4">
+                <li><strong>Email:</strong> @Model.Std.Email</li>
+                <li><strong>Intake Year:</strong> @Model.IntakeYear</li>
+                <li>
+                    <strong>Active:</strong>
+                    <span class="badge @(Model.IsActive == "T" ? "bg-success" : "bg-danger")">
+                        @(Model.IsActive == "T" ? "Yes" : "No")
+                    </span>
+                </li>
+                <li><strong>Branch:</strong> @Model.Branch.BranchName</li>
+                <li><strong>Track:</strong> @Model.Track.TrackName</li>
+            </ul>
 
-                <dt class="col-sm-3">Full Name</dt>
-                <dd class="col-sm-9">@Model.Std?.FirstName @Model.Std?.LastName</dd>
-
-                <dt class="col-sm-3">Email</dt>
-                <dd class="col-sm-9">@Model.Std?.Email</dd>
-
-                <dt class="col-sm-3">Intake Year</dt>
-                <dd class="col-sm-9">@Model.IntakeYear</dd>
-
-                <dt class="col-sm-3">Active</dt>
-                <dd class="col-sm-9">@((Model.IsActive == "T") ? "Yes" : "No")</dd>
-
-                <dt class="col-sm-3">Branch</dt>
-                <dd class="col-sm-9">@Model.Branch?.BranchName</dd>
-
-                <dt class="col-sm-3">Track</dt>
-                <dd class="col-sm-9">@Model.Track?.TrackName</dd>
-            </dl>
-
-            <a asp-action="Index" class="btn btn-secondary mt-3">Back to List</a>
+            <a asp-action="Index" class="btn"
+               style="background-color: var(--primary-color); color: white; border-radius: var(--border-radius);">
+                ← Back to List
+            </a>
         </div>
     </div>
 </div>

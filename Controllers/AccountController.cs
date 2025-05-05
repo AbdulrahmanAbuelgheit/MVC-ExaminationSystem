@@ -102,6 +102,11 @@ namespace ExaminationSystemMVC.Controllers
                 Expires = DateTimeOffset.Now.AddHours(2)
             });
 
+            if (user.role == "Admin")
+            {
+                return RedirectToAction("Dashboard", "Admin");
+            }
+
             return RedirectToAction("Index", "Home");
         }
 

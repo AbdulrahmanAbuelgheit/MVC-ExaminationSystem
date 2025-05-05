@@ -2,6 +2,7 @@
 @model CreateStudentDTO
 @{
     ViewData["Title"] = "Add Student";
+    Layout = "_AdminLayout";
 }
 
 <div class="container mt-4">
@@ -9,27 +10,32 @@
 
     <form asp-action="Create" method="post" class="mt-4">
         <div class="mb-3">
-            <label asp-for="StdID" class="form-label"></label>
+            <label asp-for="StdID" class="form-label">Name</label>
             <select asp-for="StdID" asp-items="ViewBag.users" class="form-select"></select>
             <span asp-validation-for="StdID" class="text-danger"></span>
         </div>
 
         <div class="mb-3">
-            <label asp-for="IntakeYear" class="form-label"></label>
-            <input asp-for="IntakeYear" class="form-control" />
+            <label asp-for="IntakeYear" class="form-label">Intake Year</label>
+            <input asp-for="IntakeYear" class="form-control" placeholder="Year"/>
             <span asp-validation-for="IntakeYear" class="text-danger"></span>
         </div>
 
 
         <div class="mb-3">
-            <label asp-for="BranchID" class="form-label"></label>
-            <select asp-for="BranchID" asp-items="ViewBag.Branches" class="form-select"></select>
+            <label asp-for="BranchID" class="form-label">Branch</label>
+            <select asp-for="BranchID" asp-items="ViewBag.Branches" class="form-select">
+				<option value="">Select Branch</option>
+            </select>
             <span asp-validation-for="BranchID" class="text-danger"></span>
         </div>
 
         <div class="mb-3">
-            <label asp-for="TrackID" class="form-label"></label>
-            <select asp-for="TrackID" asp-items="ViewBag.Tracks" class="form-select"></select>
+            <label asp-for="TrackID" class="form-label">Track</label>
+            <select asp-for="TrackID" asp-items="ViewBag.Tracks" class="form-select">
+				<option value="">Select Track</option>
+			
+            </select>
             <span asp-validation-for="TrackID" class="text-danger"></span>
         </div>
 

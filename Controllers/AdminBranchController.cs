@@ -172,5 +172,20 @@ namespace ExaminationSystemMVC.Controllers
             _unit.Save();
             return RedirectToAction("Details", new { id = dto.BranchID });
         }
+
+        [HttpGet]
+        public IActionResult RemoveTrack(int branchId, int trackId)
+        {
+            var branch = _unit.BranchRepo.GetBranchByIdWithTracks(branchId);
+            if (branch == null)
+                return NotFound();
+            var track = _unit.TrackRepo.GetById(trackId);
+            if (track == null)
+                return NotFound();
+            branch.Tracks.Remove(track);
+            _unit.BranchRepo.Update(branch);
+            _unit.Save();
+            return RedirectToAction("Details", new { id = branchId });
+        }
     }
 }
