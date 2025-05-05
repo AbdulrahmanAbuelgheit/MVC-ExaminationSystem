@@ -251,5 +251,111 @@ namespace ExaminationSystemMVC.Controllers
             _unit.Save();
             return RedirectToAction("Details", new { id = trackId });
         }
+
+        [HttpGet]
+        public IActionResult Create()
+        {
+            var availableInstructors = _unit.InstructorRepo.GetAllInstructors()
+                .Select(i => new { i.InsID, FullName = i.Ins.FirstName + " " + i.Ins.LastName })
+                .ToList();
+
+            var createTrackDTO = new CreateTrackDTO
+            {
+                AvailableInstructors = new SelectList(availableInstructors, "InsID", "FullName")
+            };
+
+            return View(createTrackDTO);
+        }
+
+
+        [HttpPost]
+        public IActionResult Create(CreateTrackDTO dto)
+        {
+            if (!ModelState.IsValid)
+            {
+                var availableInstructors = _unit.InstructorRepo.GetAllInstructors()
+                    .Select(i => new { i.InsID, FullName = i.Ins.FirstName + " " + i.Ins.LastName })
+                    .ToList();
+                dto.AvailableInstructors = new SelectList(availableInstructors, "InsID", "FullName");
+                return View(dto);
+            }
+
+            var track = new Track
+            {
+                TrackName = dto.TrackName,
+                Duration = dto.Duration,
+                Capacity = dto.Capacity,
+                SupervisorID = dto.SupervisorID
+            };
+
+            _unit.TrackRepo.Add(track);
+            _unit.Save();
+
+            return RedirectToAction("Index");
+        }
+
+
+
+        [HttpGet]
+        public IActionResult EditTrack(int id)
+        {
+            var track = _unit.TrackRepo.GetById(id);
+            if (track == null)
+            {
+                return NotFound();
+            }
+
+            var editTrackDTO = new EditTrackDTO
+            {
+                TrackID = track.TrackID,
+                TrackName = track.TrackName,
+                Duration = track.Duration,
+                Capacity = track.Capacity
+            };
+
+            return View(editTrackDTO);
+        }
+
+        [HttpPost]
+        public IActionResult EditTrack(EditTrackDTO dto)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(dto);
+            }
+
+            var track = _unit.TrackRepo.GetById(dto.TrackID);
+            if (track == null)
+            {
+                return NotFound();
+            }
+
+            track.TrackName = dto.TrackName;
+            track.Duration = dto.Duration;
+            track.Capacity = dto.Capacity;
+
+            _unit.TrackRepo.Update(track);
+            _unit.Save();
+
+            return RedirectToAction("Index");
+        }
+
+        [HttpGet]
+        public IActionResult DeleteTrack(int id)
+        {
+            var track = _unit.TrackRepo.GetById(id);
+            if (track == null)
+            {
+                return NotFound();
+            }
+
+            _unit.TrackRepo.Delete(id);
+            _unit.Save();
+
+            return RedirectToAction("Index");
+        }
+
+
+
     }
 }
