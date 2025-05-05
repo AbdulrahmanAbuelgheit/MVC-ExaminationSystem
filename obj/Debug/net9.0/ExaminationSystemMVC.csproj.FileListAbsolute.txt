@@ -657,3 +657,7 @@ D:\ITI9Months\MVC\Project\ExaminationSystemMVC\ExaminationSystemMVC\bin\Debug\ne
 D:\ITI9Months\MVC\Project\ExaminationSystemMVC\ExaminationSystemMVC\bin\Debug\net9.0\Microsoft.AspNetCore.Metadata.dll
 D:\ITI9Months\MVC\Project\ExaminationSystemMVC\ExaminationSystemMVC\obj\Debug\net9.0\ExaminationSystemMVC.sourcelink.json
 >>>>>>> d81d7f0076f5f1832a94dd9c6d3a3dbc16637476
+F:\MVC - Examination System\bin\Debug\net9.0\BCrypt.Net-Next.dll
+F:\MVC - Examination System\bin\Debug\net9.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+F:\MVC - Examination System\bin\Debug\net9.0\Microsoft.AspNetCore.Authorization.dll
+F:\MVC - Examination System\bin\Debug\net9.0\Microsoft.AspNetCore.Metadata.dll
