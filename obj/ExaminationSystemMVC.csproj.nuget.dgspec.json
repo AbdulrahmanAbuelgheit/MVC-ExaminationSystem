@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\ahmaa\\OneDrive\\Desktop\\Project\\MVC-ExaminationSystem\\ExaminationSystemMVC.csproj": {}
+    "C:\\Users\\Rawan Labeb\\Desktop\\MVC\\MVC-ExaminationSystem\\ExaminationSystemMVC.csproj": {}
   },
   "projects": {
-    "C:\\Users\\ahmaa\\OneDrive\\Desktop\\Project\\MVC-ExaminationSystem\\ExaminationSystemMVC.csproj": {
+    "C:\\Users\\Rawan Labeb\\Desktop\\MVC\\MVC-ExaminationSystem\\ExaminationSystemMVC.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\ahmaa\\OneDrive\\Desktop\\Project\\MVC-ExaminationSystem\\ExaminationSystemMVC.csproj",
+        "projectUniqueName": "C:\\Users\\Rawan Labeb\\Desktop\\MVC\\MVC-ExaminationSystem\\ExaminationSystemMVC.csproj",
         "projectName": "ExaminationSystemMVC",
-        "projectPath": "C:\\Users\\ahmaa\\OneDrive\\Desktop\\Project\\MVC-ExaminationSystem\\ExaminationSystemMVC.csproj",
-        "packagesPath": "C:\\Users\\ahmaa\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\ahmaa\\OneDrive\\Desktop\\Project\\MVC-ExaminationSystem\\obj\\",
+        "projectPath": "C:\\Users\\Rawan Labeb\\Desktop\\MVC\\MVC-ExaminationSystem\\ExaminationSystemMVC.csproj",
+        "packagesPath": "C:\\Users\\Rawan Labeb\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Rawan Labeb\\Desktop\\MVC\\MVC-ExaminationSystem\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\ahmaa\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Rawan Labeb\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],

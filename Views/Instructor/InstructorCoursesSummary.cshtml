@@ -1,0 +1,173 @@
+﻿
+
+@model List<InstructorCourseSummaryViewModel>
+@{
+    ViewData["Title"] = "Courses Summary";
+    Layout = "~/Views/Shared/_InstructorLayout.cshtml";
+}
+
+<div class="container-fluid py-4">
+    <div class="card shadow mb-4">
+        <div class="card-header py-3 bg-white">
+            <div class="d-flex justify-content-between align-items-center">
+                <h2 class="h4 font-weight-bold text-primary">
+                    <i class="fas fa-book mr-2"></i>Instructor Courses Summary
+                </h2>
+                <div class="badge badge-primary badge-pill">
+                    @Model.Count Courses
+                </div>
+            </div>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered table-hover" id="coursesTable" width="100%" cellspacing="0">
+                    <thead class="thead-light">
+                        <tr>
+                            <th>Course</th>
+                            <th>Description</th>
+                            <th>Duration</th>
+                            <th>Tracks</th>
+                            <th>Students</th>
+                            <th>Exams</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var course in Model)
+                        {
+                            <tr>
+                                <td class="font-weight-bold">@course.CourseName</td>
+                                <td>@(string.IsNullOrEmpty(course.Description) ? "No description" : course.Description)</td>
+                                <td>@course.Duration mins</td>
+                                <td>
+                                    @if (course.Tracks.Any())
+                                    {
+                                        foreach (var track in course.Tracks)
+                                        {
+                                            <span class="badge badge-primary mb-1">@track</span>
+                                        }
+                                    }
+                                    else
+                                    {
+                                        <span class="text-muted">No tracks</span>
+                                    }
+                                </td>
+                                <td>
+                                    <span class="badge @(course.StudentsCount > 0 ? "badge-success" : "badge-secondary")">
+                                        @course.StudentsCount
+                                    </span>
+                                </td>
+                                <td>
+                                    @if (course.ExamIDs.Any())
+                                    {
+                                        <div class="exam-pills">
+                                            @foreach (var examId in course.ExamIDs.Take(3))
+                                            {
+                                                <span class="badge badge-info mb-1">#@examId</span>
+                                            }
+                                            @if (course.ExamIDs.Count > 3)
+                                            {
+                                                <span class="badge badge-light" data-toggle="tooltip"
+                                                      title="@string.Join(", ", course.ExamIDs.Skip(3))">
+                                                    +@(course.ExamIDs.Count - 3) more
+                                                </span>
+                                            }
+                                        </div>
+                                    }
+                                    else
+                                    {
+                                        <span class="text-muted">No exams</span>
+                                    }
+                                </td>
+                                <td>
+                                    <div class="d-flex flex-column">
+                                        <a href="@Url.Action("CourseStudents", new { courseId = course.CourseID })"
+                                           class="btn btn-sm btn-outline-primary mb-1">
+                                            <i class="fas fa-user-graduate mr-1"></i>Students
+                                        </a>
+                                        <a href="@Url.Action("CourseExams", new { courseId = course.CourseID })"
+                                           class="btn btn-sm btn-outline-info mb-1">
+                                            <i class="fas fa-file-alt mr-1"></i>Exams
+                                        </a>
+                                        <a href="@Url.Action("CourseDetails", new { courseId = course.CourseID })"
+                                           class="btn btn-sm btn-outline-secondary">
+                                            <i class="fas fa-info-circle mr-1"></i>Details
+                                        </a>
+                                    </div>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        $(document).ready(function() {
+            $('#coursesTable').DataTable({
+                responsive: true,
+                columnDefs: [
+                    { responsivePriority: 1, targets: 0 }, 
+                    { responsivePriority: 2, targets: -1 }, 
+                    { orderable: false, targets: [3, 5, 6] } 
+                ],
+                language: {
+                    search: "_INPUT_",
+                    searchPlaceholder: "Search courses...",
+                }
+            });
+
+            $('[data-toggle="tooltip"]').tooltip();
+        });
+    </script>
+}
+
+@section Styles {
+    <style>
+        .card {
+            border-radius: 0.35rem;
+        }
+
+        .card-header {
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .table th {
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 0.8rem;
+            letter-spacing: 0.5px;
+        }
+
+        .badge {
+            font-size: 0.75rem;
+            font-weight: 500;
+        }
+
+        .exam-pills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.3rem;
+        }
+
+        .btn-sm {
+            padding: 0.25rem 0.5rem;
+            font-size: 0.75rem;
+        }
+
+        #coursesTable {
+            width: 100% !important;
+        }
+
+        .badge-success,
+        .badge-info,
+        .badge-light,
+        .badge-secondary {
+            color: dimgrey !important;
+        }
+
+    </style>
+}
