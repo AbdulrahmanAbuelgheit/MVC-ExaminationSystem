@@ -88,7 +88,6 @@ namespace ExaminationSystemMVC.Controllers
 
             var user = (_unit.UserRepo).GetByEmail(model.Email);
 
-
             if (user == null || !BCrypt.Net.BCrypt.Verify(model.Password, user.Password))
             {
                 ModelState.AddModelError(string.Empty, "Invalid email or password");

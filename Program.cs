@@ -3,7 +3,6 @@ using System.Text;
 using ExaminationSystemMVC.MappingConfig;
 using ExaminationSystemMVC.Models;
 using ExaminationSystemMVC.Models.JWT;
-using ExaminationSystemMVC.Reposatories;
 using ExaminationSystemMVC.UnitOfWorks;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
@@ -23,11 +22,6 @@ namespace ExaminationSystemMVC
                options.UseLazyLoadingProxies().UseSqlServer(builder.Configuration.GetConnectionString("con1")));
             builder.Services.AddAutoMapper(typeof(MappingProfile));
             builder.Services.AddScoped<UnitOfWork>();
-
-            builder.Services.AddScoped<IInstructorRepository, InstructorRepository>();
-            builder.Services.AddScoped<UsersRepo>();
-
-
             builder.Services.AddHttpContextAccessor();
 
 
@@ -93,7 +87,7 @@ namespace ExaminationSystemMVC
             app.MapStaticAssets();
             app.MapControllerRoute(
                 name: "default",
-                pattern: "{controller=Account}/{action=Login}/{id?}")
+                pattern: "{controller=Home}/{action=Index}/{id?}")
                 .WithStaticAssets();
 
             app.Run();

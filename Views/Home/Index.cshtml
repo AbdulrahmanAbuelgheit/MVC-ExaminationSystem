@@ -1,8 +1,432 @@
-﻿@{
+﻿@using System.Security.Claims
+@using ExaminationSystemMVC.UnitOfWorks
+@inject UnitOfWork UnitOfWork
+
+@{
     ViewData["Title"] = "Home Page";
+
+    var currentUser = User.Identity?.IsAuthenticated == true
+        ? UnitOfWork.UserRepo.GetById(int.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier)))
+        : null;
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<div class="welcome-container">
+    <div class="welcome-card">
+        <div class="welcome-header">
+            <div class="welcome-datetime">
+                <h2>Welcome !</h2>
+                <p class="current-datetime">
+                    <i class="bi bi-calendar-event"></i> @DateTime.Now.ToString("dddd, MMMM d, yyyy")
+                    <span class="time-badge"><i class="bi bi-clock"></i> @DateTime.Now.ToString("h:mm tt")</span>
+                </p>
+            </div>
+        </div>
+
+        <div class="user-preview">
+            <div class="user-avatar">
+                @if (User.Identity?.IsAuthenticated == true)
+                {
+                    <img src="https://placehold.co/200x200/4e91fc/ffffff?text=@currentUser.FirstName.Substring(0,1)" alt="User Avatar" />
+                }
+                else
+                {
+                    <img src="https://placehold.co/200x200/7f5af0/ffffff?text=G" alt="Guest Avatar" />
+                }
+            </div>
+            <div class="user-greeting">
+                @if (User.Identity?.IsAuthenticated == true)
+                {
+                    <h3>Hello, @User.FindFirstValue(ClaimTypes.Name)!</h3>
+                    <p>Welcome back to your ExamSystem dashboard.</p>
+                }
+                else
+                {
+                    <h3>Hello, Guest!</h3>
+                    <p>Please sign in to access your personalized dashboard.</p>
+                    <div class="mt-3">
+                        <a class="btn welcome-btn-primary" asp-controller="Account" asp-action="Login">
+                            <i class="bi bi-box-arrow-in-right"></i> Sign In
+                        </a>
+                        <a class="btn welcome-btn-secondary" asp-controller="Account" asp-action="Register">
+                            <i class="bi bi-person-plus"></i> Create Account
+                        </a>
+                    </div>
+                }
+            </div>
+        </div>
+
+        @if (User.Identity?.IsAuthenticated == true && currentUser != null)
+        {
+            <div class="user-info-section">
+                <h4><i class="bi bi-person-badge"></i> User Information</h4>
+                <div class="user-info-grid">
+                    <div class="user-info-item">
+                        <span class="info-label">Full Name</span>
+                        <span class="info-value">@currentUser.FirstName @currentUser.LastName</span>
+                    </div>
+                    <div class="user-info-item">
+                        <span class="info-label">Email</span>
+                        <span class="info-value">@currentUser.Email</span>
+                    </div>
+                    <div class="user-info-item">
+                        <span class="info-label">User ID</span>
+                        <span class="info-value">@currentUser.UserID</span>
+                    </div>
+                    <div class="user-info-item">
+                        <span class="info-label">Role</span>
+                        <span class="info-value">
+                            @if (currentUser.role == "Admin")
+                            {
+                                <span class="role-badge admin">Administrator</span>
+                            }
+                            else if (currentUser.role == "Instructor")
+                            {
+                                <span class="role-badge instructor">Instructor</span>
+                            }
+                            else
+                            {
+                                <span class="role-badge student">Student</span>
+                            }
+                        </span>
+                    </div>
+                    <div class="user-info-item">
+                        <span class="info-label">Birthdate</span>
+                        <span class="info-value">@currentUser.Birthdate.ToString("MMMM d, yyyy")</span>
+                    </div>
+                    <div class="user-info-item">
+                        <span class="info-label">Address</span>
+                        <span class="info-value">@currentUser.Street, @currentUser.City, @currentUser.Governate</span>
+                    </div>
+                </div>
+            </div>
+
+        }
+    </div>
 </div>
+
+<style>
+    :root {
+        --primary-color: #4e91fc;
+        --primary-light: #a8c9ff;
+        --secondary-color: #7f5af0;
+        --dark-color: #1a1a2e;
+        --light-color: #f8f9fa;
+        --success-color: #4cc9f0;
+        --error-color: #f72585;
+        --border-radius: 8px;
+        --box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        --transition: all 0.3s ease;
+    }
+
+    .welcome-container {
+        display: flex;
+        justify-content: center;
+        padding: 1rem;
+    }
+
+    .welcome-card {
+        background: white;
+        border-radius: var(--border-radius);
+        box-shadow: var(--box-shadow);
+        width: 100%;
+        padding: 2rem;
+        transition: var(--transition);
+        animation: card-enter 0.6s ease-out;
+    }
+
+        .welcome-card:hover {
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+
+    .welcome-header {
+        margin-bottom: 2rem;
+    }
+
+        .welcome-header h2 {
+            color: var(--primary-color);
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+        }
+
+    .current-datetime {
+        color: #666;
+        font-size: 1rem;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        flex-wrap: wrap;
+    }
+
+    .time-badge {
+        background-color: var(--primary-light);
+        color: var(--primary-color);
+        padding: 0.25rem 0.75rem;
+        border-radius: 20px;
+        font-weight: 500;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.25rem;
+    }
+
+    .user-preview {
+        display: flex;
+        gap: 2rem;
+        align-items: center;
+        margin-bottom: 2rem;
+        padding-bottom: 2rem;
+        border-bottom: 1px solid #eee;
+    }
+
+    .user-avatar {
+        flex-shrink: 0;
+    }
+
+        .user-avatar img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid var(--primary-light);
+            transition: var(--transition);
+        }
+
+            .user-avatar img:hover {
+                transform: scale(1.05);
+                box-shadow: 0 5px 15px rgba(78, 145, 252, 0.3);
+            }
+
+    .user-greeting {
+        flex-grow: 1;
+    }
+
+        .user-greeting h3 {
+            color: var(--dark-color);
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        .user-greeting p {
+            color: #666;
+            font-size: 1rem;
+            margin-bottom: 0;
+        }
+
+    .welcome-btn-primary, .welcome-btn-secondary {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.5rem 1.2rem;
+        border-radius: var(--border-radius);
+        font-weight: 500;
+        transition: var(--transition);
+        margin-right: 0.5rem;
+    }
+
+    .welcome-btn-primary {
+        background-color: var(--primary-color);
+        color: white;
+        border: none;
+    }
+
+        .welcome-btn-primary:hover {
+            background-color: var(--secondary-color);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(63, 55, 201, 0.3);
+            color: white;
+        }
+
+    .welcome-btn-secondary {
+        background-color: white;
+        color: var(--secondary-color);
+        border: 1px solid var(--secondary-color);
+    }
+
+        .welcome-btn-secondary:hover {
+            background-color: var(--secondary-color);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(63, 55, 201, 0.3);
+        }
+
+    .user-info-section {
+        margin-bottom: 2rem;
+    }
+
+        .user-info-section h4 {
+            color: var(--dark-color);
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+    .user-info-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 1.5rem;
+    }
+
+    .user-info-item {
+        background-color: #f8f9fa;
+        padding: 1rem;
+        border-radius: var(--border-radius);
+        transition: var(--transition);
+    }
+
+        .user-info-item:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+
+    .info-label {
+        display: block;
+        color: #888;
+        font-size: 0.85rem;
+        margin-bottom: 0.5rem;
+    }
+
+    .info-value {
+        display: block;
+        color: var(--dark-color);
+        font-weight: 500;
+        font-size: 1rem;
+    }
+
+    .role-badge, .status-badge {
+        display: inline-block;
+        padding: 0.25rem 0.75rem;
+        border-radius: 20px;
+        font-size: 0.85rem;
+        font-weight: 500;
+    }
+
+        .role-badge.admin {
+            background-color: #ffe2e2;
+            color: #ff6b6b;
+        }
+
+        .role-badge.instructor {
+            background-color: #e2f0ff;
+            color: #4c9aff;
+        }
+
+        .role-badge.student {
+            background-color: #e7f5ea;
+            color: #38b249;
+        }
+
+        .status-badge.active {
+            background-color: #e7f5ea;
+            color: #38b249;
+        }
+
+        .status-badge.inactive {
+            background-color: #f8d7da;
+            color: #dc3545;
+        }
+
+    .quick-actions {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 1rem;
+    }
+
+    .action-card {
+        background-color: #f8f9fa;
+        padding: 1.5rem;
+        border-radius: var(--border-radius);
+        position: relative;
+        transition: var(--transition);
+        text-align: center;
+    }
+
+        .action-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            background-color: white;
+        }
+
+        .action-card i {
+            font-size: 2rem;
+            color: var(--primary-color);
+            margin-bottom: 0.75rem;
+            display: block;
+        }
+
+        .action-card h5 {
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+            color: var(--dark-color);
+            font-weight: 600;
+        }
+
+        .action-card p {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 0;
+        }
+
+    /* Animations */
+    @@keyframes card-enter {
+        from {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    @@keyframes fadeIn {
+        to {
+            opacity: 1;
+        }
+    }
+
+    .animate-fade-in {
+        opacity: 0;
+        animation: fadeIn 0.5s ease-out forwards;
+        animation-delay: var(--delay);
+    }
+
+    /* Responsive */
+    @@media (max-width: 768px) {
+        .welcome-card {
+            padding: 1.5rem;
+        }
+
+        .user-preview {
+            flex-direction: column;
+            text-align: center;
+            gap: 1rem;
+        }
+
+        .user-greeting {
+            text-align: center;
+        }
+
+        .quick-actions {
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        }
+    }
+
+    @@media (max-width: 576px) {
+        .welcome-card {
+            padding: 1.25rem;
+        }
+
+        .user-info-grid {
+            grid-template-columns: 1fr;
+        }
+
+        .welcome-header h2 {
+            font-size: 1.6rem;
+        }
+    }
+</style>
