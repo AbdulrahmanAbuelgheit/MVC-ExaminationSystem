@@ -11,7 +11,7 @@ namespace ExaminationSystemMVC.Reposatories
 
         public List<Student> GetAllWithBranchAndTrack()
         {
-            return Db.Students.Include(s => s.Std).Include(s => s.Branch).Include(s => s.Track).Where(s => s.IsActive == "T").ToList();
+            return Db.Students.Include(s => s.Std).Include(s => s.Branch).Include(s => s.Track).ToList();
         }
 
         public Student GetByIdWithBranchAndTrack(int id)

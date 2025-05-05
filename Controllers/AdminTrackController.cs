@@ -173,7 +173,7 @@ namespace ExaminationSystemMVC.Controllers
                 return NotFound();
             }
 
-            var availableInstructors = _unit.InstructorRepo.GetAll()
+            var availableInstructors = _unit.InstructorRepo.GetAllInstructors()
                 .Where(i => !track.Ins.Any(ti => ti.InsID == i.InsID))
                 .Select(i => new { i.InsID, FullName = i.Ins.FirstName + " " + i.Ins.LastName })
                 .ToList();
@@ -208,7 +208,7 @@ namespace ExaminationSystemMVC.Controllers
             }
 
 
-            var availableInstructors = _unit.InstructorRepo.GetAll()
+            var availableInstructors = _unit.InstructorRepo.GetAllInstructors()
                 .Where(i => !track.Ins.Any(ti => ti.InsID == i.InsID))
                 .Select(i => new { i.InsID, FullName = i.Ins.FirstName + " " + i.Ins.LastName })
                 .ToList();

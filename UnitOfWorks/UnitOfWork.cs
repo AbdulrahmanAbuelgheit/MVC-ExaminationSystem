@@ -7,7 +7,7 @@ namespace ExaminationSystemMVC.UnitOfWorks
         BranchRepo _branchRepo;
         TrackRepo _trackRepo;
         StudentRepo _studentRepo;
-        InstructorRepo _instructorRepo;
+        InstructorRepository _instructorRepo;
         UsersRepo _userRepo;
         DBContext _db;
         public UnitOfWork(DBContext db)
@@ -62,13 +62,13 @@ namespace ExaminationSystemMVC.UnitOfWorks
             }
         }
 
-        public InstructorRepo InstructorRepo
+        public InstructorRepository InstructorRepo
         {
             get
             {
                 if (_instructorRepo == null)
                 {
-                    _instructorRepo = new InstructorRepo(_db);
+                    _instructorRepo = new InstructorRepository(_db);
                 }
                 return _instructorRepo;
             }

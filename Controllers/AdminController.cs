@@ -16,7 +16,7 @@ namespace ExaminationSystemMVC.Controllers
             ViewBag.StudentCount = _unit.StudentRepo.GetAll().Count();
             ViewBag.TrackCount = _unit.TrackRepo.GetAll().Count();
             ViewBag.BranchCount = _unit.BranchRepo.GetAll().Count();
-            ViewBag.InstructorCount = _unit.InstructorRepo.GetAll().Count();
+            ViewBag.InstructorCount = _unit.InstructorRepo.GetAllInstructors().Count();
             ViewBag.CourseCount = _unit.CourseRepo.GetAll().Count();
             ViewBag.UserCount = _unit.UserRepo.GetAll().Count();
 
