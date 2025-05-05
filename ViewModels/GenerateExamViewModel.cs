@@ -7,27 +7,29 @@ public class ExamWithTrackVM
 {
     public Exam Exam { get; set; }
     public string CourseName { get; set; }
-    public string TrackName { get; set; } 
+    public string TrackName { get; set; }
 }
+
 public class GenerateExamViewModel
 {
-    [Required]
-    [Display(Name = "Course")]
+    [Required(ErrorMessage = "Please select a course.")]
     public int CrsID { get; set; }
 
-    [Required]
-    [Display(Name = "T/F Questions")]
+    [Required(ErrorMessage = "Please enter exam duration.")]
+    [Range(1, 180, ErrorMessage = "Exam duration must be between 1 and 180 minutes.")]
+    public int ExamDuration { get; set; }
+
+    [Required(ErrorMessage = "Please enter number of True/False questions.")]
+    [Range(1, 20, ErrorMessage = "Must be between 1 and 20 True/False questions.")]
     public int NumTFQuestions { get; set; }
 
-    [Required]
-    [Display(Name = "MCQ Questions")]
+    [Required(ErrorMessage = "Please enter number of MCQ questions.")]
+    [Range(1, 30, ErrorMessage = "Must be between 1 and 30 MCQ questions.")]
     public int NumMCQQuestions { get; set; }
 
-    [Display(Name = "Duration (minutes)")]
-    public int ExamDuration { get; set; } = 60;
-
-    public List<SelectListItem> Courses { get; set; } = new();
+    public IEnumerable<SelectListItem> Courses { get; set; }
 }
+
 public class GeneratedExamDetailsViewModel
 {
     public int ExamID { get; set; }

@@ -103,11 +103,11 @@ namespace ExaminationSystemMVC.Controllers
             });
 
             if (user.role == "Admin")
-            {
                 return RedirectToAction("AdminHome", "Admin");
-            }
-
-            return RedirectToAction("Index", "Home");
+            else if (user.role == "Instructor")
+                return RedirectToAction("Index", "Instructor");
+            else
+                return RedirectToAction("Index", "Home"); 
         }
 
         [HttpPost]
