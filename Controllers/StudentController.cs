@@ -10,10 +10,10 @@ namespace ExaminationSystemMVC.Controllers
     [Authorize(Roles = "Student")]
     public class StudentController : Controller
     {
-        public IStudentRepo StudentRepo { get; set; }
+        public StudentRepo StudentRepo { get; set; }
         private readonly JwtHelper _jwtHelper;
 
-        public StudentController(IStudentRepo _StudentRepo, JwtHelper jwtHelper)
+        public StudentController(StudentRepo _StudentRepo, JwtHelper jwtHelper)
         {
             StudentRepo = _StudentRepo;
             _jwtHelper = jwtHelper;

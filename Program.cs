@@ -36,7 +36,7 @@ namespace ExaminationSystemMVC
 
             builder.Services.AddScoped<IInstructorRepository, InstructorRepository>();
             builder.Services.AddScoped<UsersRepo>();
-            builder.Services.AddScoped<IStudentRepo, StudentRepo>();
+            builder.Services.AddScoped<StudentRepo, StudentRepo>();
 
             var app = builder.Build();
 
