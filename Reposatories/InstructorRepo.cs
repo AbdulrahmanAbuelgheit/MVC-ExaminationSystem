@@ -53,6 +53,11 @@ namespace ExaminationSystemMVC.Reposatories
         {
             _context = context;
         }
+
+        public List<Instructor> GetAllInstructors()
+        {
+            return _context.Instructors.Include(i => i.Ins).ToList();
+        }
         public User GetUserByEmail(string email)
         {
             return _context.Users.FirstOrDefault(u => u.Email == email);

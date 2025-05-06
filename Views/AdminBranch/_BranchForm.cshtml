@@ -1,0 +1,55 @@
+﻿@model CreateBranchVM
+
+<!-- Branch Name -->
+<div class="mb-3">
+    <label asp-for="BranchName" class="form-label">Branch</label>
+    <input asp-for="BranchName" class="form-control" />
+    <span asp-validation-for="BranchName" class="text-danger small"></span>
+</div>
+
+<!-- Governate -->
+<div class="mb-3">
+    <label asp-for="Governate" class="form-label"></label>
+    <input asp-for="Governate" class="form-control" />
+    <span asp-validation-for="Governate" class="text-danger small"></span>
+</div>
+
+<!-- City -->
+<div class="mb-3">
+    <label asp-for="City" class="form-label"></label>
+    <input asp-for="City" class="form-control" />
+    <span asp-validation-for="City" class="text-danger small"></span>
+</div>
+
+<!-- Street -->
+<div class="mb-3">
+    <label asp-for="Street" class="form-label"></label>
+    <input asp-for="Street" class="form-control" />
+    <span asp-validation-for="Street" class="text-danger small"></span>
+</div>
+
+<!-- Telephone -->
+<div class="mb-3">
+    <label asp-for="Tel" class="form-label"></label>
+    <input asp-for="Tel" class="form-control" />
+    <span asp-validation-for="Tel" class="text-danger small"></span>
+</div>
+
+<!-- Manager -->
+<div class="mb-4">
+    <label asp-for="ManagerID" class="form-label">Manager</label>
+    <select asp-for="ManagerID" asp-items="ViewBag.Instructors" class="form-select">
+        <option value="">Select a manager</option>
+    </select>
+    <span asp-validation-for="ManagerID" class="text-danger small"></span>
+</div>
+
+<!-- Buttons -->
+<div class="d-flex justify-content-end">
+    <button type="submit" class="btn"
+            style="background-color: var(--primary-color); color: white; border-radius: var(--border-radius);">
+        Save
+    </button>
+    <a asp-action="Index" class="btn btn-outline-secondary ms-2"
+       style="border-radius: var(--border-radius);">Cancel</a>
+</div>
