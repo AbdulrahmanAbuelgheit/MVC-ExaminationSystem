@@ -50,14 +50,30 @@ namespace ExaminationSystemMVC.Controllers
             return 0;
         }
 
+        public IActionResult Dashboard()
+        {
+            int studentId = GetCurrentStudentId();
+            if (studentId == 0)
+                return RedirectToAction("Login", "Account");
+
+            var student = StudentRepo.getById(studentId);
+            if (student == null)
+                return NotFound();
+
+            return View(student);
+        }
+
         public IActionResult Index()
         {
             int studentId = GetCurrentStudentId();
             if (studentId == 0)
                 return RedirectToAction("Login", "Account");
 
-            return RedirectToAction("Courses");
+            return RedirectToAction("Dashboard");
         }
+
+        // student details
+        
 
         // student course
         public IActionResult Courses(int? id = null)
