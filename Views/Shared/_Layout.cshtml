@@ -263,43 +263,42 @@
         /* Responsive styling */
         @@media (max-width: 992px) {
             .sidebar {
-        transform: translateX(-100%);
-        width: var(--sidebar-width);
-    }
+                transform: translateX(-100%);
+                width: var(--sidebar-width);
+            }
 
-    .sidebar.show {
-        transform: translateX(0);
-    }
+                .sidebar.show {
+                    transform: translateX(0);
+                }
 
-    .main-content {
-        margin-left: 0;
-    }
+            .main-content {
+                margin-left: 0;
+            }
 
-    .main-content.expanded {
-        margin-left: 0;
-    }
+                .main-content.expanded {
+                    margin-left: 0;
+                }
 
-    .auth-buttons {
-        display: flex;
-        flex-direction: row;
-        gap: 0.3rem;
-    }
-    
-    .user-profile {
-        flex-direction: column;
-        align-items: flex-end;
-    }
+            .auth-buttons {
+                display: flex;
+                flex-direction: row;
+                gap: 0.3rem;
+            }
 
-    .user-profile span {
-        font-size: 0.9rem;
-        margin-bottom: 0.25rem;
-    }
+            .user-profile {
+                flex-direction: column;
+                align-items: flex-end;
+            }
 
-    .btn-outline-primary, .btn-outline-secondary, .btn-outline-danger {
-        padding: 0.3rem 0.6rem;
-        font-size: 0.9rem;
-    }
+                .user-profile span {
+                    font-size: 0.9rem;
+                    margin-bottom: 0.25rem;
+                }
 
+            .btn-outline-primary, .btn-outline-secondary, .btn-outline-danger {
+                padding: 0.3rem 0.6rem;
+                font-size: 0.9rem;
+            }
         }
 
         @@media (max-width: 576px) {
@@ -317,43 +316,39 @@
         }
 
         @@media (max-width: 375px) {
-            .btn-outline-primary span, .btn-outline-secondary span
+            .btn-outline-primary span, .btn-outline-secondary span {
+                display: none;
+            }
 
-        {
-            display: none;
-        }
+            .btn-outline-primary i, .btn-outline-secondary i {
+                margin-right: 0;
+                font-size: 1rem;
+            }
 
-        .btn-outline-primary i, .btn-outline-secondary i {
-            margin-right: 0;
-            font-size: 1rem;
-        }
-
-        .btn-outline-primary, .btn-outline-secondary {
-            padding: 0.4rem;
-            width: auto;
-        }
-
+            .btn-outline-primary, .btn-outline-secondary {
+                padding: 0.4rem;
+                width: auto;
+            }
         }
 
     </style>
 </head>
 <body>
     <!-- Top Navigation Bar -->
-
     @if (User.Identity?.IsAuthenticated == true)
     {
-    <nav class="top-navbar">
-        <div class="d-flex align-items-center">
-            <button class="navbar-toggler me-3" id="sidebar-toggler">
-                <i class="bi bi-list"></i>
-            </button>
-            <a class="navbar-brand" asp-controller="Home" asp-action="Index">
-                <img src="https://placehold.co/100x100/4e91fc/ffffff?text=ES" alt="Logo" />
-                <span>ExamSystem</span>
-            </a>
-        </div>
+        <nav class="top-navbar">
+            <div class="d-flex align-items-center">
+                <button class="navbar-toggler me-3" id="sidebar-toggler">
+                    <i class="bi bi-list"></i>
+                </button>
+                <a class="navbar-brand" asp-controller="Home" asp-action="Index">
+                    <img src="https://placehold.co/100x100/4e91fc/ffffff?text=ES" alt="Logo" />
+                    <span>ExamSystem</span>
+                </a>
+            </div>
 
-        <div class="d-flex align-items-center">
+            <div class="d-flex align-items-center">
                 <div class="user-profile">
                     <span>Hello, @User.Identity.Name</span>
                     <form asp-controller="Account" asp-action="Logout" method="post" class="ms-2">
@@ -362,51 +357,51 @@
                         </button>
                     </form>
                 </div>
-        </div>
-    </nav>
+            </div>
+        </nav>
 
-    <!-- Sidebar -->
-    <aside class="sidebar" id="sidebar">
-        <div class="menu-header">Main Navigation</div>
-        <a asp-controller="Home" asp-action="Index" class="menu-item">
-            <i class="bi bi-house-door"></i>
-            <span class="menu-text">Home</span>
-        </a>
-        <a asp-controller="Home" asp-action="Privacy" class="menu-item">
-            <i class="bi bi-shield-lock"></i>
-            <span class="menu-text">Privacy</span>
-        </a>
+        <!-- Sidebar -->
+        <aside class="sidebar" id="sidebar">
+            <div class="menu-header">Main Navigation</div>
+            <a asp-controller="Home" asp-action="Index" class="menu-item">
+                <i class="bi bi-house-door"></i>
+                <span class="menu-text">Home</span>
+            </a>
+            <a asp-controller="Home" asp-action="Privacy" class="menu-item">
+                <i class="bi bi-shield-lock"></i>
+                <span class="menu-text">Privacy</span>
+            </a>
 
-        <div class="menu-header">User Management</div>
-        <a asp-controller="Users" asp-action="GetAll" class="menu-item">
-            <i class="bi bi-people"></i>
-            <span class="menu-text">Users</span>
-        </a>
+            <div class="menu-header">User Management</div>
+            <a asp-controller="Users" asp-action="GetAll" class="menu-item">
+                <i class="bi bi-people"></i>
+                <span class="menu-text">Users</span>
+            </a>
 
-        <div class="menu-header">Exams</div>
-        <a href="#" class="menu-item">
-            <i class="bi bi-journal-text"></i>
-            <span class="menu-text">My Exams</span>
-        </a>
-        <a href="#" class="menu-item">
-            <i class="bi bi-pencil-square"></i>
-            <span class="menu-text">Take Exam</span>
-        </a>
-        <a href="#" class="menu-item">
-            <i class="bi bi-trophy"></i>
-            <span class="menu-text">Results</span>
-        </a>
+            <div class="menu-header">Exams</div>
+            <a href="#" class="menu-item">
+                <i class="bi bi-journal-text"></i>
+                <span class="menu-text">My Exams</span>
+            </a>
+            <a href="#" class="menu-item">
+                <i class="bi bi-pencil-square"></i>
+                <span class="menu-text">Take Exam</span>
+            </a>
+            <a href="#" class="menu-item">
+                <i class="bi bi-trophy"></i>
+                <span class="menu-text">Results</span>
+            </a>
 
-        <div class="menu-header">Courses</div>
-        <a href="#" class="menu-item">
-            <i class="bi bi-book"></i>
-            <span class="menu-text">My Courses</span>
-        </a>
-        <a href="#" class="menu-item">
-            <i class="bi bi-calendar-event"></i>
-            <span class="menu-text">Schedule</span>
-        </a>
-    </aside>
+            <div class="menu-header">Courses</div>
+            <a href="#" class="menu-item">
+                <i class="bi bi-book"></i>
+                <span class="menu-text">My Courses</span>
+            </a>
+            <a href="#" class="menu-item">
+                <i class="bi bi-calendar-event"></i>
+                <span class="menu-text">Schedule</span>
+            </a>
+        </aside>
     }
 
     <!-- Main Content -->
