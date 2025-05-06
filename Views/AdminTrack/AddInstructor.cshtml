@@ -1,0 +1,39 @@
+﻿@model AddInstructorToTrackVM
+
+@{
+    ViewData["Title"] = "Add Instructor";
+    Layout = "_AdminLayout";
+}
+
+
+<div class="container mt-5" style="max-width: 700px;">
+    <div class="mb-4 text-center">
+        <h2 class="fw-bold" style="color: var(--primary-color);">Add Instructor to Track</h2>
+        <hr style="width: 80px; border-top: 3px solid var(--primary-light); margin: 0 auto;" />
+    </div>
+
+    <div class="card shadow-sm border-0" style="border-radius: var(--border-radius); box-shadow: var(--box-shadow);">
+        <div class="card-body p-4">
+            <form asp-action="AddInstructor" method="post" novalidate>
+                <input type="hidden" asp-for="TrackID" />
+
+                <div class="mb-3">
+                    <label asp-for="InsID" class="form-label">Instructor</label>
+                    <select asp-for="InsID" asp-items="ViewBag.InstructorsList" class="form-select">
+						<option value="">Select an instructor</option>
+                    </select>
+                    <span asp-validation-for="InsID" class="text-danger"></span>
+                </div>
+
+                <div class="d-flex justify-content-end">
+                    <button type="submit" class="btn"
+                            style="background-color: var(--primary-color); color: white; border-radius: var(--border-radius);">
+                        Add Instructor
+                    </button>
+                    <a asp-action="Details" asp-route-id="@Model.TrackID" class="btn btn-outline-secondary ms-2"
+                       style="border-radius: var(--border-radius);">Back</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

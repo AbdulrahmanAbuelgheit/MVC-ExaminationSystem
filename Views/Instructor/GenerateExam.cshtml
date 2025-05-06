@@ -56,7 +56,7 @@
                         <label asp-for="NumTFQuestions" class="form-label font-weight-bold">
                             <i class="fas fa-check-circle mr-1"></i>True/False Questions
                         </label>
-                        <input asp-for="NumTFQuestions" class="form-control" min="0" max="20" required />
+                        <input asp-for="NumTFQuestions" class="form-control" min="1" max="20" required />
                         <span asp-validation-for="NumTFQuestions" class="text-danger small"></span>
                         <div class="invalid-feedback">
                             Please enter a number between 0-20
@@ -70,7 +70,7 @@
                         <label asp-for="NumMCQQuestions" class="form-label font-weight-bold">
                             <i class="fas fa-list-ul mr-1"></i>Multiple Choice Questions
                         </label>
-                        <input asp-for="NumMCQQuestions" class="form-control" min="0" max="30" required />
+                        <input asp-for="NumMCQQuestions" class="form-control" min="1" max="30" required />
                         <span asp-validation-for="NumMCQQuestions" class="text-danger small"></span>
                         <div class="invalid-feedback">
                             Please enter a number between 0-30

@@ -1,0 +1,285 @@
+﻿@model DisplayTrackVM
+
+@{
+    ViewData["Title"] = "Track Details";
+    Layout = "_AdminLayout";
+}
+
+<div class="container my-5">
+    <div class="text-center mb-5">
+        <h2 class="fw-bold text-primary">
+            <i class="bi bi-diagram-3-fill me-2"></i>Track Details
+        </h2>
+        <hr class="w-25 mx-auto border-3 border-primary opacity-50" />
+    </div>
+
+    <div class="card border-0 shadow-sm mb-5">
+        <div class="card-body">
+            <h3 class="card-title fw-semibold text-secondary">@Model.TrackName</h3>
+            <div class="d-flex flex-wrap gap-3 mt-3">
+                <span class="badge bg-primary fs-6">Duration: @Model.Duration weeks</span>
+                <span class="badge bg-info text-dark fs-6">Capacity: @Model.Capacity</span>
+                <span class="badge bg-secondary fs-6">Supervisor: @Model.SupervisorName</span>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="mb-5">
+        <h4 class="text-success mb-3"><i class="bi bi-geo-alt-fill me-2"></i>Branches Offering This Track</h4>
+        @if (Model.Branches != null && Model.Branches.Any())
+         {
+            <div class="list-group shadow-sm">
+                @foreach (var _branch in Model.Branches)
+                {
+                    <div class="list-group-item list-group-item-action">
+                        @_branch.BranchName
+                    </div>
+                }
+            </div>
+         }
+        else
+        {
+          <p class="text-muted mt-3">This branch has no tracks assigned.</p>
+        }
+    </div>
+
+
+    <div class="mb-5">
+        <div class="d-flex justify-content-between align-items-center mb-3">
+            <h4 class="text-info"><i class="bi bi-journal-text me-2"></i>Courses</h4>
+            <a asp-action="AddCourse" asp-route-id="@Model.TrackID" class="btn btn-outline-primary btn-sm">
+                <i class="bi bi-plus-circle me-1"></i>Add Course
+            </a>
+        </div>
+
+        <div class="table-responsive shadow-sm">
+            @if(Model.Courses != null && Model.Courses.Any())
+            {
+            <table class="table table-bordered align-middle">
+                <thead class="table-light">
+                    <tr>
+                        <th>Name</th>
+                        <th>Description</th>
+                        <th style="width: 120px;">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    
+                    @foreach (var course in Model.Courses)
+                    {
+                        <tr>
+                            <td>@course.CrsName</td>
+                            <td>@course.Description</td>
+                            <td>
+                                <a asp-action="DeleteCourse"
+                                   asp-controller="AdminTrack"
+                                   asp-route-courseId="@course.CrsID"
+                                   asp-route-trackId="@Model.TrackID"
+                                   class="btn btn-outline-danger btn-sm"
+                                   onclick="return confirm('Are you sure?')">
+                                    <i class="bi bi-trash"></i>
+                                </a>
+                            </td>
+                        </tr>
+                    }
+                    
+                    
+                </tbody>
+            </table>
+            }
+            else
+            {
+                <p class="text-muted mt-3">This branch has no Courses assigned.</p>
+            }
+        </div>
+    </div>
+
+    <div class="mb-5">
+        <div class="d-flex justify-content-between align-items-center mb-3">
+            <h4 class="text-info"><i class="bi bi-person-badge me-2"></i>Instructors</h4>
+            <a asp-action="AddInstructor" asp-route-id="@Model.TrackID" class="btn btn-outline-primary btn-sm">
+                <i class="bi bi-plus-circle me-1"></i>Add Instructor
+            </a>
+        </div>
+
+        <div class="table-responsive shadow-sm">
+            @if (Model.Instructors != null && Model.Instructors.Any())
+            {
+            <table class="table table-bordered align-middle">
+                <thead class="table-light">
+                    <tr>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th style="width: 220px;">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var ins in Model.Instructors)
+                    {
+                        <tr>
+                            <td>@ins.InsName</td>
+                            <td>@ins.Email</td>
+                            <td>
+                                @if (Model.SupervisorID != ins.InsID)
+                                {
+                                    <div class="d-flex gap-2">
+                                        <form method="post"
+                                              asp-action="MakeInstructorSupervisor"
+                                              asp-controller="AdminTrack"
+                                              asp-route-insId="@ins.InsID"
+                                              asp-route-trackId="@Model.TrackID"
+                                              onsubmit="return confirm('Make this instructor supervisor?')">
+                                            <button class="btn btn-outline-success btn-sm">
+                                                <i class="bi bi-check2-circle me-1"></i>Supervisor
+                                            </button>
+                                        </form>
+                                        <a asp-action="RemoveInstructor"
+                                           asp-controller="AdminTrack"
+                                           asp-route-insId="@ins.InsID"
+                                           asp-route-trackId="@Model.TrackID"
+                                           class="btn btn-outline-danger btn-sm"
+                                           onclick="return confirm('Remove instructor?')">
+                                            <i class="bi bi-trash"></i>
+                                        </a>
+                                    </div>
+                                }
+                                else
+                                {
+                                    <span class="badge bg-success"><i class="bi bi-star-fill me-1"></i>Supervisor</span>
+                                }
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+            }
+            else
+            {
+                <p class="text-muted mt-3">This branch has no instructors assigned.</p>
+            }
+        </div>
+    </div>
+<div class="mb-5">
+
+    <!-- Header -->
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <h4 class="text-info mb-0"><i class="bi bi-people-fill me-2"></i>Students</h4>
+    </div>
+
+    <!-- Accordion Filter Panel -->
+    <div class="accordion mb-3" id="filterAccordion">
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="headingFilters">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFilters" aria-expanded="false" aria-controls="collapseFilters">
+                    <i class="bi bi-funnel-fill me-2"></i> Filters
+                </button>
+            </h2>
+            <div id="collapseFilters" class="accordion-collapse collapse" aria-labelledby="headingFilters" data-bs-parent="#filterAccordion">
+                <div class="accordion-body bg-light rounded-bottom">
+                    <form method="get" asp-action="Details" asp-route-id="@Model.TrackID" class="p-3">
+                        <div class="row g-3 align-items-end">
+                            <!-- Intake Year Filter -->
+                            <div class="col-md-4">
+                                <label for="intakeYearFilter" class="form-label fw-semibold">Filter by Intake Year</label>
+                                <select id="intakeYearFilter" name="intakeYear" class="form-select">
+                                    <option value="">All</option>
+                                    @foreach (var year in Model.Students.Select(s => s.IntakeYear).Distinct().OrderBy(y => y))
+                                    {
+                                        <option value="@year" selected=@(ViewContext.HttpContext.Request.Query["intakeYear"].ToString() == year.ToString() ? "selected" : "")>@year</option>
+                                    }
+                                </select>
+                            </div>
+
+                            <!-- Branch Filter -->
+                            <div class="col-md-4">
+                                <label for="branchFilter" class="form-label fw-semibold">Filter by Branch</label>
+                                <select id="branchFilter" name="branch" class="form-select">
+                                    <option value="">All</option>
+                                    @foreach (var branch in Model.Students.Select(s => s.BranchName).Distinct().OrderBy(b => b))
+                                    {
+                                        <option value="@branch" selected=@(ViewContext.HttpContext.Request.Query["branch"].ToString() == branch ? "selected" : "")>@branch</option>
+                                    }
+                                </select>
+                            </div>
+
+                            <!-- Sort Order -->
+                            <div class="col-md-4">
+                                <label for="sortOrder" class="form-label fw-semibold">Sort by</label>
+                                <select id="sortOrder" name="sortOrder" class="form-select">
+                                    <option value="asc" selected=@(ViewContext.HttpContext.Request.Query["sortOrder"] == "asc" ? "selected" : "")>Ascending</option>
+                                    <option value="desc" selected=@(ViewContext.HttpContext.Request.Query["sortOrder"] == "desc" ? "selected" : "")>Descending</option>
+                                </select>
+                            </div>
+
+                            <!-- Buttons -->
+                            <div class="col-12 d-flex justify-content-between mt-3">
+                                <button type="submit" class="btn btn-primary">
+                                    <i class="bi bi-filter-circle me-1"></i> Apply Filters
+                                </button>
+                                <a asp-action="Details" asp-route-id="@Model.TrackID" class="btn btn-outline-secondary">
+                                    <i class="bi bi-x-circle me-1"></i> Clear Filters
+                                </a>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Display Applied Filters -->
+    @{
+        var intake = ViewContext.HttpContext.Request.Query["intakeYear"].ToString();
+        var branch = ViewContext.HttpContext.Request.Query["branch"].ToString();
+        var sort = ViewContext.HttpContext.Request.Query["sortOrder"].ToString();
+    }
+    @if (!string.IsNullOrEmpty(intake) || !string.IsNullOrEmpty(branch) || !string.IsNullOrEmpty(sort))
+    {
+        <div class="alert alert-info d-flex align-items-center gap-2 shadow-sm">
+            <i class="bi bi-sliders"></i>
+            <div>
+                <strong>Applied Filters:</strong>
+                @if (!string.IsNullOrEmpty(intake)) { <span class="badge bg-secondary me-1">Intake: @intake</span> }
+                @if (!string.IsNullOrEmpty(branch)) { <span class="badge bg-secondary me-1">Branch: @branch</span> }
+                @if (!string.IsNullOrEmpty(sort)) { <span class="badge bg-secondary me-1">Sort: @sort</span> }
+            </div>
+        </div>
+    }
+
+    <!-- Students Table -->
+    <div class="table-responsive shadow-sm">
+        <table class="table table-striped align-middle">
+            <thead class="table-light">
+                <tr>
+                    <th>Student Name</th>
+                    <th>Email</th>
+                    <th>Branch</th>
+                    <th>Intake</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var std in Model.Students)
+                {
+                    <tr>
+                        <td>@std.Name</td>
+                        <td>@std.Email</td>
+                        <td>@std.BranchName</td>
+                        <td>@std.IntakeYear</td>
+                        <td>
+                            <a asp-action="RemoveStudent"
+                               asp-controller="AdminTrack"
+                               asp-route-studentId="@std.StdID"
+                               asp-route-trackId="@Model.TrackID"
+                               class="btn btn-outline-danger btn-sm"
+                               onclick="return confirm('Are you sure you want to remove this student?')">
+                                <i class="bi bi-trash"></i>
+                            </a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
