@@ -3,12 +3,16 @@
   "WorkspaceRootPath": "C:\\Users\\Rawan Labeb\\Desktop\\MVC\\MVC-ExaminationSystem\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{8E37184C-1207-2929-66F8-D4D153605B76}|ExaminationSystemMVC.csproj|c:\\users\\rawan labeb\\desktop\\mvc\\mvc-examinationsystem\\views\\instructor\\exams.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{8E37184C-1207-2929-66F8-D4D153605B76}|ExaminationSystemMVC.csproj|solutionrelative:views\\instructor\\exams.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{8E37184C-1207-2929-66F8-D4D153605B76}|ExaminationSystemMVC.csproj|c:\\users\\rawan labeb\\desktop\\mvc\\mvc-examinationsystem\\views\\instructor\\dashboard.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{8E37184C-1207-2929-66F8-D4D153605B76}|ExaminationSystemMVC.csproj|solutionrelative:views\\instructor\\dashboard.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{8E37184C-1207-2929-66F8-D4D153605B76}|ExaminationSystemMVC.csproj|c:\\users\\rawan labeb\\desktop\\mvc\\mvc-examinationsystem\\views\\shared\\_instructorlayout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{8E37184C-1207-2929-66F8-D4D153605B76}|ExaminationSystemMVC.csproj|solutionrelative:views\\shared\\_instructorlayout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8E37184C-1207-2929-66F8-D4D153605B76}|ExaminationSystemMVC.csproj|c:\\users\\rawan labeb\\desktop\\mvc\\mvc-examinationsystem\\views\\instructor\\exams.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{8E37184C-1207-2929-66F8-D4D153605B76}|ExaminationSystemMVC.csproj|solutionrelative:views\\instructor\\exams.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{8E37184C-1207-2929-66F8-D4D153605B76}|ExaminationSystemMVC.csproj|c:\\users\\rawan labeb\\desktop\\mvc\\mvc-examinationsystem\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
@@ -76,7 +80,7 @@
         },
         {
           "DockedWidth": 35,
-          "SelectedChildIndex": 4,
+          "SelectedChildIndex": 5,
           "Children": [
             {
               "$type": "Bookmark",
@@ -95,25 +99,37 @@
               "Name": "ST:0:0:{d78612c7-9962-4b83-95d9-268046dad23a}"
             },
             {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "Exams.cshtml",
-              "DocumentMoniker": "C:\\Users\\Rawan Labeb\\Desktop\\MVC\\MVC-ExaminationSystem\\Views\\Instructor\\Exams.cshtml",
-              "RelativeDocumentMoniker": "Views\\Instructor\\Exams.cshtml",
-              "ToolTip": "C:\\Users\\Rawan Labeb\\Desktop\\MVC\\MVC-ExaminationSystem\\Views\\Instructor\\Exams.cshtml",
-              "RelativeToolTip": "Views\\Instructor\\Exams.cshtml",
-              "ViewState": "AgIAAI0AAAAAAAAAAAAkwKIAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-05-05T11:36:36.892Z",
-              "EditorCaption": ""
-            },
-            {
               "$type": "Bookmark",
               "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 0,
+              "Title": "Dashboard.cshtml",
+              "DocumentMoniker": "C:\\Users\\Rawan Labeb\\Desktop\\MVC\\MVC-ExaminationSystem\\Views\\Instructor\\Dashboard.cshtml",
+              "RelativeDocumentMoniker": "Views\\Instructor\\Dashboard.cshtml",
+              "ToolTip": "C:\\Users\\Rawan Labeb\\Desktop\\MVC\\MVC-ExaminationSystem\\Views\\Instructor\\Dashboard.cshtml",
+              "RelativeToolTip": "Views\\Instructor\\Dashboard.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAWAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-05-06T08:30:10.11Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Exams.cshtml",
+              "DocumentMoniker": "C:\\Users\\Rawan Labeb\\Desktop\\MVC\\MVC-ExaminationSystem\\Views\\Instructor\\Exams.cshtml",
+              "RelativeDocumentMoniker": "Views\\Instructor\\Exams.cshtml",
+              "ToolTip": "C:\\Users\\Rawan Labeb\\Desktop\\MVC\\MVC-ExaminationSystem\\Views\\Instructor\\Exams.cshtml",
+              "RelativeToolTip": "Views\\Instructor\\Exams.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAKIAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-05-05T11:36:36.892Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
               "Title": "GenerateExamViewModel.cs",
               "DocumentMoniker": "C:\\Users\\Rawan Labeb\\Desktop\\MVC\\MVC-ExaminationSystem\\ViewModels\\GenerateExamViewModel.cs",
               "RelativeDocumentMoniker": "ViewModels\\GenerateExamViewModel.cs",
@@ -121,12 +137,11 @@
               "RelativeToolTip": "ViewModels\\GenerateExamViewModel.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-05T10:43:01.987Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-05T10:43:01.987Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 6,
               "Title": "GenerateExam.cshtml",
               "DocumentMoniker": "C:\\Users\\Rawan Labeb\\Desktop\\MVC\\MVC-ExaminationSystem\\Views\\Instructor\\GenerateExam.cshtml",
               "RelativeDocumentMoniker": "Views\\Instructor\\GenerateExam.cshtml",
@@ -134,12 +149,11 @@
               "RelativeToolTip": "Views\\Instructor\\GenerateExam.cshtml",
               "ViewState": "AgIAADAAAAAAAAAAAAAkwDsAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-05-05T10:42:22.907Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-05T10:42:22.907Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 4,
               "Title": "Index.cshtml",
               "DocumentMoniker": "C:\\Users\\Rawan Labeb\\Desktop\\MVC\\MVC-ExaminationSystem\\Views\\Instructor\\Index.cshtml",
               "RelativeDocumentMoniker": "Views\\Instructor\\Index.cshtml",
@@ -147,12 +161,11 @@
               "RelativeToolTip": "Views\\Instructor\\Index.cshtml",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAiAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-05-05T09:40:55.152Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-05T09:40:55.152Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 9,
               "Title": "Index.cshtml",
               "DocumentMoniker": "C:\\Users\\Rawan Labeb\\Desktop\\MVC\\MVC-ExaminationSystem\\Views\\Home\\Index.cshtml",
               "RelativeDocumentMoniker": "Views\\Home\\Index.cshtml",
@@ -160,12 +173,11 @@
               "RelativeToolTip": "Views\\Home\\Index.cshtml",
               "ViewState": "AgIAAF8AAAAAAAAAAAAYwGoAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-05-05T09:40:33.584Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-05T09:40:33.584Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 10,
               "Title": "AccountController.cs",
               "DocumentMoniker": "C:\\Users\\Rawan Labeb\\Desktop\\MVC\\MVC-ExaminationSystem\\Controllers\\AccountController.cs",
               "RelativeDocumentMoniker": "Controllers\\AccountController.cs",
@@ -173,12 +185,11 @@
               "RelativeToolTip": "Controllers\\AccountController.cs",
               "ViewState": "AgIAAGEAAAAAAAAAAAAowG0AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-05T09:38:06.219Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-05T09:38:06.219Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 11,
               "Title": "_ViewStart.cshtml",
               "DocumentMoniker": "C:\\Users\\Rawan Labeb\\Desktop\\MVC\\MVC-ExaminationSystem\\Views\\_ViewStart.cshtml",
               "RelativeDocumentMoniker": "Views\\_ViewStart.cshtml",
@@ -186,12 +197,11 @@
               "RelativeToolTip": "Views\\_ViewStart.cshtml",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-05-05T09:36:49.839Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-05T09:36:49.839Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "_Layout.cshtml",
               "DocumentMoniker": "C:\\Users\\Rawan Labeb\\Desktop\\MVC\\MVC-ExaminationSystem\\Views\\Shared\\_Layout.cshtml",
               "RelativeDocumentMoniker": "Views\\Shared\\_Layout.cshtml",
@@ -199,8 +209,7 @@
               "RelativeToolTip": "Views\\Shared\\_Layout.cshtml",
               "ViewState": "AgIAAMoBAAAAAAAAAAAkwN8BAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-05-05T09:02:38.682Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-05T09:02:38.682Z"
             },
             {
               "$type": "Document",
@@ -210,14 +219,13 @@
               "RelativeDocumentMoniker": "Views\\Shared\\_InstructorLayout.cshtml",
               "ToolTip": "C:\\Users\\Rawan Labeb\\Desktop\\MVC\\MVC-ExaminationSystem\\Views\\Shared\\_InstructorLayout.cshtml",
               "RelativeToolTip": "Views\\Shared\\_InstructorLayout.cshtml",
-              "ViewState": "AgIAAGsBAAAAAAAAAAAkwHcBAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAGUBAAAAAAAAAAAkwHcBAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-05-05T09:01:41.772Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-05T09:01:41.772Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 5,
               "Title": "InstructorController.cs",
               "DocumentMoniker": "C:\\Users\\Rawan Labeb\\Desktop\\MVC\\MVC-ExaminationSystem\\Controllers\\InstructorController.cs",
               "RelativeDocumentMoniker": "Controllers\\InstructorController.cs",
@@ -225,12 +233,11 @@
               "RelativeToolTip": "Controllers\\InstructorController.cs",
               "ViewState": "AgIAADoAAAAAAAAAAAAkwB4AAAAsAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-05T08:52:59.153Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-05T08:52:59.153Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 8,
               "Title": "InstructorRepo.cs",
               "DocumentMoniker": "C:\\Users\\Rawan Labeb\\Desktop\\MVC\\MVC-ExaminationSystem\\Reposatories\\InstructorRepo.cs",
               "RelativeDocumentMoniker": "Reposatories\\InstructorRepo.cs",
@@ -238,12 +245,11 @@
               "RelativeToolTip": "Reposatories\\InstructorRepo.cs",
               "ViewState": "AgIAANoAAAAAAAAAAAAswOEAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-05T08:52:53.573Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-05T08:52:53.573Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 13,
               "Title": "UsersRepo.cs",
               "DocumentMoniker": "C:\\Users\\Rawan Labeb\\Desktop\\MVC\\MVC-ExaminationSystem\\Reposatories\\UsersRepo.cs",
               "RelativeDocumentMoniker": "Reposatories\\UsersRepo.cs",
@@ -251,12 +257,11 @@
               "RelativeToolTip": "Reposatories\\UsersRepo.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-05T08:52:29.492Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-05T08:52:29.492Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
+              "DocumentIndex": 14,
               "Title": "appsettings.json",
               "DocumentMoniker": "C:\\Users\\Rawan Labeb\\Desktop\\MVC\\MVC-ExaminationSystem\\appsettings.json",
               "RelativeDocumentMoniker": "appsettings.json",
@@ -264,12 +269,11 @@
               "RelativeToolTip": "appsettings.json",
               "ViewState": "AgIAABEAAAAAAAAAAAAAAAIAAAAVAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2025-05-05T08:49:31.842Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-05T08:49:31.842Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 12,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Users\\Rawan Labeb\\Desktop\\MVC\\MVC-ExaminationSystem\\Program.cs",
               "RelativeDocumentMoniker": "Program.cs",
@@ -277,8 +281,7 @@
               "RelativeToolTip": "Program.cs",
               "ViewState": "AgIAABYAAAAAAAAAAAAowBgAAAAiAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-05T08:48:44.432Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-05T08:48:44.432Z"
             }
           ]
         }
