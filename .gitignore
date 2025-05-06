@@ -2,56 +2,5 @@
 bin/
 obj/
 
-# User-specific files
-*.user
-*.suo
-*.userosscache
-*.sln.docstates
-
-# Auto-generated files
-Generated_Code/
-
 # Visual Studio cache
 .vs/
-
-# Build logs
-*.log
-
-# NuGet packages
-*.nupkg
-packages/
-*.snupkg
-
-# Resharper files
-_ReSharper*/
-*.[Rr]e[Ss]harper
-
-# Rider files
-.idea/
-
-# DotCover
-*.dotCover
-
-# Others
-TestResults/
-*.dbmdl
-*.bak
-*.Backup
-*.tmp
-*.temp
-*.cache
-*.pidb
-*.svclog
-*.psess
-*.vsp
-*.vspscc
-*.vssscc
-*.userprefs
-
-# Windows-specific
-Thumbs.db
-ehthumbs.db
-Desktop.ini
-
-# Git itself
-.git/
