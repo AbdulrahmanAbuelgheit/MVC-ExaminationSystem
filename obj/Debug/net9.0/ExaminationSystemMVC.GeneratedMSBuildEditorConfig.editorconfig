@@ -17,97 +17,105 @@ build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = ExaminationSystemMVC
 build_property.RootNamespace = ExaminationSystemMVC
-build_property.ProjectDir = C:\Users\Rawan Labeb\Desktop\MVC\MVC-ExaminationSystem\
+build_property.ProjectDir = F:\MVC - Examination System\
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 
 build_property.RazorLangVersion = 9.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = C:\Users\Rawan Labeb\Desktop\MVC\MVC-ExaminationSystem
+build_property.MSBuildProjectDirectory = F:\MVC - Examination System
 build_property._RazorSourceGeneratorDebug = 
 build_property.EffectiveAnalysisLevelStyle = 9.0
 build_property.EnableCodeStyleSeverity = 
 
-[C:/Users/Rawan Labeb/Desktop/MVC/MVC-ExaminationSystem/Views/Account/AccessDenied.cshtml]
+[F:/MVC - Examination System/Views/Account/AccessDenied.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxBY2Nlc3NEZW5pZWQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Rawan Labeb/Desktop/MVC/MVC-ExaminationSystem/Views/Account/Login.cshtml]
+[F:/MVC - Examination System/Views/Account/Login.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxMb2dpbi5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Rawan Labeb/Desktop/MVC/MVC-ExaminationSystem/Views/Account/Register.cshtml]
+[F:/MVC - Examination System/Views/Account/Register.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxSZWdpc3Rlci5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Rawan Labeb/Desktop/MVC/MVC-ExaminationSystem/Views/Home/Index.cshtml]
+[F:/MVC - Examination System/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Rawan Labeb/Desktop/MVC/MVC-ExaminationSystem/Views/Home/Privacy.cshtml]
+[F:/MVC - Examination System/Views/Home/Privacy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Rawan Labeb/Desktop/MVC/MVC-ExaminationSystem/Views/Instructor/CourseDetails.cshtml]
+[F:/MVC - Examination System/Views/Instructor/CourseDetails.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSW5zdHJ1Y3RvclxDb3Vyc2VEZXRhaWxzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Rawan Labeb/Desktop/MVC/MVC-ExaminationSystem/Views/Instructor/CourseExams.cshtml]
+[F:/MVC - Examination System/Views/Instructor/CourseExams.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSW5zdHJ1Y3RvclxDb3Vyc2VFeGFtcy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Rawan Labeb/Desktop/MVC/MVC-ExaminationSystem/Views/Instructor/CourseStudents.cshtml]
+[F:/MVC - Examination System/Views/Instructor/CourseStudents.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSW5zdHJ1Y3RvclxDb3Vyc2VTdHVkZW50cy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Rawan Labeb/Desktop/MVC/MVC-ExaminationSystem/Views/Instructor/Dashboard.cshtml]
+[F:/MVC - Examination System/Views/Instructor/Dashboard.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSW5zdHJ1Y3RvclxEYXNoYm9hcmQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Rawan Labeb/Desktop/MVC/MVC-ExaminationSystem/Views/Instructor/Exams.cshtml]
+[F:/MVC - Examination System/Views/Instructor/Exams.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSW5zdHJ1Y3RvclxFeGFtcy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Rawan Labeb/Desktop/MVC/MVC-ExaminationSystem/Views/Instructor/GeneratedExamDetails.cshtml]
+[F:/MVC - Examination System/Views/Instructor/GeneratedExamDetails.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSW5zdHJ1Y3RvclxHZW5lcmF0ZWRFeGFtRGV0YWlscy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Rawan Labeb/Desktop/MVC/MVC-ExaminationSystem/Views/Instructor/GenerateExam.cshtml]
+[F:/MVC - Examination System/Views/Instructor/GenerateExam.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSW5zdHJ1Y3RvclxHZW5lcmF0ZUV4YW0uY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Rawan Labeb/Desktop/MVC/MVC-ExaminationSystem/Views/Instructor/InstructorCoursesSummary.cshtml]
+[F:/MVC - Examination System/Views/Instructor/InstructorCoursesSummary.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSW5zdHJ1Y3RvclxJbnN0cnVjdG9yQ291cnNlc1N1bW1hcnkuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Rawan Labeb/Desktop/MVC/MVC-ExaminationSystem/Views/Instructor/_StudentsPartial.cshtml]
+[F:/MVC - Examination System/Views/Instructor/_StudentsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSW5zdHJ1Y3RvclxfU3R1ZGVudHNQYXJ0aWFsLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Rawan Labeb/Desktop/MVC/MVC-ExaminationSystem/Views/Shared/Error.cshtml]
+[F:/MVC - Examination System/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Rawan Labeb/Desktop/MVC/MVC-ExaminationSystem/Views/Shared/_InstructorLayout.cshtml]
+[F:/MVC - Examination System/Views/Shared/_InstructorLayout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9JbnN0cnVjdG9yTGF5b3V0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Rawan Labeb/Desktop/MVC/MVC-ExaminationSystem/Views/Shared/_ValidationScriptsPartial.cshtml]
+[F:/MVC - Examination System/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Rawan Labeb/Desktop/MVC/MVC-ExaminationSystem/Views/Users/GetAll.cshtml]
+[F:/MVC - Examination System/Views/Student/Courses.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3R1ZGVudFxDb3Vyc2VzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/MVC - Examination System/Views/Student/Exams.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3R1ZGVudFxFeGFtcy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/MVC - Examination System/Views/Users/GetAll.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlcnNcR2V0QWxsLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Rawan Labeb/Desktop/MVC/MVC-ExaminationSystem/Views/_ViewImports.cshtml]
+[F:/MVC - Examination System/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Rawan Labeb/Desktop/MVC/MVC-ExaminationSystem/Views/_ViewStart.cshtml]
+[F:/MVC - Examination System/Views/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Rawan Labeb/Desktop/MVC/MVC-ExaminationSystem/Views/Shared/_Layout.cshtml]
+[F:/MVC - Examination System/Views/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = b-6uxbog9ers

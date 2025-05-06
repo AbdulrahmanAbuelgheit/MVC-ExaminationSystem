@@ -1,65 +1,96 @@
 ﻿using ExaminationSystemMVC.Models;
+using ExaminationSystemMVC.Models.JWT;
 using ExaminationSystemMVC.Reposatories;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using System.Security.Claims;
 
 namespace ExaminationSystemMVC.Controllers
 {
-    //[Authorize(Roles = "Student")]
+    [Authorize(Roles = "Student")]
     public class StudentController : Controller
     {
         public IStudentRepo StudentRepo { get; set; }
-        public StudentController(IStudentRepo _StudentRepo) 
+        private readonly JwtHelper _jwtHelper;
+
+        public StudentController(IStudentRepo _StudentRepo, JwtHelper jwtHelper)
         {
             StudentRepo = _StudentRepo;
+            _jwtHelper = jwtHelper;
         }
+
+        private int GetCurrentStudentId()
+        {
+            var token = Request.Cookies["jwt"];
+            if (!string.IsNullOrEmpty(token))
+            {
+                var principal = _jwtHelper.ValidateToken(token);
+                if (principal != null)
+                {
+                    // get student id claim first
+                    var studentIdClaim = principal.Claims.FirstOrDefault(c => c.Type == "StudentId");
+                    if (studentIdClaim != null && int.TryParse(studentIdClaim.Value, out int studentId))
+                    {
+                        return studentId;
+                    }
+
+
+                    var emailClaim = principal.Claims.FirstOrDefault(c => c.Type == ClaimTypes.Email);
+                    if (emailClaim != null)
+                    {
+                        var student = StudentRepo.getByEmail(emailClaim.Value);
+                        if (student != null)
+                        {
+                            return student.StdID;
+                        }
+                    }
+                }
+            }
+
+            return 0;
+        }
+
         public IActionResult Index()
         {
-            return View();
-        }
+            int studentId = GetCurrentStudentId();
+            if (studentId == 0)
+                return RedirectToAction("Login", "Account");
 
-        // student details
-        public IActionResult Details(int id) 
-        {
-            if(id == 0)
-                return NotFound();
-
-            var student = StudentRepo.getById(id);
-            if(student == null)
-                return NotFound();
-
-            return View(student);
+            return RedirectToAction("Courses");
         }
 
         // student course
-        public IActionResult Courses(int id)
+        public IActionResult Courses(int? id = null)
         {
-            if (id == 0)
-                return NotFound();
+            int studentId = id ?? GetCurrentStudentId();
+            if (studentId == 0)
+                return RedirectToAction("Login", "Account");
 
-            var studentCourses = StudentRepo.getStudentCourse(id);
+            var studentCourses = StudentRepo.getStudentCourse(studentId);
             if (studentCourses == null || !studentCourses.Any())
                 return NotFound();
 
-            var student = StudentRepo.getById(id);
-            ViewBag.StudentId = id;
+            var student = StudentRepo.getById(studentId);
+            ViewBag.StudentId = studentId;
             ViewBag.StudentName = student?.Std?.FirstName + " " + student?.Std?.LastName;
 
             return View(studentCourses);
         }
 
         // student exam 
-        public IActionResult Exams(int id) 
+        public IActionResult Exams(int? id = null)
         {
-            if (id == 0)
+            int studentId = id ?? GetCurrentStudentId();
+            if (studentId == 0)
+                return RedirectToAction("Login", "Account");
+
+            var studentExam = StudentRepo.getStudentExam(studentId);
+            if (studentExam == null)
                 return NotFound();
 
-            var studentExam = StudentRepo.getStudentExam(id);
-            if(studentExam == null)
-                return NotFound();
-
-            ViewBag.StudentId = id;
-            ViewBag.studentName = StudentRepo.getById(id)?.Std?.FirstName;
+            var student = StudentRepo.getById(studentId);
+            ViewBag.StudentId = studentId;
+            ViewBag.studentName = student?.Std?.FirstName;
 
             ViewBag.UpcomingExamsCount = studentExam.Count(e => e.Exam.ExamDatetime > DateTime.Now);
             ViewBag.CompletedExamsCount = studentExam.Count(e => e.Exam.ExamDatetime <= DateTime.Now);
