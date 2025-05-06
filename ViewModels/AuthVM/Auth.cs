@@ -56,6 +56,16 @@ namespace ExaminationSystemMVC.DTOs.AuthDTO
             [RegularExpression(@"^[a-zA-Z\s]+$", ErrorMessage = "First name must contain only letters.")]
 
             public string City { get; set; }
+
+            [Required(ErrorMessage = "Branch is required.")]
+            public int BranchID { get; set; }
+
+            [Required(ErrorMessage = "Track is required.")]
+            public int TrackID { get; set; }
+            [Required(ErrorMessage ="Intake year is required.")]
+            [Display(Name = "Intake Year")]
+            public int IntakeYear { get; set; }
+
         }
 
         public class LoginUserVM
