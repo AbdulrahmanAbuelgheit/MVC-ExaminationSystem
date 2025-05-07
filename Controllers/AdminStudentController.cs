@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using static ExaminationSystemMVC.DTOs.AuthDTO.Auth;
 
 namespace ExaminationSystemMVC.Controllers
 {
@@ -34,52 +35,59 @@ namespace ExaminationSystemMVC.Controllers
         }
 
         [HttpGet]
-        public IActionResult Create()
+        public IActionResult RegisterStudent() 
         {
-            ViewBag.Branches = new SelectList(_unit.BranchRepo.GetAll(), "BranchID", "BranchName");
-            ViewBag.Tracks = new SelectList(_unit.TrackRepo.GetAll(), "TrackID", "TrackName");
-
-            var studentIds = _unit.StudentRepo.GetAll().Select(s => s.StdID);
-            var users = _unit.UserRepo.GetAll()
-                              .Where(user => !studentIds.Contains(user.UserID))
-                              .Select(user => new
-                                        {
-                                               UserID = user.UserID,
-                                               FullName = user.FirstName + " " + user.LastName
-                                           }).ToList();
-
-            ViewBag.users = new SelectList(users, "UserID", "FullName");
-            return View();
+             ViewBag.Branches = new SelectList(_unit.BranchRepo.GetAll(), "BranchID", "BranchName");
+             ViewBag.Tracks = new SelectList(_unit.TrackRepo.GetAll(), "TrackID", "TrackName");
+             return View();
         }
 
         [HttpPost]
-        public IActionResult Create(CreateStudentVM student)
+        public async Task<IActionResult> RegisterStudent(RegisterUserVM model)
         {
             if (!ModelState.IsValid)
             {
                 ViewBag.Branches = new SelectList(_unit.BranchRepo.GetAll(), "BranchID", "BranchName");
                 ViewBag.Tracks = new SelectList(_unit.TrackRepo.GetAll(), "TrackID", "TrackName");
-                var studentIds = _unit.StudentRepo.GetAll().Select(s => s.StdID);
-                var users = _unit.UserRepo.GetAll()
-                                  .Where(user => !studentIds.Contains(user.UserID))
-                                  .Select(user => new
-                                  {
-                                      UserID = user.UserID,
-                                      FullName = user.FirstName + " " + user.LastName
-                                  }).ToList();
-
-                ViewBag.users = new SelectList(users, "UserID", "FullName");
-                return View(student);
+                return View();
             }
 
-            var mappedStudent = _map.Map<Student>(student);
-            _unit.StudentRepo.Add(mappedStudent);
+            var existingUser = _unit.UserRepo.GetByEmail(model.Email);
+            if (existingUser != null)
+            {
+                ModelState.AddModelError("Email", "Email already exists");
+                return View(model);
+            }
 
-            var user = _unit.UserRepo.GetById(student.StdID);
-            user.role = "Student";
+            var user = new User
+            {
+                FirstName = model.FirstName,
+                LastName = model.LastName,
+                Email = model.Email,
+                Password = BCrypt.Net.BCrypt.HashPassword(model.Password),
+                City = model.City,
+                Governate = model.Governate,
+                Street = model.Street,
+                Birthdate = model.Birthdate,
+                role = "Student"
+            };
+
+            _unit.UserRepo.Add(user);
             _unit.Save();
+
+            _unit.StudentRepo.Add(new Student
+            {
+                StdID = user.UserID,
+                BranchID = model.BranchID,
+                TrackID = model.TrackID,
+                IntakeYear = model.IntakeYear
+            });
+            _unit.Save();
+
             return RedirectToAction("Index");
         }
+
+
 
         [HttpGet]
         public IActionResult Edit(int id)

@@ -1,0 +1,106 @@
+﻿@model Auth.RegisterUserVM
+@{
+    ViewData["Title"] = "Add Student";
+    Layout = "_AdminLayout";
+}
+
+<div class="container mt-5" style="max-width: 900px;">
+    <div class="mb-4 text-center">
+        <h2 class="fw-bold" style="color: var(--primary-color);">Add New Student</h2>
+        <hr style="width: 80px; border-top: 3px solid var(--primary-light); margin: 0 auto;" />
+    </div>
+
+    <div class="card shadow-sm border-0" style="border-radius: var(--border-radius); box-shadow: var(--box-shadow);">
+        <div class="card-body p-4">
+            <form asp-action="RegisterStudent" method="post" novalidate>
+                <div class="row g-3">
+                    <div class="col-md-6">
+                        <label asp-for="FirstName" class="form-label">First Name</label>
+                        <input asp-for="FirstName" class="form-control" placeholder="Enter first name" />
+                        <span asp-validation-for="FirstName" class="text-danger small"></span>
+                    </div>
+
+                    <div class="col-md-6">
+                        <label asp-for="LastName" class="form-label">Last Name</label>
+                        <input asp-for="LastName" class="form-control" placeholder="Enter last name" />
+                        <span asp-validation-for="LastName" class="text-danger small"></span>
+                    </div>
+
+                    <div class="col-md-6">
+                        <label asp-for="Email" class="form-label">Email</label>
+                        <input asp-for="Email" class="form-control" placeholder="Enter email" />
+                        <span asp-validation-for="Email" class="text-danger small"></span>
+                    </div>
+
+                    <div class="col-md-6">
+                        <label asp-for="Birthdate" class="form-label">Birthdate</label>
+                        <input asp-for="Birthdate" type="date" class="form-control" />
+                        <span asp-validation-for="Birthdate" class="text-danger small"></span>
+                    </div>
+
+                    <div class="col-md-6">
+                        <label asp-for="Password" class="form-label">Password</label>
+                        <input asp-for="Password" type="password" class="form-control" placeholder="Enter password" />
+                        <span asp-validation-for="Password" class="text-danger small"></span>
+                    </div>
+
+                    <div class="col-md-6">
+                        <label asp-for="ConfirmPassword" class="form-label">Confirm Password</label>
+                        <input asp-for="ConfirmPassword" type="password" class="form-control" placeholder="Confirm password" />
+                        <span asp-validation-for="ConfirmPassword" class="text-danger small"></span>
+                    </div>
+
+                    <div class="col-md-6">
+                        <label asp-for="Street" class="form-label">Street</label>
+                        <input asp-for="Street" class="form-control" placeholder="Enter street" />
+                        <span asp-validation-for="Street" class="text-danger small"></span>
+                    </div>
+
+                    <div class="col-md-6">
+                        <label asp-for="City" class="form-label">City</label>
+                        <input asp-for="City" class="form-control" placeholder="Enter city" />
+                        <span asp-validation-for="City" class="text-danger small"></span>
+                    </div>
+
+                    <div class="col-md-6">
+                        <label asp-for="Governate" class="form-label">Governate</label>
+                        <input asp-for="Governate" class="form-control" placeholder="Enter governate" />
+                        <span asp-validation-for="Governate" class="text-danger small"></span>
+                    </div>
+
+                    <div class="col-md-6">
+                        <label asp-for="BranchID" class="form-label">Branch</label>
+                        <select asp-for="BranchID" asp-items="ViewBag.Branches" class="form-select">
+                            <option value="">Select Branch</option>
+                        </select>
+                        <span asp-validation-for="BranchID" class="text-danger small"></span>
+                    </div>
+
+                    <div class="col-md-6">
+                        <label asp-for="TrackID" class="form-label">Track</label>
+                        <select asp-for="TrackID" asp-items="ViewBag.Tracks" class="form-select">
+                            <option value="">Select Track</option>
+                        </select>
+                        <span asp-validation-for="TrackID" class="text-danger small"></span>
+                    </div>
+
+                    <div class="col-md-6">
+                        <label asp-for="IntakeYear" class="form-label">Intake Year</label>
+                        <input asp-for="IntakeYear" type="number" class="form-control" placeholder="Enter intake year" />
+                        <span asp-validation-for="IntakeYear" class="text-danger small"></span>
+                    </div>
+                </div>
+
+
+                <div class="d-flex justify-content-end mt-4">
+                    <button type="submit" class="btn"
+                            style="background-color: var(--primary-color); color: white; border-radius: var(--border-radius);">
+                        Create
+                    </button>
+                    <a asp-action="Index" class="btn btn-outline-secondary ms-2"
+                       style="border-radius: var(--border-radius);">Cancel</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
