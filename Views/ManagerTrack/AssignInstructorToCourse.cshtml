@@ -1,0 +1,49 @@
+﻿@model AssignInstructorToCourseVM
+
+<div class="container mt-4">
+    <div class="card shadow-sm">
+        <div class="card-header bg-primary text-white">
+            <h4>Assign Instructor to: @Model.CourseName</h4>
+        </div>
+        <div class="card-body">
+            <form asp-action="AssignInstructorToCourse" method="post">
+                <input type="hidden" asp-for="CourseID" />
+                <input type="hidden" asp-for="TrackID" />
+
+                <div class="form-group mb-3">
+                    <label>Select Instructor</label>
+                    @if (Model.Instructors.Any())
+                    {
+                        <div class="list-group">
+                            @foreach (var instructor in Model.Instructors)
+                            {
+                                <label class="list-group-item">
+                                    <input type="radio" asp-for="SelectedInstructorId" value="@instructor.InsID" />
+                                    @instructor.InsName (@instructor.Email)
+                                </label>
+                            }
+                        </div>
+                        <span asp-validation-for="SelectedInstructorId" class="text-danger"></span>
+                    }
+                    else
+                    {
+                        <div class="alert alert-warning">No available instructors in this branch</div>
+                    }
+                </div>
+
+                <div class="d-flex justify-content-end gap-2">
+                    <a asp-action="CourseDetails"
+                       asp-route-id="@Model.CourseID"
+                       asp-route-trackId="@Model.TrackID"
+                       class="btn btn-secondary">
+                        Cancel
+                    </a>
+                    @if (Model.Instructors.Any())
+                    {
+                        <button type="submit" class="btn btn-primary">Assign</button>
+                    }
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
