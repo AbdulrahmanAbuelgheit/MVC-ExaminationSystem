@@ -1,0 +1,54 @@
+﻿@model Course
+
+@{
+    ViewData["Title"] = "Add Course";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="container mt-5" style="max-width: 900px;">
+    <div class="mb-4 text-center">
+        <h2 class="fw-bold" style="color: var(--primary-color);">Add New Course</h2>
+        <hr style="width: 80px; border-top: 3px solid var(--primary-light); margin: 0 auto;" />
+    </div>
+
+    <div class="card shadow-sm border-0" style="border-radius: var(--border-radius); box-shadow: var(--box-shadow);">
+        <div class="card-body p-4">
+            <form asp-action="Create" method="post" novalidate>
+                <div class="row g-3">
+                    <div class="col-md-12">
+                        <label asp-for="CrsName" class="form-label">Course Name</label>
+                        <input asp-for="CrsName" class="form-control" placeholder="Enter course name" />
+                        <span asp-validation-for="CrsName" class="text-danger small"></span>
+                    </div>
+
+                    <div class="col-md-12">
+                        <label asp-for="Description" class="form-label">Description</label>
+                        <textarea asp-for="Description" class="form-control" rows="3" placeholder="Enter course description"></textarea>
+                        <span asp-validation-for="Description" class="text-danger small"></span>
+                    </div>
+
+                    <div class="col-md-6">
+                        <label asp-for="Duration" class="form-label">Duration (hours)</label>
+                        <input asp-for="Duration" type="number" min="1" class="form-control" placeholder="Enter duration in hours" />
+                        <span asp-validation-for="Duration" class="text-danger small"></span>
+                    </div>
+                </div>
+
+                <div class="d-flex justify-content-end mt-4">
+                    <button type="submit" class="btn"
+                            style="background-color: var(--primary-color); color: white; border-radius: var(--border-radius);">
+                        <i class="bi bi-plus-circle me-2"></i>Create Course
+                    </button>
+                    <a asp-action="Index" class="btn btn-outline-secondary ms-2"
+                       style="border-radius: var(--border-radius);">
+                        <i class="bi bi-x-circle me-2"></i>Cancel
+                    </a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

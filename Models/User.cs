@@ -47,7 +47,7 @@ public partial class User
     public string City { get; set; }
 
     [Required]
-    [StringLength(20)]
+    [StringLength(200)]
     [Unicode(false)]
     public string Password { get; set; }
 

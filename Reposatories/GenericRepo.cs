@@ -19,6 +19,7 @@ namespace ExaminationSystemMVC.Reposatories
         {
             return Db.Set<TEntity>().Find(id);
         }
+
         public void Add(TEntity entity)
         {
             Db.Set<TEntity>().Add(entity);

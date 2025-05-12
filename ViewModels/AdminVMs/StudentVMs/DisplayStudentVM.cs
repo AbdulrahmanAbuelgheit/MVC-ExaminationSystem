@@ -5,8 +5,6 @@
         public int StdID { get; set; }
         public string Name { get; set; }
         public string Email { get; set; }
-        public int TrackID { get; set; }  // Add this line
-
         //public string Phone { get; set; }
         public string TrackName { get; set; }
         public string BranchName { get; set; }

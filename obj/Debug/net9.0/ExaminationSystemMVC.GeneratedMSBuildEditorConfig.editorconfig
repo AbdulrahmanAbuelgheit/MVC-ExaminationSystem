@@ -64,6 +64,42 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5CcmFuY2hcX0JyYW5jaEZvcm0uY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/ahmaa/OneDrive/Desktop/Project/MVC-ExaminationSystem/Views/AdminCourses/AddInstructor.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5Db3Vyc2VzXEFkZEluc3RydWN0b3IuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ahmaa/OneDrive/Desktop/Project/MVC-ExaminationSystem/Views/AdminCourses/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5Db3Vyc2VzXENyZWF0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ahmaa/OneDrive/Desktop/Project/MVC-ExaminationSystem/Views/AdminCourses/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5Db3Vyc2VzXERldGFpbHMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ahmaa/OneDrive/Desktop/Project/MVC-ExaminationSystem/Views/AdminCourses/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5Db3Vyc2VzXEVkaXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ahmaa/OneDrive/Desktop/Project/MVC-ExaminationSystem/Views/AdminCourses/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5Db3Vyc2VzXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ahmaa/OneDrive/Desktop/Project/MVC-ExaminationSystem/Views/AdminInstructor/AddInstructor.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5JbnN0cnVjdG9yXEFkZEluc3RydWN0b3IuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ahmaa/OneDrive/Desktop/Project/MVC-ExaminationSystem/Views/AdminInstructor/AllDetails.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5JbnN0cnVjdG9yXEFsbERldGFpbHMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ahmaa/OneDrive/Desktop/Project/MVC-ExaminationSystem/Views/AdminInstructor/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5JbnN0cnVjdG9yXEVkaXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ahmaa/OneDrive/Desktop/Project/MVC-ExaminationSystem/Views/AdminInstructor/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5JbnN0cnVjdG9yXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/ahmaa/OneDrive/Desktop/Project/MVC-ExaminationSystem/Views/AdminStudent/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5TdHVkZW50XENyZWF0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
