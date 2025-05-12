@@ -44,7 +44,61 @@ namespace ExaminationSystemMVC.Reposatories
         {
             _context = context;
         }
+        public DisplayInstructorVM GetInstructorDetails(int instructorId)
+        {
+            return _context.Instructors
+                .Include(i => i.Ins)
+                .Include(i => i.Branches)
+                .Where(i => i.InsID == instructorId)
+                .Select(i => new DisplayInstructorVM
+                {
+                    InsID = i.InsID,
+                    InsName = $"{i.Ins.FirstName} {i.Ins.LastName}",
+                    Email = i.Ins.Email,
+                    Salary = i.Salary,
+                    Branches = i.Branches.Select(b => new DisplayBranchVM
+                    {
+                        BranchID = b.BranchID,
+                        BranchName = b.BranchName
+                    }).ToList()
+                })
+                .FirstOrDefault();
+        }
 
+
+        public IEnumerable<DisplayInstructorVM> GetInstructorsByBranch(int branchId)
+        {
+            return _context.Instructors
+                .Include(i => i.Ins)  // Include User details
+                .Include(i => i.BranchesNavigation)  // Include branch relationships
+                .Where(i => i.BranchesNavigation.Any(b => b.BranchID == branchId))
+                .Select(i => new DisplayInstructorVM
+                {
+                    InsID = i.InsID,
+                    InsName = $"{i.Ins.FirstName} {i.Ins.LastName}",
+                    Email = i.Ins.Email,
+                    BranchID = branchId
+                })
+                .ToList();
+        }
+        public bool IsInstructorInBranch(int instructorId, int branchId)
+        {
+            return _context.Instructors
+                .Where(i => i.InsID == instructorId)
+                .Any(i => i.BranchesNavigation.Any(b => b.BranchID == branchId));
+        }
+        public List<DisplayInstructorVM> GetInstructorsByBranchId(int branchId)
+        {
+            return _context.Instructors
+                .Where(i => i.BranchesNavigation.Any(b => b.BranchID == branchId))
+                .Select(i => new DisplayInstructorVM
+                {
+                    InsID = i.InsID,
+                    InsName = $"{i.Ins.FirstName} {i.Ins.LastName}",
+                    Email = i.Ins.Email
+                })
+                .ToList();
+        }
         public List<Instructor> GetAllInstructors()
         {
             return _context.Instructors.Include(i => i.Ins).ToList();

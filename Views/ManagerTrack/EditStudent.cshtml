@@ -1,9 +1,8 @@
-﻿
-@model EditStudentVM
+﻿@model EditStudentVM
 
 @{
     ViewBag.Title = "Edit Student";
-    Layout = "_AdminLayout";
+    Layout = "~/Views/Shared/_InstructorLayout.cshtml";
 }
 
 <div class="container mt-5" style="max-width: 700px;">
@@ -14,20 +13,20 @@
 
     <div class="card shadow-sm border-0" style="border-radius: var(--border-radius); box-shadow: var(--box-shadow);">
         <div class="card-body p-4">
-            <form asp-action="Edit" method="post" novalidate>
+            <form asp-controller="ManagerTrack" asp-action="EditStudent" method="post" novalidate>
                 <input type="hidden" asp-for="StdID" />
 
                 <!-- Full Name -->
                 <div class="mb-3">
                     <label class="form-label">Full Name</label>
-                    <input class="form-control bg-light" asp-for="FullName" readonly />
+                    <input class="form-control bg-light" asp-for="FullName" disabled />
                     <input type="hidden" asp-for="FullName" />
                 </div>
-
+              
                 <!-- Email -->
                 <div class="mb-3">
                     <label class="form-label">Email</label>
-                    <input class="form-control bg-light" asp-for="Email" readonly />
+                    <input class="form-control bg-light" asp-for="Email" disabled/>
                     <input type="hidden" asp-for="Email" />
                 </div>
 
@@ -68,7 +67,7 @@
                             style="background-color: var(--primary-color); color: white; border-radius: var(--border-radius);">
                         Update
                     </button>
-                    <a asp-action="Index" class="btn btn-outline-secondary ms-2"
+                    <a asp-controller="ManagerTrack" class="btn btn-outline-secondary ms-2"
                        style="border-radius: var(--border-radius);">Cancel</a>
                 </div>
             </form>

@@ -3,7 +3,7 @@ namespace ExaminationSystemMVC.UnitOfWorks
 {
     public class UnitOfWork
     {
-        GenericRepo<Course> _courseRepo;
+        CourseRepo _courseRepo;
         BranchRepo _branchRepo;
         TrackRepo _trackRepo;
         StudentRepo _studentRepo;
@@ -26,13 +26,13 @@ namespace ExaminationSystemMVC.UnitOfWorks
             }
         }
 
-        public GenericRepo<Course> CourseRepo
+        public CourseRepo CourseRepo
         {
             get
             {
                 if (_courseRepo == null)
                 {
-                    _courseRepo = new GenericRepo<Course>(_db);
+                    _courseRepo = new CourseRepo(_db);
                 }
                 return _courseRepo;
             }
