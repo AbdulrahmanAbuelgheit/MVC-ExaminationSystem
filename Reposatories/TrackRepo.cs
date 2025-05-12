@@ -15,12 +15,17 @@
                 .ThenInclude(s => s.Std)
                 .FirstOrDefault(t => t.TrackID == id);
         }
-
-
-        public Track GetTrackWithCourses(int id)
+        public IEnumerable<Track> GetByBranch(int branchId)
         {
-            return Db.Tracks.Include(t => t.Crs).FirstOrDefault(t => t.TrackID == id);
+            return Db.Tracks
+                .Where(t => t.Branches.Any(b => b.BranchID == branchId))
+                .ToList();
         }
+
+        //public Track GetTrackWithCourses(int id)
+        //{
+        //    return Db.Tracks.Include(t => t.Crs).FirstOrDefault(t => t.TrackID == id);
+        //}
 
         public Track GetTrackWithStudents(int id)
         {
@@ -32,7 +37,19 @@
         {
             return Db.Tracks.Include(t => t.Ins).FirstOrDefault(t => t.TrackID == id);
         }
-
+        public Track GetTrackWithCourses(int id)
+        {
+            return Db.Tracks
+                .Include(t => t.Crs)
+                .Include(t => t.Branches)
+                .FirstOrDefault(t => t.TrackID == id);
+        }
+        public Track GetByIdWithBranches(int id)
+        {
+            return Db.Tracks
+                .Include(t => t.Branches)
+                .FirstOrDefault(t => t.TrackID == id);
+        }
 
 
     }

@@ -1,12 +1,17 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Microsoft.AspNetCore.Mvc.Rendering;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace ExaminationSystemMVC.ViewModels.AdminVMs.TrackVMs
 {
     public class AddInstructorToTrackVM
     {
         public int TrackID { get; set; }
+
         [Required(ErrorMessage = "Please select an instructor.")]
+        [Display(Name = "Instructor")]
         public int InsID { get; set; }
-       
+
+        public SelectList AvailableInstructors { get; set; }
     }
 }

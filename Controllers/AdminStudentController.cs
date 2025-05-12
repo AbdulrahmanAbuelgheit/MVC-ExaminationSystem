@@ -97,7 +97,7 @@ namespace ExaminationSystemMVC.Controllers
             {
                 return NotFound();
             }
-            var mappedStudent = _map.Map<UpdateStudentVM>(student);
+            var mappedStudent = _map.Map<EditStudentVM>(student);
             ViewBag.Branches = new SelectList(_unit.BranchRepo.GetAll(), "BranchID", "BranchName", mappedStudent.BranchID);
             ViewBag.Tracks = new SelectList(_unit.TrackRepo.GetAll(), "TrackID", "TrackName", mappedStudent.TrackID);
 
@@ -105,7 +105,7 @@ namespace ExaminationSystemMVC.Controllers
         }
 
         [HttpPost]
-        public IActionResult Edit(UpdateStudentVM studentVM)
+        public IActionResult Edit(EditStudentVM studentVM)
         {
             if (!ModelState.IsValid)
             {
