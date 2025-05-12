@@ -3,55 +3,20 @@
   "WorkspaceRootPath": "C:\\Users\\ahmaa\\OneDrive\\Desktop\\Project\\MVC-ExaminationSystem\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\MSBuild\\Current\\Bin\\amd64\\Microsoft.Common.CurrentVersion.targets||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{8E37184C-1207-2929-66F8-D4D153605B76}|ExaminationSystemMVC.csproj|c:\\users\\ahmaa\\onedrive\\desktop\\project\\mvc-examinationsystem\\controllers\\managertrackcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{8E37184C-1207-2929-66F8-D4D153605B76}|ExaminationSystemMVC.csproj|solutionrelative:controllers\\managertrackcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{8E37184C-1207-2929-66F8-D4D153605B76}|ExaminationSystemMVC.csproj|c:\\users\\ahmaa\\onedrive\\desktop\\project\\mvc-examinationsystem\\reposatories\\courserepo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{8E37184C-1207-2929-66F8-D4D153605B76}|ExaminationSystemMVC.csproj|solutionrelative:reposatories\\courserepo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{8E37184C-1207-2929-66F8-D4D153605B76}|ExaminationSystemMVC.csproj|c:\\users\\ahmaa\\onedrive\\desktop\\project\\mvc-examinationsystem\\unitofworks\\unitofwork.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{8E37184C-1207-2929-66F8-D4D153605B76}|ExaminationSystemMVC.csproj|solutionrelative:unitofworks\\unitofwork.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\ahmaa\\OneDrive\\Desktop\\Project\\MVC-ExaminationSystem\\ExaminationSystemMVC.csproj.user||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:ExaminationSystemMVC.csproj.user||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{8E37184C-1207-2929-66F8-D4D153605B76}|ExaminationSystemMVC.csproj|c:\\users\\ahmaa\\onedrive\\desktop\\project\\mvc-examinationsystem\\controllers\\managercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{8E37184C-1207-2929-66F8-D4D153605B76}|ExaminationSystemMVC.csproj|solutionrelative:controllers\\managercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{8E37184C-1207-2929-66F8-D4D153605B76}|ExaminationSystemMVC.csproj|c:\\users\\ahmaa\\onedrive\\desktop\\project\\mvc-examinationsystem\\views\\adminstudent\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{8E37184C-1207-2929-66F8-D4D153605B76}|ExaminationSystemMVC.csproj|solutionrelative:views\\adminstudent\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{8E37184C-1207-2929-66F8-D4D153605B76}|ExaminationSystemMVC.csproj|c:\\users\\ahmaa\\onedrive\\desktop\\project\\mvc-examinationsystem\\viewmodels\\adminvms\\trackvms\\displaytrackvm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{8E37184C-1207-2929-66F8-D4D153605B76}|ExaminationSystemMVC.csproj|solutionrelative:viewmodels\\adminvms\\trackvms\\displaytrackvm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{8E37184C-1207-2929-66F8-D4D153605B76}|ExaminationSystemMVC.csproj|c:\\users\\ahmaa\\onedrive\\desktop\\project\\mvc-examinationsystem\\viewmodels\\adminvms\\studentvms\\displaystudentvm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{8E37184C-1207-2929-66F8-D4D153605B76}|ExaminationSystemMVC.csproj|solutionrelative:viewmodels\\adminvms\\studentvms\\displaystudentvm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{8E37184C-1207-2929-66F8-D4D153605B76}|ExaminationSystemMVC.csproj|c:\\users\\ahmaa\\onedrive\\desktop\\project\\mvc-examinationsystem\\views\\managertrack\\viewstudent.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{8E37184C-1207-2929-66F8-D4D153605B76}|ExaminationSystemMVC.csproj|solutionrelative:views\\managertrack\\viewstudent.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{8E37184C-1207-2929-66F8-D4D153605B76}|ExaminationSystemMVC.csproj|c:\\users\\ahmaa\\onedrive\\desktop\\project\\mvc-examinationsystem\\views\\managertrack\\addinstructor.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{8E37184C-1207-2929-66F8-D4D153605B76}|ExaminationSystemMVC.csproj|solutionrelative:views\\managertrack\\addinstructor.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{8E37184C-1207-2929-66F8-D4D153605B76}|ExaminationSystemMVC.csproj|c:\\users\\ahmaa\\onedrive\\desktop\\project\\mvc-examinationsystem\\viewmodels\\adminvms\\studentvms\\displaystudentvm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8E37184C-1207-2929-66F8-D4D153605B76}|ExaminationSystemMVC.csproj|solutionrelative:viewmodels\\adminvms\\studentvms\\displaystudentvm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{8E37184C-1207-2929-66F8-D4D153605B76}|ExaminationSystemMVC.csproj|c:\\users\\ahmaa\\onedrive\\desktop\\project\\mvc-examinationsystem\\.gitignore||{3B902123-F8A7-4915-9F01-361F908088D0}",
-      "RelativeMoniker": "D:0:0:{8E37184C-1207-2929-66F8-D4D153605B76}|ExaminationSystemMVC.csproj|solutionrelative:.gitignore||{3B902123-F8A7-4915-9F01-361F908088D0}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{8E37184C-1207-2929-66F8-D4D153605B76}|ExaminationSystemMVC.csproj|c:\\users\\ahmaa\\onedrive\\desktop\\project\\mvc-examinationsystem\\models\\course.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{8E37184C-1207-2929-66F8-D4D153605B76}|ExaminationSystemMVC.csproj|solutionrelative:models\\course.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{8E37184C-1207-2929-66F8-D4D153605B76}|ExaminationSystemMVC.csproj|c:\\users\\ahmaa\\onedrive\\desktop\\project\\mvc-examinationsystem\\models\\errorviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8E37184C-1207-2929-66F8-D4D153605B76}|ExaminationSystemMVC.csproj|solutionrelative:models\\errorviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -74,159 +39,54 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "Microsoft.Common.CurrentVersion.targets",
-              "DocumentMoniker": "C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\MSBuild\\Current\\Bin\\amd64\\Microsoft.Common.CurrentVersion.targets",
-              "RelativeDocumentMoniker": "..\\..\\..\\..\\..\\..\\Program Files\\Microsoft Visual Studio\\2022\\Community\\MSBuild\\Current\\Bin\\amd64\\Microsoft.Common.CurrentVersion.targets",
-              "ToolTip": "C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\MSBuild\\Current\\Bin\\amd64\\Microsoft.Common.CurrentVersion.targets",
-              "RelativeToolTip": "..\\..\\..\\..\\..\\..\\Program Files\\Microsoft Visual Studio\\2022\\Community\\MSBuild\\Current\\Bin\\amd64\\Microsoft.Common.CurrentVersion.targets",
-              "ViewState": "AgIAAAcAAAAAAAAAAAAqwB0AAAACAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003801|",
-              "WhenOpened": "2025-05-12T22:40:36.417Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "CourseRepo.cs",
-              "DocumentMoniker": "C:\\Users\\ahmaa\\OneDrive\\Desktop\\Project\\MVC-ExaminationSystem\\Reposatories\\CourseRepo.cs",
-              "RelativeDocumentMoniker": "Reposatories\\CourseRepo.cs",
-              "ToolTip": "C:\\Users\\ahmaa\\OneDrive\\Desktop\\Project\\MVC-ExaminationSystem\\Reposatories\\CourseRepo.cs",
-              "RelativeToolTip": "Reposatories\\CourseRepo.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABoAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-12T22:40:19.67Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "ExaminationSystemMVC.csproj.user",
-              "DocumentMoniker": "C:\\Users\\ahmaa\\OneDrive\\Desktop\\Project\\MVC-ExaminationSystem\\ExaminationSystemMVC.csproj.user",
-              "RelativeDocumentMoniker": "ExaminationSystemMVC.csproj.user",
-              "ToolTip": "C:\\Users\\ahmaa\\OneDrive\\Desktop\\Project\\MVC-ExaminationSystem\\ExaminationSystemMVC.csproj.user",
-              "RelativeToolTip": "ExaminationSystemMVC.csproj.user",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003464|",
-              "WhenOpened": "2025-05-12T22:39:34.362Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "UnitOfWork.cs",
-              "DocumentMoniker": "C:\\Users\\ahmaa\\OneDrive\\Desktop\\Project\\MVC-ExaminationSystem\\UnitOfWorks\\UnitOfWork.cs",
-              "RelativeDocumentMoniker": "UnitOfWorks\\UnitOfWork.cs",
-              "ToolTip": "C:\\Users\\ahmaa\\OneDrive\\Desktop\\Project\\MVC-ExaminationSystem\\UnitOfWorks\\UnitOfWork.cs",
-              "RelativeToolTip": "UnitOfWorks\\UnitOfWork.cs",
-              "ViewState": "AgIAAAkAAAAAAAAAAAAmwBwAAAAZAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-12T22:39:10.082Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
               "Title": "Index.cshtml",
               "DocumentMoniker": "C:\\Users\\ahmaa\\OneDrive\\Desktop\\Project\\MVC-ExaminationSystem\\Views\\AdminStudent\\Index.cshtml",
               "RelativeDocumentMoniker": "Views\\AdminStudent\\Index.cshtml",
               "ToolTip": "C:\\Users\\ahmaa\\OneDrive\\Desktop\\Project\\MVC-ExaminationSystem\\Views\\AdminStudent\\Index.cshtml",
               "RelativeToolTip": "Views\\AdminStudent\\Index.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABsAAAAoAAAAAAAAAA==",
+              "ViewState": "AgIAABIAAAAAAAAAAAAAAAEAAAATAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-05-12T22:31:01.298Z"
+              "WhenOpened": "2025-05-12T22:45:17.586Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "DisplayTrackVM.cs",
-              "DocumentMoniker": "C:\\Users\\ahmaa\\OneDrive\\Desktop\\Project\\MVC-ExaminationSystem\\ViewModels\\AdminVMs\\TrackVMs\\DisplayTrackVM.cs",
-              "RelativeDocumentMoniker": "ViewModels\\AdminVMs\\TrackVMs\\DisplayTrackVM.cs",
-              "ToolTip": "C:\\Users\\ahmaa\\OneDrive\\Desktop\\Project\\MVC-ExaminationSystem\\ViewModels\\AdminVMs\\TrackVMs\\DisplayTrackVM.cs",
-              "RelativeToolTip": "ViewModels\\AdminVMs\\TrackVMs\\DisplayTrackVM.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAUAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-12T22:30:59.36Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 2,
               "Title": "DisplayStudentVM.cs",
               "DocumentMoniker": "C:\\Users\\ahmaa\\OneDrive\\Desktop\\Project\\MVC-ExaminationSystem\\ViewModels\\AdminVMs\\StudentVMs\\DisplayStudentVM.cs",
               "RelativeDocumentMoniker": "ViewModels\\AdminVMs\\StudentVMs\\DisplayStudentVM.cs",
               "ToolTip": "C:\\Users\\ahmaa\\OneDrive\\Desktop\\Project\\MVC-ExaminationSystem\\ViewModels\\AdminVMs\\StudentVMs\\DisplayStudentVM.cs",
               "RelativeToolTip": "ViewModels\\AdminVMs\\StudentVMs\\DisplayStudentVM.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAqwAIAAAAhAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAAhAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-12T22:27:55.757Z"
+              "WhenOpened": "2025-05-12T22:44:59.936Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 1,
               "Title": "ViewStudent.cshtml",
               "DocumentMoniker": "C:\\Users\\ahmaa\\OneDrive\\Desktop\\Project\\MVC-ExaminationSystem\\Views\\ManagerTrack\\ViewStudent.cshtml",
               "RelativeDocumentMoniker": "Views\\ManagerTrack\\ViewStudent.cshtml",
               "ToolTip": "C:\\Users\\ahmaa\\OneDrive\\Desktop\\Project\\MVC-ExaminationSystem\\Views\\ManagerTrack\\ViewStudent.cshtml",
               "RelativeToolTip": "Views\\ManagerTrack\\ViewStudent.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAXAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABkAAAAOAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-05-12T22:27:02.13Z"
+              "WhenOpened": "2025-05-12T22:43:16.377Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
-              "Title": "AddInstructor.cshtml",
-              "DocumentMoniker": "C:\\Users\\ahmaa\\OneDrive\\Desktop\\Project\\MVC-ExaminationSystem\\Views\\ManagerTrack\\AddInstructor.cshtml",
-              "RelativeDocumentMoniker": "Views\\ManagerTrack\\AddInstructor.cshtml",
-              "ToolTip": "C:\\Users\\ahmaa\\OneDrive\\Desktop\\Project\\MVC-ExaminationSystem\\Views\\ManagerTrack\\AddInstructor.cshtml",
-              "RelativeToolTip": "Views\\ManagerTrack\\AddInstructor.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAA9AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-05-12T22:27:00.212Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "ManagerTrackController.cs",
-              "DocumentMoniker": "C:\\Users\\ahmaa\\OneDrive\\Desktop\\Project\\MVC-ExaminationSystem\\Controllers\\ManagerTrackController.cs",
-              "RelativeDocumentMoniker": "Controllers\\ManagerTrackController.cs",
-              "ToolTip": "C:\\Users\\ahmaa\\OneDrive\\Desktop\\Project\\MVC-ExaminationSystem\\Controllers\\ManagerTrackController.cs",
-              "RelativeToolTip": "Controllers\\ManagerTrackController.cs",
-              "ViewState": "AgIAAHoBAAAAAAAAAIAwwI8BAAAqAAAAAAAAAA==",
+              "DocumentIndex": 3,
+              "Title": "ErrorViewModel.cs",
+              "DocumentMoniker": "C:\\Users\\ahmaa\\OneDrive\\Desktop\\Project\\MVC-ExaminationSystem\\Models\\ErrorViewModel.cs",
+              "RelativeDocumentMoniker": "Models\\ErrorViewModel.cs",
+              "ToolTip": "C:\\Users\\ahmaa\\OneDrive\\Desktop\\Project\\MVC-ExaminationSystem\\Models\\ErrorViewModel.cs",
+              "RelativeToolTip": "Models\\ErrorViewModel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAVAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-12T22:26:58.447Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "ManagerController.cs",
-              "DocumentMoniker": "C:\\Users\\ahmaa\\OneDrive\\Desktop\\Project\\MVC-ExaminationSystem\\Controllers\\ManagerController.cs",
-              "RelativeDocumentMoniker": "Controllers\\ManagerController.cs",
-              "ToolTip": "C:\\Users\\ahmaa\\OneDrive\\Desktop\\Project\\MVC-ExaminationSystem\\Controllers\\ManagerController.cs",
-              "RelativeToolTip": "Controllers\\ManagerController.cs",
-              "ViewState": "AgIAAAcAAAAAAAAAAAAEwBoAAAAzAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-12T22:26:51.205Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 11,
-              "Title": ".gitignore",
-              "DocumentMoniker": "C:\\Users\\ahmaa\\OneDrive\\Desktop\\Project\\MVC-ExaminationSystem\\.gitignore",
-              "RelativeDocumentMoniker": ".gitignore",
-              "ToolTip": "C:\\Users\\ahmaa\\OneDrive\\Desktop\\Project\\MVC-ExaminationSystem\\.gitignore",
-              "RelativeToolTip": ".gitignore",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
-              "WhenOpened": "2025-05-12T22:18:53.859Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 12,
-              "Title": "Course.cs",
-              "DocumentMoniker": "C:\\Users\\ahmaa\\OneDrive\\Desktop\\Project\\MVC-ExaminationSystem\\Models\\Course.cs",
-              "RelativeDocumentMoniker": "Models\\Course.cs",
-              "ToolTip": "C:\\Users\\ahmaa\\OneDrive\\Desktop\\Project\\MVC-ExaminationSystem\\Models\\Course.cs",
-              "RelativeToolTip": "Models\\Course.cs",
-              "ViewState": "AgIAAA0AAAAAAAAAAAAmwBgAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-12T13:31:27.159Z"
+              "WhenOpened": "2025-05-12T22:43:06.031Z",
+              "EditorCaption": ""
             }
           ]
         }

@@ -1,6 +1,6 @@
 ﻿namespace ExaminationSystemMVC.ViewModels.AdminVMs.StudentVMs
 {
-    public class DisplayStudentVMgit
+    public class DisplayStudentVM
     {
         public int StdID { get; set; }
         public string Name { get; set; }
