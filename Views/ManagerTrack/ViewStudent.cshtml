@@ -1,0 +1,33 @@
+﻿@model DisplayStudentVM
+
+<div class="container mt-4">
+    <div class="card shadow-sm">
+        <div class="card-header bg-primary text-white">
+            <h3>Student Details</h3>
+        </div>
+        <div class="card-body">
+            <dl class="row">
+                <dt class="col-sm-3">Name:</dt>
+                <dd class="col-sm-9">@Model.Name</dd>
+
+                <dt class="col-sm-3">Email:</dt>
+                <dd class="col-sm-9">@Model.Email</dd>
+
+                <dt class="col-sm-3">Intake Year:</dt>
+                <dd class="col-sm-9">@Model.IntakeYear</dd>
+
+                <dt class="col-sm-3">Status:</dt>
+                <dd class="col-sm-9">
+                    <span class="badge @(Model.IsActive == "Active" ? "bg-success" : "bg-secondary")">
+                        @Model.IsActive
+                    </span>
+                </dd>
+            </dl>
+        </div>
+        <div class="card-footer">
+            <a asp-action="Details" asp-route-id="@Model.TrackID" class="btn btn-secondary">
+                <i class="fas fa-arrow-left"></i> Back to Track
+            </a>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,41 @@
+﻿@model ExaminationSystemMVC.ViewModels.AdminVMs.BranchVMs.AddTrackToBranchVM
+
+@{
+    ViewData["Title"] = "Add Track";
+    Layout = "~/Views/Shared/_InstructorLayout.cshtml";
+}
+
+<div class="container py-5" style="max-width: 650px;">
+    <div class="mb-4 text-center">
+        <h2 class="fw-bold text-primary">➕ Add Track to Branch</h2>
+        <hr style="width: 80px; border-top: 3px solid #6EC1E4; margin: 0 auto;" />
+    </div>
+
+    <div class="card shadow-lg rounded-4 border-0">
+        <div class="card-body p-4">
+            <form asp-action="AddTrack" method="post" novalidate>
+                <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+                <input type="hidden" asp-for="BranchID" />
+
+                <div class="mb-3">
+                    <label asp-for="TrackID" class="form-label fw-semibold text-muted">Select Track</label>
+                    <select asp-for="TrackID" asp-items="Model.AvailableTracks" class="form-select">
+                        <option value="">-- Select Track --</option>
+                    </select>
+                    <span asp-validation-for="TrackID" class="text-danger small"></span>
+                </div>
+
+                <div class="mt-4 d-flex justify-content-end gap-3">
+                    <button type="submit" class="btn btn-primary px-4">
+                        ➕ Add Track
+                    </button>
+                    <a asp-controller="ManagerTrack" asp-action="Index" class="btn btn-outline-secondary px-4">
+                        ❌ Cancel
+                    </a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+

@@ -1,0 +1,46 @@
+﻿@model int
+
+@{
+    ViewData["Title"] = "RemoveTrack";
+    Layout = "~/Views/Shared/_InstructorLayout.cshtml";
+    var track = ViewBag.Track as ExaminationSystemMVC.Models.Track;
+
+}
+
+@* <h1>RemoveTrack</h1> *@
+
+
+@* @{ *@
+@*     ViewData["Title"] = "Remove Track from Branch"; *@
+@*     Layout = "~/Views/Shared/_ManagerLayout.cshtml"; *@
+
+@* } *@
+
+<div class="card shadow mb-4">
+    <div class="card-header py-3 bg-danger text-white">
+        <h6 class="m-0 font-weight-bold">Confirm Removal</h6>
+    </div>
+    <div class="card-body">
+        <h4>Are you sure you want to remove this track from your branch?</h4>
+
+        <div class="mt-4">
+            <h5>Track Details</h5>
+            <dl class="row">
+                <dt class="col-sm-3">Track Name:</dt>
+                <dd class="col-sm-9">@track?.TrackName</dd>
+
+                <dt class="col-sm-3">Duration:</dt>
+                <dd class="col-sm-9">@track?.Duration</dd>
+
+                <dt class="col-sm-3">Capacity:</dt>
+                <dd class="col-sm-9">@track?.Capacity</dd>
+            </dl>
+        </div>
+
+        <form asp-action="RemoveTrack" method="post">
+            <input type="hidden" name="trackId" value="@Model" />
+            <button type="submit" class="btn btn-danger">Yes, Remove</button>
+            <a asp-action="Details" class="btn btn-secondary">Cancel</a>
+        </form>
+    </div>
+</div>

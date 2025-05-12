@@ -1,0 +1,60 @@
+﻿@using ExaminationSystemMVC.ViewModels.Course
+@model CourseDetailsVM
+<div class="container mt-4">
+    <div class="card shadow-sm">
+        <div class="card-header bg-primary text-white">
+            <h3>@Model.CourseName - Details</h3>
+        </div>
+        <div class="card-body">
+            <dl class="row mb-4">
+                <dt class="col-sm-3">Description:</dt>
+                <dd class="col-sm-9">@Model.Description</dd>
+            </dl>
+
+            <div class="d-flex justify-content-between align-items-center mb-3">
+                <h5>Assigned Instructors</h5>
+                <a asp-action="AssignInstructorToCourse"
+                   asp-route-courseId="@Model.CourseID"
+                   asp-route-trackId="@Model.TrackID"
+                   class="btn btn-primary">
+                    <i class="fas fa-user-plus"></i> Assign Instructor
+                </a>
+            </div>
+
+            @if (Model.Instructors.Any())
+            {
+                <div class="list-group">
+                    @foreach (var instructor in Model.Instructors)
+                    {
+                        <div class="list-group-item">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div>
+                                    <h6 class="mb-1">@instructor.InsName</h6>
+                                    <small class="text-muted">@instructor.Email</small>
+                                </div>
+                                <form asp-action="RemoveInstructorFromCourse" method="post">
+                                    <input type="hidden" name="courseId" value="@Model.CourseID" />
+                                    <input type="hidden" name="instructorId" value="@instructor.InsID" />
+                                    <input type="hidden" name="trackId" value="@Model.TrackID" />
+                                    <button type="submit" class="btn btn-sm btn-outline-danger"
+                                            onclick="return confirm('Remove this instructor from course?')">
+                                        <i class="fas fa-trash-alt"></i>
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
+                    }
+                </div>
+            }
+            else
+            {
+                <div class="alert alert-warning">No instructors assigned to this course</div>
+            }
+        </div>
+        @* <div class="card-footer"> *@
+        @*     <a asp-controller="ManagerTrack" asp-action="Details" asp-route-id="@Model.TrackID class="btn btn-secondary"> *@
+        @*         <i class="fas fa-arrow-left"></i> Back to Track *@
+        @*     </a> *@
+        @* </div> *@
+    </div>
+</div>

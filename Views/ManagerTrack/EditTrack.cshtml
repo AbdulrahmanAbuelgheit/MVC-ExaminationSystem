@@ -1,0 +1,52 @@
+﻿@model EditTrackVM
+@{
+    ViewData["Title"] = "Edit Track";
+    Layout = "~/Views/Shared/_InstructorLayout.cshtml";
+}
+<div class="container py-5" style="max-width: 700px;">
+    <div class="mb-4 text-center">
+        <h2 class="fw-bold text-primary">✏️ Edit Track</h2>
+        <hr style="width: 80px; border-top: 3px solid #6EC1E4; margin: 0 auto;" />
+    </div>
+
+    <div class="card shadow-lg rounded-4 border-0">
+        <div class="card-body p-4">
+            <form asp-action="EditTrack" method="post" novalidate>
+                <input type="hidden" asp-for="TrackID" />
+
+                <div class="mb-3">
+                    <label asp-for="TrackName" class="form-label fw-semibold text-muted">Track Name</label>
+                    <input asp-for="TrackName" class="form-control" placeholder="Enter track name" />
+                    <span asp-validation-for="TrackName" class="text-danger small"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="Duration" class="form-label fw-semibold text-muted">Duration (weeks)</label>
+                    <input asp-for="Duration" class="form-control" type="number" placeholder="Enter duration" />
+                    <span asp-validation-for="Duration" class="text-danger small"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="Capacity" class="form-label fw-semibold text-muted">Capacity</label>
+                    <input asp-for="Capacity" class="form-control" type="number" placeholder="Enter capacity" />
+                    <span asp-validation-for="Capacity" class="text-danger small"></span>
+                </div>
+
+                <div class="mt-4 d-flex justify-content-end gap-3">
+                    <button type="submit" class="btn btn-primary px-4">
+                        Update
+                    </button>
+                    <a asp-action="Index" class="btn btn-outline-secondary px-4">
+                        Cancel
+                    </a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

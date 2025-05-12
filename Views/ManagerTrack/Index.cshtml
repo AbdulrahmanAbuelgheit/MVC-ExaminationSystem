@@ -1,0 +1,107 @@
+﻿@model List<DisplayTrackVM>
+@{
+    ViewData["Title"] = "My Branch Tracks";
+    Layout = "~/Views/Shared/_InstructorLayout.cshtml";
+}
+@if (TempData["ErrorMessage"] != null)
+{
+    <div class="alert alert-danger">
+        @TempData["ErrorMessage"]
+    </div>
+}
+
+<div class="container-fluid">
+    <div class="row mb-4">
+        <div class="col-12">
+            <div class="d-flex justify-content-between align-items-center">
+                <div>
+                    <a asp-controller="Manager" asp-action="Index" class="btn btn-outline-secondary">
+                        <i class="fas fa-arrow-left"></i> Back to Branch
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+
+<div class="container my-5">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2 class="fw-bold text-primary mb-0">Tracks in My Branch</h2>
+        <div>
+            <a asp-action="Create" class="btn btn-primary me-2">
+                <i class="bi bi-plus-circle"></i> New Track
+            </a>
+            <a asp-controller="Manager" asp-action="AddTrack" class="btn btn-success">
+                <i class="bi bi-plus-square"></i> Add Track to Branch
+            </a>
+        </div>
+    </div>
+
+    @if (Model.Any())
+    {
+        <div class="table-responsive shadow-sm rounded">
+            <table class="table table-hover align-middle">
+                <thead class="table-primary text-center">
+                    <tr>
+                        <th>Track Name</th>
+                        <th>Duration</th>
+                        <th>Capacity</th>
+                        <th>Supervisor</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody class="text-center">
+                    @foreach (var track in Model)
+                    {
+                        <tr>
+                            <td>@track.TrackName</td>
+                            <td>@track.Duration weeks</td>
+                            <td>@track.Capacity</td>
+                            <td>
+                                @if (!string.IsNullOrEmpty(track.SupervisorName))
+                                {
+                                    @track.SupervisorName
+                                }
+                                else
+                                {
+                                    <span class="text-muted">Not assigned</span>
+                                }
+                            </td>
+                            <td>
+                                <a asp-action="Details" asp-route-id="@track.TrackID"
+                                   class="btn btn-sm btn-outline-primary me-1">
+                                    <i class="fas fa-eye"></i> Details
+                                </a>
+                                <a asp-action="EditTrack" asp-route-id="@track.TrackID"
+                                   class="btn btn-sm btn-outline-warning me-1">
+                                    <i class="fas fa-edit"></i> Edit
+                                </a>
+                                <form asp-action="DeleteTrack" asp-route-id="@track.TrackID" method="post" class="d-inline">
+                                    @Html.AntiForgeryToken()
+                                    <button type="submit" class="btn btn-sm btn-outline-danger"
+                                            onclick="return confirm('Are you sure you want to remove this track from your branch?')">
+                                        <i class="fas fa-trash-alt"></i> Remove
+                                    </button>
+                                </form>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    }
+    else
+    {
+        <div class="alert alert-info text-center shadow-sm mt-4">
+            No tracks found in your branch.
+            <div class="mt-2">
+                <a asp-action="Create" class="btn btn-primary me-2">
+                    <i class="bi bi-plus-circle"></i> Create New Track
+                </a>
+                <a asp-controller="ManagerBranch" asp-action="AddTrack" class="btn btn-success">
+                    <i class="bi bi-plus-square"></i> Add Existing Track
+                </a>
+            </div>
+        </div>
+    }
+</div>
