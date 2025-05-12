@@ -373,14 +373,10 @@
             </a>
             <a asp-controller="Admin" asp-action="Dashboard" class="menu-item">
                 <i class="bi bi-speedometer2"></i> <!-- Dashboard icon -->
-                <span class="menu-text">Dashboard</span>
+                <span class="menu-text">Quick View</span>
             </a>
 
             <div class="menu-header">Management</div>
-            <a asp-controller="Users" asp-action="GetAll" class="menu-item">
-                <i class="bi bi-people"></i> <!-- Users icon -->
-                <span class="menu-text">Users</span>
-            </a>
             <a asp-controller="AdminBranch" asp-action="Index" class="menu-item">
                 <i class="bi bi-diagram-3"></i> <!-- Branches icon -->
                 <span class="menu-text">Branches</span>
@@ -392,6 +388,16 @@
             <a asp-controller="AdminStudent" asp-action="Index" class="menu-item">
                 <i class="bi bi-mortarboard"></i> <!-- Students icon -->
                 <span class="menu-text">Students</span>
+            </a>
+
+            <a asp-controller="AdminInstructor" asp-action="Index" class="menu-item">
+				<i class="bi bi-person"></i> <!-- Instructors icon -->
+				<span class="menu-text">Instructors</span>
+            </a>
+
+            <a asp-controller="AdminCourses" asp-action="Index" class="menu-item">
+				<i class="bi bi-book"></i>
+				<span class="menu-text">Courses</span>
             </a>
         </aside>
 

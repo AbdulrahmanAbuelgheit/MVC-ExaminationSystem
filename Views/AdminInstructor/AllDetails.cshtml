@@ -1,0 +1,165 @@
+﻿@model DisplayInstructorVM
+@{
+    ViewData["Title"] = "Instructor Details";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="container my-5">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2 class="fw-bold text-primary mb-0">
+            <i class="bi bi-person-badge me-2"></i>Instructor Details
+        </h2>
+        <a asp-action="Index" class="btn btn-outline-secondary shadow-sm">
+            <i class="bi bi-arrow-left me-2"></i>Back to List
+        </a>
+    </div>
+
+    <div class="row">
+        <!-- Basic Information -->
+        <div class="col-md-6 mb-4">
+            <div class="card h-100 border-0 shadow-sm">
+                <div class="card-header bg-light">
+                    <h6 class="mb-0"><i class="bi bi-info-circle me-2"></i>Basic Information</h6>
+                </div>
+                <div class="card-body">
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item d-flex justify-content-between">
+                            <span class="fw-bold">Name:</span>
+                            <span>@Model.InsName</span>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between">
+                            <span class="fw-bold">Email:</span>
+                            <span>@Model.Email</span>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between">
+                            <span class="fw-bold">Phone:</span>
+                            <span>@Model.PhoneNumber</span>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between">
+                            <span class="fw-bold">Salary:</span>
+                            <span>$@Model.Salary</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Branch Information -->
+        <div class="col-md-6 mb-4">
+            <div class="card h-100 border-0 shadow-sm">
+                <div class="card-header bg-light">
+                    <h6 class="mb-0"><i class="bi bi-building me-2"></i>Branch Information</h6>
+                </div>
+                <div class="card-body">
+                    <h6 class="text-primary mb-3">Managed Branch:</h6>
+                    @if (Model.ManagedBranch != null && Model.ManagedBranch.BranchID != 0)
+                    {
+                        <div class="alert alert-success">
+                            <strong>@Model.ManagedBranch.BranchName</strong> (ID: @Model.ManagedBranch.BranchID)
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="alert alert-secondary">Not managing any branch</div>
+                    }
+
+                    <h6 class="text-primary mb-3 mt-4">Associated Branches:</h6>
+                    @if (Model.Branches != null && Model.Branches.Any())
+                    {
+                        <ul class="list-group">
+                            @foreach (var branch in Model.Branches)
+                            {
+                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                    @branch.BranchName
+                                    <span class="badge bg-primary rounded-pill">@branch.BranchID</span>
+                                </li>
+                            }
+                        </ul>
+                    }
+                    else
+                    {
+                        <div class="alert alert-secondary">No associated branches</div>
+                    }
+                </div>
+            </div>
+        </div>
+
+        <!-- Track Information -->
+        <div class="col-md-6 mb-4">
+            <div class="card h-100 border-0 shadow-sm">
+                <div class="card-header bg-light">
+                    <h6 class="mb-0"><i class="bi bi-diagram-3 me-2"></i>Track Information</h6>
+                </div>
+                <div class="card-body">
+                    <h6 class="text-primary mb-3">Supervised Track:</h6>
+                    @if (Model.SupervisedTrack != null && Model.SupervisedTrack.TrackID != 0)
+                    {
+                        <div class="alert alert-success">
+                            <strong>@Model.SupervisedTrack.TrackName</strong> (ID: @Model.SupervisedTrack.TrackID)
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="alert alert-secondary">Not supervising any track</div>
+                    }
+
+                    <h6 class="text-primary mb-3 mt-4">Teaching Tracks:</h6>
+                    @if (Model.Tracks != null && Model.Tracks.Any())
+                    {
+                        <ul class="list-group">
+                            @foreach (var track in Model.Tracks)
+                            {
+                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                    @track.TrackName
+                                    <span class="badge bg-primary rounded-pill">@track.TrackID</span>
+                                </li>
+                            }
+                        </ul>
+                    }
+                    else
+                    {
+                        <div class="alert alert-secondary">No teaching tracks</div>
+                    }
+                </div>
+            </div>
+        </div>
+
+        <!-- Course Information -->
+        <div class="col-md-6 mb-4">
+            <div class="card h-100 border-0 shadow-sm">
+                <div class="card-header bg-light">
+                    <h6 class="mb-0"><i class="bi bi-journal-text me-2"></i>Course Information</h6>
+                </div>
+                <div class="card-body">
+                    <h6 class="text-primary mb-3">Teaching Courses:</h6>
+                    @if (Model.Courses != null && Model.Courses.Any())
+                    {
+                        <div class="table-responsive">
+                            <table class="table table-hover">
+                                <thead class="table-light">
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Name</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var course in Model.Courses)
+                                    {
+                                        <tr>
+                                            <td>@course.CrsID</td>
+                                            <td>@course.CrsName</td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="alert alert-secondary">No courses assigned</div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

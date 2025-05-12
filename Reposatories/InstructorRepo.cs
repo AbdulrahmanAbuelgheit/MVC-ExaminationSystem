@@ -33,6 +33,15 @@ namespace ExaminationSystemMVC.Reposatories
         public int InsertQuestion(string qText, string type, int points, int crsId, int correctOptNum);
         //public int InsertOptions(int qId, string optText1, string optText2, string optText3, string optText4);
         public int InsertOptionsUsingSP(int qId, string optText1, string optText2, string optText3, string optText4);
+
+        public List<DisplayInstructorVM> GetAllWithBranchAndTrack();
+
+        public DisplayInstructorVM GetInstructorEithBranchAndTrackById(int id);
+
+        public EditInstructorViewModel GetInstructorForEdit(int id);
+        public Instructor EditInstructor(EditInstructorViewModel model);
+        public void DeleteInstructor(int instructorId);
+
     }
 
 
@@ -418,22 +427,201 @@ namespace ExaminationSystemMVC.Reposatories
             );
         }
 
-        //public int InsertOptions(int qId, string optText1, string optText2, string optText3, string optText4)
-        //{
-        //    var options = new List<Questions_Option>
-        //    {
-        //        new Questions_Option { QID = qId, OptNum = 1, OptText = optText1 },
-        //        new Questions_Option { QID = qId, OptNum = 2, OptText = optText2 },
-        //        new Questions_Option { QID = qId, OptNum = 3, OptText = optText3 },
-        //        new Questions_Option { QID = qId, OptNum = 4, OptText = optText4 }
-        //    };
+        public List<DisplayInstructorVM> GetAllWithBranchAndTrack()
+        {
+            var instructors = _context.Instructors
+                .Include(i => i.Ins)
+                    .ThenInclude(u => u.User_PhoneNumbers)
+                .Include(i => i.Crs)
+                .ToList();
 
-        //    _context.AddRange(options); 
-        //    _context.SaveChanges(); 
+            var instructorVMs = new List<DisplayInstructorVM>();
+            foreach (var instructor in instructors)
+            {
+                var vm = new DisplayInstructorVM
+                {
+                    InsID = instructor.InsID,
+                    InsName = $"{instructor.Ins.FirstName} {instructor.Ins.LastName}",
+                    Email = instructor.Ins.Email,
+                    PhoneNumber = instructor.Ins.User_PhoneNumbers.FirstOrDefault()?.PhoneNumber.ToString(),
+                    Salary = instructor.Salary,
+                    Courses = instructor.Crs.Select(c => new DisplayCourseVM
+                    {
+                        CrsID = c.CrsID,
+                        CrsName = c.CrsName
+                    }).ToList()
+                };
 
-        //    return options.Count; 
-        //}
+                instructorVMs.Add(vm);
+            }
+            return instructorVMs;
+        }
+
+
+        public DisplayInstructorVM GetInstructorEithBranchAndTrackById(int id)
+        {
+            var instructor = _context.Instructors
+                .Include(i => i.Ins)
+                    .ThenInclude(u => u.User_PhoneNumbers)
+                .Include(i => i.BranchesNavigation)
+                .Include(i => i.Tracks)
+                .Include(i => i.Crs)
+                .Include(i => i.Branches)
+                .Include(i => i.TracksNavigation)
+                .FirstOrDefault(i => i.InsID == id);
+
+            if (instructor == null)
+                return null;
+
+            var vm = new DisplayInstructorVM
+            {
+                InsID = instructor.InsID,
+                InsName = $"{instructor.Ins.FirstName} {instructor.Ins.LastName}",
+                Email = instructor.Ins.Email,
+                PhoneNumber = instructor.Ins.User_PhoneNumbers.FirstOrDefault()?.PhoneNumber.ToString(),
+                Salary = instructor.Salary,
+                Branches = instructor.BranchesNavigation.Select(b => new DisplayBranchVM
+                {
+                    BranchID = b.BranchID,
+                    BranchName = b.BranchName
+                }).ToList(),
+                Tracks = instructor.Tracks.Select(t => new DisplayTrackVM
+                {
+                    TrackID = t.TrackID,
+                    TrackName = t.TrackName
+                }).ToList(),
+                Courses = instructor.Crs.Select(c => new DisplayCourseVM
+                {
+                    CrsID = c.CrsID,
+                    CrsName = c.CrsName
+                }).ToList()
+            };
+
+            var managedBranch = instructor.Branches.FirstOrDefault();
+            if (managedBranch != null)
+            {
+                vm.ManagedBranch = new DisplayBranchVM
+                {
+                    BranchID = managedBranch.BranchID,
+                    BranchName = managedBranch.BranchName
+                };
+            }
+
+            var supervisedTrack = instructor.TracksNavigation.FirstOrDefault();
+            if (supervisedTrack != null)
+            {
+                vm.SupervisedTrack = new DisplayTrackVM
+                {
+                    TrackID = supervisedTrack.TrackID,
+                    TrackName = supervisedTrack.TrackName
+                };
+            }
+
+            return vm;
+        }
+
+        public EditInstructorViewModel GetInstructorForEdit(int id)
+        {
+            var instructor = _context.Instructors
+                .Include(i => i.Ins)
+                    .ThenInclude(u => u.User_PhoneNumbers)
+                .FirstOrDefault(i => i.InsID == id);
+
+            if (instructor == null)
+                return null;
+
+            return new EditInstructorViewModel
+            {
+                InsID = instructor.InsID,
+                Salary = instructor.Salary,
+                FirstName = instructor.Ins.FirstName,
+                LastName = instructor.Ins.LastName,
+                Email = instructor.Ins.Email,
+                PhoneNumber = instructor.Ins.User_PhoneNumbers.FirstOrDefault()?.PhoneNumber.ToString()
+            };
+        }
+
+        public Instructor EditInstructor(EditInstructorViewModel model)
+        {
+            var existingInstructor = _context.Instructors
+                .Include(i => i.Ins)
+                    .ThenInclude(u => u.User_PhoneNumbers)
+                .FirstOrDefault(i => i.InsID == model.InsID);
+
+            if (existingInstructor == null)
+                return null;
+
+            existingInstructor.Salary = model.Salary;
+            existingInstructor.Ins.FirstName = model.FirstName;
+            existingInstructor.Ins.LastName = model.LastName;
+            existingInstructor.Ins.Email = model.Email;
+
+            if (!string.IsNullOrEmpty(model.PhoneNumber))
+            {
+                _context.User_PhoneNumbers.RemoveRange(existingInstructor.Ins.User_PhoneNumbers);
+                existingInstructor.Ins.User_PhoneNumbers.Add(new User_PhoneNumber
+                {
+                    UserID = existingInstructor.Ins.UserID,
+                    PhoneNumber = int.Parse(model.PhoneNumber)
+                });
+            }
+
+            _context.SaveChanges();
+            return existingInstructor;
+        }
+
+        public void DeleteInstructor(int instructorId)
+        {
+            var instructor = _context.Instructors
+                .Include(i => i.Ins)
+                .FirstOrDefault(i => i.InsID == instructorId);
+
+            if (instructor != null)
+            {
+                // remove related User_PhoneNumbers and User
+                if (instructor.Ins != null)
+                {
+                    _context.Instructors.Remove(instructor);
+
+                    var userPhoneNumbers = _context.User_PhoneNumbers
+                        .Where(p => p.UserID == instructor.Ins.UserID);
+                    _context.User_PhoneNumbers.RemoveRange(userPhoneNumbers);
+
+                    _context.Users.Remove(instructor.Ins);
+                }
+
+                _context.Instructors.Remove(instructor);
+                _context.SaveChanges();
+            }
+        }
+
+        public void AddInstructor(Instructor instructor)
+        {
+            _context.Instructors.Add(instructor);
+            _context.SaveChanges();
+        }
+
 
     }
 
+
+
+
+    //public int InsertOptions(int qId, string optText1, string optText2, string optText3, string optText4)
+    //{
+    //    var options = new List<Questions_Option>
+    //    {
+    //        new Questions_Option { QID = qId, OptNum = 1, OptText = optText1 },
+    //        new Questions_Option { QID = qId, OptNum = 2, OptText = optText2 },
+    //        new Questions_Option { QID = qId, OptNum = 3, OptText = optText3 },
+    //        new Questions_Option { QID = qId, OptNum = 4, OptText = optText4 }
+    //    };
+
+    //    _context.AddRange(options); 
+    //    _context.SaveChanges(); 
+
+    //    return options.Count; 
+    //}
+
 }
+
