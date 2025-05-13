@@ -3,12 +3,12 @@ namespace ExaminationSystemMVC.UnitOfWorks
 {
     public class UnitOfWork
     {
-        CourseRepo _courseRepo;
         BranchRepo _branchRepo;
         TrackRepo _trackRepo;
         StudentRepo _studentRepo;
         InstructorRepository _instructorRepo;
         UsersRepo _userRepo;
+        CourseRepo _courseRepo;
         DBContext _db;
         public UnitOfWork(DBContext db)
         {

@@ -1,170 +1,22 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\abdelrahman\\Desktop\\FinalMVC\\MVC-ExaminationSystem\\",
+  "WorkspaceRootPath": "C:\\Users\\ahmaa\\OneDrive\\Desktop\\Project\\MVC-ExaminationSystem\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{8E37184C-1207-2929-66F8-D4D153605B76}|ExaminationSystemMVC.csproj|c:\\users\\abdelrahman\\desktop\\finalmvc\\mvc-examinationsystem\\views\\shared\\_instructorlayout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{8E37184C-1207-2929-66F8-D4D153605B76}|ExaminationSystemMVC.csproj|solutionrelative:views\\shared\\_instructorlayout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{8E37184C-1207-2929-66F8-D4D153605B76}|ExaminationSystemMVC.csproj|c:\\users\\ahmaa\\onedrive\\desktop\\project\\mvc-examinationsystem\\views\\adminstudent\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{8E37184C-1207-2929-66F8-D4D153605B76}|ExaminationSystemMVC.csproj|solutionrelative:views\\adminstudent\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{8E37184C-1207-2929-66F8-D4D153605B76}|ExaminationSystemMVC.csproj|c:\\users\\abdelrahman\\desktop\\finalmvc\\mvc-examinationsystem\\controllers\\managercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{8E37184C-1207-2929-66F8-D4D153605B76}|ExaminationSystemMVC.csproj|solutionrelative:controllers\\managercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{8E37184C-1207-2929-66F8-D4D153605B76}|ExaminationSystemMVC.csproj|c:\\users\\abdelrahman\\desktop\\finalmvc\\mvc-examinationsystem\\controllers\\instructorcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{8E37184C-1207-2929-66F8-D4D153605B76}|ExaminationSystemMVC.csproj|solutionrelative:controllers\\instructorcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{8E37184C-1207-2929-66F8-D4D153605B76}|ExaminationSystemMVC.csproj|c:\\users\\abdelrahman\\desktop\\finalmvc\\mvc-examinationsystem\\views\\managertrack\\coursedetails.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{8E37184C-1207-2929-66F8-D4D153605B76}|ExaminationSystemMVC.csproj|solutionrelative:views\\managertrack\\coursedetails.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{8E37184C-1207-2929-66F8-D4D153605B76}|ExaminationSystemMVC.csproj|c:\\users\\abdelrahman\\desktop\\finalmvc\\mvc-examinationsystem\\views\\managertrack\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{8E37184C-1207-2929-66F8-D4D153605B76}|ExaminationSystemMVC.csproj|solutionrelative:views\\managertrack\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{8E37184C-1207-2929-66F8-D4D153605B76}|ExaminationSystemMVC.csproj|c:\\users\\abdelrahman\\desktop\\finalmvc\\mvc-examinationsystem\\views\\managertrack\\editstudent.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{8E37184C-1207-2929-66F8-D4D153605B76}|ExaminationSystemMVC.csproj|solutionrelative:views\\managertrack\\editstudent.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{8E37184C-1207-2929-66F8-D4D153605B76}|ExaminationSystemMVC.csproj|c:\\users\\abdelrahman\\desktop\\finalmvc\\mvc-examinationsystem\\viewmodels\\course\\coursedetailsvm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{8E37184C-1207-2929-66F8-D4D153605B76}|ExaminationSystemMVC.csproj|solutionrelative:viewmodels\\course\\coursedetailsvm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{8E37184C-1207-2929-66F8-D4D153605B76}|ExaminationSystemMVC.csproj|c:\\users\\abdelrahman\\desktop\\finalmvc\\mvc-examinationsystem\\views\\managertrack\\assigninstructortocourse.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{8E37184C-1207-2929-66F8-D4D153605B76}|ExaminationSystemMVC.csproj|solutionrelative:views\\managertrack\\assigninstructortocourse.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{8E37184C-1207-2929-66F8-D4D153605B76}|ExaminationSystemMVC.csproj|c:\\users\\abdelrahman\\desktop\\finalmvc\\mvc-examinationsystem\\controllers\\managertrackcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{8E37184C-1207-2929-66F8-D4D153605B76}|ExaminationSystemMVC.csproj|solutionrelative:controllers\\managertrackcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{8E37184C-1207-2929-66F8-D4D153605B76}|ExaminationSystemMVC.csproj|c:\\users\\abdelrahman\\desktop\\finalmvc\\mvc-examinationsystem\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{8E37184C-1207-2929-66F8-D4D153605B76}|ExaminationSystemMVC.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{8E37184C-1207-2929-66F8-D4D153605B76}|ExaminationSystemMVC.csproj|c:\\users\\abdelrahman\\desktop\\finalmvc\\mvc-examinationsystem\\viewmodels\\course\\assigninstructortocoursevm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{8E37184C-1207-2929-66F8-D4D153605B76}|ExaminationSystemMVC.csproj|solutionrelative:viewmodels\\course\\assigninstructortocoursevm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{8E37184C-1207-2929-66F8-D4D153605B76}|ExaminationSystemMVC.csproj|c:\\users\\abdelrahman\\desktop\\finalmvc\\mvc-examinationsystem\\viewmodels\\adminvms\\trackvms\\addinstructortotrackvm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{8E37184C-1207-2929-66F8-D4D153605B76}|ExaminationSystemMVC.csproj|solutionrelative:viewmodels\\adminvms\\trackvms\\addinstructortotrackvm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{8E37184C-1207-2929-66F8-D4D153605B76}|ExaminationSystemMVC.csproj|c:\\users\\abdelrahman\\desktop\\finalmvc\\mvc-examinationsystem\\reposatories\\instructorrepo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{8E37184C-1207-2929-66F8-D4D153605B76}|ExaminationSystemMVC.csproj|solutionrelative:reposatories\\instructorrepo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{8E37184C-1207-2929-66F8-D4D153605B76}|ExaminationSystemMVC.csproj|c:\\users\\abdelrahman\\desktop\\finalmvc\\mvc-examinationsystem\\models\\instructor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{8E37184C-1207-2929-66F8-D4D153605B76}|ExaminationSystemMVC.csproj|solutionrelative:models\\instructor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{8E37184C-1207-2929-66F8-D4D153605B76}|ExaminationSystemMVC.csproj|c:\\users\\abdelrahman\\desktop\\finalmvc\\mvc-examinationsystem\\views\\adminstudent\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{8E37184C-1207-2929-66F8-D4D153605B76}|ExaminationSystemMVC.csproj|solutionrelative:views\\adminstudent\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{8E37184C-1207-2929-66F8-D4D153605B76}|ExaminationSystemMVC.csproj|c:\\users\\abdelrahman\\desktop\\finalmvc\\mvc-examinationsystem\\mappingconfig\\mappingprofile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{8E37184C-1207-2929-66F8-D4D153605B76}|ExaminationSystemMVC.csproj|solutionrelative:mappingconfig\\mappingprofile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{8E37184C-1207-2929-66F8-D4D153605B76}|ExaminationSystemMVC.csproj|c:\\users\\abdelrahman\\desktop\\finalmvc\\mvc-examinationsystem\\viewmodels\\adminvms\\studentvms\\editstudentvm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{8E37184C-1207-2929-66F8-D4D153605B76}|ExaminationSystemMVC.csproj|solutionrelative:viewmodels\\adminvms\\studentvms\\editstudentvm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{8E37184C-1207-2929-66F8-D4D153605B76}|ExaminationSystemMVC.csproj|c:\\users\\abdelrahman\\desktop\\finalmvc\\mvc-examinationsystem\\controllers\\adminstudentcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{8E37184C-1207-2929-66F8-D4D153605B76}|ExaminationSystemMVC.csproj|solutionrelative:controllers\\adminstudentcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{8E37184C-1207-2929-66F8-D4D153605B76}|ExaminationSystemMVC.csproj|c:\\users\\abdelrahman\\desktop\\finalmvc\\mvc-examinationsystem\\viewmodels\\adminvms\\studentvms\\displaystudentvm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{8E37184C-1207-2929-66F8-D4D153605B76}|ExaminationSystemMVC.csproj|solutionrelative:viewmodels\\adminvms\\studentvms\\displaystudentvm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{8E37184C-1207-2929-66F8-D4D153605B76}|ExaminationSystemMVC.csproj|c:\\users\\abdelrahman\\desktop\\finalmvc\\mvc-examinationsystem\\unitofworks\\unitofwork.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{8E37184C-1207-2929-66F8-D4D153605B76}|ExaminationSystemMVC.csproj|solutionrelative:unitofworks\\unitofwork.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{8E37184C-1207-2929-66F8-D4D153605B76}|ExaminationSystemMVC.csproj|c:\\users\\abdelrahman\\desktop\\finalmvc\\mvc-examinationsystem\\reposatories\\genericrepo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{8E37184C-1207-2929-66F8-D4D153605B76}|ExaminationSystemMVC.csproj|solutionrelative:reposatories\\genericrepo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{8E37184C-1207-2929-66F8-D4D153605B76}|ExaminationSystemMVC.csproj|c:\\users\\abdelrahman\\desktop\\finalmvc\\mvc-examinationsystem\\views\\instructor\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{8E37184C-1207-2929-66F8-D4D153605B76}|ExaminationSystemMVC.csproj|solutionrelative:views\\instructor\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{8E37184C-1207-2929-66F8-D4D153605B76}|ExaminationSystemMVC.csproj|c:\\users\\abdelrahman\\desktop\\finalmvc\\mvc-examinationsystem\\reposatories\\trackrepo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{8E37184C-1207-2929-66F8-D4D153605B76}|ExaminationSystemMVC.csproj|solutionrelative:reposatories\\trackrepo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{8E37184C-1207-2929-66F8-D4D153605B76}|ExaminationSystemMVC.csproj|c:\\users\\abdelrahman\\desktop\\finalmvc\\mvc-examinationsystem\\reposatories\\studentrepo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{8E37184C-1207-2929-66F8-D4D153605B76}|ExaminationSystemMVC.csproj|solutionrelative:reposatories\\studentrepo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{8E37184C-1207-2929-66F8-D4D153605B76}|ExaminationSystemMVC.csproj|c:\\users\\abdelrahman\\desktop\\finalmvc\\mvc-examinationsystem\\views\\managertrack\\viewstudent.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "AbsoluteMoniker": "D:0:0:{8E37184C-1207-2929-66F8-D4D153605B76}|ExaminationSystemMVC.csproj|c:\\users\\ahmaa\\onedrive\\desktop\\project\\mvc-examinationsystem\\views\\managertrack\\viewstudent.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{8E37184C-1207-2929-66F8-D4D153605B76}|ExaminationSystemMVC.csproj|solutionrelative:views\\managertrack\\viewstudent.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{8E37184C-1207-2929-66F8-D4D153605B76}|ExaminationSystemMVC.csproj|c:\\users\\abdelrahman\\desktop\\finalmvc\\mvc-examinationsystem\\views\\managertrack\\addcourse.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{8E37184C-1207-2929-66F8-D4D153605B76}|ExaminationSystemMVC.csproj|solutionrelative:views\\managertrack\\addcourse.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{8E37184C-1207-2929-66F8-D4D153605B76}|ExaminationSystemMVC.csproj|c:\\users\\ahmaa\\onedrive\\desktop\\project\\mvc-examinationsystem\\viewmodels\\adminvms\\studentvms\\displaystudentvm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8E37184C-1207-2929-66F8-D4D153605B76}|ExaminationSystemMVC.csproj|solutionrelative:viewmodels\\adminvms\\studentvms\\displaystudentvm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{8E37184C-1207-2929-66F8-D4D153605B76}|ExaminationSystemMVC.csproj|c:\\users\\abdelrahman\\desktop\\finalmvc\\mvc-examinationsystem\\views\\managertrack\\addinstructor.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{8E37184C-1207-2929-66F8-D4D153605B76}|ExaminationSystemMVC.csproj|solutionrelative:views\\managertrack\\addinstructor.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{8E37184C-1207-2929-66F8-D4D153605B76}|ExaminationSystemMVC.csproj|c:\\users\\abdelrahman\\desktop\\finalmvc\\mvc-examinationsystem\\views\\managertrack\\edittrack.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{8E37184C-1207-2929-66F8-D4D153605B76}|ExaminationSystemMVC.csproj|solutionrelative:views\\managertrack\\edittrack.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{8E37184C-1207-2929-66F8-D4D153605B76}|ExaminationSystemMVC.csproj|c:\\users\\abdelrahman\\desktop\\finalmvc\\mvc-examinationsystem\\views\\managertrack\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{8E37184C-1207-2929-66F8-D4D153605B76}|ExaminationSystemMVC.csproj|solutionrelative:views\\managertrack\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{8E37184C-1207-2929-66F8-D4D153605B76}|ExaminationSystemMVC.csproj|c:\\users\\abdelrahman\\desktop\\finalmvc\\mvc-examinationsystem\\reposatories\\courserepo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{8E37184C-1207-2929-66F8-D4D153605B76}|ExaminationSystemMVC.csproj|solutionrelative:reposatories\\courserepo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{8E37184C-1207-2929-66F8-D4D153605B76}|ExaminationSystemMVC.csproj|c:\\users\\abdelrahman\\desktop\\finalmvc\\mvc-examinationsystem\\reposatories\\branchrepo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{8E37184C-1207-2929-66F8-D4D153605B76}|ExaminationSystemMVC.csproj|solutionrelative:reposatories\\branchrepo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{8E37184C-1207-2929-66F8-D4D153605B76}|ExaminationSystemMVC.csproj|c:\\users\\abdelrahman\\desktop\\finalmvc\\mvc-examinationsystem\\views\\manager\\addtrack.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{8E37184C-1207-2929-66F8-D4D153605B76}|ExaminationSystemMVC.csproj|solutionrelative:views\\manager\\addtrack.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{8E37184C-1207-2929-66F8-D4D153605B76}|ExaminationSystemMVC.csproj|c:\\users\\abdelrahman\\desktop\\finalmvc\\mvc-examinationsystem\\views\\manager\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{8E37184C-1207-2929-66F8-D4D153605B76}|ExaminationSystemMVC.csproj|solutionrelative:views\\manager\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{8E37184C-1207-2929-66F8-D4D153605B76}|ExaminationSystemMVC.csproj|c:\\users\\abdelrahman\\desktop\\finalmvc\\mvc-examinationsystem\\viewmodels\\adminvms\\instructorvms\\displayinstructorvm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{8E37184C-1207-2929-66F8-D4D153605B76}|ExaminationSystemMVC.csproj|solutionrelative:viewmodels\\adminvms\\instructorvms\\displayinstructorvm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{8E37184C-1207-2929-66F8-D4D153605B76}|ExaminationSystemMVC.csproj|c:\\users\\abdelrahman\\desktop\\finalmvc\\mvc-examinationsystem\\views\\manager\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{8E37184C-1207-2929-66F8-D4D153605B76}|ExaminationSystemMVC.csproj|solutionrelative:views\\manager\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{8E37184C-1207-2929-66F8-D4D153605B76}|ExaminationSystemMVC.csproj|c:\\users\\abdelrahman\\desktop\\finalmvc\\mvc-examinationsystem\\models\\dbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{8E37184C-1207-2929-66F8-D4D153605B76}|ExaminationSystemMVC.csproj|solutionrelative:models\\dbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{8E37184C-1207-2929-66F8-D4D153605B76}|ExaminationSystemMVC.csproj|c:\\users\\abdelrahman\\desktop\\finalmvc\\mvc-examinationsystem\\views\\managertrack\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{8E37184C-1207-2929-66F8-D4D153605B76}|ExaminationSystemMVC.csproj|solutionrelative:views\\managertrack\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{8E37184C-1207-2929-66F8-D4D153605B76}|ExaminationSystemMVC.csproj|c:\\users\\abdelrahman\\desktop\\finalmvc\\mvc-examinationsystem\\views\\manager\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{8E37184C-1207-2929-66F8-D4D153605B76}|ExaminationSystemMVC.csproj|solutionrelative:views\\manager\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{8E37184C-1207-2929-66F8-D4D153605B76}|ExaminationSystemMVC.csproj|c:\\users\\abdelrahman\\desktop\\finalmvc\\mvc-examinationsystem\\views\\manager\\removetrack.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{8E37184C-1207-2929-66F8-D4D153605B76}|ExaminationSystemMVC.csproj|solutionrelative:views\\manager\\removetrack.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{8E37184C-1207-2929-66F8-D4D153605B76}|ExaminationSystemMVC.csproj|c:\\users\\abdelrahman\\desktop\\finalmvc\\mvc-examinationsystem\\controllers\\adminbranchcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{8E37184C-1207-2929-66F8-D4D153605B76}|ExaminationSystemMVC.csproj|solutionrelative:controllers\\adminbranchcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{8E37184C-1207-2929-66F8-D4D153605B76}|ExaminationSystemMVC.csproj|c:\\users\\abdelrahman\\desktop\\finalmvc\\mvc-examinationsystem\\models\\track.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{8E37184C-1207-2929-66F8-D4D153605B76}|ExaminationSystemMVC.csproj|solutionrelative:models\\track.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{8E37184C-1207-2929-66F8-D4D153605B76}|ExaminationSystemMVC.csproj|c:\\users\\ahmaa\\onedrive\\desktop\\project\\mvc-examinationsystem\\models\\errorviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8E37184C-1207-2929-66F8-D4D153605B76}|ExaminationSystemMVC.csproj|solutionrelative:models\\errorviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -173,502 +25,68 @@
       "VerticalTabListWidth": 256,
       "DocumentGroups": [
         {
-          "DockedWidth": 200,
-          "SelectedChildIndex": 4,
+          "DockedWidth": 273,
+          "SelectedChildIndex": 2,
           "Children": [
             {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "CourseDetails.cshtml",
-              "DocumentMoniker": "C:\\Users\\abdelrahman\\Desktop\\FinalMVC\\MVC-ExaminationSystem\\Views\\ManagerTrack\\CourseDetails.cshtml",
-              "RelativeDocumentMoniker": "Views\\ManagerTrack\\CourseDetails.cshtml",
-              "ToolTip": "C:\\Users\\abdelrahman\\Desktop\\FinalMVC\\MVC-ExaminationSystem\\Views\\ManagerTrack\\CourseDetails.cshtml",
-              "RelativeToolTip": "Views\\ManagerTrack\\CourseDetails.cshtml",
-              "ViewState": "AgIAABsAAAAAAAAAAAAAADMAAAANAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-05-12T03:29:50.621Z"
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
             },
             {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "InstructorController.cs",
-              "DocumentMoniker": "C:\\Users\\abdelrahman\\Desktop\\FinalMVC\\MVC-ExaminationSystem\\Controllers\\InstructorController.cs",
-              "RelativeDocumentMoniker": "Controllers\\InstructorController.cs",
-              "ToolTip": "C:\\Users\\abdelrahman\\Desktop\\FinalMVC\\MVC-ExaminationSystem\\Controllers\\InstructorController.cs",
-              "RelativeToolTip": "Controllers\\InstructorController.cs",
-              "ViewState": "AgIAABcAAAAAAAAAAAAhwCQAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-09T20:35:26.846Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "Details.cshtml",
-              "DocumentMoniker": "C:\\Users\\abdelrahman\\Desktop\\FinalMVC\\MVC-ExaminationSystem\\Views\\ManagerTrack\\Details.cshtml",
-              "RelativeDocumentMoniker": "Views\\ManagerTrack\\Details.cshtml",
-              "ToolTip": "C:\\Users\\abdelrahman\\Desktop\\FinalMVC\\MVC-ExaminationSystem\\Views\\ManagerTrack\\Details.cshtml",
-              "RelativeToolTip": "Views\\ManagerTrack\\Details.cshtml",
-              "ViewState": "AgIAAEgAAAAAAAAAAAAAAGAAAAAeAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-05-11T23:23:37.647Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "EditStudent.cshtml",
-              "DocumentMoniker": "C:\\Users\\abdelrahman\\Desktop\\FinalMVC\\MVC-ExaminationSystem\\Views\\ManagerTrack\\EditStudent.cshtml",
-              "RelativeDocumentMoniker": "Views\\ManagerTrack\\EditStudent.cshtml",
-              "ToolTip": "C:\\Users\\abdelrahman\\Desktop\\FinalMVC\\MVC-ExaminationSystem\\Views\\ManagerTrack\\EditStudent.cshtml",
-              "RelativeToolTip": "Views\\ManagerTrack\\EditStudent.cshtml",
-              "ViewState": "AgIAAAgAAAAAAAAAAAAqwBQAAAA/AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-05-12T04:17:17.916Z"
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
             },
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "_InstructorLayout.cshtml",
-              "DocumentMoniker": "C:\\Users\\abdelrahman\\Desktop\\FinalMVC\\MVC-ExaminationSystem\\Views\\Shared\\_InstructorLayout.cshtml",
-              "RelativeDocumentMoniker": "Views\\Shared\\_InstructorLayout.cshtml",
-              "ToolTip": "C:\\Users\\abdelrahman\\Desktop\\FinalMVC\\MVC-ExaminationSystem\\Views\\Shared\\_InstructorLayout.cshtml",
-              "RelativeToolTip": "Views\\Shared\\_InstructorLayout.cshtml",
-              "ViewState": "AgIAAG0BAAAAAAAAAAAAAMABAAAnAAAAAAAAAA==",
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\Users\\ahmaa\\OneDrive\\Desktop\\Project\\MVC-ExaminationSystem\\Views\\AdminStudent\\Index.cshtml",
+              "RelativeDocumentMoniker": "Views\\AdminStudent\\Index.cshtml",
+              "ToolTip": "C:\\Users\\ahmaa\\OneDrive\\Desktop\\Project\\MVC-ExaminationSystem\\Views\\AdminStudent\\Index.cshtml",
+              "RelativeToolTip": "Views\\AdminStudent\\Index.cshtml",
+              "ViewState": "AgIAABIAAAAAAAAAAAAAAAEAAAATAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-05-09T20:40:02.705Z",
+              "WhenOpened": "2025-05-12T22:45:17.586Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "DisplayStudentVM.cs",
+              "DocumentMoniker": "C:\\Users\\ahmaa\\OneDrive\\Desktop\\Project\\MVC-ExaminationSystem\\ViewModels\\AdminVMs\\StudentVMs\\DisplayStudentVM.cs",
+              "RelativeDocumentMoniker": "ViewModels\\AdminVMs\\StudentVMs\\DisplayStudentVM.cs",
+              "ToolTip": "C:\\Users\\ahmaa\\OneDrive\\Desktop\\Project\\MVC-ExaminationSystem\\ViewModels\\AdminVMs\\StudentVMs\\DisplayStudentVM.cs",
+              "RelativeToolTip": "ViewModels\\AdminVMs\\StudentVMs\\DisplayStudentVM.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAAhAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-12T22:44:59.936Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "ManagerController.cs",
-              "DocumentMoniker": "C:\\Users\\abdelrahman\\Desktop\\FinalMVC\\MVC-ExaminationSystem\\Controllers\\ManagerController.cs",
-              "RelativeDocumentMoniker": "Controllers\\ManagerController.cs",
-              "ToolTip": "C:\\Users\\abdelrahman\\Desktop\\FinalMVC\\MVC-ExaminationSystem\\Controllers\\ManagerController.cs",
-              "RelativeToolTip": "Controllers\\ManagerController.cs",
-              "ViewState": "AgIAAAEAAAAAAAAAAAAAABgAAAANAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-11T21:55:17.538Z",
+              "Title": "ViewStudent.cshtml",
+              "DocumentMoniker": "C:\\Users\\ahmaa\\OneDrive\\Desktop\\Project\\MVC-ExaminationSystem\\Views\\ManagerTrack\\ViewStudent.cshtml",
+              "RelativeDocumentMoniker": "Views\\ManagerTrack\\ViewStudent.cshtml",
+              "ToolTip": "C:\\Users\\ahmaa\\OneDrive\\Desktop\\Project\\MVC-ExaminationSystem\\Views\\ManagerTrack\\ViewStudent.cshtml",
+              "RelativeToolTip": "Views\\ManagerTrack\\ViewStudent.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABkAAAAOAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-05-12T22:43:16.377Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "CourseDetailsVM.cs",
-              "DocumentMoniker": "C:\\Users\\abdelrahman\\Desktop\\FinalMVC\\MVC-ExaminationSystem\\ViewModels\\Course\\CourseDetailsVM.cs",
-              "RelativeDocumentMoniker": "ViewModels\\Course\\CourseDetailsVM.cs",
-              "ToolTip": "C:\\Users\\abdelrahman\\Desktop\\FinalMVC\\MVC-ExaminationSystem\\ViewModels\\Course\\CourseDetailsVM.cs",
-              "RelativeToolTip": "ViewModels\\Course\\CourseDetailsVM.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAswAYAAAApAAAAAAAAAA==",
+              "DocumentIndex": 3,
+              "Title": "ErrorViewModel.cs",
+              "DocumentMoniker": "C:\\Users\\ahmaa\\OneDrive\\Desktop\\Project\\MVC-ExaminationSystem\\Models\\ErrorViewModel.cs",
+              "RelativeDocumentMoniker": "Models\\ErrorViewModel.cs",
+              "ToolTip": "C:\\Users\\ahmaa\\OneDrive\\Desktop\\Project\\MVC-ExaminationSystem\\Models\\ErrorViewModel.cs",
+              "RelativeToolTip": "Models\\ErrorViewModel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAVAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-12T03:24:07.615Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "AssignInstructorToCourse.cshtml",
-              "DocumentMoniker": "C:\\Users\\abdelrahman\\Desktop\\FinalMVC\\MVC-ExaminationSystem\\Views\\ManagerTrack\\AssignInstructorToCourse.cshtml",
-              "RelativeDocumentMoniker": "Views\\ManagerTrack\\AssignInstructorToCourse.cshtml",
-              "ToolTip": "C:\\Users\\abdelrahman\\Desktop\\FinalMVC\\MVC-ExaminationSystem\\Views\\ManagerTrack\\AssignInstructorToCourse.cshtml",
-              "RelativeToolTip": "Views\\ManagerTrack\\AssignInstructorToCourse.cshtml",
-              "ViewState": "AgIAAAkAAAAAAAAAAAAAABEAAABKAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-05-12T10:17:40.113Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "ManagerTrackController.cs",
-              "DocumentMoniker": "C:\\Users\\abdelrahman\\Desktop\\FinalMVC\\MVC-ExaminationSystem\\Controllers\\ManagerTrackController.cs",
-              "RelativeDocumentMoniker": "Controllers\\ManagerTrackController.cs",
-              "ToolTip": "C:\\Users\\abdelrahman\\Desktop\\FinalMVC\\MVC-ExaminationSystem\\Controllers\\ManagerTrackController.cs",
-              "RelativeToolTip": "Controllers\\ManagerTrackController.cs",
-              "ViewState": "AgIAAGwBAAAAAAAAAAAIwIEBAAAwAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-11T23:11:35.188Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Users\\abdelrahman\\Desktop\\FinalMVC\\MVC-ExaminationSystem\\Program.cs",
-              "RelativeDocumentMoniker": "Program.cs",
-              "ToolTip": "C:\\Users\\abdelrahman\\Desktop\\FinalMVC\\MVC-ExaminationSystem\\Program.cs",
-              "RelativeToolTip": "Program.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAADUAAAAsAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-12T03:43:31.917Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 10,
-              "Title": "AssignInstructorToCourseVM.cs",
-              "DocumentMoniker": "C:\\Users\\abdelrahman\\Desktop\\FinalMVC\\MVC-ExaminationSystem\\ViewModels\\Course\\AssignInstructorToCourseVM.cs",
-              "RelativeDocumentMoniker": "ViewModels\\Course\\AssignInstructorToCourseVM.cs",
-              "ToolTip": "C:\\Users\\abdelrahman\\Desktop\\FinalMVC\\MVC-ExaminationSystem\\ViewModels\\Course\\AssignInstructorToCourseVM.cs",
-              "RelativeToolTip": "ViewModels\\Course\\AssignInstructorToCourseVM.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAA+AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-12T03:23:41.161Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 11,
-              "Title": "AddInstructorToTrackVM.cs",
-              "DocumentMoniker": "C:\\Users\\abdelrahman\\Desktop\\FinalMVC\\MVC-ExaminationSystem\\ViewModels\\AdminVMs\\TrackVMs\\AddInstructorToTrackVM.cs",
-              "RelativeDocumentMoniker": "ViewModels\\AdminVMs\\TrackVMs\\AddInstructorToTrackVM.cs",
-              "ToolTip": "C:\\Users\\abdelrahman\\Desktop\\FinalMVC\\MVC-ExaminationSystem\\ViewModels\\AdminVMs\\TrackVMs\\AddInstructorToTrackVM.cs",
-              "RelativeToolTip": "ViewModels\\AdminVMs\\TrackVMs\\AddInstructorToTrackVM.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAA8AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-12T02:33:10.017Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 12,
-              "Title": "InstructorRepo.cs",
-              "DocumentMoniker": "C:\\Users\\abdelrahman\\Desktop\\FinalMVC\\MVC-ExaminationSystem\\Reposatories\\InstructorRepo.cs",
-              "RelativeDocumentMoniker": "Reposatories\\InstructorRepo.cs",
-              "ToolTip": "C:\\Users\\abdelrahman\\Desktop\\FinalMVC\\MVC-ExaminationSystem\\Reposatories\\InstructorRepo.cs",
-              "RelativeToolTip": "Reposatories\\InstructorRepo.cs",
-              "ViewState": "AgIAADUAAAAAAAAAAAAAAFAAAAASAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-09T20:36:57.363Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 13,
-              "Title": "Instructor.cs",
-              "DocumentMoniker": "C:\\Users\\abdelrahman\\Desktop\\FinalMVC\\MVC-ExaminationSystem\\Models\\Instructor.cs",
-              "RelativeDocumentMoniker": "Models\\Instructor.cs",
-              "ToolTip": "C:\\Users\\abdelrahman\\Desktop\\FinalMVC\\MVC-ExaminationSystem\\Models\\Instructor.cs",
-              "RelativeToolTip": "Models\\Instructor.cs",
-              "ViewState": "AgIAAAsAAAAAAAAAAAAqwBYAAAAjAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-09T21:25:02.297Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 14,
-              "Title": "Edit.cshtml",
-              "DocumentMoniker": "C:\\Users\\abdelrahman\\Desktop\\FinalMVC\\MVC-ExaminationSystem\\Views\\AdminStudent\\Edit.cshtml",
-              "RelativeDocumentMoniker": "Views\\AdminStudent\\Edit.cshtml",
-              "ToolTip": "C:\\Users\\abdelrahman\\Desktop\\FinalMVC\\MVC-ExaminationSystem\\Views\\AdminStudent\\Edit.cshtml",
-              "RelativeToolTip": "Views\\AdminStudent\\Edit.cshtml",
-              "ViewState": "AgIAAAwAAAAAAAAAAAArwBMAAAAiAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-05-12T04:36:56.811Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 15,
-              "Title": "MappingProfile.cs",
-              "DocumentMoniker": "C:\\Users\\abdelrahman\\Desktop\\FinalMVC\\MVC-ExaminationSystem\\MappingConfig\\MappingProfile.cs",
-              "RelativeDocumentMoniker": "MappingConfig\\MappingProfile.cs",
-              "ToolTip": "C:\\Users\\abdelrahman\\Desktop\\FinalMVC\\MVC-ExaminationSystem\\MappingConfig\\MappingProfile.cs",
-              "RelativeToolTip": "MappingConfig\\MappingProfile.cs",
-              "ViewState": "AgIAAAYAAAAAAAAAAAAlwBkAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-12T04:34:38.742Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 16,
-              "Title": "EditStudentVM.cs",
-              "DocumentMoniker": "C:\\Users\\abdelrahman\\Desktop\\FinalMVC\\MVC-ExaminationSystem\\ViewModels\\AdminVMs\\StudentVMs\\EditStudentVM.cs",
-              "RelativeDocumentMoniker": "ViewModels\\AdminVMs\\StudentVMs\\EditStudentVM.cs",
-              "ToolTip": "C:\\Users\\abdelrahman\\Desktop\\FinalMVC\\MVC-ExaminationSystem\\ViewModels\\AdminVMs\\StudentVMs\\EditStudentVM.cs",
-              "RelativeToolTip": "ViewModels\\AdminVMs\\StudentVMs\\EditStudentVM.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAswAsAAAAzAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-12T04:07:25.628Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 17,
-              "Title": "AdminStudentController.cs",
-              "DocumentMoniker": "C:\\Users\\abdelrahman\\Desktop\\FinalMVC\\MVC-ExaminationSystem\\Controllers\\AdminStudentController.cs",
-              "RelativeDocumentMoniker": "Controllers\\AdminStudentController.cs",
-              "ToolTip": "C:\\Users\\abdelrahman\\Desktop\\FinalMVC\\MVC-ExaminationSystem\\Controllers\\AdminStudentController.cs",
-              "RelativeToolTip": "Controllers\\AdminStudentController.cs",
-              "ViewState": "AgIAAGMAAAAAAAAAAAAlwHsAAAA9AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-12T04:34:26.317Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 18,
-              "Title": "DisplayStudentVM.cs",
-              "DocumentMoniker": "C:\\Users\\abdelrahman\\Desktop\\FinalMVC\\MVC-ExaminationSystem\\ViewModels\\AdminVMs\\StudentVMs\\DisplayStudentVM.cs",
-              "RelativeDocumentMoniker": "ViewModels\\AdminVMs\\StudentVMs\\DisplayStudentVM.cs",
-              "ToolTip": "C:\\Users\\abdelrahman\\Desktop\\FinalMVC\\MVC-ExaminationSystem\\ViewModels\\AdminVMs\\StudentVMs\\DisplayStudentVM.cs",
-              "RelativeToolTip": "ViewModels\\AdminVMs\\StudentVMs\\DisplayStudentVM.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-12T04:21:25.589Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 19,
-              "Title": "UnitOfWork.cs",
-              "DocumentMoniker": "C:\\Users\\abdelrahman\\Desktop\\FinalMVC\\MVC-ExaminationSystem\\UnitOfWorks\\UnitOfWork.cs",
-              "RelativeDocumentMoniker": "UnitOfWorks\\UnitOfWork.cs",
-              "ToolTip": "C:\\Users\\abdelrahman\\Desktop\\FinalMVC\\MVC-ExaminationSystem\\UnitOfWorks\\UnitOfWork.cs",
-              "RelativeToolTip": "UnitOfWorks\\UnitOfWork.cs",
-              "ViewState": "AgIAAEoAAAAAAAAAAAAowF4AAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-12T03:52:51.821Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 20,
-              "Title": "GenericRepo.cs",
-              "DocumentMoniker": "C:\\Users\\abdelrahman\\Desktop\\FinalMVC\\MVC-ExaminationSystem\\Reposatories\\GenericRepo.cs",
-              "RelativeDocumentMoniker": "Reposatories\\GenericRepo.cs",
-              "ToolTip": "C:\\Users\\abdelrahman\\Desktop\\FinalMVC\\MVC-ExaminationSystem\\Reposatories\\GenericRepo.cs",
-              "RelativeToolTip": "Reposatories\\GenericRepo.cs",
-              "ViewState": "AgIAABYAAAAAAAAAAAAiwCYAAAAIAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-12T03:35:01.689Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 21,
-              "Title": "Index.cshtml",
-              "DocumentMoniker": "C:\\Users\\abdelrahman\\Desktop\\FinalMVC\\MVC-ExaminationSystem\\Views\\Instructor\\Index.cshtml",
-              "RelativeDocumentMoniker": "Views\\Instructor\\Index.cshtml",
-              "ToolTip": "C:\\Users\\abdelrahman\\Desktop\\FinalMVC\\MVC-ExaminationSystem\\Views\\Instructor\\Index.cshtml",
-              "RelativeToolTip": "Views\\Instructor\\Index.cshtml",
-              "ViewState": "AgIAACQAAAAAAAAAAAAAADYAAAAxAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-05-09T23:30:52.514Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 22,
-              "Title": "TrackRepo.cs",
-              "DocumentMoniker": "C:\\Users\\abdelrahman\\Desktop\\FinalMVC\\MVC-ExaminationSystem\\Reposatories\\TrackRepo.cs",
-              "RelativeDocumentMoniker": "Reposatories\\TrackRepo.cs",
-              "ToolTip": "C:\\Users\\abdelrahman\\Desktop\\FinalMVC\\MVC-ExaminationSystem\\Reposatories\\TrackRepo.cs",
-              "RelativeToolTip": "Reposatories\\TrackRepo.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAA7AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-11T23:12:18.094Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 23,
-              "Title": "StudentRepo.cs",
-              "DocumentMoniker": "C:\\Users\\abdelrahman\\Desktop\\FinalMVC\\MVC-ExaminationSystem\\Reposatories\\StudentRepo.cs",
-              "RelativeDocumentMoniker": "Reposatories\\StudentRepo.cs",
-              "ToolTip": "C:\\Users\\abdelrahman\\Desktop\\FinalMVC\\MVC-ExaminationSystem\\Reposatories\\StudentRepo.cs",
-              "RelativeToolTip": "Reposatories\\StudentRepo.cs",
-              "ViewState": "AgIAAAoAAAAAAAAAAAAswCQAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-12T00:37:18.606Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 24,
-              "Title": "ViewStudent.cshtml",
-              "DocumentMoniker": "C:\\Users\\abdelrahman\\Desktop\\FinalMVC\\MVC-ExaminationSystem\\Views\\ManagerTrack\\ViewStudent.cshtml",
-              "RelativeDocumentMoniker": "Views\\ManagerTrack\\ViewStudent.cshtml",
-              "ToolTip": "C:\\Users\\abdelrahman\\Desktop\\FinalMVC\\MVC-ExaminationSystem\\Views\\ManagerTrack\\ViewStudent.cshtml",
-              "RelativeToolTip": "Views\\ManagerTrack\\ViewStudent.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABcAAAAVAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-05-12T04:16:24.509Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 25,
-              "Title": "AddCourse.cshtml",
-              "DocumentMoniker": "C:\\Users\\abdelrahman\\Desktop\\FinalMVC\\MVC-ExaminationSystem\\Views\\ManagerTrack\\AddCourse.cshtml",
-              "RelativeDocumentMoniker": "Views\\ManagerTrack\\AddCourse.cshtml",
-              "ToolTip": "C:\\Users\\abdelrahman\\Desktop\\FinalMVC\\MVC-ExaminationSystem\\Views\\ManagerTrack\\AddCourse.cshtml",
-              "RelativeToolTip": "Views\\ManagerTrack\\AddCourse.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAACYAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-05-11T23:33:22.524Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 26,
-              "Title": "AddInstructor.cshtml",
-              "DocumentMoniker": "C:\\Users\\abdelrahman\\Desktop\\FinalMVC\\MVC-ExaminationSystem\\Views\\ManagerTrack\\AddInstructor.cshtml",
-              "RelativeDocumentMoniker": "Views\\ManagerTrack\\AddInstructor.cshtml",
-              "ToolTip": "C:\\Users\\abdelrahman\\Desktop\\FinalMVC\\MVC-ExaminationSystem\\Views\\ManagerTrack\\AddInstructor.cshtml",
-              "RelativeToolTip": "Views\\ManagerTrack\\AddInstructor.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABkAAAAWAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-05-11T23:34:11.635Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 27,
-              "Title": "EditTrack.cshtml",
-              "DocumentMoniker": "C:\\Users\\abdelrahman\\Desktop\\FinalMVC\\MVC-ExaminationSystem\\Views\\ManagerTrack\\EditTrack.cshtml",
-              "RelativeDocumentMoniker": "Views\\ManagerTrack\\EditTrack.cshtml",
-              "ToolTip": "C:\\Users\\abdelrahman\\Desktop\\FinalMVC\\MVC-ExaminationSystem\\Views\\ManagerTrack\\EditTrack.cshtml",
-              "RelativeToolTip": "Views\\ManagerTrack\\EditTrack.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAACcAAAAeAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-05-12T00:18:17.342Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 28,
-              "Title": "Index.cshtml",
-              "DocumentMoniker": "C:\\Users\\abdelrahman\\Desktop\\FinalMVC\\MVC-ExaminationSystem\\Views\\ManagerTrack\\Index.cshtml",
-              "RelativeDocumentMoniker": "Views\\ManagerTrack\\Index.cshtml",
-              "ToolTip": "C:\\Users\\abdelrahman\\Desktop\\FinalMVC\\MVC-ExaminationSystem\\Views\\ManagerTrack\\Index.cshtml",
-              "RelativeToolTip": "Views\\ManagerTrack\\Index.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAAAWAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-05-11T23:17:43.65Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 29,
-              "Title": "CourseRepo.cs",
-              "DocumentMoniker": "C:\\Users\\abdelrahman\\Desktop\\FinalMVC\\MVC-ExaminationSystem\\Reposatories\\CourseRepo.cs",
-              "RelativeDocumentMoniker": "Reposatories\\CourseRepo.cs",
-              "ToolTip": "C:\\Users\\abdelrahman\\Desktop\\FinalMVC\\MVC-ExaminationSystem\\Reposatories\\CourseRepo.cs",
-              "RelativeToolTip": "Reposatories\\CourseRepo.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-12T03:38:15.871Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 30,
-              "Title": "BranchRepo.cs",
-              "DocumentMoniker": "C:\\Users\\abdelrahman\\Desktop\\FinalMVC\\MVC-ExaminationSystem\\Reposatories\\BranchRepo.cs",
-              "RelativeDocumentMoniker": "Reposatories\\BranchRepo.cs",
-              "ToolTip": "C:\\Users\\abdelrahman\\Desktop\\FinalMVC\\MVC-ExaminationSystem\\Reposatories\\BranchRepo.cs",
-              "RelativeToolTip": "Reposatories\\BranchRepo.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAJAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-11T22:43:22.815Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 31,
-              "Title": "AddTrack.cshtml",
-              "DocumentMoniker": "C:\\Users\\abdelrahman\\Desktop\\FinalMVC\\MVC-ExaminationSystem\\Views\\Manager\\AddTrack.cshtml",
-              "RelativeDocumentMoniker": "Views\\Manager\\AddTrack.cshtml",
-              "ToolTip": "C:\\Users\\abdelrahman\\Desktop\\FinalMVC\\MVC-ExaminationSystem\\Views\\Manager\\AddTrack.cshtml",
-              "RelativeToolTip": "Views\\Manager\\AddTrack.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-05-11T22:05:29.292Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 32,
-              "Title": "Edit.cshtml",
-              "DocumentMoniker": "C:\\Users\\abdelrahman\\Desktop\\FinalMVC\\MVC-ExaminationSystem\\Views\\Manager\\Edit.cshtml",
-              "RelativeDocumentMoniker": "Views\\Manager\\Edit.cshtml",
-              "ToolTip": "C:\\Users\\abdelrahman\\Desktop\\FinalMVC\\MVC-ExaminationSystem\\Views\\Manager\\Edit.cshtml",
-              "RelativeToolTip": "Views\\Manager\\Edit.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-05-11T22:48:05.316Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 33,
-              "Title": "DisplayInstructorVM.cs",
-              "DocumentMoniker": "C:\\Users\\abdelrahman\\Desktop\\FinalMVC\\MVC-ExaminationSystem\\ViewModels\\AdminVMs\\InstructorVMs\\DisplayInstructorVM.cs",
-              "RelativeDocumentMoniker": "ViewModels\\AdminVMs\\InstructorVMs\\DisplayInstructorVM.cs",
-              "ToolTip": "C:\\Users\\abdelrahman\\Desktop\\FinalMVC\\MVC-ExaminationSystem\\ViewModels\\AdminVMs\\InstructorVMs\\DisplayInstructorVM.cs",
-              "RelativeToolTip": "ViewModels\\AdminVMs\\InstructorVMs\\DisplayInstructorVM.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAnAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-12T00:56:57.655Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 34,
-              "Title": "Index.cshtml",
-              "DocumentMoniker": "C:\\Users\\abdelrahman\\Desktop\\FinalMVC\\MVC-ExaminationSystem\\Views\\Manager\\Index.cshtml",
-              "RelativeDocumentMoniker": "Views\\Manager\\Index.cshtml",
-              "ToolTip": "C:\\Users\\abdelrahman\\Desktop\\FinalMVC\\MVC-ExaminationSystem\\Views\\Manager\\Index.cshtml",
-              "RelativeToolTip": "Views\\Manager\\Index.cshtml",
-              "ViewState": "AgIAAAwAAAAAAAAAAAAAACoAAABKAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-05-11T22:44:48.825Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 35,
-              "Title": "DBContext.cs",
-              "DocumentMoniker": "C:\\Users\\abdelrahman\\Desktop\\FinalMVC\\MVC-ExaminationSystem\\Models\\DBContext.cs",
-              "RelativeDocumentMoniker": "Models\\DBContext.cs",
-              "ToolTip": "C:\\Users\\abdelrahman\\Desktop\\FinalMVC\\MVC-ExaminationSystem\\Models\\DBContext.cs",
-              "RelativeToolTip": "Models\\DBContext.cs",
-              "ViewState": "AgIAABsAAAAAAAAAAAAQwBcAAABEAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-09T21:29:09.714Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 36,
-              "Title": "Create.cshtml",
-              "DocumentMoniker": "C:\\Users\\abdelrahman\\Desktop\\FinalMVC\\MVC-ExaminationSystem\\Views\\ManagerTrack\\Create.cshtml",
-              "RelativeDocumentMoniker": "Views\\ManagerTrack\\Create.cshtml",
-              "ToolTip": "C:\\Users\\abdelrahman\\Desktop\\FinalMVC\\MVC-ExaminationSystem\\Views\\ManagerTrack\\Create.cshtml",
-              "RelativeToolTip": "Views\\ManagerTrack\\Create.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAiAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-05-12T00:04:28.355Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 37,
-              "Title": "Details.cshtml",
-              "DocumentMoniker": "C:\\Users\\abdelrahman\\Desktop\\FinalMVC\\MVC-ExaminationSystem\\Views\\Manager\\Details.cshtml",
-              "RelativeDocumentMoniker": "Views\\Manager\\Details.cshtml",
-              "ToolTip": "C:\\Users\\abdelrahman\\Desktop\\FinalMVC\\MVC-ExaminationSystem\\Views\\Manager\\Details.cshtml",
-              "RelativeToolTip": "Views\\Manager\\Details.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-05-11T22:45:55.462Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 38,
-              "Title": "RemoveTrack.cshtml",
-              "DocumentMoniker": "C:\\Users\\abdelrahman\\Desktop\\FinalMVC\\MVC-ExaminationSystem\\Views\\Manager\\RemoveTrack.cshtml",
-              "RelativeDocumentMoniker": "Views\\Manager\\RemoveTrack.cshtml",
-              "ToolTip": "C:\\Users\\abdelrahman\\Desktop\\FinalMVC\\MVC-ExaminationSystem\\Views\\Manager\\RemoveTrack.cshtml",
-              "RelativeToolTip": "Views\\Manager\\RemoveTrack.cshtml",
-              "ViewState": "AgIAAB4AAAAAAAAAAAAAAC0AAAAGAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-05-11T22:48:58.043Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 40,
-              "Title": "Track.cs",
-              "DocumentMoniker": "C:\\Users\\abdelrahman\\Desktop\\FinalMVC\\MVC-ExaminationSystem\\Models\\Track.cs",
-              "RelativeDocumentMoniker": "Models\\Track.cs",
-              "ToolTip": "C:\\Users\\abdelrahman\\Desktop\\FinalMVC\\MVC-ExaminationSystem\\Models\\Track.cs",
-              "RelativeToolTip": "Models\\Track.cs",
-              "ViewState": "AgIAABAAAAAAAAAAAAAYwBkAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-11T22:28:46.691Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 39,
-              "Title": "AdminBranchController.cs",
-              "DocumentMoniker": "C:\\Users\\abdelrahman\\Desktop\\FinalMVC\\MVC-ExaminationSystem\\Controllers\\AdminBranchController.cs",
-              "RelativeDocumentMoniker": "Controllers\\AdminBranchController.cs",
-              "ToolTip": "C:\\Users\\abdelrahman\\Desktop\\FinalMVC\\MVC-ExaminationSystem\\Controllers\\AdminBranchController.cs",
-              "RelativeToolTip": "Controllers\\AdminBranchController.cs",
-              "ViewState": "AgIAAJ0AAAAAAAAAAAAcwKwAAAARAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-09T22:32:23.484Z"
+              "WhenOpened": "2025-05-12T22:43:06.031Z",
+              "EditorCaption": ""
             }
           ]
         }
