@@ -9,6 +9,7 @@ namespace ExaminationSystemMVC.UnitOfWorks
         StudentRepo _studentRepo;
         InstructorRepository _instructorRepo;
         UsersRepo _userRepo;
+        StudentCourseRepo _studentCourseRepo;
         DBContext _db;
         public UnitOfWork(DBContext db)
         {
@@ -23,6 +24,18 @@ namespace ExaminationSystemMVC.UnitOfWorks
                     _userRepo = new UsersRepo(_db);
                 }
                 return _userRepo;
+            }
+        }
+
+        public StudentCourseRepo StudentCourseRepo
+        {
+            get
+            {
+                if (_studentCourseRepo == null)
+                {
+                    _studentCourseRepo = new StudentCourseRepo(_db);
+                }
+                return _studentCourseRepo;
             }
         }
 

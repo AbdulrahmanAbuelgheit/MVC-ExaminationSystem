@@ -1,0 +1,87 @@
+﻿@model List<Course>
+@{
+    ViewData["Title"] = "Courses";
+    Layout = "_AdminLayout";
+}
+
+<div class="container my-5">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2 class="fw-bold text-primary mb-0">
+            Available Courses
+        </h2>
+        <a asp-action="Create" class="btn btn-outline-primary shadow-sm">
+            <i class="bi bi-plus-circle me-2"></i>Add Course
+        </a>
+    </div>
+
+    @if (Model != null && Model.Any())
+    {
+        <div class="table-responsive shadow-sm rounded">
+            <table class="table table-hover align-middle">
+                <thead class="table-primary">
+                    <tr>
+                        <th class="text-center">ID</th>
+                        <th>Name</th>
+                        <th>Description</th>
+                        <th class="text-center">Duration (hrs)</th>
+                        <th class="text-center">Topics</th>
+                        <th class="text-center">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var course in Model)
+                    {
+                        <tr>
+                            <td class="fw-semibold text-center">@course.CrsID</td>
+                            <td>@course.CrsName</td>
+                            <td>@course.Description</td>
+                            <td class="text-center">@course.Duration</td>
+                            <td class="text-center">
+                                <span class="badge bg-info">@course.Courses_Topics.Count</span>
+                            </td>
+                            <td class="text-center">
+                                <div class="btn-group" role="group">
+                                    <a asp-action="Details" asp-route-id="@course.CrsID" class="btn btn-sm btn-outline-primary">
+                                        <i class="fas fa-eye me-1"></i>
+                                    </a>
+                                    <a asp-action="Edit" asp-route-id="@course.CrsID" class="btn btn-sm btn-outline-warning">
+                                        <i class="fas fa-edit me-1"></i>
+                                    </a>
+                                    <a asp-action="Delete" asp-route-id="@course.CrsID"
+                                       onclick="return confirm('Are you sure you want to delete this course?')"
+                                       class="btn btn-sm btn-outline-danger">
+                                        <i class="fas fa-trash-alt me-1"></i>
+                                    </a>
+                                </div>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+
+        <div class="mt-4">
+            <div class="card border-0 shadow-sm">
+                <div class="card-body">
+                    <h5 class="card-title text-primary">
+                        <i class="bi bi-info-circle me-2"></i>Courses Information
+                    </h5>
+                    <p class="card-text">
+                        Total Courses: <strong>@Model.Count()</strong>
+                    </p>
+                    <p class="card-text">
+                        Total Topics: <strong>@Model.Sum(c => c.Courses_Topics.Count)</strong>
+                    </p>
+                </div>
+            </div>
+        </div>
+    }
+    else
+    {
+        <div class="alert alert-info text-center shadow-sm mt-4">
+            <i class="bi bi-exclamation-circle me-2 fs-4"></i>
+            <p class="mb-0">No courses found. Click <strong>Add Course</strong> to get started.</p>
+        </div>
+    }
+</div>
+

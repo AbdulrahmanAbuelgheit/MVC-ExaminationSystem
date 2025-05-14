@@ -47,7 +47,7 @@ namespace ExaminationSystemMVC.Controllers
         [HttpGet]
         public IActionResult AddCourse(int id)
         {
-            var track = _unit.TrackRepo.GetTrackWithCourses(id);
+            var track = _unit.TrackRepo.GetTrackWithCoursesAndStudents(id);
             if (track == null)
             {
                 return NotFound();
@@ -77,7 +77,7 @@ namespace ExaminationSystemMVC.Controllers
         [HttpPost]
         public IActionResult AddCourse(AddCourseToTrackVM vm)
         {
-            var track = _unit.TrackRepo.GetTrackWithCourses(vm.TrackID);
+            var track = _unit.TrackRepo.GetTrackWithCoursesAndStudents(vm.TrackID);
 
             if (ModelState.IsValid)
             {
@@ -93,7 +93,22 @@ namespace ExaminationSystemMVC.Controllers
                 }
 
                 track.Crs.Add(course);
+
+                // Add course to all students in the track
+                var newRelations = new List<Student_Course>();
+                foreach (var std in track.Students)
+                {
+                    newRelations.Add(new Student_Course
+                    {
+                        StdID = std.StdID,
+                        CrsID = course.CrsID
+                    });
+                }
+
+                _unit.StudentCourseRepo.AddRange(newRelations);
                 _unit.TrackRepo.Update(track);
+                _unit.Save();
+
                 _unit.Save();
                 return RedirectToAction("Details", new { id = vm.TrackID });
             }

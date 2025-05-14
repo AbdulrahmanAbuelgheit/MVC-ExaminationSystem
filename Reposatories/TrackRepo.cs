@@ -22,6 +22,14 @@
             return Db.Tracks.Include(t => t.Crs).FirstOrDefault(t => t.TrackID == id);
         }
 
+        public Track GetTrackWithCoursesAndStudents(int id)
+        {
+            return Db.Tracks
+                .Include(t => t.Crs)
+                .Include(t => t.Students)
+                .FirstOrDefault(t => t.TrackID == id);
+        }
+
         public Track GetTrackWithStudents(int id)
         {
             return Db.Tracks.Include(t => t.Students)

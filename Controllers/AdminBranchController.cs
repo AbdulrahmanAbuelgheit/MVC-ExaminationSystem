@@ -199,7 +199,7 @@ namespace ExaminationSystemMVC.Controllers
                 .Select(i => new { i.InsID, FullName = i.Ins.FirstName + " " + i.Ins.LastName })
                 .ToList();
 
-            var vm = new AddInstructorToTrackInBranchVM
+            var vm = new AddInstructorToTrackVM
             {
                 TrackID = trackId,
                 BranchID = branchId
@@ -210,7 +210,7 @@ namespace ExaminationSystemMVC.Controllers
         }
 
         [HttpPost]
-        public IActionResult AddInstructor(AddInstructorToTrackInBranchVM vm)
+        public IActionResult AddInstructor(AddInstructorToTrackVM vm)
         {
 
             var track = _unit.TrackRepo.GetTrackWithInstructors(vm.TrackID);
