@@ -19,7 +19,7 @@ namespace ExaminationSystemMVC.MappingConfig
                 .ForMember(dest => dest.IsActive, opt => opt.MapFrom(src => src.IsActive == "T" ? "Active" : "Inactive"));
 
             CreateMap<CreateStudentVM, Student>();
-            CreateMap<Student, UpdateStudentVM>()
+            CreateMap<Student, EditStudentVM>()
                .ForMember(dest => dest.FullName, opt => opt.MapFrom(src => src.Std.FirstName + ' ' + src.Std.LastName))
                .ForMember(dest => dest.Email, opt => opt.MapFrom(src => src.Std.Email))
                .ReverseMap();

@@ -1,9 +1,12 @@
 ﻿using ExaminationSystemMVC.Models.JWT;
-using ExaminationSystemMVC.Reposatories;
+using ExaminationSystemMVC.ViewModels;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using System.Security.Claims;
+using System.ComponentModel.DataAnnotations;
+using Newtonsoft.Json;
+
 
 namespace ExaminationSystemMVC.Controllers
 {
@@ -26,8 +29,52 @@ namespace ExaminationSystemMVC.Controllers
 
         public IActionResult Index()
         {
+            var email = GetCurrentUserEmail();
+            if (email == null) return Unauthorized();
+
+            var user = _repository.GetUserByEmail(email);
+            if (user == null) return Unauthorized();
+
+            var instructor = _repository.GetById(user.UserID);
+            if (instructor == null) return NotFound();
+
+            bool isManager = instructor.Branches.Any(); // Branches managed by this instructor
+
+            ViewBag.IsManager = isManager;
+            ViewBag.ManagedBranches = isManager ? instructor.Branches : new List<Branch>();
+
             return View();
         }
+        public IActionResult ManagedBranch()
+        {
+            var email = GetCurrentUserEmail();
+            if (email == null) return Unauthorized();
+
+            var user = _userRepository.GetByEmail(email);
+            if (user == null) return NotFound();
+
+            var instructor = _repository.GetById(user.UserID);
+            if (instructor == null) return NotFound();
+
+            var managedBranch = instructor.Branches.FirstOrDefault(); // Get the branch where this instructor is the manager
+            if (managedBranch == null)
+                return View("NoBranch"); // Optional: create a view saying "You're not managing any branch"
+
+            var vm = new DisplayBranchVM
+            {
+                BranchID = managedBranch.BranchID,
+                BranchName = managedBranch.BranchName,
+                Governate = managedBranch.Governate,
+                City = managedBranch.City,
+                Street = managedBranch.Street,
+                Tel = managedBranch.Tel,
+
+            };
+
+            return View("ManagedBranch", vm);
+        }
+
+
         private string GetCurrentUserEmail()
         {
             if (Request == null)
@@ -269,6 +316,78 @@ namespace ExaminationSystemMVC.Controllers
         }
 
 
+        public IActionResult AddQuestion()
+        {
+            var instructorId = GetCurrentUserIdFromDatabase();
+            var courses = _repository.GetCourseSelectList(instructorId);
+            ViewBag.Courses = courses;
+            return View();
+        }
+        [HttpPost]
+        public IActionResult AddQuestion(QuestionViewModel model)
+        {
+            var validationResults = model.Validate(new ValidationContext(model));
+            foreach (var result in validationResults)
+            {
+                foreach (var memberName in result.MemberNames)
+                {
+                    ModelState.AddModelError(memberName, result.ErrorMessage);
+                }
+            }
+
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    model.Points = model.Type == "T/F" ? 1 : 2;
+
+                    int questionId = _repository.InsertQuestion(
+                        model.QText,
+                        model.Type,
+                        model.Points,
+                        model.CrsID,
+                        model.CorrectOptNum
+                    );
+
+                    if (questionId > 0)
+                    {
+                        string opt1 = model.Type == "T/F" ? "True" : model.OptText1;
+                        string opt2 = model.Type == "T/F" ? "False" : model.OptText2;
+                        string opt3 = model.Type == "T/F" ? null : model.OptText3;
+                        string opt4 = model.Type == "T/F" ? null : model.OptText4;
+
+                        int optionResult = _repository.InsertOptionsUsingSP(
+                            questionId,
+                            opt1, opt2, opt3, opt4
+                        );
+
+                        if (optionResult > 0)
+                        {
+                            TempData["Success"] = "Question and options added successfully!";
+                            return RedirectToAction("AddQuestion");
+                        }
+                        else
+                        {
+                            ModelState.AddModelError("", "Failed to add question options");
+                        }
+                    }
+                    else
+                    {
+                        ModelState.AddModelError("", "Failed to add question");
+                    }
+                }
+                catch (Exception ex)
+                {
+                    ModelState.AddModelError("", "An error occurred: " + ex.Message);
+                }
+            }
+
+            var instructorId = GetCurrentUserIdFromDatabase();
+            ViewBag.Courses = _repository.GetCourseSelectList(instructorId);
+            return View(model);
+        }
+
+       
 
     }
 }

@@ -25,6 +25,13 @@
             return Db.Branches.Include(b => b.Ins).First(i => i.BranchID == id);
 
         }
+        public int GetBranchIdByManagerId(int managerId)
+        {
+            return Db.Branches
+                .Where(b => b.ManagerID == managerId)
+                .Select(b => b.BranchID)
+                .FirstOrDefault();
+        }
 
     }
 }

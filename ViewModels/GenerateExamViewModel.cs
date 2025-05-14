@@ -49,4 +49,8 @@ public class ExamQuestionViewModel
     public int Points { get; set; }
     public int CorrectOption { get; set; }
     public List<string> Options { get; set; } = new();
+
+    public List<int> SelectedQuestionIds { get; set; } = new List<int>();
+    public List<Question> AvailableTFQuestions { get; set; } = new List<Question>();
+    public List<Question> AvailableMCQQuestions { get; set; } = new List<Question>();
 }

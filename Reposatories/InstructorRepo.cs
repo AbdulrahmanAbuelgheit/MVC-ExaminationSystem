@@ -11,24 +11,14 @@ namespace ExaminationSystemMVC.Reposatories
     public interface IInstructorRepository
     {
         User GetUserByEmail(string email);
-
-        // Dashboard
         dynamic GetDashboardData(int instructorId);
-
-        // Tracks
         List<Track> GetInstructorTracks(int instructorId);
-
-        // Courses
         List<Course> GetInstructorCourses(int instructorId);
         List<Course> GetCoursesByTrack(int instructorId, int trackId);
         dynamic GetCourseDetails(int courseId);
         List<InstructorCourseSummaryViewModel> GetInstructorCoursesSummary(int instructorId);
-
-        // Students
         List<Student> GetStudentsInCourse(int courseId);
         List<dynamic> GetCourseStudents(int courseId, int? trackId);
-
-        // Exams
         List<Exam> GetInstructorExams(int instructorId, int? courseId);
         void ToggleExamStatus(int examId);
         GeneratedExamDetailsViewModel GenerateExam(GenerateExamViewModel model);
@@ -40,7 +30,17 @@ namespace ExaminationSystemMVC.Reposatories
         public string GetCourseName(int courseId);
         public List<Exam> GetInstructorExamsWithDetails(int instructorId, int? courseId);
         public Instructor GetById(int id);
+        public int InsertQuestion(string qText, string type, int points, int crsId, int correctOptNum);
+        //public int InsertOptions(int qId, string optText1, string optText2, string optText3, string optText4);
+        public int InsertOptionsUsingSP(int qId, string optText1, string optText2, string optText3, string optText4);
 
+        public List<DisplayInstructorVM> GetAllWithBranchAndTrack();
+
+        public DisplayInstructorVM GetInstructorEithBranchAndTrackById(int id);
+
+        public EditInstructorViewModel GetInstructorForEdit(int id);
+        public Instructor EditInstructor(EditInstructorViewModel model);
+        public void DeleteInstructor(int instructorId);
 
     }
 
@@ -53,7 +53,61 @@ namespace ExaminationSystemMVC.Reposatories
         {
             _context = context;
         }
+        public DisplayInstructorVM GetInstructorDetails(int instructorId)
+        {
+            return _context.Instructors
+                .Include(i => i.Ins)
+                .Include(i => i.Branches)
+                .Where(i => i.InsID == instructorId)
+                .Select(i => new DisplayInstructorVM
+                {
+                    InsID = i.InsID,
+                    InsName = $"{i.Ins.FirstName} {i.Ins.LastName}",
+                    Email = i.Ins.Email,
+                    Salary = i.Salary,
+                    Branches = i.Branches.Select(b => new DisplayBranchVM
+                    {
+                        BranchID = b.BranchID,
+                        BranchName = b.BranchName
+                    }).ToList()
+                })
+                .FirstOrDefault();
+        }
 
+
+        public IEnumerable<DisplayInstructorVM> GetInstructorsByBranch(int branchId)
+        {
+            return _context.Instructors
+                .Include(i => i.Ins)  // Include User details
+                .Include(i => i.BranchesNavigation)  // Include branch relationships
+                .Where(i => i.BranchesNavigation.Any(b => b.BranchID == branchId))
+                .Select(i => new DisplayInstructorVM
+                {
+                    InsID = i.InsID,
+                    InsName = $"{i.Ins.FirstName} {i.Ins.LastName}",
+                    Email = i.Ins.Email,
+                    BranchID = branchId
+                })
+                .ToList();
+        }
+        public bool IsInstructorInBranch(int instructorId, int branchId)
+        {
+            return _context.Instructors
+                .Where(i => i.InsID == instructorId)
+                .Any(i => i.BranchesNavigation.Any(b => b.BranchID == branchId));
+        }
+        public List<DisplayInstructorVM> GetInstructorsByBranchId(int branchId)
+        {
+            return _context.Instructors
+                .Where(i => i.BranchesNavigation.Any(b => b.BranchID == branchId))
+                .Select(i => new DisplayInstructorVM
+                {
+                    InsID = i.InsID,
+                    InsName = $"{i.Ins.FirstName} {i.Ins.LastName}",
+                    Email = i.Ins.Email
+                })
+                .ToList();
+        }
         public List<Instructor> GetAllInstructors()
         {
             return _context.Instructors.Include(i => i.Ins).ToList();
@@ -200,9 +254,6 @@ namespace ExaminationSystemMVC.Reposatories
                 .ToList<dynamic>();
         }
 
-
-
-
         public List<Exam> GetInstructorExams(int instructorId, int? courseId)
         {
             var query = _context.Exams
@@ -228,6 +279,100 @@ namespace ExaminationSystemMVC.Reposatories
             }
         }
 
+
+        public GeneratedExamDetailsViewModel GetGeneratedExamDetails(int examId)
+        {
+            var exam = _context.Exams
+                .Include(e => e.Crs)
+                .Include(e => e.QIDs)
+                    .ThenInclude(q => q.Questions_Options)
+                .FirstOrDefault(e => e.ExamID == examId);
+
+            if (exam == null) return null;
+
+            var questions = exam.QIDs.Select(q => new ExamQuestionViewModel
+            {
+                QuestionID = q.QID,
+                QuestionText = q.QText,
+                QuestionType = q.Type,
+                Points = q.Points,
+                CorrectOption = q.CorrectOptNum,
+                Options = q.Questions_Options
+                           .OrderBy(o => o.OptNum)
+                           .Select(o => o.OptText)
+                           .ToList()
+            }).ToList();
+
+            return new GeneratedExamDetailsViewModel
+            {
+                ExamID = exam.ExamID,
+                CourseName = exam.Crs.CrsName,
+                ExamDateTime = exam.ExamDatetime,
+                Duration = exam.ExamDuration,
+                NumTF = questions.Count(q => q.QuestionType == "TF"),
+                NumMCQ = questions.Count(q => q.QuestionType == "MCQ"),
+                Questions = questions
+            };
+        }
+
+        public List<InstructorCourseSummaryViewModel> GetInstructorCoursesSummary(int instructorId)
+        {
+            return _context.Courses
+                .Where(c => c.Ins.Any(i => i.InsID == instructorId))
+                .Select(c => new InstructorCourseSummaryViewModel
+                {
+                    CourseID = c.CrsID,
+                    CourseName = c.CrsName,
+                    Description = c.Description,
+                    Duration = c.Duration,
+                    Tracks = c.Tracks.Select(t => t.TrackName).ToList(),
+                    StudentsCount = c.Student_Courses.Count,
+                    ExamIDs = c.Exams.Select(e => e.ExamID).ToList()
+                })
+                .ToList();
+        }
+        public List<Exam> GetCourseExams(int courseId)
+        {
+            return _context.Exams
+                .Where(e => e.CrsID == courseId)
+                .Include(e => e.Crs)
+                .ToList();
+        }
+
+        public string GetCourseName(int courseId)
+        {
+            return _context.Courses
+                .Where(c => c.CrsID == courseId)
+                .Select(c => c.CrsName)
+                .FirstOrDefault();
+        }
+
+        public List<SelectListItem> GetCourseSelectList(int instructorId)
+        {
+            return _context.Courses
+                .Where(c => c.Ins.Any(i => i.InsID == instructorId))
+                .Select(c => new SelectListItem
+                {
+                    Value = c.CrsID.ToString(),
+                    Text = c.CrsName
+                })
+                .ToList();
+        }
+
+        public List<Exam> GetInstructorExamsWithDetails(int instructorId, int? courseId)
+        {
+            var query = _context.Exams
+                .Include(e => e.Crs)
+                    .ThenInclude(c => c.Ins) 
+                .Where(e => e.Crs.Ins.Any(i => i.InsID == instructorId));
+
+            if (courseId.HasValue)
+            {
+                query = query.Where(e => e.CrsID == courseId.Value);
+            }
+
+            return query.ToList();
+        }
         public GeneratedExamDetailsViewModel GenerateExam(GenerateExamViewModel model)
         {
             var examData = new GeneratedExamDetailsViewModel();
@@ -297,103 +442,240 @@ namespace ExaminationSystemMVC.Reposatories
             return examData;
         }
 
-        public GeneratedExamDetailsViewModel GetGeneratedExamDetails(int examId)
+        public int InsertQuestion(string qText, string type, int points, int crsId, int correctOptNum)
         {
-            var exam = _context.Exams
-                .Include(e => e.Crs)
-                .Include(e => e.QIDs)
-                    .ThenInclude(q => q.Questions_Options)
-                .FirstOrDefault(e => e.ExamID == examId);
-
-            if (exam == null) return null;
-
-            var questions = exam.QIDs.Select(q => new ExamQuestionViewModel
+            if (type == "T/F" && points != 1)
             {
-                QuestionID = q.QID,
-                QuestionText = q.QText,
-                QuestionType = q.Type,
-                Points = q.Points,
-                CorrectOption = q.CorrectOptNum,
-                Options = q.Questions_Options
-                           .OrderBy(o => o.OptNum)
-                           .Select(o => o.OptText)
-                           .ToList()
-            }).ToList();
-
-            return new GeneratedExamDetailsViewModel
+                throw new InvalidOperationException("True/False questions must have 1 point");
+            }
+            else if (type == "MCQ" && points != 2)
             {
-                ExamID = exam.ExamID,
-                CourseName = exam.Crs.CrsName,
-                ExamDateTime = exam.ExamDatetime,
-                Duration = exam.ExamDuration,
-                NumTF = questions.Count(q => q.QuestionType == "TF"),
-                NumMCQ = questions.Count(q => q.QuestionType == "MCQ"),
-                Questions = questions
+                throw new InvalidOperationException("MCQ questions must have 2 points");
+            }
+
+            var question = new Question
+            {
+                QText = qText,
+                Type = type,
+                Points = points,
+                CrsID = crsId,
+                CorrectOptNum = correctOptNum
+            };
+
+            _context.Questions.Add(question);
+            _context.SaveChanges();
+
+            return question.QID;
+        }
+
+        public int InsertOptionsUsingSP(int qId, string optText1, string optText2, string optText3, string optText4)
+        {
+            optText1 = string.IsNullOrEmpty(optText1) ? "True" : optText1;
+            optText2 = string.IsNullOrEmpty(optText2) ? "False" : optText2;
+            optText3 = string.IsNullOrEmpty(optText3) ? null : optText3;
+            optText4 = string.IsNullOrEmpty(optText4) ? null : optText4;
+
+            return _context.Database.ExecuteSqlRaw(
+                "EXEC QOptions_Insert @QID = {0}, @OptNum1 = {1}, @OptNum2 = {2}, @OptNum3 = {3}, @OptNum4 = {4}, @OptText1 = {5}, @OptText2 = {6}, @OptText3 = {7}, @OptText4 = {8}",
+                qId, 1, 2, 3, 4, optText1, optText2, optText3, optText4
+            );
+        }
+
+        public List<DisplayInstructorVM> GetAllWithBranchAndTrack()
+        {
+            var instructors = _context.Instructors
+                .Include(i => i.Ins)
+                    .ThenInclude(u => u.User_PhoneNumbers)
+                .Include(i => i.Crs)
+                .ToList();
+
+            var instructorVMs = new List<DisplayInstructorVM>();
+            foreach (var instructor in instructors)
+            {
+                var vm = new DisplayInstructorVM
+                {
+                    InsID = instructor.InsID,
+                    InsName = $"{instructor.Ins.FirstName} {instructor.Ins.LastName}",
+                    Email = instructor.Ins.Email,
+                    PhoneNumber = instructor.Ins.User_PhoneNumbers.FirstOrDefault()?.PhoneNumber.ToString(),
+                    Salary = instructor.Salary,
+                    Courses = instructor.Crs.Select(c => new DisplayCourseVM
+                    {
+                        CrsID = c.CrsID,
+                        CrsName = c.CrsName
+                    }).ToList()
+                };
+
+                instructorVMs.Add(vm);
+            }
+            return instructorVMs;
+        }
+
+
+        public DisplayInstructorVM GetInstructorEithBranchAndTrackById(int id)
+        {
+            var instructor = _context.Instructors
+                .Include(i => i.Ins)
+                    .ThenInclude(u => u.User_PhoneNumbers)
+                .Include(i => i.BranchesNavigation)
+                .Include(i => i.Tracks)
+                .Include(i => i.Crs)
+                .Include(i => i.Branches)
+                .Include(i => i.TracksNavigation)
+                .FirstOrDefault(i => i.InsID == id);
+
+            if (instructor == null)
+                return null;
+
+            var vm = new DisplayInstructorVM
+            {
+                InsID = instructor.InsID,
+                InsName = $"{instructor.Ins.FirstName} {instructor.Ins.LastName}",
+                Email = instructor.Ins.Email,
+                PhoneNumber = instructor.Ins.User_PhoneNumbers.FirstOrDefault()?.PhoneNumber.ToString(),
+                Salary = instructor.Salary,
+                Branches = instructor.BranchesNavigation.Select(b => new DisplayBranchVM
+                {
+                    BranchID = b.BranchID,
+                    BranchName = b.BranchName
+                }).ToList(),
+                Tracks = instructor.Tracks.Select(t => new DisplayTrackVM
+                {
+                    TrackID = t.TrackID,
+                    TrackName = t.TrackName
+                }).ToList(),
+                Courses = instructor.Crs.Select(c => new DisplayCourseVM
+                {
+                    CrsID = c.CrsID,
+                    CrsName = c.CrsName
+                }).ToList()
+            };
+
+            var managedBranch = instructor.Branches.FirstOrDefault();
+            if (managedBranch != null)
+            {
+                vm.ManagedBranch = new DisplayBranchVM
+                {
+                    BranchID = managedBranch.BranchID,
+                    BranchName = managedBranch.BranchName
+                };
+            }
+
+            var supervisedTrack = instructor.TracksNavigation.FirstOrDefault();
+            if (supervisedTrack != null)
+            {
+                vm.SupervisedTrack = new DisplayTrackVM
+                {
+                    TrackID = supervisedTrack.TrackID,
+                    TrackName = supervisedTrack.TrackName
+                };
+            }
+
+            return vm;
+        }
+
+        public EditInstructorViewModel GetInstructorForEdit(int id)
+        {
+            var instructor = _context.Instructors
+                .Include(i => i.Ins)
+                    .ThenInclude(u => u.User_PhoneNumbers)
+                .FirstOrDefault(i => i.InsID == id);
+
+            if (instructor == null)
+                return null;
+
+            return new EditInstructorViewModel
+            {
+                InsID = instructor.InsID,
+                Salary = instructor.Salary,
+                FirstName = instructor.Ins.FirstName,
+                LastName = instructor.Ins.LastName,
+                Email = instructor.Ins.Email,
+                PhoneNumber = instructor.Ins.User_PhoneNumbers.FirstOrDefault()?.PhoneNumber.ToString()
             };
         }
 
-        public List<InstructorCourseSummaryViewModel> GetInstructorCoursesSummary(int instructorId)
+        public Instructor EditInstructor(EditInstructorViewModel model)
         {
-            return _context.Courses
-                .Where(c => c.Ins.Any(i => i.InsID == instructorId))
-                .Select(c => new InstructorCourseSummaryViewModel
-                {
-                    CourseID = c.CrsID,
-                    CourseName = c.CrsName,
-                    Description = c.Description,
-                    Duration = c.Duration,
-                    Tracks = c.Tracks.Select(t => t.TrackName).ToList(),
-                    StudentsCount = c.Student_Courses.Count,
-                    ExamIDs = c.Exams.Select(e => e.ExamID).ToList()
-                })
-                .ToList();
-        }
-        public List<Exam> GetCourseExams(int courseId)
-        {
-            return _context.Exams
-                .Where(e => e.CrsID == courseId)
-                .Include(e => e.Crs)
-                .ToList();
-        }
+            var existingInstructor = _context.Instructors
+                .Include(i => i.Ins)
+                    .ThenInclude(u => u.User_PhoneNumbers)
+                .FirstOrDefault(i => i.InsID == model.InsID);
 
+            if (existingInstructor == null)
+                return null;
 
-        public string GetCourseName(int courseId)
-        {
-            return _context.Courses
-                .Where(c => c.CrsID == courseId)
-                .Select(c => c.CrsName)
-                .FirstOrDefault();
-        }
+            existingInstructor.Salary = model.Salary;
+            existingInstructor.Ins.FirstName = model.FirstName;
+            existingInstructor.Ins.LastName = model.LastName;
+            existingInstructor.Ins.Email = model.Email;
 
-
-
-        public List<SelectListItem> GetCourseSelectList(int instructorId)
-        {
-            return _context.Courses
-                .Where(c => c.Ins.Any(i => i.InsID == instructorId))
-                .Select(c => new SelectListItem
-                {
-                    Value = c.CrsID.ToString(),
-                    Text = c.CrsName
-                })
-                .ToList();
-        }
-
-        public List<Exam> GetInstructorExamsWithDetails(int instructorId, int? courseId)
-        {
-            var query = _context.Exams
-                .Include(e => e.Crs)
-                    .ThenInclude(c => c.Ins) 
-                .Where(e => e.Crs.Ins.Any(i => i.InsID == instructorId));
-
-            if (courseId.HasValue)
+            if (!string.IsNullOrEmpty(model.PhoneNumber))
             {
-                query = query.Where(e => e.CrsID == courseId.Value);
+                _context.User_PhoneNumbers.RemoveRange(existingInstructor.Ins.User_PhoneNumbers);
+                existingInstructor.Ins.User_PhoneNumbers.Add(new User_PhoneNumber
+                {
+                    UserID = existingInstructor.Ins.UserID,
+                    PhoneNumber = int.Parse(model.PhoneNumber)
+                });
             }
 
-            return query.ToList();
+            _context.SaveChanges();
+            return existingInstructor;
         }
+
+        public void DeleteInstructor(int instructorId)
+        {
+            var instructor = _context.Instructors
+                .Include(i => i.Ins)
+                .FirstOrDefault(i => i.InsID == instructorId);
+
+            if (instructor != null)
+            {
+                // remove related User_PhoneNumbers and User
+                if (instructor.Ins != null)
+                {
+                    _context.Instructors.Remove(instructor);
+
+                    var userPhoneNumbers = _context.User_PhoneNumbers
+                        .Where(p => p.UserID == instructor.Ins.UserID);
+                    _context.User_PhoneNumbers.RemoveRange(userPhoneNumbers);
+
+                    _context.Users.Remove(instructor.Ins);
+                }
+
+                _context.Instructors.Remove(instructor);
+                _context.SaveChanges();
+            }
+        }
+
+        public void AddInstructor(Instructor instructor)
+        {
+            _context.Instructors.Add(instructor);
+            _context.SaveChanges();
+        }
+
+
     }
 
 
+
+
+    //public int InsertOptions(int qId, string optText1, string optText2, string optText3, string optText4)
+    //{
+    //    var options = new List<Questions_Option>
+    //    {
+    //        new Questions_Option { QID = qId, OptNum = 1, OptText = optText1 },
+    //        new Questions_Option { QID = qId, OptNum = 2, OptText = optText2 },
+    //        new Questions_Option { QID = qId, OptNum = 3, OptText = optText3 },
+    //        new Questions_Option { QID = qId, OptNum = 4, OptText = optText4 }
+    //    };
+
+    //    _context.AddRange(options); 
+    //    _context.SaveChanges(); 
+
+    //    return options.Count; 
+    //}
+
 }
+

@@ -83,7 +83,7 @@ namespace ExaminationSystemMVC.Controllers
                 return RedirectToAction("Login", "Account");
 
             var studentCourses = StudentRepo.getStudentCourse(studentId);
-            if (studentCourses == null || !studentCourses.Any())
+            if (studentCourses == null)
                 return NotFound();
 
             var student = StudentRepo.getById(studentId);
