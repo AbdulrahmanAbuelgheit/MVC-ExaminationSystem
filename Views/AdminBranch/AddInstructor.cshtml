@@ -1,4 +1,4 @@
-﻿@model AddInstructorToTrackVM
+﻿@model AddInstructorToTrackInBranchVM
 
 @{
     ViewData["Title"] = "Add Instructor";
@@ -16,6 +16,7 @@
         <div class="card-body p-4">
             <form asp-action="AddInstructor" method="post" novalidate>
                 <input type="hidden" asp-for="TrackID" />
+				<input type="hidden" asp-for="BranchID" />
 
                 <div class="mb-3">
                     <label asp-for="InsID" class="form-label">Instructor</label>

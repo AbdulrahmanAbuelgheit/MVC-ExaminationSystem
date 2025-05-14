@@ -20,5 +20,6 @@ namespace ExaminationSystemMVC.ViewModels.AdminVMs.BranchVMs
         public string ManagerName { get; set; }
 
         public List<Track> Tracks { get; set; } = new List<Track>();
+        public List<Instructor> Instructors { get; set; } = new List<Instructor>();
     }
 }

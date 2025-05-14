@@ -26,7 +26,8 @@ namespace ExaminationSystemMVC.MappingConfig
 
             CreateMap<Branch, DisplayBranchVM>()
                 .ForMember(dest => dest.ManagerName, opt => opt.MapFrom(src => src.Manager.Ins.FirstName + ' ' + src.Manager.Ins.LastName))
-                .ForMember(dest => dest.Tracks, opt => opt.MapFrom(src => src.Tracks));
+                .ForMember(dest => dest.Tracks, opt => opt.MapFrom(src => src.Tracks))
+                .ForMember(dest => dest.Instructors, opt => opt.MapFrom(src => src.Ins));
 
             CreateMap<Branch, CreateBranchVM>().ReverseMap();
             CreateMap<Branch, UpdateBranchVM>().ReverseMap();

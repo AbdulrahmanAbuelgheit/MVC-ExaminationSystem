@@ -117,8 +117,8 @@ namespace ExaminationSystemMVC.Controllers
             {
                 return NotFound();
             }
-            var branchDTO = _map.Map<DisplayBranchVM>(branch);
-            return View(branchDTO);
+            var branchVM = _map.Map<DisplayBranchVM>(branch);
+            return View(branchVM);
         }
 
         [HttpGet]
@@ -184,5 +184,88 @@ namespace ExaminationSystemMVC.Controllers
             _unit.Save();
             return RedirectToAction("Details", new { id = branchId });
         }
+
+        [HttpGet]
+        public IActionResult AddInstructor(int branchId, int trackId)
+        {
+            var branch = _unit.BranchRepo.GetBranchWithInstructors(branchId);
+            if (branch == null)
+            {
+                return NotFound();
+            }
+
+            var availableInstructors = _unit.InstructorRepo.GetAllInstructors()
+                .Where(i => !branch.Ins.Any(bi => bi.InsID == i.InsID))
+                .Select(i => new { i.InsID, FullName = i.Ins.FirstName + " " + i.Ins.LastName })
+                .ToList();
+
+            var vm = new AddInstructorToTrackInBranchVM
+            {
+                TrackID = trackId,
+                BranchID = branchId
+
+            };
+            ViewBag.InstructorsList = new SelectList(availableInstructors, "InsID", "FullName");
+            return View(vm);
+        }
+
+        [HttpPost]
+        public IActionResult AddInstructor(AddInstructorToTrackInBranchVM vm)
+        {
+
+            var track = _unit.TrackRepo.GetTrackWithInstructors(vm.TrackID);
+            if (track == null)
+                return NotFound();
+
+            var branch = _unit.BranchRepo.GetBranchWithInstructors(vm.BranchID);
+            if (branch == null)
+                return NotFound();
+
+            if (ModelState.IsValid)
+            {
+                var instructor = _unit.InstructorRepo.GetById(vm.InsID);
+                if (instructor == null)
+                    return NotFound();
+
+                track.Ins.Add(instructor);
+                branch.Ins.Add(instructor);
+
+                _unit.TrackRepo.Update(track);
+                _unit.BranchRepo.Update(branch);
+                _unit.Save();
+                return RedirectToAction("Details", new { id = vm.BranchID });
+            }
+
+
+            var availableInstructors = _unit.InstructorRepo.GetAllInstructors()
+                .Where(i => !track.Ins.Any(ti => ti.InsID == i.InsID))
+                .Select(i => new { i.InsID, FullName = i.Ins.FirstName + " " + i.Ins.LastName })
+                .ToList();
+
+            ViewBag.InstructorsList = new SelectList(availableInstructors, "InsID", "FullName");
+            return View(vm);
+        }
+
+        [HttpPost]
+        public IActionResult AssignManager(int branchId, int InstructorId)
+        {
+            var branch = _unit.BranchRepo.GetBranchWithInstructors(branchId);
+            if (branch == null)
+                return NotFound();
+
+
+            var instructor = branch.Ins.FirstOrDefault(i => i.InsID == InstructorId);
+
+            if (instructor == null)
+                return NotFound();
+
+            branch.ManagerID = InstructorId;
+            _unit.BranchRepo.Update(branch);
+            _unit.Save();
+
+            return RedirectToAction("Details", new { id = branchId });
+        }
+
+
     }
 }

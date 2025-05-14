@@ -163,60 +163,6 @@ namespace ExaminationSystemMVC.Controllers
             return RedirectToAction("Details", new { id = model.NewTrackId });
         }
 
-        [HttpGet]
-        public IActionResult AddInstructor(int id)
-        {
-            var track = _unit.TrackRepo.GetTrackWithInstructors(id);
-            if (track == null)
-            {
-                return NotFound();
-            }
-
-            var availableInstructors = _unit.InstructorRepo.GetAllInstructors()
-                .Where(i => !track.Ins.Any(ti => ti.InsID == i.InsID))
-                .Select(i => new { i.InsID, FullName = i.Ins.FirstName + " " + i.Ins.LastName })
-                .ToList();
-
-            var addInstructorToTrackVM = new AddInstructorToTrackVM
-            {
-                TrackID = id,
-
-            };
-            ViewBag.InstructorsList = new SelectList(availableInstructors, "InsID", "FullName");
-            return View(addInstructorToTrackVM);
-        }
-
-        [HttpPost]
-        public IActionResult AddInstructor(AddInstructorToTrackVM vm)
-        {
-
-            var track = _unit.TrackRepo.GetTrackWithInstructors(vm.TrackID);
-            if (track == null)
-                return NotFound();
-
-            if (ModelState.IsValid)
-            {
-                var instructor = _unit.InstructorRepo.GetById(vm.InsID);
-                if (instructor == null)
-                    return NotFound();
-
-                track.Ins.Add(instructor);
-                _unit.TrackRepo.Update(track);
-                _unit.Save();
-                return RedirectToAction("Details", new { id = vm.TrackID });
-            }
-
-
-            var availableInstructors = _unit.InstructorRepo.GetAllInstructors()
-                .Where(i => !track.Ins.Any(ti => ti.InsID == i.InsID))
-                .Select(i => new { i.InsID, FullName = i.Ins.FirstName + " " + i.Ins.LastName })
-                .ToList();
-
-            Console.WriteLine("InsID from form: " + vm.InsID);
-            ViewBag.InstructorsList = new SelectList(availableInstructors, "InsID", "FullName");
-            return View(vm);
-        }
-
         [HttpPost]
         public IActionResult MakeInstructorSupervisor(int trackId, int insID)
         {
