@@ -16,7 +16,8 @@ namespace ExaminationSystemMVC.MappingConfig
                .ForMember(dest => dest.Email, opt => opt.MapFrom(src => src.Std.Email))
                .ForMember(dest => dest.TrackName, opt => opt.MapFrom(src => src.Track.TrackName))
                 .ForMember(dest => dest.BranchName, opt => opt.MapFrom(src => src.Branch.BranchName))
-                .ForMember(dest => dest.IsActive, opt => opt.MapFrom(src => src.IsActive == "T" ? "Active" : "Inactive"));
+                .ForMember(dest => dest.IsActive, opt => opt.MapFrom(src => src.IsActive == "T" ? "Active" : "Inactive"))
+                .ForMember(dest => dest.StudentCourses, opt => opt.MapFrom(src => src.Student_Courses));
 
             CreateMap<CreateStudentVM, Student>();
             CreateMap<Student, EditStudentVM>()

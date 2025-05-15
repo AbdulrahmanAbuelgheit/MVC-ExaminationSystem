@@ -39,7 +39,7 @@ namespace ExaminationSystemMVC.UnitOfWorks
             }
         }
 
-        public GenericRepo<Course> CourseRepo
+        public CourseRepo CourseRepo
         {
             get
             {

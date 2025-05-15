@@ -41,7 +41,12 @@
             return Db.Tracks.Include(t => t.Ins).FirstOrDefault(t => t.TrackID == id);
         }
 
-
+        public Track GetByIdWithBranches(int id)
+        {
+            return Db.Tracks
+                .Include(t => t.Branches)
+                .FirstOrDefault(t => t.TrackID == id);
+        }
 
     }
 }

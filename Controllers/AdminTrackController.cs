@@ -173,6 +173,21 @@ namespace ExaminationSystemMVC.Controllers
 
             student.TrackID = model.NewTrackId;
             _unit.StudentRepo.Update(student);
+
+            var courseRelations = _unit.StudentCourseRepo.GetAll()
+                .Where(sc => sc.StdID == model.StudentId)
+                .ToList();
+            _unit.StudentCourseRepo.RemoveRange(courseRelations);
+
+            var newRelations = _unit.TrackRepo.GetTrackWithCourses(model.NewTrackId).Crs
+                .Select(course => new Student_Course
+                {
+                    StdID = model.StudentId,
+                    CrsID = course.CrsID
+                }).ToList();
+
+            _unit.StudentCourseRepo.AddRange(newRelations);
+
             _unit.Save();
 
             return RedirectToAction("Details", new { id = model.NewTrackId });

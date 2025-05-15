@@ -266,13 +266,12 @@
                         <td>@std.BranchName</td>
                         <td>@std.IntakeYear</td>
                         <td>
-                            <a asp-action="RemoveStudent"
+                            <a asp-action="TransferStudent"
                                asp-controller="AdminTrack"
                                asp-route-studentId="@std.StdID"
-                               asp-route-trackId="@Model.TrackID"
-                               class="btn btn-outline-danger btn-sm"
-                               onclick="return confirm('Are you sure you want to remove this student?')">
-                                <i class="bi bi-trash"></i>
+                               asp-route-currentTrackId="@Model.TrackID"
+                               class="btn btn-outline-info btn-sm">
+                                Transfer Student
                             </a>
                         </td>
                     </tr>

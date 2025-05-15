@@ -11,6 +11,11 @@ namespace ExaminationSystemMVC.Reposatories
             Db.Set<Student_Course>().AddRange(entities);
         }
 
+        public void RemoveRange(IEnumerable<Student_Course> entities)
+        {
+            Db.Set<Student_Course>().RemoveRange(entities);
+        }
+
 
     }
 }
