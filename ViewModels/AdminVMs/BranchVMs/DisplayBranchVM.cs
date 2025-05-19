@@ -18,7 +18,8 @@ namespace ExaminationSystemMVC.ViewModels.AdminVMs.BranchVMs
 
         public int ManagerID { get; set; }
         public string ManagerName { get; set; }
+        public List<DisplayTrackWithInstructorsVM> Tracks { get; set; } = new();
+        public List<DisplayInstructorVM> Instructors { get; set; } = new();
 
-        public List<Track> Tracks { get; set; } = new List<Track>();
     }
 }

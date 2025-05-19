@@ -40,6 +40,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxSZWdpc3Rlci5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/ahmaa/OneDrive/Desktop/Project/MVC-ExaminationSystem/Views/AdminBranch/AddInstructor.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5CcmFuY2hcQWRkSW5zdHJ1Y3Rvci5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/ahmaa/OneDrive/Desktop/Project/MVC-ExaminationSystem/Views/AdminBranch/AddTrack.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5CcmFuY2hcQWRkVHJhY2suY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
@@ -122,10 +126,6 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Users/ahmaa/OneDrive/Desktop/Project/MVC-ExaminationSystem/Views/AdminTrack/AddCourse.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5UcmFja1xBZGRDb3Vyc2UuY3NodG1s
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Users/ahmaa/OneDrive/Desktop/Project/MVC-ExaminationSystem/Views/AdminTrack/AddInstructor.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5UcmFja1xBZGRJbnN0cnVjdG9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/ahmaa/OneDrive/Desktop/Project/MVC-ExaminationSystem/Views/AdminTrack/Create.cshtml]
