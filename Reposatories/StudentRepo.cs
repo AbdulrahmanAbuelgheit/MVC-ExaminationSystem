@@ -69,16 +69,38 @@ namespace ExaminationSystemMVC.Reposatories
                 .ToList();
         }
 
-        public List<Exam> getStudentExam(int id)
+        public List<Exam> getStudentUpcomingExams(int id)
         {
-            // stdid
+            var studentCourses = Db.Student_Courses
+                .Where(sc => sc.StdID == id)
+                .Select(sc => sc.CrsID)
+                .ToList();
 
-            Student StdWithCourse = Db.Students.Include(s => s.Student_Courses).FirstOrDefault(s => s.StdID == id);
+            if (!studentCourses.Any())
+                return new List<Exam>();
 
-            var exams = Db.Exams.Where( s => s.CrsID == StdWithCourse.Student_Courses.FirstOrDefault().CrsID).ToList();
+            var courseExams = Db.Exams
+                .Include(e => e.Crs)
+                .Where(e => studentCourses.Contains(e.CrsID) && e.ExamDatetime > DateTime.Now)
+                .ToList();
 
-            return exams;
-            //return Db.Exams.Where(s  == id).Include(se => se.Exam).ThenInclude(e => e.Crs).ToList();
+            var completedExamIds = Db.Student_Exams
+                .Where(se => se.StdID == id)
+                .Select(se => se.ExamID)
+                .ToList();
+
+            return courseExams
+                .Where(e => !completedExamIds.Contains(e.ExamID))
+                .ToList();
+        }
+
+        public List<Student_Exam> getStudentCompletedExams(int id)
+        {
+            return Db.Student_Exams
+                .Where(se => se.StdID == id)
+                .Include(se => se.Exam)
+                    .ThenInclude(e => e.Crs)
+                .ToList();
         }
 
     }
