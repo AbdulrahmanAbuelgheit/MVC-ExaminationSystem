@@ -12,5 +12,7 @@
         public string BranchName { get; set; }
         public int IntakeYear { get; set; }
         public string IsActive { get; set; }
+
+        public List<Student_Course> StudentCourses { get; set; } = new List<Student_Course>();  
     }
 }

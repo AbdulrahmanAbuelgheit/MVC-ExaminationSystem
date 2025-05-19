@@ -82,6 +82,19 @@ namespace ExaminationSystemMVC.Controllers
                 TrackID = model.TrackID,
                 IntakeYear = model.IntakeYear
             });
+
+            var track = _unit.TrackRepo.GetTrackWithCourses(model.TrackID);
+            var newRelations = new List<Student_Course>();
+            foreach (var course in track.Crs)
+            {
+                 newRelations.Add(new Student_Course
+                 {
+                     StdID = user.UserID,
+                     CrsID = course.CrsID
+                 });
+            }
+                
+            _unit.StudentCourseRepo.AddRange(newRelations);
             _unit.Save();
 
             return RedirectToAction("Index");
