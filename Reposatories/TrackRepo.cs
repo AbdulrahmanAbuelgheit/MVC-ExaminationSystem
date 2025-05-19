@@ -47,6 +47,26 @@
                 .Include(t => t.Branches)
                 .FirstOrDefault(t => t.TrackID == id);
         }
+        
+        public bool SafeToDelete(int trackId)
+        {
+            var track = Db.Tracks.Include(t => t.Ins)
+                .Include(t => t.Branches)
+                .FirstOrDefault(t => t.TrackID == trackId);
+
+            if (track == null)
+                return false;
+            // No instructors AND no branches
+            if (track.Ins.Count == 0 && track.Branches.Count == 0)
+                return true;
+
+            // Only supervisor as instructor AND no branches
+            if (track.Ins.Count == 1 && track.SupervisorID == track.Ins.First().InsID && track.Branches.Count == 0)
+                return true;
+
+            // Otherwise, not safe
+            return false;
+        }
 
     }
 }

@@ -132,14 +132,6 @@
                                                 <i class="bi bi-check2-circle me-1"></i>Supervisor
                                             </button>
                                         </form>
-                                        <a asp-action="RemoveInstructor"
-                                           asp-controller="AdminTrack"
-                                           asp-route-insId="@ins.InsID"
-                                           asp-route-trackId="@Model.TrackID"
-                                           class="btn btn-outline-danger btn-sm"
-                                           onclick="return confirm('Remove instructor?')">
-                                            <i class="bi bi-trash"></i>
-                                        </a>
                                     </div>
                                 }
                                 else
@@ -280,3 +272,5 @@
         </table>
     </div>
 </div>
+
+

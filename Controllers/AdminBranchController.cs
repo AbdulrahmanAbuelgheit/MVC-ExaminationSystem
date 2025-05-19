@@ -118,6 +118,28 @@ namespace ExaminationSystemMVC.Controllers
                 return NotFound();
             }
             var branchVM = _map.Map<DisplayBranchVM>(branch);
+
+            // Filter instructors per track in this branch
+            branchVM.Tracks = branch.Tracks.Select(track => new DisplayTrackWithInstructorsVM
+            {
+                TrackID = track.TrackID,
+                TrackName = track.TrackName,
+                Duration = track.Duration,
+                Capacity = track.Capacity,
+                Supervisor = track.Supervisor,
+                Instructors = track.Ins
+                    .Where(i => branch.Ins.Any(bi => bi.InsID == i.InsID)) // Keep only those in both branch + track
+                    .ToList()
+            }).ToList();
+
+            // Optional: eager load instructors and their tracks
+            foreach (var track in branch.Tracks)
+            {
+                track.Ins = track.Ins
+                    .Where(ti => branch.Ins.Any(bi => bi.InsID == ti.InsID))
+                    .ToList();
+            }
+
             return View(branchVM);
         }
 
@@ -173,6 +195,12 @@ namespace ExaminationSystemMVC.Controllers
         [HttpGet]
         public IActionResult RemoveTrack(int branchId, int trackId)
         {
+            if (!_unit.BranchRepo.SafeToDelete(trackId, branchId))
+            {
+                TempData["Error"] = "Track cannot be deleted because it has assigned instructors.";
+                return RedirectToAction("Details", new {id = branchId});
+            }
+
             var branch = _unit.BranchRepo.GetBranchByIdWithTracks(branchId);
             if (branch == null)
                 return NotFound();
@@ -244,6 +272,61 @@ namespace ExaminationSystemMVC.Controllers
 
             ViewBag.InstructorsList = new SelectList(availableInstructors, "InsID", "FullName");
             return View(vm);
+        }
+
+
+        [HttpGet]
+        public IActionResult RemoveInstructor(int branchId, int trackId, int instructorId)
+        {
+            var branch = _unit.BranchRepo.GetBranchWithInstructors(branchId);
+            if (branch == null)
+                return NotFound();
+
+            var track = branch.Tracks.FirstOrDefault(t => t.TrackID == trackId);
+            if (track == null)
+                return NotFound();
+
+
+
+            var instructor = track.Ins.FirstOrDefault(i => i.InsID == instructorId);
+            if (instructor == null)
+                return NotFound();
+
+
+            branch.Ins.Remove(instructor);
+            _unit.BranchRepo.Update(branch);
+            _unit.Save();
+
+            return RedirectToAction("Details", new { id = branchId });
+        }
+
+        [HttpPost]
+        public IActionResult MakeInstructorSupervisor(int branchId, int trackId, int instructorId)
+        {
+            var branch = _unit.BranchRepo.GetBranchWithTrackAndInstructors(branchId);
+            if (branch == null)
+                return NotFound();
+
+            var instructor = branch.Ins.FirstOrDefault(i => i.InsID == instructorId);
+            if (instructor == null)
+                return NotFound("Instructor does not work in this branch.");
+
+            var track = branch.Tracks.FirstOrDefault(t => t.TrackID == trackId);
+            if (track == null)
+                return NotFound("Track does not exist in branch.");
+
+            if (!track.Ins.Any(i => i.InsID == instructorId))
+                return BadRequest("Instructor is not assigned to this track in this branch.");
+
+            if (track.SupervisorID == instructorId)
+                return BadRequest("Instructor is already the supervisor.");
+
+            track.SupervisorID = instructorId;
+
+            _unit.TrackRepo.Update(track);
+            _unit.Save();
+
+            return RedirectToAction("Details", new { id = trackId });
         }
 
         [HttpPost]

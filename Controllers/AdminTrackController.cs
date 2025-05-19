@@ -109,7 +109,6 @@ namespace ExaminationSystemMVC.Controllers
                 _unit.TrackRepo.Update(track);
                 _unit.Save();
 
-                _unit.Save();
                 return RedirectToAction("Details", new { id = vm.TrackID });
             }
 
@@ -209,23 +208,23 @@ namespace ExaminationSystemMVC.Controllers
             return RedirectToAction("Details", new { id = trackId });
         }
 
-        [HttpGet]
-        public IActionResult RemoveInstructor(int trackId, int insId)
-        {
-            var track = _unit.TrackRepo.GetTrackWithInstructors(trackId);
-            if (track == null)
-                return NotFound();
+        //[HttpGet]
+        //public IActionResult RemoveInstructor(int trackId, int insId)
+        //{
+        //    var track = _unit.TrackRepo.GetTrackWithInstructors(trackId);
+        //    if (track == null)
+        //        return NotFound();
 
-            var instructor = track.Ins.FirstOrDefault(i => i.InsID == insId);
-            if (instructor == null)
-                return NotFound();
-            
+        //    var instructor = track.Ins.FirstOrDefault(i => i.InsID == insId);
+        //    if (instructor == null)
+        //        return NotFound();
 
-            track.Ins.Remove(instructor);
-            _unit.TrackRepo.Update(track);
-            _unit.Save();
-            return RedirectToAction("Details", new { id = trackId });
-        }
+
+        //    track.Ins.Remove(instructor);
+        //    _unit.TrackRepo.Update(track);
+        //    _unit.Save();
+        //    return RedirectToAction("Details", new { id = trackId });
+        //}
 
         [HttpGet]
         public IActionResult Create()
@@ -263,6 +262,9 @@ namespace ExaminationSystemMVC.Controllers
                 SupervisorID = vm.SupervisorID
             };
 
+            var supervisor = _unit.InstructorRepo.GetById(vm.SupervisorID);
+
+            track.Ins.Add(supervisor);
             _unit.TrackRepo.Add(track);
             _unit.Save();
 
@@ -315,22 +317,35 @@ namespace ExaminationSystemMVC.Controllers
             return RedirectToAction("Index");
         }
 
-        [HttpGet]
-        public IActionResult DeleteTrack(int id)
+        [HttpPost]
+        public JsonResult DeleteTrack(int id)
         {
+            if (!_unit.TrackRepo.SafeToDelete(id))
+            {
+                return Json(new
+                {
+                    success = false,
+                    message = "Track cannot be deleted because it has assigned instructors or exists in branch."
+                });
+            }
+
             var track = _unit.TrackRepo.GetById(id);
             if (track == null)
             {
-                return NotFound();
+                return Json(new { success = false, message = "Track not found." });
             }
+            track.Ins.Remove(track.Supervisor);
+            //_unit.TrackRepo.Update(track);
 
             _unit.TrackRepo.Delete(id);
             _unit.Save();
 
-            return RedirectToAction("Index");
+            return Json(new
+            {
+                success = true,
+                message = "Track deleted successfully."
+            });
         }
-
-
 
     }
 }
