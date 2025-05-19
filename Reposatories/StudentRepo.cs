@@ -69,9 +69,16 @@ namespace ExaminationSystemMVC.Reposatories
                 .ToList();
         }
 
-        public List<Student_Exam> getStudentExam(int id)
+        public List<Exam> getStudentExam(int id)
         {
-            return Db.Student_Exams.Where(se => se.StdID == id).Include(se => se.Exam).ThenInclude(e => e.Crs).ToList();
+            // stdid
+
+            Student StdWithCourse = Db.Students.Include(s => s.Student_Courses).FirstOrDefault(s => s.StdID == id);
+
+            var exams = Db.Exams.Where( s => s.CrsID == StdWithCourse.Student_Courses.FirstOrDefault().CrsID).ToList();
+
+            return exams;
+            //return Db.Exams.Where(s  == id).Include(se => se.Exam).ThenInclude(e => e.Crs).ToList();
         }
 
     }

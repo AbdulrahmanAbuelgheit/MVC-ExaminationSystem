@@ -108,8 +108,8 @@ namespace ExaminationSystemMVC.Controllers
             ViewBag.StudentId = studentId;
             ViewBag.studentName = student?.Std?.FirstName;
 
-            ViewBag.UpcomingExamsCount = studentExam.Count(e => e.Exam.ExamDatetime > DateTime.Now);
-            ViewBag.CompletedExamsCount = studentExam.Count(e => e.Exam.ExamDatetime <= DateTime.Now);
+            ViewBag.UpcomingExamsCount = studentExam.Count(e => e.ExamDatetime > DateTime.Now);
+            ViewBag.CompletedExamsCount = studentExam.Count(e => e.ExamDatetime <= DateTime.Now);
             return View(studentExam);
         }
     }
