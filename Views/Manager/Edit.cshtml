@@ -1,0 +1,71 @@
+﻿@model ExaminationSystemMVC.ViewModels.AdminVMs.BranchVMs.UpdateBranchVM
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Views/Shared/_InstructorLayout.cshtml";
+}
+
+
+
+<div class="container py-5" style="max-width: 750px;">
+    <div class="mb-4 text-center">
+        <h2 class="fw-bold text-primary">🏢 Edit Branch</h2>
+        <hr style="width: 80px; border-top: 3px solid #6EC1E4; margin: 0 auto;" />
+    </div>
+
+    <div class="card shadow-lg rounded-4 border-0">
+        <div class="card-body p-4">
+            <form asp-action="Edit" method="post" novalidate>
+                <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+                <input type="hidden" asp-for="BranchID" />
+
+                <div class="mb-3">
+                    <label asp-for="BranchName" class="form-label fw-semibold text-muted">Branch Name</label>
+                    <input asp-for="BranchName" class="form-control" placeholder="Enter branch name" />
+                    <span asp-validation-for="BranchName" class="text-danger small"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="Governate" class="form-label fw-semibold text-muted">Governate</label>
+                    <input asp-for="Governate" class="form-control" placeholder="Enter governate" />
+                    <span asp-validation-for="Governate" class="text-danger small"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="City" class="form-label fw-semibold text-muted">City</label>
+                    <input asp-for="City" class="form-control" placeholder="Enter city" />
+                    <span asp-validation-for="City" class="text-danger small"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="Street" class="form-label fw-semibold text-muted">Street</label>
+                    <input asp-for="Street" class="form-control" placeholder="Enter street" />
+                    <span asp-validation-for="Street" class="text-danger small"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="Tel" class="form-label fw-semibold text-muted">Telephone</label>
+                    <input asp-for="Tel" class="form-control" placeholder="Enter phone number" />
+                    <span asp-validation-for="Tel" class="text-danger small"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="ManagerID" class="form-label fw-semibold text-muted">Manager</label>
+                    <select asp-for="ManagerID" asp-items="@(ViewBag.Instructors as SelectList)" class="form-select">
+                        <option value="">-- Select Manager --</option>
+                    </select>
+                    <span asp-validation-for="ManagerID" class="text-danger small"></span>
+                </div>
+
+                <div class="mt-4 d-flex justify-content-end gap-3">
+                    <button type="submit" class="btn btn-primary px-4">
+                        💾 Save
+                    </button>
+                    <a asp-action="Index" class="btn btn-outline-secondary px-4">
+                        ❌ Cancel
+                    </a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

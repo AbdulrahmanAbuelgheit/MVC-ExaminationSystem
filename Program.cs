@@ -3,6 +3,7 @@ using System.Text;
 using ExaminationSystemMVC.MappingConfig;
 using ExaminationSystemMVC.Models;
 using ExaminationSystemMVC.Models.JWT;
+using ExaminationSystemMVC.Reposatories;
 using ExaminationSystemMVC.UnitOfWorks;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
@@ -33,6 +34,9 @@ namespace ExaminationSystemMVC
               });
             builder.Services.AddScoped<JwtHelper>();
 
+            builder.Services.AddScoped<IInstructorRepository, InstructorRepository>();
+            builder.Services.AddScoped<UsersRepo>();
+            builder.Services.AddScoped<StudentRepo, StudentRepo>();
 
             var app = builder.Build();
 
@@ -70,7 +74,7 @@ namespace ExaminationSystemMVC
 
                         context.User = principal;
                     }
-                    catch(Exception ex)
+                    catch (Exception ex)
                     {
                         Console.WriteLine($"JWT Validation Failed: {ex.Message}");
                         context.Response.Cookies.Delete("jwt");

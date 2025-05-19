@@ -1,0 +1,234 @@
+﻿@model DisplayBranchVM
+
+@{
+    ViewData["Title"] = "Branch Details";
+    Layout = "_AdminLayout";
+}
+
+@* @if (TempData["Error"] != null) *@
+@* { *@
+@*     <div class="alert alert-danger alert-dismissible fade show shadow-sm" role="alert"> *@
+@*         <i class="bi bi-exclamation-triangle-fill me-2"></i> @TempData["Error"] *@
+@*         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button> *@
+@*     </div> *@
+@* } *@
+@* @if (TempData["Success"] != null) *@
+@* { *@
+@*     <div class="alert alert-success alert-dismissible fade show shadow-sm" role="alert"> *@
+@*         <i class="bi bi-check-circle-fill me-2"></i> @TempData["Success"] *@
+@*         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button> *@
+@*     </div> *@
+@* } *@
+
+
+<div class="container my-5">
+    <!-- Page Header -->
+    <div class="text-center mb-5">
+        <h2 class="fw-bold" style="color: var(--primary-color);">
+            <i class="bi bi-diagram-3-fill me-2"></i>Branch Details
+        </h2>
+        <hr class="mx-auto" style="width: 80px; border-top: 3px solid var(--primary-light);" />
+    </div>
+
+    <!-- Branch Info -->
+    <div class="card border-0 shadow-sm mb-5" style="border-radius: var(--border-radius); box-shadow: var(--box-shadow);">
+        <div class="card-body">
+            <h3 class="fw-semibold text-secondary">@Model.BranchName</h3>
+            <div class="d-flex flex-wrap gap-3 mt-3">
+                <span class="badge bg-primary">Governate: @Model.Governate</span>
+                <span class="badge bg-info text-dark">City: @Model.City</span>
+                <span class="badge bg-secondary">Street: @Model.Street</span>
+                <span class="badge bg-warning text-dark">Tel: @Model.Tel</span>
+                <span class="badge bg-dark">Manager: @Model.ManagerName</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Tracks Section -->
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <h4 class="text-info mb-0"><i class="bi bi-shuffle me-2"></i>Tracks in this Branch</h4>
+        <a asp-action="AddTrack" asp-route-id="@Model.BranchID" class="btn btn-outline-primary btn-sm">
+            <i class="bi bi-plus-circle me-1"></i> Add Track
+        </a>
+    </div>
+
+    @if (Model.Tracks?.Any() == true)
+    {
+        <div class="table-responsive shadow-sm mb-5">
+            <table class="table table-striped align-middle">
+                <thead class="table-light">
+                    <tr>
+                        <th>Track</th>
+                        <th>Duration</th>
+                        <th>Capacity</th>
+                        <th>Supervisor</th>
+                        <th style="width: 260px;">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var track in Model.Tracks)
+                    {
+                        <tr>
+                            <td>@track.TrackName</td>
+                            <td>@track.Duration weeks</td>
+                            <td>@track.Capacity</td>
+                            <td>@track.Supervisor.Ins.FirstName @track.Supervisor.Ins.LastName</td>
+                            <td>
+                                <div class="d-flex flex-wrap gap-2">
+                                    <a asp-action="AddInstructor" asp-controller="AdminBranch"
+                                       asp-route-trackId="@track.TrackID" asp-route-branchId="@Model.BranchID"
+                                       class="btn btn-outline-primary btn-sm">
+                                        <i class="bi bi-person-plus"></i> Add Instructor
+                                    </a>
+
+                                    <a asp-action="RemoveTrack" asp-controller="AdminBranch"
+                                       asp-route-trackId="@track.TrackID" asp-route-branchId="@Model.BranchID"
+                                       class="btn btn-outline-danger btn-sm"
+                                       onclick="return confirm('Are you sure you want to remove this track from the branch?')">
+                                        <i class="bi bi-trash"></i>
+                                    </a>
+                                </div>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    }
+    else
+    {
+        <div class="alert alert-info">No tracks assigned to this branch yet.</div>
+    }
+
+    <!-- Instructors Section -->
+    <div class="mb-5 mt-4">
+        <h4 class="text-info mb-3"><i class="bi bi-person-badge me-2"></i>Instructors by Track</h4>
+
+        @if (Model.Tracks?.Any() == true)
+        {
+            @foreach (var track in Model.Tracks)
+            {
+                <div class="card border-0 shadow-sm mb-4" style="border-radius: var(--border-radius);">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between align-items-center mb-3">
+                            <h5 class="text-primary mb-0"><i class="bi bi-diagram-3 me-2"></i>@track.TrackName</h5>
+                            <small class="text-muted">
+                                Supervisor: @track.Supervisor?.Ins.FirstName @track.Supervisor?.Ins.LastName
+                            </small>
+                        </div>
+
+                        @if (track.Instructors?.Any() == true)
+                        {
+                            <div class="table-responsive">
+                                <table class="table table-bordered table-hover align-middle mb-0">
+                                    <thead class="table-light">
+                                        <tr>
+                                            <th>Name</th>
+                                            <th>Email</th>
+                                            <th style="width: 260px;">Actions</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach (var ins in track.Instructors)
+                                        {
+                                            <tr>
+                                                <td>
+                                                    @ins.Ins.FirstName @ins.Ins.LastName
+                                                    @if (track.Supervisor?.InsID == ins.InsID)
+                                                    {
+                                                        <span class="badge bg-primary ms-2">
+                                                            <i class="bi bi-star-fill me-1"></i>Supervisor
+                                                        </span>
+                                                    }
+                                                </td>
+                                                <td>@ins.Ins.Email</td>
+                                                <td>
+                                                    <div class="d-flex flex-wrap gap-2">
+                                                        @if (Model.ManagerID != ins.InsID)
+                                                        {
+                                                            <form method="post"
+                                                                  asp-action="AssignManager"
+                                                                  asp-controller="AdminBranch"
+                                                                  asp-route-instructorId="@ins.InsID"
+                                                                  asp-route-branchId="@Model.BranchID"
+                                                                  onsubmit="return confirm('Assign as branch manager?')">
+                                                                <button class="btn btn-outline-success btn-sm">
+                                                                    <i class="bi bi-award me-1"></i> Manager
+                                                                </button>
+                                                            </form>
+
+                                                            <a asp-action="RemoveInstructor"
+                                                               asp-controller="AdminBranch"
+                                                               asp-route-instructorId="@ins.InsID"
+                                                               asp-route-branchId="@Model.BranchID"
+                                                               asp-route-trackId="@track.TrackID"
+                                                               class="btn btn-outline-danger btn-sm"
+                                                               onclick="return confirm('Remove from this track in this branch?')">
+                                                                <i class="bi bi-trash"></i>
+                                                            </a>
+                                                        }
+                                                        else
+                                                        {
+                                                            <span class="badge bg-success">
+                                                                <i class="bi bi-star me-1"></i>Manager
+                                                            </span>
+                                                        }
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        }
+                                    </tbody>
+                                </table>
+                            </div>
+                        }
+                        else
+                        {
+                            <p class="text-muted">No instructors assigned to this track.</p>
+                        }
+                    </div>
+                </div>
+            }
+        }
+        else
+        {
+            <p class="text-muted">No tracks available to show instructors.</p>
+        }
+    </div>
+
+    <!-- Back Button -->
+    <a asp-action="Index" class="btn btn-secondary mt-4" style="border-radius: var(--border-radius);">
+        <i class="bi bi-arrow-left-circle me-1"></i> Back to List
+    </a>
+</div>
+
+
+
+<!-- Error Modal -->
+<div class="modal fade" id="errorModal" tabindex="-1" aria-labelledby="errorModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content shadow">
+            <div class="modal-header bg-danger text-white">
+                <h5 class="modal-title" id="errorModalLabel"><i class="bi bi-exclamation-triangle-fill me-2"></i>Error</h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                @TempData["Error"]
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        window.addEventListener("DOMContentLoaded", function () {
+            var hasError = '@TempData["Error"]' !== '';
+            if (hasError) {
+                var errorModal = new bootstrap.Modal(document.getElementById('errorModal'));
+                errorModal.show();
+            }
+        });
+    </script>
+}

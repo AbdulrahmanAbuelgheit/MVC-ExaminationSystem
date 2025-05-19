@@ -1,0 +1,86 @@
+﻿@model ExaminationSystemMVC.Models.Student
+
+@{
+    ViewData["Title"] = "Student Details";
+    Layout = "_AdminLayout";
+}
+
+<div class="container my-5" style="max-width: 850px;">
+    <!-- Header -->
+    <div class="mb-4 text-center">
+        <h2 class="fw-bold" style="color: var(--primary-color);">Student Profile</h2>
+        <hr class="mx-auto" style="width: 100px; border-top: 3px solid var(--primary-light);" />
+    </div>
+
+    <!-- Student Info Card -->
+    <div class="card shadow-sm border-0 mb-5" style="border-radius: var(--border-radius);">
+        <div class="card-body p-4">
+            <h4 class="mb-4" style="color: var(--primary-color); font-weight: 600;">
+                <i class="bi bi-person-circle me-2"></i>@Model.Std.FirstName @Model.Std.LastName
+            </h4>
+
+            <div class="row mb-3">
+                <div class="col-md-6">
+                    <p><strong>Email:</strong> @Model.Std.Email</p>
+                    <p><strong>Intake Year:</strong> @Model.IntakeYear</p>
+                </div>
+                <div class="col-md-6">
+                    <p>
+                        <strong>Status:</strong>
+                        <span class="badge @(Model.IsActive == "T" ? "bg-success" : "bg-danger")">
+                            @(Model.IsActive == "T" ? "Active" : "Inactive")
+                        </span>
+                    </p>
+                    <p><strong>Branch:</strong> @Model.Branch?.BranchName</p>
+                    <p><strong>Track:</strong> @Model.Track?.TrackName</p>
+                </div>
+            </div>
+
+            
+        </div>
+    </div>
+
+    <!-- Courses Enrolled Section -->
+    <div class="card shadow-sm border-0" style="border-radius: var(--border-radius);">
+        <div class="card-body p-4">
+            <h4 class="mb-4" style="color: var(--primary-color); font-weight: 600;">
+                <i class="bi bi-book me-2"></i>Courses Enrolled
+            </h4>
+
+            @if (Model.Student_Courses != null && Model.Student_Courses.Any())
+            {
+                <div class="table-responsive">
+                    <table class="table table-striped align-middle">
+                        <thead class="table-light">
+                            <tr>
+                                <th>Course Name</th>
+                                <th>Description</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var sc in Model.Student_Courses)
+                            {
+                                <tr>
+                                    <td>@sc.Crs?.CrsName</td>
+                                    <td>@sc.Crs?.Description</td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            }
+            else
+            {
+                <div class="alert alert-info mb-0">
+                    This student is not enrolled in any courses.
+                </div>
+            }
+        </div>
+    </div>
+    <div class="mt-5 text-end">
+        <a asp-action="Index" class="btn"
+           style="background-color: var(--primary-color); color: white; border-radius: var(--border-radius);">
+            ← Back to List
+        </a>
+    </div>
+</div>
