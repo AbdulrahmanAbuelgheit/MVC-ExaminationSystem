@@ -100,17 +100,47 @@ namespace ExaminationSystemMVC.Controllers
             if (studentId == 0)
                 return RedirectToAction("Login", "Account");
 
-            var studentExam = StudentRepo.getStudentExam(studentId);
-            if (studentExam == null)
+            var upcomingExams = StudentRepo.getStudentUpcomingExams(studentId);
+            var completedExams = StudentRepo.getStudentCompletedExams(studentId);
+
+            if (upcomingExams == null || completedExams == null)
                 return NotFound();
 
             var student = StudentRepo.getById(studentId);
             ViewBag.StudentId = studentId;
             ViewBag.studentName = student?.Std?.FirstName;
 
-            ViewBag.UpcomingExamsCount = studentExam.Count(e => e.ExamDatetime > DateTime.Now);
-            ViewBag.CompletedExamsCount = studentExam.Count(e => e.ExamDatetime <= DateTime.Now);
-            return View(studentExam);
+            ViewBag.UpcomingExams = upcomingExams
+            .OrderBy(e => e.ExamDatetime > DateTime.Now)
+            .ThenBy(e => e.ExamDatetime)
+            .ToList();
+            ViewBag.CompletedExams = completedExams.OrderByDescending(se => se.Exam.ExamDatetime).ToList();
+
+            ViewBag.UpcomingExamsCount = upcomingExams.Count;
+            ViewBag.CompletedExamsCount = completedExams.Count;
+
+            return View();
+
+        }
+        public IActionResult ExamDetails(int examId, int? id = null)
+        {
+            int studentId = id ?? GetCurrentStudentId();
+            if (studentId == 0)
+                return RedirectToAction("Login", "Account");
+
+            var examDetails = StudentRepo.GetExamQuestionsWithAnswers(examId, studentId);
+
+            if (examDetails == null || !examDetails.Any())
+                return NotFound();
+
+            var exam = StudentRepo.GetExamById(examId);
+            var student = StudentRepo.getById(studentId);
+
+            ViewBag.ExamTitle = $"{exam.Crs.CrsName} Exam";
+            ViewBag.StudentName = $"{student.Std.FirstName} {student.Std.LastName}";
+            ViewBag.ExamDate = exam.ExamDatetime.ToString("MMMM d, yyyy");
+
+            return View(examDetails);
         }
     }
 }
