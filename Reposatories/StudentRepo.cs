@@ -79,9 +79,9 @@ namespace ExaminationSystemMVC.Reposatories
             if (!studentCourses.Any())
                 return new List<Exam>();
 
-            var courseExams = Db.Exams
+            var availableExams = Db.Exams
                 .Include(e => e.Crs)
-                .Where(e => studentCourses.Contains(e.CrsID) && e.ExamDatetime > DateTime.Now)
+                .Where(e => studentCourses.Contains(e.CrsID) && e.Expire_Date > DateTime.Now)
                 .ToList();
 
             var completedExamIds = Db.Student_Exams
@@ -89,7 +89,7 @@ namespace ExaminationSystemMVC.Reposatories
                 .Select(se => se.ExamID)
                 .ToList();
 
-            return courseExams
+            return availableExams
                 .Where(e => !completedExamIds.Contains(e.ExamID))
                 .ToList();
         }
