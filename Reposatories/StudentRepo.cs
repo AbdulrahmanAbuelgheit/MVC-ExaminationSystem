@@ -1,4 +1,7 @@
-﻿using ExaminationSystemMVC.Models;
+﻿using System.Data;
+using ExaminationSystemMVC.Models;
+using ExaminationSystemMVC.ViewModels;
+using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 
 
@@ -101,6 +104,65 @@ namespace ExaminationSystemMVC.Reposatories
                 .Include(se => se.Exam)
                     .ThenInclude(e => e.Crs)
                 .ToList();
+        }
+        public List<ExamQuestionWithAnswersVM> GetExamQuestionsWithAnswers(int examId, int studentId)
+        {
+            var results = new List<ExamQuestionWithAnswersVM>();
+
+            var connectionString = Db.Database.GetDbConnection().ConnectionString;
+
+            using (var connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+                using (var command = new SqlCommand("GetExamQuestionsWithOptionsWithStdAnswer", connection))
+                {
+                    command.CommandType = CommandType.StoredProcedure;
+
+                    command.Parameters.Add(new SqlParameter("@ExamID", examId));
+                    command.Parameters.Add(new SqlParameter("@StdID", studentId));
+
+                    using (var reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            var item = new ExamQuestionWithAnswersVM
+                            {
+                                QID = reader.GetInt32(reader.GetOrdinal("QID")),
+                                QText = reader.GetString(reader.GetOrdinal("QText")),
+                                Type = reader.GetString(reader.GetOrdinal("Type")),
+                                Options = reader.GetString(reader.GetOrdinal("Options")),
+                                Points = reader.GetInt32(reader.GetOrdinal("Points")),
+                                CrsID = reader.GetInt32(reader.GetOrdinal("CrsID")),
+                            };
+
+                            // Handle CorrectOptNum
+                            var correctOptNumOrdinal = reader.GetOrdinal("CorrectOptNum");
+                            if (!reader.IsDBNull(correctOptNumOrdinal))
+                            {
+                                item.CorrectOptNum = reader.GetValue(correctOptNumOrdinal).ToString();
+                            }
+
+                            // Handle StudentAnswer
+                            var studentAnswerOrdinal = reader.GetOrdinal("StudentAnswer");
+                            if (!reader.IsDBNull(studentAnswerOrdinal))
+                            {
+                                item.StudentAnswer = reader.GetValue(studentAnswerOrdinal).ToString();
+                            }
+
+                            results.Add(item);
+                        }
+                    }
+                }
+            }
+
+            return results;
+        }
+
+        public Exam GetExamById(int examId)
+        {
+            return Db.Exams
+                .Include(e => e.Crs)
+                .FirstOrDefault(e => e.ExamID == examId);
         }
 
     }
