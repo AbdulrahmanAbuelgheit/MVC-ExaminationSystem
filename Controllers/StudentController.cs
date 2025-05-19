@@ -121,5 +121,113 @@ namespace ExaminationSystemMVC.Controllers
 
             return View();
         }
+
+        public IActionResult TakeExam(int id)
+        {
+            int studentId = GetCurrentStudentId();
+            if (studentId == 0)
+                return RedirectToAction("Login", "Account");
+
+            var exam = StudentRepo.Db.Exams
+                .Include(e => e.Crs)
+                .FirstOrDefault(e => e.ExamID == id);
+
+            if (exam == null)
+                return NotFound();
+
+            if (exam.ExamDatetime > DateTime.Now)
+            {
+                TempData["ErrorMessage"] = "This exam is not available yet.";
+                return RedirectToAction("Exams");
+            }
+
+            if (exam.Expire_Date < DateTime.Now)
+            {
+                TempData["ErrorMessage"] = "This exam has expired.";
+                return RedirectToAction("Exams");
+            }
+
+            var existingExam = StudentRepo.Db.Student_Exams
+                .FirstOrDefault(se => se.StdID == studentId && se.ExamID == id);
+
+            if (existingExam != null)
+            {
+                TempData["ErrorMessage"] = "You have already taken this exam.";
+                return RedirectToAction("Exams");
+            }
+
+            var examQuestions = StudentRepo.GetExamQuestions(id);
+
+            if (!examQuestions.Any())
+            {
+                TempData["ErrorMessage"] = "No questions found for this exam.";
+                return RedirectToAction("Exams");
+            }
+
+            ViewBag.ExamID = id;
+            ViewBag.ExamName = exam.Crs.CrsName;
+            ViewBag.Duration = exam.ExamDuration;
+            ViewBag.EndTime = DateTime.Now.AddMinutes(exam.ExamDuration);
+
+            return View(examQuestions);
+        }
+
+        [HttpPost]
+        public IActionResult SubmitExam(int examId, IFormCollection form)
+        {
+            int studentId = GetCurrentStudentId();
+            if (studentId == 0)
+                return RedirectToAction("Login", "Account");
+
+            var answers = new Dictionary<int, string>();
+
+            foreach (var key in form.Keys)
+            {
+                if (key.StartsWith("question_"))
+                {
+                    string questionIdStr = key.Substring(9); 
+                    if (int.TryParse(questionIdStr, out int questionId))
+                    {
+                        answers[questionId] = form[key];
+                    }
+                }
+            }
+
+            // Submit the exam and get the score
+            int score = StudentRepo.SubmitExam(studentId, examId, answers);
+
+            if (score < 0)
+            {
+                TempData["ErrorMessage"] = "There was an error processing your exam.";
+                return RedirectToAction("Exams");
+            }
+
+            TempData["SuccessMessage"] = "Exam submitted successfully!";
+            TempData["ExamScore"] = score;
+
+            return RedirectToAction("ExamResult", new { id = examId });
+        }
+
+        public IActionResult ExamResult(int id)
+        {
+            int studentId = GetCurrentStudentId();
+            if (studentId == 0)
+                return RedirectToAction("Login", "Account");
+
+            var studentExam = StudentRepo.Db.Student_Exams
+                .Include(se => se.Exam)
+                .ThenInclude(e => e.Crs)
+                .FirstOrDefault(se => se.StdID == studentId && se.ExamID == id);
+
+            if (studentExam == null)
+            {
+                TempData["ErrorMessage"] = "Exam result not found.";
+                return RedirectToAction("Exams");
+            }
+
+            return View(studentExam);
+        }
+
+
     }
 }

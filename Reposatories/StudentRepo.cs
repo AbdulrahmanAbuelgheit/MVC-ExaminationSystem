@@ -100,7 +100,88 @@ namespace ExaminationSystemMVC.Reposatories
                 .Where(se => se.StdID == id)
                 .Include(se => se.Exam)
                     .ThenInclude(e => e.Crs)
+                .Include(se => se.Exam.QIDs)
                 .ToList();
+        }
+
+        // Get exam questions for a specific exam
+        public List<ExamQuestion> GetExamQuestions(int examId)
+        {
+            var exam = Db.Exams
+                .Include(e => e.QIDs)
+                .FirstOrDefault(e => e.ExamID == examId);
+
+            if (exam == null)
+                return new List<ExamQuestion>();
+
+            var result = new List<ExamQuestion>();
+
+            foreach (var question in exam.QIDs)
+            {
+                var options = Db.Questions_Options
+                    .Where(o => o.QID == question.QID)
+                    .OrderBy(o => o.OptNum)
+                    .ToList();
+
+                result.Add(new ExamQuestion
+                {
+                    Question = question,
+                    Options = options
+                });
+            }
+
+            return result;
+        }
+
+        // Submit exam answers
+        public int SubmitExam(int studentId, int examId, Dictionary<int, string> answers)
+        {
+            var existingSubmission = Db.Student_Exams
+                .FirstOrDefault(se => se.StdID == studentId && se.ExamID == examId);
+
+            if (existingSubmission != null)
+                return -1;
+
+            var exam = Db.Exams
+                .Include(e => e.QIDs)
+                .FirstOrDefault(e => e.ExamID == examId);
+
+            if (exam == null)
+                return -2; 
+
+            int totalScore = 0;
+
+            foreach (var question in exam.QIDs)
+            {
+                if (answers.TryGetValue(question.QID, out string selectedAnswer))
+                {
+                    Db.Exam_Student_Questions.Add(new Exam_Student_Question
+                    {
+                        ExamID = examId,
+                        StdID = studentId,
+                        QID = question.QID,
+                        SelectedOpt = selectedAnswer
+                    });
+
+                    int correctOption = question.CorrectOptNum;
+                    if (selectedAnswer == correctOption.ToString())
+                    {
+                        totalScore += question.Points;
+                    }
+                }
+            }
+
+            var studentExam = new Student_Exam
+            {
+                StdID = studentId,
+                ExamID = examId,
+                Score = totalScore
+            };
+
+            Db.Student_Exams.Add(studentExam);
+            Db.SaveChanges();
+
+            return totalScore;
         }
 
     }
