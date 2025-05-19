@@ -110,7 +110,10 @@ namespace ExaminationSystemMVC.Controllers
             ViewBag.StudentId = studentId;
             ViewBag.studentName = student?.Std?.FirstName;
 
-            ViewBag.UpcomingExams = upcomingExams.OrderBy(e => e.ExamDatetime).ToList();
+            ViewBag.UpcomingExams = upcomingExams
+            .OrderBy(e => e.ExamDatetime > DateTime.Now)
+            .ThenBy(e => e.ExamDatetime)
+            .ToList();
             ViewBag.CompletedExams = completedExams.OrderByDescending(se => se.Exam.ExamDatetime).ToList();
 
             ViewBag.UpcomingExamsCount = upcomingExams.Count;
