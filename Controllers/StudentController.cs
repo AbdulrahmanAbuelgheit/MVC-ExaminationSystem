@@ -50,6 +50,13 @@ namespace ExaminationSystemMVC.Controllers
             return 0;
         }
 
+        [Route("Student/Home")]
+        public IActionResult StudentHome()
+        {
+            ViewData["Layout"] = "~/Views/Shared/StudentLayout.cshtml";
+            return View("~/Views/Home/Index.cshtml");
+        }
+
         public IActionResult Dashboard()
         {
             int studentId = GetCurrentStudentId();
@@ -158,13 +165,11 @@ namespace ExaminationSystemMVC.Controllers
 
             if (exam.ExamDatetime > DateTime.Now)
             {
-                TempData["ErrorMessage"] = "This exam is not available yet.";
                 return RedirectToAction("Exams");
             }
 
             if (exam.Expire_Date < DateTime.Now)
             {
-                TempData["ErrorMessage"] = "This exam has expired.";
                 return RedirectToAction("Exams");
             }
 
@@ -173,7 +178,6 @@ namespace ExaminationSystemMVC.Controllers
 
             if (existingExam != null)
             {
-                TempData["ErrorMessage"] = "You have already taken this exam.";
                 return RedirectToAction("Exams");
             }
 
@@ -181,7 +185,6 @@ namespace ExaminationSystemMVC.Controllers
 
             if (!examQuestions.Any())
             {
-                TempData["ErrorMessage"] = "No questions found for this exam.";
                 return RedirectToAction("Exams");
             }
 
@@ -219,12 +222,9 @@ namespace ExaminationSystemMVC.Controllers
 
             if (score < 0)
             {
-                TempData["ErrorMessage"] = "There was an error processing your exam.";
                 return RedirectToAction("Exams");
             }
 
-            TempData["SuccessMessage"] = "Exam submitted successfully!";
-            TempData["ExamScore"] = score;
 
             return RedirectToAction("ExamResult", new { id = examId });
         }
@@ -242,7 +242,6 @@ namespace ExaminationSystemMVC.Controllers
 
             if (studentExam == null)
             {
-                TempData["ErrorMessage"] = "Exam result not found.";
                 return RedirectToAction("Exams");
             }
 

@@ -89,7 +89,7 @@ namespace ExaminationSystemMVC.Controllers
                 FirstName = instructor.FirstName,
                 LastName = instructor.LastName,
                 Email = instructor.Email,
-                Password = instructor.Password,
+                Password = BCrypt.Net.BCrypt.HashPassword(instructor.Password),
                 Birthdate = instructor.Birthdate,
                 Street = instructor.Street,
                 Governate = instructor.Governate,

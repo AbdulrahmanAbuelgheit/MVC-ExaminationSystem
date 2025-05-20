@@ -33,7 +33,14 @@
                         </li>
                         <li class="list-group-item d-flex justify-content-between">
                             <span class="fw-bold">Phone:</span>
-                            <span>@Model.PhoneNumber</span>
+							@if (Model.PhoneNumber == null)
+							{
+								<span>N/A</span>
+							}
+							else
+							{
+								<span>0@(Model.PhoneNumber)</span>
+							}
                         </li>
                         <li class="list-group-item d-flex justify-content-between">
                             <span class="fw-bold">Salary:</span>
