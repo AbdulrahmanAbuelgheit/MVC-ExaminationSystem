@@ -38,7 +38,7 @@ namespace ExaminationSystemMVC.Controllers
             var instructor = _repository.GetById(user.UserID);
             if (instructor == null) return NotFound();
 
-            bool isManager = instructor.Branches.Any(); // Branches managed by this instructor
+            bool isManager = instructor.Branches.Any(); 
 
             ViewBag.IsManager = isManager;
             ViewBag.ManagedBranches = isManager ? instructor.Branches : new List<Branch>();
@@ -56,9 +56,9 @@ namespace ExaminationSystemMVC.Controllers
             var instructor = _repository.GetById(user.UserID);
             if (instructor == null) return NotFound();
 
-            var managedBranch = instructor.Branches.FirstOrDefault(); // Get the branch where this instructor is the manager
+            var managedBranch = instructor.Branches.FirstOrDefault(); 
             if (managedBranch == null)
-                return View("NoBranch"); // Optional: create a view saying "You're not managing any branch"
+                return View("NoBranch"); 
 
             var vm = new DisplayBranchVM
             {
@@ -92,6 +92,34 @@ namespace ExaminationSystemMVC.Controllers
 
             var emailClaim = principal.FindFirst(ClaimTypes.Email);
             return emailClaim?.Value;
+        }
+
+    
+
+        public IActionResult ReportViewer()
+        {
+            
+            var reports = new List<SelectListItem>
+        {
+            new SelectListItem { Value = "Exam Report/ExamDetailsReport", Text = "Exam Details" },
+            new SelectListItem { Value = "StudentResultsReport/StudentResultsReport", Text = "Student Results" },
+            new SelectListItem { Value = "Exam With out correct Answer/ExamDetailswithoutAnswerReport", Text = "Exam Questions" },
+                      //new SelectListItem { Value = "ExamQuestions/QuestionsAnswerReport", Text = "Questions Correct Answer" }
+        };
+
+            ViewBag.Reports = reports;
+            return View();
+        }
+
+
+
+        public IActionResult RedirectToReport(string selectedReport)
+        {
+            if (string.IsNullOrEmpty(selectedReport))
+                return RedirectToAction("ReportViewer");
+
+            var reportUrl = $"http://localhost/ReportServer?/{selectedReport}&rs:Command=Render";
+            return Redirect(reportUrl);
         }
 
 
