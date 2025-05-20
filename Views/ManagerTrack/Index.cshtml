@@ -1,7 +1,7 @@
 ﻿@model List<DisplayTrackVM>
 @{
     ViewData["Title"] = "My Branch Tracks";
-    Layout = "~/Views/Shared/_InstructorLayout.cshtml";
+    Layout = "~/Views/Shared/_ManagerLayout.cshtml";
 }
 @if (TempData["ErrorMessage"] != null)
 {
@@ -94,14 +94,7 @@
     {
         <div class="alert alert-info text-center shadow-sm mt-4">
             No tracks found in your branch.
-            <div class="mt-2">
-                <a asp-action="Create" class="btn btn-primary me-2">
-                    <i class="bi bi-plus-circle"></i> Create New Track
-                </a>
-                <a asp-controller="ManagerBranch" asp-action="AddTrack" class="btn btn-success">
-                    <i class="bi bi-plus-square"></i> Add Existing Track
-                </a>
-            </div>
+           
         </div>
     }
 </div>

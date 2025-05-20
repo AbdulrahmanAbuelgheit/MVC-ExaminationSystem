@@ -1,23 +1,43 @@
 ﻿@using ExaminationSystemMVC.ViewModels.Course
 @model CourseDetailsVM
+@{
+    ViewData["Title"] = "Course Details";
+    Layout = "~/Views/Shared/_ManagerLayout.cshtml";
+}
+
 <div class="container mt-4">
     <div class="card shadow-sm">
-        <div class="card-header bg-primary text-white">
-            <h3>@Model.CourseName - Details</h3>
+        <div class="card-header bg-primary text-white d-flex justify-content-between align-items-center">
+            <h3 class="mb-0">
+                <i class="fas fa-book me-2"></i>
+                @Model.CourseName - Details
+            </h3>
+           
         </div>
         <div class="card-body">
-            <dl class="row mb-4">
-                <dt class="col-sm-3">Description:</dt>
-                <dd class="col-sm-9">@Model.Description</dd>
-            </dl>
+            <div class="row mb-4">
+                <div class="col-md-8">
+                    <dl class="row">
+                        <dt class="col-sm-3">
+                            <i class="fas fa-align-left me-2 text-muted"></i>Description:
+                        </dt>
+                        <dd class="col-sm-9">@Model.Description</dd>
+
+                      
+                    </dl>
+                </div>
+            </div>
 
             <div class="d-flex justify-content-between align-items-center mb-3">
-                <h5>Assigned Instructors</h5>
+                <h5>
+                    <i class="fas fa-chalkboard-teacher me-2 text-primary"></i>
+                    Assigned Instructors
+                </h5>
                 <a asp-action="AssignInstructorToCourse"
                    asp-route-courseId="@Model.CourseID"
                    asp-route-trackId="@Model.TrackID"
                    class="btn btn-primary">
-                    <i class="fas fa-user-plus"></i> Assign Instructor
+                    <i class="fas fa-user-plus me-2"></i>Assign Instructor
                 </a>
             </div>
 
@@ -29,8 +49,14 @@
                         <div class="list-group-item">
                             <div class="d-flex justify-content-between align-items-center">
                                 <div>
-                                    <h6 class="mb-1">@instructor.InsName</h6>
-                                    <small class="text-muted">@instructor.Email</small>
+                                    <h6 class="mb-1">
+                                        <i class="fas fa-user-tie me-2 text-primary"></i>
+                                        @instructor.InsName
+                                    </h6>
+                                    <small class="text-muted">
+                                        <i class="fas fa-envelope me-2"></i>
+                                        @instructor.Email
+                                    </small>
                                 </div>
                                 <form asp-action="RemoveInstructorFromCourse" method="post">
                                     <input type="hidden" name="courseId" value="@Model.CourseID" />
@@ -38,7 +64,7 @@
                                     <input type="hidden" name="trackId" value="@Model.TrackID" />
                                     <button type="submit" class="btn btn-sm btn-outline-danger"
                                             onclick="return confirm('Remove this instructor from course?')">
-                                        <i class="fas fa-trash-alt"></i>
+                                        <i class="fas fa-trash-alt me-1"></i>Remove
                                     </button>
                                 </form>
                             </div>
@@ -48,13 +74,37 @@
             }
             else
             {
-                <div class="alert alert-warning">No instructors assigned to this course</div>
+                <div class="alert alert-warning">
+                    <i class="fas fa-exclamation-circle me-2"></i>
+                    No instructors assigned to this course
+                </div>
             }
+
+         
         </div>
-        @* <div class="card-footer"> *@
-        @*     <a asp-controller="ManagerTrack" asp-action="Details" asp-route-id="@Model.TrackID class="btn btn-secondary"> *@
-        @*         <i class="fas fa-arrow-left"></i> Back to Track *@
-        @*     </a> *@
-        @* </div> *@
     </div>
 </div>
+
+@section Styles {
+    <style>
+        .card {
+            border-radius: 0.5rem;
+            border: none;
+            box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+        }
+
+        .list-group-item {
+            transition: all 0.2s;
+            border-left: none;
+            border-right: none;
+        }
+
+            .list-group-item:hover {
+                background-color: #f8f9fa;
+            }
+
+        .card-header {
+            border-radius: 0.5rem 0.5rem 0 0 !important;
+        }
+    </style>
+}
