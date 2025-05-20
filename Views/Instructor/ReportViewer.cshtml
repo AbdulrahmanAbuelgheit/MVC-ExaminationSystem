@@ -1,0 +1,161 @@
+﻿@{
+    var reports = ViewBag.Reports as List<SelectListItem>;
+}
+
+<style>
+    body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background-color: #f5f7fa;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+    }
+
+    .container {
+        background-color: white;
+        padding: 2.5rem;
+        border-radius: 10px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        text-align: center;
+        max-width: 500px;
+        width: 100%;
+    }
+
+    h3 {
+        margin-bottom: 1.5rem;
+        color: #2c3e50;
+        font-weight: 600;
+    }
+
+    .form-group {
+        margin-bottom: 1.5rem;
+        text-align: left;
+    }
+
+    .form-label {
+        display: block;
+        margin-bottom: 0.5rem;
+        font-weight: 500;
+        color: #34495e;
+    }
+
+    .form-select {
+        width: 100%;
+        padding: 0.75rem;
+        font-size: 1rem;
+        border: 1px solid #ddd;
+        border-radius: 6px;
+        background-color: #f8f9fa;
+        transition: border-color 0.3s, box-shadow 0.3s;
+    }
+
+        .form-select:focus {
+            border-color: #3498db;
+            box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
+            outline: none;
+        }
+
+    .btn-primary {
+        padding: 0.75rem 1.5rem;
+        font-size: 1rem;
+        background-color: #3498db;
+        border: none;
+        color: white;
+        cursor: pointer;
+        border-radius: 6px;
+        transition: background-color 0.3s, transform 0.2s;
+        font-weight: 500;
+        width: 100%;
+    }
+
+        .btn-primary:hover {
+            background-color: #2980b9;
+            transform: translateY(-2px);
+        }
+
+        .btn-primary:active {
+            transform: translateY(0);
+        }
+
+        .btn-primary:disabled {
+            background-color: #95a5a6;
+            cursor: not-allowed;
+        }
+
+    .alert {
+        padding: 0.75rem 1.25rem;
+        margin-bottom: 1rem;
+        border-radius: 6px;
+        background-color: #f8d7da;
+        color: #721c24;
+        display: none;
+    }
+</style>
+
+<div class="container">
+    <h3>Select a Report</h3>
+
+    <div class="form-group">
+        <label for="selectedReport" class="form-label">Report</label>
+        <select id="selectedReport" class="form-select" required>
+            <option value="">-- Select Report --</option>
+            @foreach (var report in reports)
+            {
+                <option value="@report.Value">@report.Text</option>
+            }
+        </select>
+    </div>
+
+    <div id="errorAlert" class="alert" role="alert">
+        Please select a report before proceeding.
+    </div>
+
+    <button class="btn btn-primary" onclick="openReportPopup()">Open Report</button>
+</div>
+
+<script>
+    function openReportPopup() {
+        var selectedReport = document.getElementById("selectedReport").value;
+        var errorAlert = document.getElementById("errorAlert");
+
+        if (!selectedReport) {
+            errorAlert.style.display = "block";
+            return;
+        } else {
+            errorAlert.style.display = "none";
+        }
+
+        // URL of the SSRS report
+        var reportUrl = "http://localhost/ReportServer?/" + selectedReport + "&rs:Command=Render";
+
+        // Calculate center position for the popup
+        var width = 1200;
+        var height = 800;
+        var left = (window.screen.width - width) / 2;
+        var top = (window.screen.height - height) / 2;
+
+        // Open in a centered popup window
+        var popup = window.open(
+            reportUrl,
+            "ReportPopup",
+            `width=${width},height=${height},left=${left},top=${top},scrollbars=yes,resizable=yes,toolbar=no,location=no`
+        );
+
+        // Focus the popup if it exists
+        if (popup) {
+            popup.focus();
+        } else {
+            alert("Popup blocked! Please allow popups for this site.");
+        }
+    }
+
+    // Add event listener for Enter key
+    document.getElementById("selectedReport").addEventListener("keypress", function(event) {
+        if (event.key === "Enter") {
+            openReportPopup();
+        }
+    });
+</script>

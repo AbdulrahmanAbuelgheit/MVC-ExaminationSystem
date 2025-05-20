@@ -50,6 +50,47 @@ namespace ExaminationSystemMVC.Controllers
             return emailClaim?.Value;
         }
 
+        //public IActionResult ReportViewer()
+        //{
+        //    var reports = new List<SelectListItem>
+        //        {
+        //            new SelectListItem { Value = "Exam%20Report/ExamDetailsReport", Text = "Exam Details Report" },
+        //            new SelectListItem { Value = "Exam%20Report/StudentResultsReport", Text = "Student Results Report" },
+        //            // أضف تقارير أخرى هنا بنفس الشكل
+        //        };
+
+        //    ViewBag.Reports = reports;
+
+        //    return View();
+        //}
+
+
+        public IActionResult ReportViewer()
+        {
+            
+            var reports = new List<SelectListItem>
+        {
+            new SelectListItem { Value = "Exam Report/ExamDetailsReport", Text = "Exam Details" },
+            new SelectListItem { Value = "StudentResultsReport/StudentResultsReport", Text = "Student Results" },
+            new SelectListItem { Value = "Exam With out correct Answer/ExamDetailswithoutAnswerReport", Text = "Exam Questions" },
+                      //new SelectListItem { Value = "ExamQuestions/QuestionsAnswerReport", Text = "Questions Correct Answer" }
+        };
+
+            ViewBag.Reports = reports;
+            return View();
+        }
+
+
+
+        public IActionResult RedirectToReport(string selectedReport)
+        {
+            if (string.IsNullOrEmpty(selectedReport))
+                return RedirectToAction("ReportViewer");
+
+            var reportUrl = $"http://localhost/ReportServer?/{selectedReport}&rs:Command=Render";
+            return Redirect(reportUrl);
+        }
+
 
         private int GetCurrentUserIdFromDatabase()
         {
