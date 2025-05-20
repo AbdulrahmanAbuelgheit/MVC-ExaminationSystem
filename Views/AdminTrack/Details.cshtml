@@ -274,3 +274,18 @@
 </div>
 
 
+    @section Scripts {
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        <script>
+            @if (TempData["Error"] != null)
+            {
+                <text>
+                        Swal.fire({
+                            icon: 'warning',
+                            title: 'Oops!',
+                            text: '@TempData["Error"]'
+                        });
+                </text>
+            }
+        </script>
+    }
