@@ -8,7 +8,7 @@ using ExaminationSystemMVC.Models;
 namespace ExaminationSystemMVC.Controllers
 {
     [Authorize(Roles = "Instructor")]
-    public class ManagerController : ManagerBaseController
+    public class ManagerController : Controller
     {
         private readonly IMapper _map;
         private readonly UnitOfWork _unit;
@@ -23,7 +23,6 @@ namespace ExaminationSystemMVC.Controllers
 
             if (int.TryParse(userId, out int managerId))
             {
-                // Alternative way to get branch ID if not directly on Instructor
                 _managerBranchId = _unit.BranchRepo.GetBranchIdByManagerId(managerId);
             }
             else
@@ -39,7 +38,7 @@ namespace ExaminationSystemMVC.Controllers
             {
                 return NotFound();
             }
-           
+
 
             var branchDTO = _map.Map<DisplayBranchVM>(branch);
             return View(branchDTO);

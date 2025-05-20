@@ -31,7 +31,6 @@ namespace ExaminationSystemMVC.Reposatories
         public List<Exam> GetInstructorExamsWithDetails(int instructorId, int? courseId);
         public Instructor GetById(int id);
         public int InsertQuestion(string qText, string type, int points, int crsId, int correctOptNum);
-        //public int InsertOptions(int qId, string optText1, string optText2, string optText3, string optText4);
         public int InsertOptionsUsingSP(int qId, string optText1, string optText2, string optText3, string optText4);
 
         public List<DisplayInstructorVM> GetAllWithBranchAndTrack();
@@ -78,8 +77,8 @@ namespace ExaminationSystemMVC.Reposatories
         public IEnumerable<DisplayInstructorVM> GetInstructorsByBranch(int branchId)
         {
             return _context.Instructors
-                .Include(i => i.Ins)  // Include User details
-                .Include(i => i.BranchesNavigation)  // Include branch relationships
+                .Include(i => i.Ins)  
+                .Include(i => i.BranchesNavigation)  
                 .Where(i => i.BranchesNavigation.Any(b => b.BranchID == branchId))
                 .Select(i => new DisplayInstructorVM
                 {
