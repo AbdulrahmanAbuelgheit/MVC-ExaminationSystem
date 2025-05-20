@@ -38,7 +38,7 @@ namespace ExaminationSystemMVC.Controllers
             var instructor = _repository.GetById(user.UserID);
             if (instructor == null) return NotFound();
 
-            bool isManager = instructor.Branches.Any(); // Branches managed by this instructor
+            bool isManager = instructor.Branches.Any(); 
 
             ViewBag.IsManager = isManager;
             ViewBag.ManagedBranches = isManager ? instructor.Branches : new List<Branch>();
@@ -56,9 +56,9 @@ namespace ExaminationSystemMVC.Controllers
             var instructor = _repository.GetById(user.UserID);
             if (instructor == null) return NotFound();
 
-            var managedBranch = instructor.Branches.FirstOrDefault(); // Get the branch where this instructor is the manager
+            var managedBranch = instructor.Branches.FirstOrDefault(); 
             if (managedBranch == null)
-                return View("NoBranch"); // Optional: create a view saying "You're not managing any branch"
+                return View("NoBranch"); 
 
             var vm = new DisplayBranchVM
             {
@@ -94,20 +94,7 @@ namespace ExaminationSystemMVC.Controllers
             return emailClaim?.Value;
         }
 
-        //public IActionResult ReportViewer()
-        //{
-        //    var reports = new List<SelectListItem>
-        //        {
-        //            new SelectListItem { Value = "Exam%20Report/ExamDetailsReport", Text = "Exam Details Report" },
-        //            new SelectListItem { Value = "Exam%20Report/StudentResultsReport", Text = "Student Results Report" },
-        //            // أضف تقارير أخرى هنا بنفس الشكل
-        //        };
-
-        //    ViewBag.Reports = reports;
-
-        //    return View();
-        //}
-
+    
 
         public IActionResult ReportViewer()
         {
