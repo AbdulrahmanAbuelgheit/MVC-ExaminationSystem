@@ -59,8 +59,8 @@ namespace ExaminationSystemMVC.Controllers
 
             if (!availableCourses.Any())
             {
-                ModelState.AddModelError("", "No available courses to add.");
-                return View("Error");
+                TempData["Error"] = "No available courses to add for this track.";
+                return RedirectToAction("Details", new { id = id });
             }
 
             var addCourseToTrackVM = new AddCourseToTrackVM
@@ -98,11 +98,14 @@ namespace ExaminationSystemMVC.Controllers
                 var newRelations = new List<Student_Course>();
                 foreach (var std in track.Students)
                 {
-                    newRelations.Add(new Student_Course
+                    if (!std.Student_Courses.Any(sc => sc.CrsID == course.CrsID))
                     {
-                        StdID = std.StdID,
-                        CrsID = course.CrsID
-                    });
+                        newRelations.Add(new Student_Course
+                        {
+                            StdID = std.StdID,
+                            CrsID = course.CrsID
+                        });
+                    }
                 }
 
                 _unit.StudentCourseRepo.AddRange(newRelations);
@@ -129,6 +132,19 @@ namespace ExaminationSystemMVC.Controllers
             var course = track.Crs.FirstOrDefault(c => c.CrsID == courseId);
             if (course == null)
                 return NotFound();
+
+            var new_relations = new List<Student_Course>();
+            foreach (var std in track.Students)
+            {
+                var relation = _unit.StudentCourseRepo.GetAll()
+                    .FirstOrDefault(sc => sc.StdID == std.StdID && sc.CrsID == course.CrsID);
+                if (relation != null)
+                {
+                    new_relations.Add(relation);
+                }
+            }
+            _unit.StudentCourseRepo.RemoveRange(new_relations);
+
 
             track.Crs.Remove(course);
             _unit.TrackRepo.Update(track);

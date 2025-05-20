@@ -47,6 +47,7 @@ namespace ExaminationSystemMVC.Controllers
 
         public IActionResult Index()
         {
+
             return View();
         }
 
@@ -60,7 +61,7 @@ namespace ExaminationSystemMVC.Controllers
 
             if (managedBranch == null)
                 return View("NoBranch");
-
+    
             var vm = new DisplayBranchVM
             {
                 BranchID = managedBranch.BranchID,
@@ -79,6 +80,46 @@ namespace ExaminationSystemMVC.Controllers
             var instructor = GetCurrentInstructor();
             var dashboardData = _repository.GetDashboardData(instructor.InsID);
             return View(dashboardData);
+           
+        }
+
+    
+
+        public IActionResult ReportViewer()
+        {
+            
+            var reports = new List<SelectListItem>
+        {
+            new SelectListItem { Value = "Exam Report/ExamDetailsReport", Text = "Exam Details" },
+            new SelectListItem { Value = "StudentResultsReport/StudentResultsReport", Text = "Student Results" },
+            new SelectListItem { Value = "Exam With out correct Answer/ExamDetailswithoutAnswerReport", Text = "Exam Questions" },
+                      //new SelectListItem { Value = "ExamQuestions/QuestionsAnswerReport", Text = "Questions Correct Answer" }
+        };
+
+            ViewBag.Reports = reports;
+            return View();
+        }
+
+
+
+        public IActionResult RedirectToReport(string selectedReport)
+        {
+            if (string.IsNullOrEmpty(selectedReport))
+                return RedirectToAction("ReportViewer");
+
+            var reportUrl = $"http://localhost/ReportServer?/{selectedReport}&rs:Command=Render";
+            return Redirect(reportUrl);
+        }
+
+
+        private int GetCurrentUserIdFromDatabase()
+        {
+            var email = GetCurrentUserEmail();
+            if (string.IsNullOrEmpty(email))
+                return 0;
+
+            var user = _repository.GetUserByEmail(email); 
+            return user?.UserID ?? 0;
         }
 
         public IActionResult Tracks()
