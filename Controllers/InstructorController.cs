@@ -47,7 +47,6 @@ namespace ExaminationSystemMVC.Controllers
 
         public IActionResult Index()
         {
-
             return View();
         }
 
