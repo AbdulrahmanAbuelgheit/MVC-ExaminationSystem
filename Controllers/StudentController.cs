@@ -120,6 +120,27 @@ namespace ExaminationSystemMVC.Controllers
             ViewBag.CompletedExamsCount = completedExams.Count;
 
             return View();
+
+        }
+        public IActionResult ExamDetails(int examId, int? id = null)
+        {
+            int studentId = id ?? GetCurrentStudentId();
+            if (studentId == 0)
+                return RedirectToAction("Login", "Account");
+
+            var examDetails = StudentRepo.GetExamQuestionsWithAnswers(examId, studentId);
+
+            if (examDetails == null || !examDetails.Any())
+                return NotFound();
+
+            var exam = StudentRepo.GetExamById(examId);
+            var student = StudentRepo.getById(studentId);
+
+            ViewBag.ExamTitle = $"{exam.Crs.CrsName} Exam";
+            ViewBag.StudentName = $"{student.Std.FirstName} {student.Std.LastName}";
+            ViewBag.ExamDate = exam.ExamDatetime.ToString("MMMM d, yyyy");
+
+            return View(examDetails);
         }
 
         public IActionResult TakeExam(int id)
