@@ -1,4 +1,7 @@
-﻿using ExaminationSystemMVC.Models;
+﻿using System.Data;
+using ExaminationSystemMVC.Models;
+using ExaminationSystemMVC.ViewModels;
+using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 
 
@@ -69,16 +72,97 @@ namespace ExaminationSystemMVC.Reposatories
                 .ToList();
         }
 
-        public List<Exam> getStudentExam(int id)
+        public List<Exam> getStudentUpcomingExams(int id)
         {
-            // stdid
+            var studentCourses = Db.Student_Courses
+                .Where(sc => sc.StdID == id)
+                .Select(sc => sc.CrsID)
+                .ToList();
 
-            Student StdWithCourse = Db.Students.Include(s => s.Student_Courses).FirstOrDefault(s => s.StdID == id);
+            if (!studentCourses.Any())
+                return new List<Exam>();
 
-            var exams = Db.Exams.Where( s => s.CrsID == StdWithCourse.Student_Courses.FirstOrDefault().CrsID).ToList();
+            var availableExams = Db.Exams
+                .Include(e => e.Crs)
+                .Where(e => studentCourses.Contains(e.CrsID) && e.Expire_Date > DateTime.Now)
+                .ToList();
 
-            return exams;
-            //return Db.Exams.Where(s  == id).Include(se => se.Exam).ThenInclude(e => e.Crs).ToList();
+            var completedExamIds = Db.Student_Exams
+                .Where(se => se.StdID == id)
+                .Select(se => se.ExamID)
+                .ToList();
+
+            return availableExams
+                .Where(e => !completedExamIds.Contains(e.ExamID))
+                .ToList();
+        }
+
+        public List<Student_Exam> getStudentCompletedExams(int id)
+        {
+            return Db.Student_Exams
+                .Where(se => se.StdID == id)
+                .Include(se => se.Exam)
+                    .ThenInclude(e => e.Crs)
+                .ToList();
+        }
+        public List<ExamQuestionWithAnswersVM> GetExamQuestionsWithAnswers(int examId, int studentId)
+        {
+            var results = new List<ExamQuestionWithAnswersVM>();
+
+            var connectionString = Db.Database.GetDbConnection().ConnectionString;
+
+            using (var connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+                using (var command = new SqlCommand("GetExamQuestionsWithOptionsWithStdAnswer", connection))
+                {
+                    command.CommandType = CommandType.StoredProcedure;
+
+                    command.Parameters.Add(new SqlParameter("@ExamID", examId));
+                    command.Parameters.Add(new SqlParameter("@StdID", studentId));
+
+                    using (var reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            var item = new ExamQuestionWithAnswersVM
+                            {
+                                QID = reader.GetInt32(reader.GetOrdinal("QID")),
+                                QText = reader.GetString(reader.GetOrdinal("QText")),
+                                Type = reader.GetString(reader.GetOrdinal("Type")),
+                                Options = reader.GetString(reader.GetOrdinal("Options")),
+                                Points = reader.GetInt32(reader.GetOrdinal("Points")),
+                                CrsID = reader.GetInt32(reader.GetOrdinal("CrsID")),
+                            };
+
+                            // Handle CorrectOptNum
+                            var correctOptNumOrdinal = reader.GetOrdinal("CorrectOptNum");
+                            if (!reader.IsDBNull(correctOptNumOrdinal))
+                            {
+                                item.CorrectOptNum = reader.GetValue(correctOptNumOrdinal).ToString();
+                            }
+
+                            // Handle StudentAnswer
+                            var studentAnswerOrdinal = reader.GetOrdinal("StudentAnswer");
+                            if (!reader.IsDBNull(studentAnswerOrdinal))
+                            {
+                                item.StudentAnswer = reader.GetValue(studentAnswerOrdinal).ToString();
+                            }
+
+                            results.Add(item);
+                        }
+                    }
+                }
+            }
+
+            return results;
+        }
+
+        public Exam GetExamById(int examId)
+        {
+            return Db.Exams
+                .Include(e => e.Crs)
+                .FirstOrDefault(e => e.ExamID == examId);
         }
 
     }

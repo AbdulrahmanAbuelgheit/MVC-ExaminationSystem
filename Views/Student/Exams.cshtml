@@ -1,5 +1,4 @@
-﻿@model List<ExaminationSystemMVC.Models.Exam>
-@{
+﻿@{
     ViewData["Title"] = "Student Exams";
     Layout = "~/Views/Shared/StudentLayout.cshtml";
 }
@@ -192,7 +191,6 @@
 </style>
 
 <div class="container-fluid py-4">
-    <!-- Exams Header -->
     <div class="exam-header">
         <div class="row align-items-center">
             <div class="col-md-8">
@@ -201,8 +199,6 @@
         </div>
     </div>
 
-
-    <!-- Exams Summary Cards -->
     <div class="row mb-4">
         <div class="col-md-6">
             <div class="card stat-card">
@@ -224,7 +220,6 @@
         </div>
     </div>
 
-    <!-- Exams Tabs -->
     <ul class="nav nav-tabs" id="examTabs" role="tablist">
         <li class="nav-item" role="presentation">
             <button class="nav-link active" id="upcoming-tab" data-bs-toggle="tab" data-bs-target="#upcoming" type="button" role="tab" aria-controls="upcoming" aria-selected="true">Upcoming Exams</button>
@@ -235,16 +230,11 @@
     </ul>
 
     <div class="tab-content" id="examTabContent">
-        <!-- Upcoming Exams Tab -->
         <div class="tab-pane fade show active" id="upcoming" role="tabpanel" aria-labelledby="upcoming-tab">
-            @{
-                var upcomingExams = Model.Where(e => e.ExamDatetime > DateTime.Now).ToList();
-            }
-
-            @if (upcomingExams.Any())
+            @if (ViewBag.UpcomingExams != null && ViewBag.UpcomingExams.Count > 0)
             {
                 <div class="row">
-                    @foreach (var exam in upcomingExams.OrderBy(e => e.ExamDatetime))
+                    @foreach (var exam in ViewBag.UpcomingExams)
                     {
                         <div class="col-md-6 mb-4">
                             <div class="card h-100">
@@ -300,20 +290,14 @@
             }
         </div>
 
-        <!-- Completed Exams Tab -->
         <div class="tab-pane fade" id="completed" role="tabpanel" aria-labelledby="completed-tab">
-            @{
-                var completedExams = Model.Where(e => e.ExamDatetime <= DateTime.Now).ToList();
-            }
-
-            @if (completedExams.Any())
+            @if (ViewBag.CompletedExams != null && ViewBag.CompletedExams.Count > 0)
             {
                 <div class="row">
-                    @foreach (var exam in completedExams.OrderByDescending(e => e.ExamDatetime))
+                    @foreach (var studentExam in ViewBag.CompletedExams)
                     {
-                        <!-- Get student score for this exam if available -->
-                        @* Note: You'll need to fetch the student's score for each exam *@
-                        var score = 0; // This should come from a Student_Exam record
+                        var exam = studentExam.Exam;
+                        var score = studentExam.Score ?? 0;
 
                         <div class="col-md-6 mb-4">
                             <div class="card h-100">
@@ -352,6 +336,12 @@
                                     <div class="mt-3 text-end">
                                         <span class="@resultClass fw-bold">@resultText</span>
                                     </div>
+                                </div>
+                                <div class="card-footer bg-transparent">
+                                    <a asp-action="ExamDetails" asp-route-examId="@exam.ExamID"
+                                       class="btn btn-sm btn-outline-primary">
+                                        <i class="bi bi-eye-fill"></i> Details
+                                    </a>
                                 </div>
                             </div>
                         </div>
