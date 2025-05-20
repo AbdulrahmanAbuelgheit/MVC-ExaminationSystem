@@ -1,6 +1,19 @@
-# Ignore build results
 bin/
 obj/
-
-# Visual Studio cache
 .vs/
+
+/.vs/ExaminationSystemMVC/CopilotIndices/17.13.441.19478/CodeChunks.db
+/.vs/ExaminationSystemMVC/CopilotIndices/17.13.441.19478/SemanticSymbols.db
+/.vs/ExaminationSystemMVC/config/applicationhost.config
+/.vs/ExaminationSystemMVC/DesignTimeBuild/.dtbcache.v2
+/.vs/ExaminationSystemMVC/v17/.futdcache.v2
+/.vs/ExaminationSystemMVC/v17/.suo
+/.vs/ExaminationSystemMVC/v17/DocumentLayout.backup.json
+/.vs/ExaminationSystemMVC/v17/DocumentLayout.json
+/.vs/ProjectEvaluation/examinationsystemmvc.metadata.v9.bin
+/.vs/ProjectEvaluation/examinationsystemmvc.projects.v9.bin
+/.vs/ProjectEvaluation/examinationsystemmvc.strings.v9.bin
+/bin/Debug/net9.0/de/Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+/bin/Debug/net9.0/cs/Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+/bin/Debug/net9.0/es/Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+/bin/Debug/net9.0/it/Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll

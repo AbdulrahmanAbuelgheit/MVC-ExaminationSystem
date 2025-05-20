@@ -5,6 +5,7 @@ using ExaminationSystemMVC.Reposatories;
 using ExaminationSystemMVC.UnitOfWorks;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Mvc;
+using System.Security.Claims;
 using static ExaminationSystemMVC.DTOs.AuthDTO.Auth;
 
 namespace ExaminationSystemMVC.Controllers
@@ -72,10 +73,26 @@ namespace ExaminationSystemMVC.Controllers
 
             if (!string.IsNullOrEmpty(token))
             {
+
                 var principal = _jwt.ValidateToken(token);
+
                 if (principal != null)
                 {
-                    return RedirectToAction("Index", "Home");
+                    var roleClaim = principal.Claims.FirstOrDefault(s => s.Type == ClaimTypes.Role);
+
+                    if (roleClaim != null)
+                    {
+                        var role = roleClaim.Value;
+                        if (role == "Admin")
+                            return RedirectToAction("AdminHome", "Admin");
+                        else if (role == "Instructor")
+                            return RedirectToAction("Index", "Instructor");
+                        else if (role == "Student")
+                            return RedirectToAction("Exams", "Student");
+                    }
+                    else
+
+                        return RedirectToAction("Index", "Home");
                 }
             }
 
@@ -106,6 +123,8 @@ namespace ExaminationSystemMVC.Controllers
                 return RedirectToAction("AdminHome", "Admin");
             else if (user.role == "Instructor")
                 return RedirectToAction("Index", "Instructor");
+            else if (user.role == "Student")
+                return RedirectToAction("Exams", "Student");
             else
                 return RedirectToAction("Index", "Home"); 
         }

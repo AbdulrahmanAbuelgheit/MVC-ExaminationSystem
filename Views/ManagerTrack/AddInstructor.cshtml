@@ -1,0 +1,84 @@
+﻿@model ExaminationSystemMVC.ViewModels.AdminVMs.TrackVMs.AddInstructorToTrackVM
+@{
+    ViewData["Title"] = "Add Instructor to Track";
+    Layout = "~/Views/Shared/_InstructorLayout.cshtml";
+}
+<div class="container py-5" style="max-width: 650px;">
+    <div class="mb-4 text-center">
+        <h2 class="fw-bold text-primary">👨‍🏫 Add Instructor to Track</h2>
+        <hr style="width: 80px; border-top: 3px solid #6EC1E4; margin: 0 auto;" />
+    </div>
+
+    <div class="card shadow-lg rounded-4 border-0">
+        <div class="card-body p-4">
+            <form asp-action="AddInstructor" method="post" class="needs-validation" novalidate>
+                <input type="hidden" asp-for="TrackID" />
+
+                <div class="mb-3">
+                    <label asp-for="InsID" class="form-label fw-semibold text-muted">Select Instructor</label>
+                    <select asp-for="InsID" asp-items="Model.AvailableInstructors" class="form-select" required>
+                        <option value="">-- Select Instructor --</option>
+                    </select>
+                    <span asp-validation-for="InsID" class="text-danger small"></span>
+                    <div class="invalid-feedback">
+                        Please select an instructor.
+                    </div>
+                </div>
+
+                <div class="mt-4 d-flex justify-content-end gap-3">
+                    <button type="submit" class="btn btn-primary px-4">
+                        <i class="fas fa-plus me-2"></i> Add Instructor
+                    </button>
+                    <a asp-action="Details" asp-route-id="@Model.TrackID" class="btn btn-outline-secondary px-4">
+                        <i class="fas fa-arrow-left me-2"></i> Back
+                    </a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Styles {
+    <style>
+        .card {
+            border-radius: 0.5rem;
+        }
+
+        .card-header {
+            border-radius: 0.5rem 0.5rem 0 0 !important;
+        }
+
+        .form-select {
+            padding: 0.5rem 1rem;
+        }
+    </style>
+}
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+
+    <script>
+        // Client-side validation
+        (function () {
+            'use strict'
+
+            // Fetch all the forms we want to apply custom Bootstrap validation styles to
+            var forms = document.querySelectorAll('.needs-validation')
+
+            // Loop over them and prevent submission
+            Array.prototype.slice.call(forms)
+                .forEach(function (form) {
+                    form.addEventListener('submit', function (event) {
+                        if (!form.checkValidity()) {
+                            event.preventDefault()
+                            event.stopPropagation()
+                        }
+
+                        form.classList.add('was-validated')
+                    }, false)
+                })
+        })()
+    </script>
+}

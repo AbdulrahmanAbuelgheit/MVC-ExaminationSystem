@@ -1,4 +1,4 @@
-﻿@model AddInstructorToTrackVM
+﻿@model AddInstrucotToCourseVM
 
 @{
     ViewData["Title"] = "Add Instructor";
@@ -15,12 +15,12 @@
     <div class="card shadow-sm border-0" style="border-radius: var(--border-radius); box-shadow: var(--box-shadow);">
         <div class="card-body p-4">
             <form asp-action="AddInstructor" method="post" novalidate>
-                <input type="hidden" asp-for="TrackID" />
+                <input type="hidden" asp-for="CrsId" />
 
                 <div class="mb-3">
                     <label asp-for="InsID" class="form-label">Instructor</label>
                     <select asp-for="InsID" asp-items="ViewBag.InstructorsList" class="form-select">
-						<option value="">Select an instructor</option>
+                        <option value="">Select an instructor</option>
                     </select>
                     <span asp-validation-for="InsID" class="text-danger"></span>
                 </div>
@@ -30,7 +30,7 @@
                             style="background-color: var(--primary-color); color: white; border-radius: var(--border-radius);">
                         Add Instructor
                     </button>
-                    <a asp-action="Details" asp-route-id="@Model.TrackID" class="btn btn-outline-secondary ms-2"
+                    <a asp-action="Details" asp-route-id="@Model.CrsId" class="btn btn-outline-secondary ms-2"
                        style="border-radius: var(--border-radius);">Back</a>
                 </div>
             </form>

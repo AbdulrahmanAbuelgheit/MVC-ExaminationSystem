@@ -1,0 +1,52 @@
+﻿@model ExaminationSystemMVC.ViewModels.AdminVMs.BranchVMs.DisplayBranchVM
+
+@{
+    ViewData["Title"] = "Branch Details";
+    Layout = "~/Views/Shared/_InstructorLayout.cshtml";
+}
+
+<div class="container py-4">
+    <div class="card shadow-lg rounded-4 border-0">
+        <div class="card-header bg-primary text-white py-3 rounded-top-4 d-flex justify-content-between align-items-center">
+            <h5 class="mb-0">📍 Branch Details</h5>
+        </div>
+
+        <div class="card-body px-4 py-4">
+            <div class="row g-4">
+                <div class="col-md-6">
+                    <label class="fw-semibold text-muted">Branch Name</label>
+                    <div class="fs-6">@Model.BranchName</div>
+                </div>
+                <div class="col-md-6">
+                    <label class="fw-semibold text-muted">Governate</label>
+                    <div class="fs-6">@Model.Governate</div>
+                </div>
+                <div class="col-md-6">
+                    <label class="fw-semibold text-muted">City</label>
+                    <div class="fs-6">@Model.City</div>
+                </div>
+                <div class="col-md-6">
+                    <label class="fw-semibold text-muted">Street</label>
+                    <div class="fs-6">@Model.Street</div>
+                </div>
+                <div class="col-md-6">
+                    <label class="fw-semibold text-muted">Telephone</label>
+                    <div class="fs-6">@Model.Tel</div>
+                </div>
+                <div class="col-md-6">
+                    <label class="fw-semibold text-muted">Manager</label>
+                    <div class="fs-6">@Model.ManagerName</div>
+                </div>
+            </div>
+
+            <div class="mt-5 d-flex justify-content-end gap-3">
+                <a asp-action="Edit" class="btn btn-outline-primary px-4">
+                    ✏️ Edit Branch
+                </a>
+                <a asp-controller="ManagerTrack" class="btn btn-outline-secondary px-4">
+                    📚 View Tracks
+                </a>
+            </div>
+        </div>
+    </div>
+</div>

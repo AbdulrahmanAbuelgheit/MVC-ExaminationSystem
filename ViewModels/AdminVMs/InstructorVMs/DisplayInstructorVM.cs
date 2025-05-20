@@ -9,6 +9,8 @@ namespace ExaminationSystemMVC.ViewModels.AdminVMs.InstructorVMs
         public string Email { get; set; }
         public string PhoneNumber { get; set; }
         public int Salary { get; set; }
+        public int? BranchID { get; set; }
+        public string BranchName { get; set; }
         public List<DisplayBranchVM> Branches { get; set; } = new List<DisplayBranchVM>();
         public DisplayBranchVM ManagedBranch { get; set; } = new DisplayBranchVM();
         

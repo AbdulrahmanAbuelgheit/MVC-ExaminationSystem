@@ -1,0 +1,272 @@
+﻿@model Course
+
+@{
+    ViewData["Title"] = "Course Details";
+    Layout = "_AdminLayout";
+}
+
+<div class="container my-5">
+    <div class="text-center mb-5">
+        <h2 class="fw-bold text-primary">
+            <i class="bi bi-book-fill me-2"></i>Course Details
+        </h2>
+        <hr class="w-25 mx-auto border-3 border-primary opacity-50" />
+    </div>
+
+    <div class="card border-0 shadow-sm mb-5">
+        <div class="card-body">
+            <h3 class="card-title fw-semibold text-secondary">@Model.CrsName</h3>
+            <p class="text-muted mt-2">@Model.Description</p>
+            <div class="d-flex flex-wrap gap-3 mt-3">
+                <span class="badge bg-primary fs-6">Duration: @Model.Duration hours</span>
+                <span class="badge bg-info text-dark fs-6">Topics: @Model.Courses_Topics.Count</span>
+                <span class="badge bg-secondary fs-6">Questions: @Model.Questions.Count</span>
+                <span class="badge bg-success fs-6">Exams: @Model.Exams.Count</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="mb-5">
+        <div class="d-flex justify-content-between align-items-center mb-3">
+            <h4 class="text-info"><i class="bi bi-journal-text me-2"></i>Topics</h4>
+            <button type="button" class="btn btn-outline-primary btn-sm" data-bs-toggle="modal" data-bs-target="#addTopicModal">
+                <i class="bi bi-plus-circle me-1"></i>Add Topic
+            </button>
+        </div>
+
+        @if (Model.Courses_Topics != null && Model.Courses_Topics.Any())
+        {
+            <div class="list-group shadow-sm">
+                @foreach (var topic in Model.Courses_Topics)
+                {
+                    <div class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+                        <span>@topic.TopicName</span>
+                        <div class="btn-group">
+                            <button type="button" class="btn btn-outline-warning btn-sm edit-topic-btn"
+                                    data-topic-name="@topic.TopicName" data-bs-toggle="modal" data-bs-target="#editTopicModal">
+                                <i class="bi bi-pencil"></i>
+                            </button>
+                            <a asp-action="DeleteTopic"
+                               asp-route-topicName="@topic.TopicName"
+                               asp-route-courseId="@Model.CrsID"
+                               class="btn btn-outline-danger btn-sm"
+                               onclick="return confirm('Are you sure you want to delete this topic?')">
+                                <i class="bi bi-trash"></i>
+                            </a>
+                        </div>
+                    </div>
+                }
+            </div>
+        }
+        else
+        {
+            <p class="text-muted mt-3">This course has no topics assigned yet.</p>
+        }
+    </div>
+
+    <div class="mb-5">
+        <div class="d-flex justify-content-between align-items-center mb-3">
+            <h4 class="text-info"><i class="bi bi-person-badge me-2"></i>Instructors</h4>
+            <a asp-action="AddInstructor" asp-route-id="@Model.CrsID" class="btn btn-outline-primary btn-sm">
+                <i class="bi bi-plus-circle me-1"></i>Assign Instructor
+            </a>
+        </div>
+
+        <div class="table-responsive shadow-sm">
+            @if (Model.Ins != null && Model.Ins.Any())
+            {
+                <table class="table table-bordered align-middle">
+                    <thead class="table-light">
+                        <tr>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th style="width: 120px;">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var instructor in Model.Ins)
+                        {
+                            <tr>
+                                <td>@(instructor.Ins != null ? $"{instructor.Ins.FirstName} {instructor.Ins.LastName}" : "N/A")</td>
+                                <td>@(instructor.Ins != null ? instructor.Ins.Email : "N/A")</td>
+                                <td>
+                                    <a asp-action="DeleteInstructor"
+                                       asp-route-instructorId="@instructor.InsID"
+                                       asp-route-courseId="@Model.CrsID"
+                                       class="btn btn-outline-danger btn-sm"
+                                       onclick="return confirm('Are you sure you want to remove this instructor?')">
+                                        <i class="bi bi-trash"></i>
+                                    </a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            }
+            else
+            {
+                <p class="text-muted mt-3">This course has no instructors assigned yet.</p>
+            }
+        </div>
+    </div>
+
+    <div class="mb-5">
+        <div class="d-flex justify-content-between align-items-center mb-3">
+            <h4 class="text-info"><i class="bi bi-people-fill me-2"></i>Students</h4>
+        </div>
+
+        <div class="table-responsive shadow-sm">
+            @if (Model.Student_Courses != null && Model.Student_Courses.Any())
+            {
+                <table class="table table-striped align-middle">
+                    <thead class="table-light">
+                        <tr>
+                            <th>Student Name</th>
+                            <th>Grade</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var sc in Model.Student_Courses)
+                        {
+                            <tr>
+                                <td>@(sc.Std?.Std != null ? $"{sc.Std.Std.FirstName} {sc.Std.Std.LastName}" : "N/A")</td>
+                                <td>
+                                    @if (string.IsNullOrEmpty(sc.Grade))
+                                    {
+                                        <span class="badge bg-secondary">Not Graded</span>
+                                    }
+                                    else
+                                    {
+                                        <span class="badge bg-success">@sc.Grade</span>
+                                    }
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            }
+            else
+            {
+                <p class="text-muted mt-3">No students are enrolled in this course yet.</p>
+            }
+        </div>
+    </div>
+        
+    </div>
+
+    <div class="d-flex justify-content-between mt-5">
+        <a asp-action="Index" class="btn btn-outline-secondary">
+            <i class="bi bi-arrow-left me-2"></i>Back to List
+        </a>
+    </div>
+
+<!-- Add Topic Modal -->
+<div class="modal fade" id="addTopicModal" tabindex="-1" aria-labelledby="addTopicModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header bg-primary text-white">
+                <h5 class="modal-title" id="addTopicModalLabel">
+                    <i class="bi bi-plus-circle me-2"></i>Add New Topic
+                </h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form asp-action="AddTopic" method="post">
+                <div class="modal-body">
+                    <input type="hidden" name="CourseId" value="@Model.CrsID" />
+                    <div class="mb-3">
+                        <label for="topicName" class="form-label">Topic Name</label>
+                        <input type="text" class="form-control" id="topicName" name="TopicName"
+                               required maxlength="50" placeholder="Enter topic name" />
+                        <div class="form-text">Enter a unique topic name for this course.</div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
+                        <i class="bi bi-x-circle me-1"></i>Cancel
+                    </button>
+                    <button type="submit" class="btn btn-primary">
+                        <i class="bi bi-save me-1"></i>Save Topic
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- Edit Topic Modal -->
+<div class="modal fade" id="editTopicModal" tabindex="-1" aria-labelledby="editTopicModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header bg-warning text-dark">
+                <h5 class="modal-title" id="editTopicModalLabel">
+                    <i class="bi bi-pencil-square me-2"></i>Edit Topic
+                </h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form asp-action="EditTopic" method="post">
+                <div class="modal-body">
+                    <input type="hidden" name="CourseId" id="editCourseId" value="@Model.CrsID" />
+                    <input type="hidden" name="OldTopicName" id="oldTopicName" />
+                    <div class="mb-3">
+                        <label for="editTopicName" class="form-label">Topic Name</label>
+                        <input type="text" class="form-control" id="editTopicName" name="NewTopicName"
+                               required maxlength="50" placeholder="Enter new topic name" />
+                        <div class="form-text">Update the topic name for this course.</div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
+                        <i class="bi bi-x-circle me-1"></i>Cancel
+                    </button>
+                    <button type="submit" class="btn btn-warning">
+                        <i class="bi bi-save me-1"></i>Update Topic
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+
+
+@section Scripts {
+    <script>
+        $(document).ready(function() {
+            $('.table').DataTable({
+                "paging": true,
+                "ordering": true,
+                "info": true,
+                "responsive": true,
+                "lengthMenu": [[5, 10, 25, -1], [5, 10, 25, "All"]]
+            });
+        });
+
+                var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+        var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+            return new bootstrap.Tooltip(tooltipTriggerEl)
+        });
+
+        // Handle form validation
+        (function () {
+            'use strict'
+            var forms = document.querySelectorAll('.needs-validation')
+            Array.prototype.slice.call(forms)
+                .forEach(function (form) {
+                    form.addEventListener('submit', function (event) {
+                        if (!form.checkValidity()) {
+                            event.preventDefault();
+                            event.stopPropagation();
+                        }
+                        form.classList.add('was-validated')
+                    }, false)
+                })
+        })();
+
+                $('.edit-topic-btn').on('click', function() {
+            var topicName = $(this).data('topic-name');
+            $('#oldTopicName').val(topicName);
+            $('#editTopicName').val(topicName);
+        });
+    </script>
+}

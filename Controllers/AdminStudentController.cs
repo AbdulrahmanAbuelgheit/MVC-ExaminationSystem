@@ -82,6 +82,19 @@ namespace ExaminationSystemMVC.Controllers
                 TrackID = model.TrackID,
                 IntakeYear = model.IntakeYear
             });
+
+            var track = _unit.TrackRepo.GetTrackWithCourses(model.TrackID);
+            var newRelations = new List<Student_Course>();
+            foreach (var course in track.Crs)
+            {
+                 newRelations.Add(new Student_Course
+                 {
+                     StdID = user.UserID,
+                     CrsID = course.CrsID
+                 });
+            }
+                
+            _unit.StudentCourseRepo.AddRange(newRelations);
             _unit.Save();
 
             return RedirectToAction("Index");
@@ -97,7 +110,7 @@ namespace ExaminationSystemMVC.Controllers
             {
                 return NotFound();
             }
-            var mappedStudent = _map.Map<UpdateStudentVM>(student);
+            var mappedStudent = _map.Map<EditStudentVM>(student);
             ViewBag.Branches = new SelectList(_unit.BranchRepo.GetAll(), "BranchID", "BranchName", mappedStudent.BranchID);
             ViewBag.Tracks = new SelectList(_unit.TrackRepo.GetAll(), "TrackID", "TrackName", mappedStudent.TrackID);
 
@@ -105,7 +118,7 @@ namespace ExaminationSystemMVC.Controllers
         }
 
         [HttpPost]
-        public IActionResult Edit(UpdateStudentVM studentVM)
+        public IActionResult Edit(EditStudentVM studentVM)
         {
             if (!ModelState.IsValid)
             {

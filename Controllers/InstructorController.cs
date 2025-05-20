@@ -29,8 +29,52 @@ namespace ExaminationSystemMVC.Controllers
 
         public IActionResult Index()
         {
+            var email = GetCurrentUserEmail();
+            if (email == null) return Unauthorized();
+
+            var user = _repository.GetUserByEmail(email);
+            if (user == null) return Unauthorized();
+
+            var instructor = _repository.GetById(user.UserID);
+            if (instructor == null) return NotFound();
+
+            bool isManager = instructor.Branches.Any(); // Branches managed by this instructor
+
+            ViewBag.IsManager = isManager;
+            ViewBag.ManagedBranches = isManager ? instructor.Branches : new List<Branch>();
+
             return View();
         }
+        public IActionResult ManagedBranch()
+        {
+            var email = GetCurrentUserEmail();
+            if (email == null) return Unauthorized();
+
+            var user = _userRepository.GetByEmail(email);
+            if (user == null) return NotFound();
+
+            var instructor = _repository.GetById(user.UserID);
+            if (instructor == null) return NotFound();
+
+            var managedBranch = instructor.Branches.FirstOrDefault(); // Get the branch where this instructor is the manager
+            if (managedBranch == null)
+                return View("NoBranch"); // Optional: create a view saying "You're not managing any branch"
+
+            var vm = new DisplayBranchVM
+            {
+                BranchID = managedBranch.BranchID,
+                BranchName = managedBranch.BranchName,
+                Governate = managedBranch.Governate,
+                City = managedBranch.City,
+                Street = managedBranch.Street,
+                Tel = managedBranch.Tel,
+
+            };
+
+            return View("ManagedBranch", vm);
+        }
+
+
         private string GetCurrentUserEmail()
         {
             if (Request == null)

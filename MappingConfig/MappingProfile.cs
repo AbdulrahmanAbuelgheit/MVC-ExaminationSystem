@@ -16,10 +16,11 @@ namespace ExaminationSystemMVC.MappingConfig
                .ForMember(dest => dest.Email, opt => opt.MapFrom(src => src.Std.Email))
                .ForMember(dest => dest.TrackName, opt => opt.MapFrom(src => src.Track.TrackName))
                 .ForMember(dest => dest.BranchName, opt => opt.MapFrom(src => src.Branch.BranchName))
-                .ForMember(dest => dest.IsActive, opt => opt.MapFrom(src => src.IsActive == "T" ? "Active" : "Inactive"));
+                .ForMember(dest => dest.IsActive, opt => opt.MapFrom(src => src.IsActive == "T" ? "Active" : "Inactive"))
+                .ForMember(dest => dest.StudentCourses, opt => opt.MapFrom(src => src.Student_Courses));
 
             CreateMap<CreateStudentVM, Student>();
-            CreateMap<Student, UpdateStudentVM>()
+            CreateMap<Student, EditStudentVM>()
                .ForMember(dest => dest.FullName, opt => opt.MapFrom(src => src.Std.FirstName + ' ' + src.Std.LastName))
                .ForMember(dest => dest.Email, opt => opt.MapFrom(src => src.Std.Email))
                .ReverseMap();
@@ -27,6 +28,10 @@ namespace ExaminationSystemMVC.MappingConfig
             CreateMap<Branch, DisplayBranchVM>()
                 .ForMember(dest => dest.ManagerName, opt => opt.MapFrom(src => src.Manager.Ins.FirstName + ' ' + src.Manager.Ins.LastName))
                 .ForMember(dest => dest.Tracks, opt => opt.MapFrom(src => src.Tracks));
+
+            CreateMap<Track, DisplayTrackWithInstructorsVM>()
+                .ForMember(dest => dest.Supervisor, opt => opt.MapFrom(src => src.Supervisor))
+                .ForMember(dest => dest.Instructors, opt => opt.MapFrom(src => src.Ins));
 
             CreateMap<Branch, CreateBranchVM>().ReverseMap();
             CreateMap<Branch, UpdateBranchVM>().ReverseMap();

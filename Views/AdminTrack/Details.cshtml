@@ -98,9 +98,7 @@
     <div class="mb-5">
         <div class="d-flex justify-content-between align-items-center mb-3">
             <h4 class="text-info"><i class="bi bi-person-badge me-2"></i>Instructors</h4>
-            <a asp-action="AddInstructor" asp-route-id="@Model.TrackID" class="btn btn-outline-primary btn-sm">
-                <i class="bi bi-plus-circle me-1"></i>Add Instructor
-            </a>
+           
         </div>
 
         <div class="table-responsive shadow-sm">
@@ -134,14 +132,6 @@
                                                 <i class="bi bi-check2-circle me-1"></i>Supervisor
                                             </button>
                                         </form>
-                                        <a asp-action="RemoveInstructor"
-                                           asp-controller="AdminTrack"
-                                           asp-route-insId="@ins.InsID"
-                                           asp-route-trackId="@Model.TrackID"
-                                           class="btn btn-outline-danger btn-sm"
-                                           onclick="return confirm('Remove instructor?')">
-                                            <i class="bi bi-trash"></i>
-                                        </a>
                                     </div>
                                 }
                                 else
@@ -268,13 +258,12 @@
                         <td>@std.BranchName</td>
                         <td>@std.IntakeYear</td>
                         <td>
-                            <a asp-action="RemoveStudent"
+                            <a asp-action="TransferStudent"
                                asp-controller="AdminTrack"
                                asp-route-studentId="@std.StdID"
-                               asp-route-trackId="@Model.TrackID"
-                               class="btn btn-outline-danger btn-sm"
-                               onclick="return confirm('Are you sure you want to remove this student?')">
-                                <i class="bi bi-trash"></i>
+                               asp-route-currentTrackId="@Model.TrackID"
+                               class="btn btn-outline-info btn-sm">
+                                Transfer Student
                             </a>
                         </td>
                     </tr>
@@ -283,3 +272,20 @@
         </table>
     </div>
 </div>
+
+
+    @section Scripts {
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        <script>
+            @if (TempData["Error"] != null)
+            {
+                <text>
+                        Swal.fire({
+                            icon: 'warning',
+                            title: 'Oops!',
+                            text: '@TempData["Error"]'
+                        });
+                </text>
+            }
+        </script>
+    }

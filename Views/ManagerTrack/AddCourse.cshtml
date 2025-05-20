@@ -1,0 +1,38 @@
+﻿@model AddCourseToTrackVM
+
+@{
+    ViewData["Title"] = "Add Course";
+    Layout = "~/Views/Shared/_InstructorLayout.cshtml";
+}
+
+<div class="container py-5" style="max-width: 650px;">
+    <div class="mb-4 text-center">
+        <h2 class="fw-bold text-primary">📚 Add Course to Track</h2>
+        <hr style="width: 80px; border-top: 3px solid #6EC1E4; margin: 0 auto;" />
+    </div>
+
+    <div class="card shadow-lg rounded-4 border-0">
+        <div class="card-body p-4">
+            <form asp-action="AddCourse" method="post" novalidate>
+                <input type="hidden" asp-for="TrackID" />
+
+                <div class="mb-3">
+                    <label asp-for="CourseID" class="form-label fw-semibold text-muted">Select Course</label>
+                    <select asp-for="CourseID" asp-items="ViewBag.AvailableCourses" class="form-select">
+                        <option value="">-- Select Course --</option>
+                    </select>
+                    <span asp-validation-for="CourseID" class="text-danger small"></span>
+                </div>
+
+                <div class="mt-4 d-flex justify-content-end gap-3">
+                    <button type="submit" class="btn btn-primary px-4">
+                        <i class="fas fa-plus-circle me-1"></i> Add Course
+                    </button>
+                    <a asp-action="Details" asp-route-id="@Model.TrackID" class="btn btn-outline-secondary px-4">
+                        <i class="fas fa-times me-1"></i> Cancel
+                    </a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
