@@ -15,7 +15,7 @@
     <div class="welcome-card">
         <div class="welcome-header">
             <div class="welcome-datetime">
-                <h2>Welcome, Instructor!</h2>
+                <h2>Welcome, @currentUser.FirstName!</h2>
                 <p class="current-datetime">
                     <i class="bi bi-calendar-event"></i> @DateTime.Now.ToString("dddd, MMMM d, yyyy")
                     <span class="time-badge"><i class="bi bi-clock"></i> @DateTime.Now.ToString("h:mm tt")</span>
@@ -29,7 +29,7 @@
             </div>
             <div class="user-greeting">
                 <h3>Hello, @currentUser?.FirstName @currentUser?.LastName!</h3>
-                <p>Welcome back to your Instructor Dashboard.</p>
+                <p>Welcome back to your Dashboard.</p>
             </div>
         </div>
 

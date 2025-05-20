@@ -350,7 +350,7 @@
                 </button>
                 <a class="navbar-brand" asp-controller="Instructor" asp-action="Dashboard">
                     <img src="https://placehold.co/100x100/4e91fc/ffffff?text=ID" alt="Logo" />
-                    <span>@(ViewBag.IsManager == true ? "Manager Panel" : "Instructor Panel")</span>
+                    <span>Manager Panel</span>
                 </a>
             </div>
 
@@ -388,14 +388,12 @@
             <a asp-controller="Instructor" asp-action="AddQuestion" class="menu-item">
                 <i class="bi bi-collection"></i> <span class="menu-text">Add Questions</span>
             </a>
-
-            @if (ViewBag.IsManager == true)
-            {
+            
                 <div class="menu-header">Branch Management</div>
                 <a asp-controller="Manager" asp-action="Index" class="menu-item">
                     <i class="bi bi-diagram-3"></i> <span class="menu-text">Manage Branch</span>
                 </a>
-            }
+            
         </aside>
     }
     }
