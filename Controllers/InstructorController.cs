@@ -92,7 +92,7 @@ namespace ExaminationSystemMVC.Controllers
             new SelectListItem { Value = "Exam Report/ExamDetailsReport", Text = "Exam Details" },
             new SelectListItem { Value = "StudentResultsReport/StudentResultsReport", Text = "Student Results" },
             new SelectListItem { Value = "Exam With out correct Answer/ExamDetailswithoutAnswerReport", Text = "Exam Questions" },
-                      //new SelectListItem { Value = "ExamQuestions/QuestionsAnswerReport", Text = "Questions Correct Answer" }
+            new SelectListItem { Value = "ExamQuestionsWithOptions/ExamQuestionsWithOptions", Text = "Old Exam Question" }
         };
 
             ViewBag.Reports = reports;
