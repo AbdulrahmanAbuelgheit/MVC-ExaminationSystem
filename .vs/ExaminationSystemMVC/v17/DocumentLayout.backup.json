@@ -3,8 +3,20 @@
   "WorkspaceRootPath": "C:\\Users\\abdelrahman\\Desktop\\ww\\MVC-ExaminationSystem\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{8E37184C-1207-2929-66F8-D4D153605B76}|ExaminationSystemMVC.csproj|c:\\users\\abdelrahman\\desktop\\ww\\mvc-examinationsystem\\views\\manager\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{8E37184C-1207-2929-66F8-D4D153605B76}|ExaminationSystemMVC.csproj|solutionrelative:views\\manager\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8E37184C-1207-2929-66F8-D4D153605B76}|ExaminationSystemMVC.csproj|c:\\users\\abdelrahman\\desktop\\ww\\mvc-examinationsystem\\views\\managertrack\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{8E37184C-1207-2929-66F8-D4D153605B76}|ExaminationSystemMVC.csproj|solutionrelative:views\\managertrack\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{8E37184C-1207-2929-66F8-D4D153605B76}|ExaminationSystemMVC.csproj|c:\\users\\abdelrahman\\desktop\\ww\\mvc-examinationsystem\\views\\instructor\\reportviewer.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{8E37184C-1207-2929-66F8-D4D153605B76}|ExaminationSystemMVC.csproj|solutionrelative:views\\instructor\\reportviewer.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8E37184C-1207-2929-66F8-D4D153605B76}|ExaminationSystemMVC.csproj|c:\\users\\abdelrahman\\desktop\\ww\\mvc-examinationsystem\\controllers\\instructorcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8E37184C-1207-2929-66F8-D4D153605B76}|ExaminationSystemMVC.csproj|solutionrelative:controllers\\instructorcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{8E37184C-1207-2929-66F8-D4D153605B76}|ExaminationSystemMVC.csproj|c:\\users\\abdelrahman\\desktop\\ww\\mvc-examinationsystem\\views\\instructor\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
@@ -13,10 +25,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{8E37184C-1207-2929-66F8-D4D153605B76}|ExaminationSystemMVC.csproj|c:\\users\\abdelrahman\\desktop\\ww\\mvc-examinationsystem\\views\\shared\\_instructorlayout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{8E37184C-1207-2929-66F8-D4D153605B76}|ExaminationSystemMVC.csproj|solutionrelative:views\\shared\\_instructorlayout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{8E37184C-1207-2929-66F8-D4D153605B76}|ExaminationSystemMVC.csproj|c:\\users\\abdelrahman\\desktop\\ww\\mvc-examinationsystem\\controllers\\instructorcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{8E37184C-1207-2929-66F8-D4D153605B76}|ExaminationSystemMVC.csproj|solutionrelative:controllers\\instructorcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{8E37184C-1207-2929-66F8-D4D153605B76}|ExaminationSystemMVC.csproj|c:\\users\\abdelrahman\\desktop\\ww\\mvc-examinationsystem\\views\\managertrack\\coursedetails.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
@@ -67,16 +75,8 @@
       "RelativeMoniker": "D:0:0:{8E37184C-1207-2929-66F8-D4D153605B76}|ExaminationSystemMVC.csproj|solutionrelative:views\\manager\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{8E37184C-1207-2929-66F8-D4D153605B76}|ExaminationSystemMVC.csproj|c:\\users\\abdelrahman\\desktop\\ww\\mvc-examinationsystem\\views\\manager\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{8E37184C-1207-2929-66F8-D4D153605B76}|ExaminationSystemMVC.csproj|solutionrelative:views\\manager\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{8E37184C-1207-2929-66F8-D4D153605B76}|ExaminationSystemMVC.csproj|c:\\users\\abdelrahman\\desktop\\ww\\mvc-examinationsystem\\views\\shared\\_managerlayout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{8E37184C-1207-2929-66F8-D4D153605B76}|ExaminationSystemMVC.csproj|solutionrelative:views\\shared\\_managerlayout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{8E37184C-1207-2929-66F8-D4D153605B76}|ExaminationSystemMVC.csproj|c:\\users\\abdelrahman\\desktop\\ww\\mvc-examinationsystem\\views\\managertrack\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{8E37184C-1207-2929-66F8-D4D153605B76}|ExaminationSystemMVC.csproj|solutionrelative:views\\managertrack\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{8E37184C-1207-2929-66F8-D4D153605B76}|ExaminationSystemMVC.csproj|c:\\users\\abdelrahman\\desktop\\ww\\mvc-examinationsystem\\views\\manager\\removetrack.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
@@ -114,48 +114,24 @@
       "DocumentGroups": [
         {
           "DockedWidth": 273,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 5,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 2,
               "Title": "ReportViewer.cshtml",
               "DocumentMoniker": "C:\\Users\\abdelrahman\\Desktop\\ww\\MVC-ExaminationSystem\\Views\\Instructor\\ReportViewer.cshtml",
               "RelativeDocumentMoniker": "Views\\Instructor\\ReportViewer.cshtml",
               "ToolTip": "C:\\Users\\abdelrahman\\Desktop\\ww\\MVC-ExaminationSystem\\Views\\Instructor\\ReportViewer.cshtml",
               "RelativeToolTip": "Views\\Instructor\\ReportViewer.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAHAAAAAAAAAAAAAAAIgAAAAZAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2025-05-20T18:26:47.956Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "AssignInstructorToCourse.cshtml",
-              "DocumentMoniker": "C:\\Users\\abdelrahman\\Desktop\\ww\\MVC-ExaminationSystem\\Views\\ManagerTrack\\AssignInstructorToCourse.cshtml",
-              "RelativeDocumentMoniker": "Views\\ManagerTrack\\AssignInstructorToCourse.cshtml",
-              "ToolTip": "C:\\Users\\abdelrahman\\Desktop\\ww\\MVC-ExaminationSystem\\Views\\ManagerTrack\\AssignInstructorToCourse.cshtml",
-              "RelativeToolTip": "Views\\ManagerTrack\\AssignInstructorToCourse.cshtml",
-              "ViewState": "AgIAABUAAAAAAAAAAAAAACQAAAA+AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-05-20T17:25:40.031Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "EditStudent.cshtml",
-              "DocumentMoniker": "C:\\Users\\abdelrahman\\Desktop\\ww\\MVC-ExaminationSystem\\Views\\ManagerTrack\\EditStudent.cshtml",
-              "RelativeDocumentMoniker": "Views\\ManagerTrack\\EditStudent.cshtml",
-              "ToolTip": "C:\\Users\\abdelrahman\\Desktop\\ww\\MVC-ExaminationSystem\\Views\\ManagerTrack\\EditStudent.cshtml",
-              "RelativeToolTip": "Views\\ManagerTrack\\EditStudent.cshtml",
-              "ViewState": "AgIAAAwAAAAAAAAAAAAAAAUAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-05-20T17:24:32.682Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 5,
               "Title": "_InstructorLayout.cshtml",
               "DocumentMoniker": "C:\\Users\\abdelrahman\\Desktop\\ww\\MVC-ExaminationSystem\\Views\\Shared\\_InstructorLayout.cshtml",
               "RelativeDocumentMoniker": "Views\\Shared\\_InstructorLayout.cshtml",
@@ -168,7 +144,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 8,
               "Title": "Details.cshtml",
               "DocumentMoniker": "C:\\Users\\abdelrahman\\Desktop\\ww\\MVC-ExaminationSystem\\Views\\ManagerTrack\\Details.cshtml",
               "RelativeDocumentMoniker": "Views\\ManagerTrack\\Details.cshtml",
@@ -180,7 +156,70 @@
             },
             {
               "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "InstructorController.cs",
+              "DocumentMoniker": "C:\\Users\\abdelrahman\\Desktop\\ww\\MVC-ExaminationSystem\\Controllers\\InstructorController.cs",
+              "RelativeDocumentMoniker": "Controllers\\InstructorController.cs",
+              "ToolTip": "C:\\Users\\abdelrahman\\Desktop\\ww\\MVC-ExaminationSystem\\Controllers\\InstructorController.cs",
+              "RelativeToolTip": "Controllers\\InstructorController.cs",
+              "ViewState": "AgIAAD8AAAAAAAAAAAAEwEwAAAAoAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-19T20:00:07.428Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 1,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\Users\\abdelrahman\\Desktop\\ww\\MVC-ExaminationSystem\\Views\\ManagerTrack\\Index.cshtml",
+              "RelativeDocumentMoniker": "Views\\ManagerTrack\\Index.cshtml",
+              "ToolTip": "C:\\Users\\abdelrahman\\Desktop\\ww\\MVC-ExaminationSystem\\Views\\ManagerTrack\\Index.cshtml",
+              "RelativeToolTip": "Views\\ManagerTrack\\Index.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-05-19T19:51:50.492Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\Users\\abdelrahman\\Desktop\\ww\\MVC-ExaminationSystem\\Views\\Manager\\Index.cshtml",
+              "RelativeDocumentMoniker": "Views\\Manager\\Index.cshtml",
+              "ToolTip": "C:\\Users\\abdelrahman\\Desktop\\ww\\MVC-ExaminationSystem\\Views\\Manager\\Index.cshtml",
+              "RelativeToolTip": "Views\\Manager\\Index.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAoAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-05-20T17:22:45.616Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "EditStudent.cshtml",
+              "DocumentMoniker": "C:\\Users\\abdelrahman\\Desktop\\ww\\MVC-ExaminationSystem\\Views\\ManagerTrack\\EditStudent.cshtml",
+              "RelativeDocumentMoniker": "Views\\ManagerTrack\\EditStudent.cshtml",
+              "ToolTip": "C:\\Users\\abdelrahman\\Desktop\\ww\\MVC-ExaminationSystem\\Views\\ManagerTrack\\EditStudent.cshtml",
+              "RelativeToolTip": "Views\\ManagerTrack\\EditStudent.cshtml",
+              "ViewState": "AgIAAAwAAAAAAAAAAAAAAAUAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-05-20T17:24:32.682Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "AssignInstructorToCourse.cshtml",
+              "DocumentMoniker": "C:\\Users\\abdelrahman\\Desktop\\ww\\MVC-ExaminationSystem\\Views\\ManagerTrack\\AssignInstructorToCourse.cshtml",
+              "RelativeDocumentMoniker": "Views\\ManagerTrack\\AssignInstructorToCourse.cshtml",
+              "ToolTip": "C:\\Users\\abdelrahman\\Desktop\\ww\\MVC-ExaminationSystem\\Views\\ManagerTrack\\AssignInstructorToCourse.cshtml",
+              "RelativeToolTip": "Views\\ManagerTrack\\AssignInstructorToCourse.cshtml",
+              "ViewState": "AgIAABUAAAAAAAAAAAAAACQAAAA+AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-05-20T17:25:40.031Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
               "Title": "Index.cshtml",
               "DocumentMoniker": "C:\\Users\\abdelrahman\\Desktop\\ww\\MVC-ExaminationSystem\\Views\\Instructor\\Index.cshtml",
               "RelativeDocumentMoniker": "Views\\Instructor\\Index.cshtml",
@@ -193,7 +232,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 6,
               "Title": "CourseDetails.cshtml",
               "DocumentMoniker": "C:\\Users\\abdelrahman\\Desktop\\ww\\MVC-ExaminationSystem\\Views\\ManagerTrack\\CourseDetails.cshtml",
               "RelativeDocumentMoniker": "Views\\ManagerTrack\\CourseDetails.cshtml",
@@ -205,7 +244,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 7,
               "Title": "AddInstructor.cshtml",
               "DocumentMoniker": "C:\\Users\\abdelrahman\\Desktop\\ww\\MVC-ExaminationSystem\\Views\\ManagerTrack\\AddInstructor.cshtml",
               "RelativeDocumentMoniker": "Views\\ManagerTrack\\AddInstructor.cshtml",
@@ -217,20 +256,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "InstructorController.cs",
-              "DocumentMoniker": "C:\\Users\\abdelrahman\\Desktop\\ww\\MVC-ExaminationSystem\\Controllers\\InstructorController.cs",
-              "RelativeDocumentMoniker": "Controllers\\InstructorController.cs",
-              "ToolTip": "C:\\Users\\abdelrahman\\Desktop\\ww\\MVC-ExaminationSystem\\Controllers\\InstructorController.cs",
-              "RelativeToolTip": "Controllers\\InstructorController.cs",
-              "ViewState": "AgIAADgBAAAAAAAAAAAgwHoAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-19T20:00:07.428Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 11,
               "Title": "EditTrack.cshtml",
               "DocumentMoniker": "C:\\Users\\abdelrahman\\Desktop\\ww\\MVC-ExaminationSystem\\Views\\ManagerTrack\\EditTrack.cshtml",
               "RelativeDocumentMoniker": "Views\\ManagerTrack\\EditTrack.cshtml",
@@ -242,7 +268,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 12,
               "Title": "AssignInstructorToCourseVM.cs",
               "DocumentMoniker": "C:\\Users\\abdelrahman\\Desktop\\ww\\MVC-ExaminationSystem\\ViewModels\\Course\\AssignInstructorToCourseVM.cs",
               "RelativeDocumentMoniker": "ViewModels\\Course\\AssignInstructorToCourseVM.cs",
@@ -254,7 +280,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 13,
               "Title": "ViewStudent.cshtml",
               "DocumentMoniker": "C:\\Users\\abdelrahman\\Desktop\\ww\\MVC-ExaminationSystem\\Views\\ManagerTrack\\ViewStudent.cshtml",
               "RelativeDocumentMoniker": "Views\\ManagerTrack\\ViewStudent.cshtml",
@@ -266,7 +292,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 15,
+              "DocumentIndex": 17,
               "Title": "Edit.cshtml",
               "DocumentMoniker": "C:\\Users\\abdelrahman\\Desktop\\ww\\MVC-ExaminationSystem\\Views\\Manager\\Edit.cshtml",
               "RelativeDocumentMoniker": "Views\\Manager\\Edit.cshtml",
@@ -278,7 +304,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
+              "DocumentIndex": 15,
               "Title": "AddCourse.cshtml",
               "DocumentMoniker": "C:\\Users\\abdelrahman\\Desktop\\ww\\MVC-ExaminationSystem\\Views\\ManagerTrack\\AddCourse.cshtml",
               "RelativeDocumentMoniker": "Views\\ManagerTrack\\AddCourse.cshtml",
@@ -290,7 +316,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 14,
               "Title": "Create.cshtml",
               "DocumentMoniker": "C:\\Users\\abdelrahman\\Desktop\\ww\\MVC-ExaminationSystem\\Views\\ManagerTrack\\Create.cshtml",
               "RelativeDocumentMoniker": "Views\\ManagerTrack\\Create.cshtml",
@@ -302,19 +328,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 16,
-              "Title": "Index.cshtml",
-              "DocumentMoniker": "C:\\Users\\abdelrahman\\Desktop\\ww\\MVC-ExaminationSystem\\Views\\Manager\\Index.cshtml",
-              "RelativeDocumentMoniker": "Views\\Manager\\Index.cshtml",
-              "ToolTip": "C:\\Users\\abdelrahman\\Desktop\\ww\\MVC-ExaminationSystem\\Views\\Manager\\Index.cshtml",
-              "RelativeToolTip": "Views\\Manager\\Index.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAA0AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-05-20T17:22:45.616Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 17,
+              "DocumentIndex": 18,
               "Title": "_ManagerLayout.cshtml",
               "DocumentMoniker": "C:\\Users\\abdelrahman\\Desktop\\ww\\MVC-ExaminationSystem\\Views\\Shared\\_ManagerLayout.cshtml",
               "RelativeDocumentMoniker": "Views\\Shared\\_ManagerLayout.cshtml",
@@ -326,19 +340,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 18,
-              "Title": "Index.cshtml",
-              "DocumentMoniker": "C:\\Users\\abdelrahman\\Desktop\\ww\\MVC-ExaminationSystem\\Views\\ManagerTrack\\Index.cshtml",
-              "RelativeDocumentMoniker": "Views\\ManagerTrack\\Index.cshtml",
-              "ToolTip": "C:\\Users\\abdelrahman\\Desktop\\ww\\MVC-ExaminationSystem\\Views\\ManagerTrack\\Index.cshtml",
-              "RelativeToolTip": "Views\\ManagerTrack\\Index.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-05-19T19:51:50.492Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 14,
+              "DocumentIndex": 16,
               "Title": "ManagerController.cs",
               "DocumentMoniker": "C:\\Users\\abdelrahman\\Desktop\\ww\\MVC-ExaminationSystem\\Controllers\\ManagerController.cs",
               "RelativeDocumentMoniker": "Controllers\\ManagerController.cs",
