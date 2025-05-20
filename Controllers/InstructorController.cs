@@ -5,61 +5,62 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using System.Security.Claims;
 using System.ComponentModel.DataAnnotations;
-using Newtonsoft.Json;
-
+using Microsoft.AspNetCore.Mvc.Filters;
 
 namespace ExaminationSystemMVC.Controllers
 {
     [Authorize(Roles = "Instructor")]
-
     public class InstructorController : Controller
     {
         private readonly IInstructorRepository _repository;
-        private  int InsID;
         private readonly JwtHelper _jwt;
         private readonly UsersRepo _userRepository;
+        private bool _isManager;
 
-        public InstructorController(IInstructorRepository repository, JwtHelper jwt ,UsersRepo userrepository)
+        public InstructorController(IInstructorRepository repository, JwtHelper jwt, UsersRepo userrepository)
         {
             _repository = repository;
-            InsID = GetCurrentUserIdFromDatabase();
             _jwt = jwt;
-            _userRepository=userrepository;
+            _userRepository = userrepository;
+        }
+
+        public override void OnActionExecuting(ActionExecutingContext context)
+        {
+            base.OnActionExecuting(context);
+
+            var email = GetCurrentUserEmail();
+            if (email != null)
+            {
+                var user = _repository.GetUserByEmail(email);
+                if (user != null)
+                {
+                    var instructor = _repository.GetById(user.UserID);
+                    if (instructor != null)
+                    {
+                        _isManager = instructor.Branches.Any();
+                        ViewBag.IsManager = _isManager;
+                        ViewBag.ManagedBranches = _isManager ? instructor.Branches : new List<Branch>();
+                    }
+                }
+            }
         }
 
         public IActionResult Index()
         {
-            var email = GetCurrentUserEmail();
-            if (email == null) return Unauthorized();
-
-            var user = _repository.GetUserByEmail(email);
-            if (user == null) return Unauthorized();
-
-            var instructor = _repository.GetById(user.UserID);
-            if (instructor == null) return NotFound();
-
-            bool isManager = instructor.Branches.Any(); // Branches managed by this instructor
-
-            ViewBag.IsManager = isManager;
-            ViewBag.ManagedBranches = isManager ? instructor.Branches : new List<Branch>();
-
             return View();
         }
+
         public IActionResult ManagedBranch()
         {
-            var email = GetCurrentUserEmail();
-            if (email == null) return Unauthorized();
+            if (!_isManager)
+                return RedirectToAction("Index");
 
-            var user = _userRepository.GetByEmail(email);
-            if (user == null) return NotFound();
+            var instructor = GetCurrentInstructor();
+            var managedBranch = instructor.Branches.FirstOrDefault();
 
-            var instructor = _repository.GetById(user.UserID);
-            if (instructor == null) return NotFound();
-
-            var managedBranch = instructor.Branches.FirstOrDefault(); // Get the branch where this instructor is the manager
             if (managedBranch == null)
-                return View("NoBranch"); // Optional: create a view saying "You're not managing any branch"
-
+                return View("NoBranch");
+    
             var vm = new DisplayBranchVM
             {
                 BranchID = managedBranch.BranchID,
@@ -68,30 +69,45 @@ namespace ExaminationSystemMVC.Controllers
                 City = managedBranch.City,
                 Street = managedBranch.Street,
                 Tel = managedBranch.Tel,
-
             };
 
-            return View("ManagedBranch", vm);
+            return View(vm);
+        }
+
+        public IActionResult Dashboard()
+        {
+            var instructor = GetCurrentInstructor();
+            var dashboardData = _repository.GetDashboardData(instructor.InsID);
+            return View(dashboardData);
+           
+        }
+
+    
+
+        public IActionResult ReportViewer()
+        {
+            
+            var reports = new List<SelectListItem>
+        {
+            new SelectListItem { Value = "Exam Report/ExamDetailsReport", Text = "Exam Details" },
+            new SelectListItem { Value = "StudentResultsReport/StudentResultsReport", Text = "Student Results" },
+            new SelectListItem { Value = "Exam With out correct Answer/ExamDetailswithoutAnswerReport", Text = "Exam Questions" },
+            new SelectListItem { Value = "ExamQuestionsWithOptions/ExamQuestionsWithOptions", Text = "Old Exam Question" }
+        };
+
+            ViewBag.Reports = reports;
+            return View();
         }
 
 
-        private string GetCurrentUserEmail()
+
+        public IActionResult RedirectToReport(string selectedReport)
         {
-            if (Request == null)
-            {
-                return null;
-            }
+            if (string.IsNullOrEmpty(selectedReport))
+                return RedirectToAction("ReportViewer");
 
-            var token = Request.Cookies["jwt"];
-            if (string.IsNullOrEmpty(token))
-                return null;
-
-            var principal = _jwt.ValidateToken(token);
-            if (principal == null)
-                return null;
-
-            var emailClaim = principal.FindFirst(ClaimTypes.Email);
-            return emailClaim?.Value;
+            var reportUrl = $"http://localhost/ReportServer?/{selectedReport}&rs:Command=Render";
+            return Redirect(reportUrl);
         }
 
 
@@ -107,53 +123,27 @@ namespace ExaminationSystemMVC.Controllers
 
         public IActionResult Tracks()
         {
-            var userIdClaim = User.FindFirst(ClaimTypes.NameIdentifier);
-            if (userIdClaim == null)
-            {
-                return Unauthorized();
-            }
-
-            int userId = int.Parse(userIdClaim.Value);
-
-            var instructor = _repository.GetById(userId);
+            var instructor = GetCurrentInstructor();
             var tracks = _repository.GetInstructorTracks(instructor.InsID);
             return View(tracks);
         }
 
         public IActionResult Courses(int trackId)
         {
-            var userIdClaim = User.FindFirst(ClaimTypes.NameIdentifier);
-            if (userIdClaim == null)
-            {
-                return Unauthorized();
-            }
-
-            int userId = int.Parse(userIdClaim.Value);
-
-            var instructor = _repository.GetById(userId);
-
+            var instructor = GetCurrentInstructor();
             var courses = _repository.GetCoursesByTrack(instructor.InsID, trackId);
             return View(courses);
         }
 
         public IActionResult Students(int courseId)
         {
-
             var students = _repository.GetStudentsInCourse(courseId);
             return View(students);
         }
 
         public IActionResult Exams(int? courseId)
         {
-            var userIdClaim = User.FindFirst(ClaimTypes.NameIdentifier);
-            if (userIdClaim == null)
-            {
-                return Unauthorized();
-            }
-
-            int userId = int.Parse(userIdClaim.Value);
-
-            var instructor = _repository.GetById(userId);
+            var instructor = GetCurrentInstructor();
             var exams = _repository.GetInstructorExams(instructor.InsID, courseId).ToList();
 
             ViewBag.Courses = _repository.GetCourseSelectList(instructor.InsID) ?? new List<SelectListItem>();
@@ -164,9 +154,8 @@ namespace ExaminationSystemMVC.Controllers
                 ViewBag.CourseName = _repository.GetCourseName(courseId.Value);
             }
 
-            return View(exams); 
+            return View(exams);
         }
-
 
         public IActionResult DeleteExam(int id)
         {
@@ -176,15 +165,7 @@ namespace ExaminationSystemMVC.Controllers
 
         public IActionResult GenerateExam()
         {
-            var userIdClaim = User.FindFirst(ClaimTypes.NameIdentifier);
-            if (userIdClaim == null)
-            {
-                return Unauthorized();
-            }
-
-            int userId = int.Parse(userIdClaim.Value);
-
-            var instructor = _repository.GetById(userId);
+            var instructor = GetCurrentInstructor();
             var model = new GenerateExamViewModel
             {
                 Courses = _repository.GetCourseSelectList(instructor.InsID)
@@ -195,17 +176,9 @@ namespace ExaminationSystemMVC.Controllers
         [HttpPost]
         public IActionResult GenerateExam(GenerateExamViewModel model)
         {
-            var userIdClaim = User.FindFirst(ClaimTypes.NameIdentifier);
-            if (userIdClaim == null)
-            {
-                return Unauthorized();
-            }
-
-            int userId = int.Parse(userIdClaim.Value);
-
-            var instructor = _repository.GetById(userId);
             if (!ModelState.IsValid)
             {
+                var instructor = GetCurrentInstructor();
                 model.Courses = _repository.GetCourseSelectList(instructor.InsID);
                 return View(model);
             }
@@ -214,24 +187,9 @@ namespace ExaminationSystemMVC.Controllers
             return View("GeneratedExamDetails", result);
         }
 
-        public IActionResult GeneratedExamDetails(int id)
-        {
-            var examDetails = _repository.GetGeneratedExamDetails(id);
-            return View(examDetails);
-        }
-
         public IActionResult InstructorCoursesSummary()
         {
-            var userIdClaim = User.FindFirst(ClaimTypes.NameIdentifier);
-            if (userIdClaim == null)
-            {
-                return Unauthorized();
-            }
-
-            int userId = int.Parse(userIdClaim.Value);
-
-            var instructor = _repository.GetById(userId);
-
+            var instructor = GetCurrentInstructor();
             var courses = _repository.GetInstructorCoursesSummary(instructor.InsID);
             return View(courses);
         }
@@ -239,8 +197,7 @@ namespace ExaminationSystemMVC.Controllers
         public IActionResult CourseStudents(int courseId, int? trackId)
         {
             var students = _repository.GetCourseStudents(courseId, trackId);
-            ViewBag.CourseName = _repository.GetInstructorCourses(InsID)
-                .FirstOrDefault(c => c.CrsID == courseId)?.CrsName;
+            ViewBag.CourseName = _repository.GetCourseName(courseId);
             ViewBag.CourseId = courseId;
 
             var tracks = _repository.GetStudentsInCourse(courseId)
@@ -255,24 +212,9 @@ namespace ExaminationSystemMVC.Controllers
 
         public IActionResult CourseExams(int courseId)
         {
-            var userIdClaim = User.FindFirst(ClaimTypes.NameIdentifier);
-            if (userIdClaim == null)
-            {
-                return Unauthorized();
-            }
-
-            int userId = int.Parse(userIdClaim.Value);
-
-            var instructor = _repository.GetById(userId);
-
             var exams = _repository.GetCourseExams(courseId);
-
             ViewBag.CourseName = _repository.GetCourseName(courseId);
-
-            ViewBag.Courses = _repository.GetCourseSelectList(instructor.InsID);
-
             ViewBag.CourseId = courseId;
-
             return View(exams);
         }
 
@@ -284,45 +226,16 @@ namespace ExaminationSystemMVC.Controllers
                 return NotFound();
             }
             ViewBag.CourseId = courseId;
-            return View(courseDetails); 
+            return View(courseDetails);
         }
-
-        [Authorize(Roles = "Instructor")]
-        public IActionResult Dashboard()
-        {
-            var userIdClaim = User.FindFirst(ClaimTypes.NameIdentifier);
-            if (userIdClaim == null)
-            {
-                return Unauthorized();
-            }
-
-            int userId = int.Parse(userIdClaim.Value);
-
-            var instructor = _repository.GetById(userId); 
-
-            if (instructor == null)
-            {
-                return NotFound();
-            }
-
-            var dashboardData = _repository.GetDashboardData(instructor.InsID); 
-
-            if (dashboardData == null)
-            {
-                return View("Error"); 
-            }
-
-            return View(dashboardData);
-        }
-
 
         public IActionResult AddQuestion()
         {
-            var instructorId = GetCurrentUserIdFromDatabase();
-            var courses = _repository.GetCourseSelectList(instructorId);
-            ViewBag.Courses = courses;
+            var instructor = GetCurrentInstructor();
+            ViewBag.Courses = _repository.GetCourseSelectList(instructor.InsID);
             return View();
         }
+
         [HttpPost]
         public IActionResult AddQuestion(QuestionViewModel model)
         {
@@ -366,14 +279,6 @@ namespace ExaminationSystemMVC.Controllers
                             TempData["Success"] = "Question and options added successfully!";
                             return RedirectToAction("AddQuestion");
                         }
-                        else
-                        {
-                            ModelState.AddModelError("", "Failed to add question options");
-                        }
-                    }
-                    else
-                    {
-                        ModelState.AddModelError("", "Failed to add question");
                     }
                 }
                 catch (Exception ex)
@@ -382,12 +287,34 @@ namespace ExaminationSystemMVC.Controllers
                 }
             }
 
-            var instructorId = GetCurrentUserIdFromDatabase();
-            ViewBag.Courses = _repository.GetCourseSelectList(instructorId);
+            var instructor = GetCurrentInstructor();
+            ViewBag.Courses = _repository.GetCourseSelectList(instructor.InsID);
             return View(model);
         }
 
-       
+        #region Helper Methods
+        private string GetCurrentUserEmail()
+        {
+            var token = Request.Cookies["jwt"];
+            if (string.IsNullOrEmpty(token))
+                return null;
 
+            var principal = _jwt.ValidateToken(token);
+            return principal?.FindFirst(ClaimTypes.Email)?.Value;
+        }
+
+        private Instructor GetCurrentInstructor()
+        {
+            var email = GetCurrentUserEmail();
+            if (string.IsNullOrEmpty(email))
+                throw new UnauthorizedAccessException();
+
+            var user = _repository.GetUserByEmail(email);
+            if (user == null)
+                throw new UnauthorizedAccessException();
+
+            return _repository.GetById(user.UserID) ?? throw new UnauthorizedAccessException();
+        }
+        #endregion
     }
 }

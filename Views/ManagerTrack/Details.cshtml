@@ -1,170 +1,178 @@
 ﻿@model DisplayTrackVM
 @{
     ViewData["Title"] = "Track Details";
-    Layout = "~/Views/Shared/_InstructorLayout.cshtml";
+    Layout = "~/Views/Shared/_ManagerLayout.cshtml";
 }
 
-<div class="container-fluid">
+<div class="container-fluid py-4">
+    <!-- Header Section -->
     <div class="row mb-4">
         <div class="col-12">
             <div class="d-flex justify-content-between align-items-center">
-                <h2 class="fw-bold text-primary">@Model.TrackName - Details</h2>
-                <div>
-                    <a asp-action="Index" class="btn btn-outline-secondary">
-                        <i class="fas fa-arrow-left"></i> Back to Tracks
+                <div class="d-flex align-items-center">
+                    <i class="fas fa-map-marked-alt fa-2x text-primary me-3"></i>
+                    <div>
+                        <h1 class="h3 fw-bold mb-0">@Model.TrackName</h1>
+                        <p class="text-muted mb-0">Track Management Dashboard</p>
+                    </div>
+                </div>
+                <a asp-action="Index" class="btn btn-outline-secondary">
+                    <i class="fas fa-arrow-left me-2"></i>Back to Tracks
+                </a>
+            </div>
+            <hr class="mt-2">
+        </div>
+    </div>
+
+    <!-- Summary Cards Row -->
+    <div class="row mb-4">
+        <!-- Track Info Card -->
+        <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card border-start border-primary border-4 h-100">
+                <div class="card-body">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div>
+                            <h6 class="text-uppercase text-muted mb-2">Track Info</h6>
+                            <div class="mb-2">
+                                <span class="badge bg-primary-light text-primary">@Model.Duration weeks</span>
+                                <span class="badge bg-primary-light text-primary ms-2">@Model.Capacity capacity</span>
+                            </div>
+                            <p class="mb-0">
+                                <i class="fas fa-user-tie me-2 text-primary"></i>
+                                @(string.IsNullOrEmpty(Model.SupervisorName) ? "No supervisor" : Model.SupervisorName)
+                            </p>
+                        </div>
+                        <i class="fas fa-info-circle fa-2x text-primary opacity-25"></i>
+                    </div>
+                    <hr>
+                    <a asp-action="EditTrack" asp-route-id="@Model.TrackID" class="btn btn-sm btn-outline-primary w-100">
+                        <i class="fas fa-edit me-2"></i>Edit Track
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Students Count Card -->
+        <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card border-start border-success border-4 h-100">
+                <div class="card-body">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div>
+                            <h6 class="text-uppercase text-muted mb-2">Students</h6>
+                            <h3 class="mb-0">@Model.Students.Count</h3>
+                        </div>
+                        <i class="fas fa-users fa-2x text-success opacity-25"></i>
+                    </div>
+                    <hr>
+                    <button class="btn btn-sm btn-outline-success w-100" data-bs-toggle="modal" data-bs-target="#assignStudentModal">
+                        <i class="fas fa-user-plus me-2"></i>Assign Student
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Courses Count Card -->
+        <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card border-start border-info border-4 h-100">
+                <div class="card-body">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div>
+                            <h6 class="text-uppercase text-muted mb-2">Courses</h6>
+                            <h3 class="mb-0">@Model.Courses.Count</h3>
+                        </div>
+                        <i class="fas fa-book fa-2x text-info opacity-25"></i>
+                    </div>
+                    <hr>
+                    <a asp-action="AddCourse" asp-route-id="@Model.TrackID" class="btn btn-sm btn-outline-info w-100">
+                        <i class="fas fa-plus me-2"></i>Add Course
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Instructors Count Card -->
+        <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card border-start border-warning border-4 h-100">
+                <div class="card-body">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div>
+                            <h6 class="text-uppercase text-muted mb-2">Instructors</h6>
+                            <h3 class="mb-0">@Model.Instructors.Count</h3>
+                        </div>
+                        <i class="fas fa-chalkboard-teacher fa-2x text-warning opacity-25"></i>
+                    </div>
+                    <hr>
+                    <a asp-action="AddInstructor" asp-route-id="@Model.TrackID" class="btn btn-sm btn-outline-warning w-100">
+                        <i class="fas fa-plus me-2"></i>Add Instructor
                     </a>
                 </div>
             </div>
         </div>
     </div>
-    </div>
 
-    <div class="row">
-        <!-- Track Info Card -->
-        <div class="col-md-4 mb-4">
-            <div class="card shadow-sm h-100">
-                <div class="card-header bg-primary text-white">
-                    <h5 class="card-title mb-0">Track Information</h5>
-                </div>
-                <div class="card-body">
-                    <dl class="row">
-                        <dt class="col-sm-5">Duration:</dt>
-                        <dd class="col-sm-7">@Model.Duration weeks</dd>
-
-                        <dt class="col-sm-5">Capacity:</dt>
-                        <dd class="col-sm-7">@Model.Capacity</dd>
-
-                        <dt class="col-sm-5">Supervisor:</dt>
-                        <dd class="col-sm-7">
-                            @if (!string.IsNullOrEmpty(Model.SupervisorName))
-                            {
-                                <span>@Model.SupervisorName</span>
-                            }
-                            else
-                            {
-                                <span class="text-muted">Not assigned</span>
-                            }
-                        </dd>
-                    </dl>
-                    <div class="d-grid gap-2">
-                        <a asp-action="EditTrack" asp-route-id="@Model.TrackID" class="btn btn-warning">
-                            <i class="fas fa-edit"></i> Edit Track
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Quick Actions Card -->
-        <div class="col-md-4 mb-4">
-            <div class="card shadow-sm h-100">
-                <div class="card-header bg-primary text-white">
-                    <h5 class="card-title mb-0">Quick Actions</h5>
-                </div>
-                <div class="card-body d-flex flex-column">
-                    <div class="d-grid gap-2 mb-3">
-                        <a asp-action="AddCourse" asp-route-id="@Model.TrackID" class="btn btn-success">
-                            <i class="fas fa-plus"></i> Add Course
-                        </a>
-                    </div>
-                    <div class="d-grid gap-2 mb-3">
-                        <a asp-action="AddInstructor" asp-route-id="@Model.TrackID" class="btn btn-info">
-                            <i class="fas fa-plus"></i> Add Instructor
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Assign Existing Student Card -->
-        <div class="col-md-4 mb-4">
-            <div class="card shadow-sm h-100">
-                <div class="card-header bg-primary text-white">
-                    <h5 class="card-title mb-0">Assign Existing Student</h5>
-                </div>
-                <div class="card-body">
-                    <form asp-action="AssignStudent" method="post">
-                        <input type="hidden" name="trackId" value="@Model.TrackID" />
-                        <div class="mb-3">
-                            <label class="form-label">Select Student</label>
-                            <select name="studentId" class="form-select" required>
-                                <option value="">-- Select Student --</option>
-                                @foreach (var student in ViewBag.AvailableStudents)
-                                {
-                                    <option value="@student.StdID">@student.Name (@student.Email)</option>
-                                }
-                            </select>
-                        </div>
-                        <div class="d-grid">
-                            <button type="submit" class="btn btn-secondary">
-                                <i class="fas fa-user-plus"></i> Assign Student
-                            </button>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Students Section -->
+    <!-- Students Table Section -->
     <div class="row mb-4">
         <div class="col-12">
             <div class="card shadow-sm">
-                <div class="card-header bg-primary text-white d-flex justify-content-between align-items-center">
-                    <h5 class="mb-0">Students (@Model.Students.Count)</h5>
+                <div class="card-header bg-white border-bottom d-flex justify-content-between align-items-center py-3">
+                    <h5 class="mb-0">
+                        <i class="fas fa-users me-2 text-primary"></i>
+                        Student Roster
+                    </h5>
                     <div>
                         <a asp-action="Details" asp-route-id="@Model.TrackID" asp-route-sortOrder="asc"
-                           class="btn btn-sm btn-outline-light @(ViewBag.SortOrder == "asc" ? "active" : "")">
-                            <i class="fas fa-sort-amount-up"></i> Asc
+                           class="btn btn-sm @(ViewBag.SortOrder == "asc" ? "btn-primary" : "btn-outline-primary")">
+                            <i class="fas fa-sort-amount-up me-1"></i>Asc
                         </a>
                         <a asp-action="Details" asp-route-id="@Model.TrackID" asp-route-sortOrder="desc"
-                           class="btn btn-sm btn-outline-light @(ViewBag.SortOrder == "desc" ? "active" : "")">
-                            <i class="fas fa-sort-amount-down"></i> Desc
+                           class="btn btn-sm @(ViewBag.SortOrder == "desc" ? "btn-primary" : "btn-outline-primary") ms-2">
+                            <i class="fas fa-sort-amount-down me-1"></i>Desc
                         </a>
                     </div>
                 </div>
-                <div class="card-body">
+                <div class="card-body p-0">
                     @if (Model.Students.Any())
                     {
                         <div class="table-responsive">
-                            <table class="table table-hover">
-                                <thead>
+                            <table class="table table-hover mb-0">
+                                <thead class="bg-light">
                                     <tr>
-                                        <th>Name</th>
-                                        <th>Email</th>
-                                        <th>Intake Year</th>
-                                        <th>Status</th>
-                                        <th>Actions</th>
+                                        <th class="ps-4"><i class="fas fa-user me-2"></i>Name</th>
+                                        <th><i class="fas fa-envelope me-2"></i>Email</th>
+                                        <th><i class="fas fa-calendar-alt me-2"></i>Intake Year</th>
+                                        <th><i class="fas fa-circle me-2"></i>Status</th>
+                                        <th class="text-end pe-4">Actions</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     @foreach (var student in Model.Students)
                                     {
                                         <tr>
-                                            <td>@student.Name</td>
+                                            <td class="ps-4">@student.Name</td>
                                             <td>@student.Email</td>
                                             <td>@student.IntakeYear</td>
                                             <td>
                                                 <span class="badge @(student.IsActive == "Active" ? "bg-success" : "bg-secondary")">
+                                                    <i class="fas @(student.IsActive == "Active" ? "fa-check-circle" : "fa-times-circle") me-1"></i>
                                                     @student.IsActive
                                                 </span>
                                             </td>
-                                            <td>
-                                                <div class="btn-group" role="group">
-                                                <a asp-controller="ManagerTrack" asp-action="ViewStudent" asp-route-id="@student.StdID"
-                                                       class="btn btn-sm btn-outline-primary">
+                                            <td class="text-end pe-4">
+                                                <div class="btn-group btn-group-sm" role="group">
+                                                    <a asp-controller="ManagerTrack" asp-action="ViewStudent" asp-route-id="@student.StdID"
+                                                       class="btn btn-outline-primary" title="View">
                                                         <i class="fas fa-eye"></i>
                                                     </a>
-                                                <a asp-controller="ManagerTrack" asp-action="EditStudent" asp-route-id="@student.StdID"
-                                                       class="btn btn-sm btn-outline-warning">
+                                                    <a asp-controller="ManagerTrack" asp-action="EditStudent" asp-route-id="@student.StdID"
+                                                       class="btn btn-outline-warning" title="Edit">
                                                         <i class="fas fa-edit"></i>
                                                     </a>
-                                                <form asp-controller="ManagerTrack" asp-action="DeleteStudent" asp-route-id="@student.StdID"
+                                                    <form asp-controller="ManagerTrack" asp-action="DeleteStudent" asp-route-id="@student.StdID"
                                                           method="post" class="d-inline">
                                                         @Html.AntiForgeryToken()
-                                                        <button type="submit" class="btn btn-sm btn-outline-danger"
+                                                        <button type="submit" class="btn btn-outline-danger" title="Remove"
                                                                 onclick="return confirm('Are you sure you want to remove this student?')">
-                                                            <i class="fas fa-trash-alt"></i>
+                                                            <i class="fas fa-user-minus"></i>
                                                         </button>
                                                     </form>
                                                 </div>
@@ -177,100 +185,65 @@
                     }
                     else
                     {
-                        <div class="alert alert-warning mb-0">No students in this track</div>
+                        <div class="text-center py-5">
+                            <i class="fas fa-user-slash fa-3x text-muted mb-3"></i>
+                            <h5 class="text-muted">No students in this track</h5>
+                            <button class="btn btn-primary mt-3" data-bs-toggle="modal" data-bs-target="#assignStudentModal">
+                                <i class="fas fa-user-plus me-2"></i>Assign Students
+                            </button>
+                        </div>
                     }
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- Courses and Instructors Row -->
+    <!-- Courses and Instructors Section -->
     <div class="row">
         <!-- Courses Section -->
-        <!-- Courses Section -->
-        <div class="col-md-6 mb-4">
+        <div class="col-lg-6 mb-4">
             <div class="card shadow-sm h-100">
-                <div class="card-header bg-primary text-white">
-                    <h5 class="mb-0">Courses (@Model.Courses.Count)</h5>
+                <div class="card-header bg-white border-bottom d-flex justify-content-between align-items-center py-3">
+                    <h5 class="mb-0">
+                        <i class="fas fa-book me-2 text-info"></i>
+                        Track Courses
+                    </h5>
+                    <a asp-action="AddCourse" asp-route-id="@Model.TrackID" class="btn btn-sm btn-info">
+                        <i class="fas fa-plus me-1"></i>Add Course
+                    </a>
                 </div>
-                <div class="card-body">
+                <div class="card-body p-0">
                     @if (Model.Courses.Any())
                     {
-                        <div class="list-group">
+                        <div class="list-group list-group-flush">
                             @foreach (var course in Model.Courses)
                             {
-                                <div class="list-group-item d-flex justify-content-between align-items-center">
-                                    <div>
-                                        <h6 class="mb-1">@course.CrsName</h6>
-                                        <div>
-                                            <a asp-action="CourseDetails" asp-route-id="@course.CrsID"
-                                               class="btn btn-sm btn-outline-primary me-2">
-                                                <i class="fas fa-eye"></i> Details
-                                            </a>
-                                        <a asp-action="AssignInstructorToCourse" asp-route-courseId="@course.CrsID"
-                                               class="btn btn-sm btn-outline-secondary me-2">
-                                                <i class="fas fa-user-plus"></i> Assign Instructor
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <form asp-action="RemoveCourse" method="post">
-                                        <input type="hidden" name="trackId" value="@Model.TrackID" />
-                                        <input type="hidden" name="courseId" value="@course.CrsID" />
-                                        <button type="submit" class="btn btn-sm btn-outline-danger"
-                                                onclick="return confirm('Remove this course from track?')">
-                                            <i class="fas fa-trash-alt"></i>
-                                        </button>
-                                    </form>
-                                </div>
-                            }
-                        </div>
-                    }
-                    else
-                    {
-                        <div class="alert alert-warning mb-0">No courses assigned</div>
-                    }
-                </div>
-            </div>
-        </div>
-        <!-- Instructors Section -->
-        <div class="col-md-6 mb-4">
-            <div class="card shadow-sm h-100">
-                <div class="card-header bg-primary text-white">
-                    <h5 class="mb-0">Instructors (@Model.Instructors.Count)</h5>
-                </div>
-                <div class="card-body">
-                    @if (Model.Instructors.Any())
-                    {
-                        <div class="list-group">
-                            @foreach (var instructor in Model.Instructors)
-                            {
-                                <div class="list-group-item">
+                                <div class="list-group-item border-0 py-3">
                                     <div class="d-flex justify-content-between align-items-center">
                                         <div>
-                                            <h6 class="mb-1">@instructor.InsName</h6>
-                                            <small class="text-muted">@instructor.Email</small>
+                                            <h6 class="mb-1">
+                                                <i class="fas fa-bookmark text-info me-2"></i>
+                                                @course.CrsName
+                                            </h6>
+                                            <small class="text-muted">
+                                                <i class="fas fa-clock me-1"></i>
+                                                @course.Duration hours
+                                            </small>
                                         </div>
-                                        <div class="btn-group" role="group">
-                                            @if (Model.SupervisorID == instructor.InsID)
-                                            {
-                                                <span class="badge bg-success me-2">Supervisor</span>
-                                            }
-                                            else
-                                            {
-                                                <form asp-action="MakeInstructorSupervisor" method="post" class="d-inline me-2">
-                                                    <input type="hidden" name="trackId" value="@Model.TrackID" />
-                                                    <input type="hidden" name="insId" value="@instructor.InsID" />
-                                                    <button type="submit" class="btn btn-sm btn-outline-info" title="Make Supervisor">
-                                                        <i class="fas fa-user-tie"></i>
-                                                    </button>
-                                                </form>
-                                            }
-                                            <form asp-action="RemoveInstructor" method="post" class="d-inline">
+                                        <div class="btn-group btn-group-sm" role="group">
+                                            <a asp-action="CourseDetails" asp-route-id="@course.CrsID"
+                                               class="btn btn-outline-info" title="Details">
+                                                <i class="fas fa-info-circle"></i>
+                                            </a>
+                                            <a asp-action="AssignInstructorToCourse" asp-route-courseId="@course.CrsID"
+                                               class="btn btn-outline-secondary" title="Assign Instructor">
+                                                <i class="fas fa-user-plus"></i>
+                                            </a>
+                                            <form asp-action="RemoveCourse" method="post">
                                                 <input type="hidden" name="trackId" value="@Model.TrackID" />
-                                                <input type="hidden" name="insId" value="@instructor.InsID" />
-                                                <button type="submit" class="btn btn-sm btn-outline-danger"
-                                                        title="Remove Instructor"
-                                                        onclick="return confirm('Are you sure you want to remove this instructor?')">
+                                                <input type="hidden" name="courseId" value="@course.CrsID" />
+                                                <button type="submit" class="btn btn-outline-danger" title="Remove"
+                                                        onclick="return confirm('Remove this course from track?')">
                                                     <i class="fas fa-trash-alt"></i>
                                                 </button>
                                             </form>
@@ -282,11 +255,131 @@
                     }
                     else
                     {
-                        <div class="alert alert-warning mb-0">No instructors assigned</div>
+                        <div class="text-center py-5">
+                            <i class="fas fa-book-open fa-3x text-muted mb-3"></i>
+                            <h5 class="text-muted">No courses assigned</h5>
+                            <a asp-action="AddCourse" asp-route-id="@Model.TrackID" class="btn btn-info mt-3">
+                                <i class="fas fa-plus me-2"></i>Add Course
+                            </a>
+                        </div>
                     }
                 </div>
             </div>
         </div>
+
+        <!-- Instructors Section -->
+        <div class="col-lg-6 mb-4">
+            <div class="card shadow-sm h-100">
+                <div class="card-header bg-white border-bottom d-flex justify-content-between align-items-center py-3">
+                    <h5 class="mb-0">
+                        <i class="fas fa-chalkboard-teacher me-2 text-warning"></i>
+                        Track Instructors
+                    </h5>
+                    <a asp-action="AddInstructor" asp-route-id="@Model.TrackID" class="btn btn-sm btn-warning">
+                        <i class="fas fa-plus me-1"></i>Add Instructor
+                    </a>
+                </div>
+                <div class="card-body p-0">
+                    @if (Model.Instructors.Any())
+                    {
+                        <div class="list-group list-group-flush">
+                            @foreach (var instructor in Model.Instructors)
+                            {
+                                <div class="list-group-item border-0 py-3">
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <div>
+                                            <h6 class="mb-1">
+                                                <i class="fas @(Model.SupervisorID == instructor.InsID ? "fa-user-tie text-warning" : "fa-user text-muted") me-2"></i>
+                                                @instructor.InsName
+                                            </h6>
+                                            <small class="text-muted">
+                                                <i class="fas fa-envelope me-1"></i>
+                                                @instructor.Email
+                                            </small>
+                                        </div>
+                                        <div class="btn-group btn-group-sm" role="group">
+                                            @if (Model.SupervisorID == instructor.InsID)
+                                            {
+                                                <span class="btn btn-warning disabled" title="Current Supervisor">
+                                                    <i class="fas fa-crown"></i>
+                                                </span>
+                                            }
+                                            else
+                                            {
+                                                <form asp-action="MakeInstructorSupervisor" method="post">
+                                                    <input type="hidden" name="trackId" value="@Model.TrackID" />
+                                                    <input type="hidden" name="insId" value="@instructor.InsID" />
+                                                    <button type="submit" class="btn btn-outline-warning" title="Make Supervisor">
+                                                        <i class="fas fa-user-tie"></i>
+                                                    </button>
+                                                </form>
+                                            }
+                                            <form asp-action="RemoveInstructor" method="post">
+                                                <input type="hidden" name="trackId" value="@Model.TrackID" />
+                                                <input type="hidden" name="insId" value="@instructor.InsID" />
+                                                <button type="submit" class="btn btn-outline-danger" title="Remove"
+                                                        onclick="return confirm('Are you sure you want to remove this instructor?')">
+                                                    <i class="fas fa-user-minus"></i>
+                                                </button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="text-center py-5">
+                            <i class="fas fa-chalkboard-teacher fa-3x text-muted mb-3"></i>
+                            <h5 class="text-muted">No instructors assigned</h5>
+                            <a asp-action="AddInstructor" asp-route-id="@Model.TrackID" class="btn btn-warning mt-3">
+                                <i class="fas fa-plus me-2"></i>Add Instructor
+                            </a>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Assign Student Modal -->
+<div class="modal fade" id="assignStudentModal" tabindex="-1" aria-labelledby="assignStudentModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header bg-primary text-white">
+                <h5 class="modal-title" id="assignStudentModalLabel">
+                    <i class="fas fa-user-plus me-2"></i>
+                    Assign Student to Track
+                </h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form asp-action="AssignStudent" method="post">
+                <div class="modal-body">
+                    <input type="hidden" name="trackId" value="@Model.TrackID" />
+                    <div class="mb-3">
+                        <label class="form-label">Select Student</label>
+                        <select name="studentId" class="form-select" required>
+                            <option value="">-- Select Student --</option>
+                            @foreach (var student in ViewBag.AvailableStudents)
+                            {
+                                <option value="@student.StdID">@student.Name (@student.Email)</option>
+                            }
+                        </select>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
+                        <i class="fas fa-times me-2"></i>Cancel
+                    </button>
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fas fa-user-plus me-2"></i>Assign Student
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
 </div>
 
 @section Styles {
@@ -294,23 +387,40 @@
         .card {
             border-radius: 0.5rem;
             border: none;
+            box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
         }
 
-        .card-header {
-            border-radius: 0.5rem 0.5rem 0 0 !important;
+        .border-start {
+            border-left-width: 0.25rem !important;
+        }
+
+        .bg-primary-light {
+            background-color: rgba(13, 110, 253, 0.1);
         }
 
         .list-group-item {
-            border-left: none;
-            border-right: none;
+            transition: all 0.2s;
         }
 
-            .list-group-item:first-child {
-                border-top: none;
+            .list-group-item:hover {
+                background-color: #f8f9fa;
             }
 
-            .list-group-item:last-child {
-                border-bottom: none;
-            }
+        .btn-group-sm > .btn, .btn-sm {
+            padding: 0.25rem 0.5rem;
+            font-size: 0.875rem;
+        }
+
+        .table th {
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 0.75rem;
+            letter-spacing: 0.5px;
+        }
+
+        .badge {
+            font-weight: 500;
+            padding: 0.35em 0.65em;
+        }
     </style>
 }
