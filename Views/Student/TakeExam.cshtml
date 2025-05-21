@@ -1,0 +1,221 @@
+﻿@model List<ExamQuestion>
+@{
+    ViewData["Title"] = "Take Exam";
+    Layout = "~/Views/Shared/StudentLayout.cshtml";
+
+    var examEndTime = ViewBag.EndTime;
+    var timeRemaining = examEndTime - DateTime.Now;
+}
+
+<style>
+    /* Existing styles from your application */
+    :root {
+        --primary-color: #4e91fc;
+        --primary-light: #a8c9ff;
+        --secondary-color: #7f5af0;
+        --dark-color: #1a1a2e;
+        --light-color: #f8f9fa;
+        --success-color: #4cc9f0;
+        --error-color: #f72585;
+        --border-radius: 8px;
+        --box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        --transition: all 0.3s ease;
+    }
+
+    /* Additional styles for the exam page */
+    .exam-container {
+        background-color: white;
+        border-radius: var(--border-radius);
+        padding: 20px;
+        box-shadow: var(--box-shadow);
+    }
+
+    .question-card {
+        background-color: white;
+        border-radius: var(--border-radius);
+        padding: 20px;
+        margin-bottom: 20px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    }
+
+    .question-number {
+        font-weight: bold;
+        color: var(--primary-color);
+        margin-right: 10px;
+    }
+
+    .option-container {
+        margin: 15px 0;
+    }
+
+    .option-label {
+        display: block;
+        padding: 10px 15px;
+        background-color: #f8f9fa;
+        border-radius: var(--border-radius);
+        margin-bottom: 8px;
+        cursor: pointer;
+        transition: var(--transition);
+    }
+
+        .option-label:hover {
+            background-color: #e9ecef;
+        }
+
+    .option-input {
+        margin-right: 10px;
+    }
+
+    .timer-container {
+        position: sticky;
+        top: 10px;
+        z-index: 100;
+        background-color: white;
+        padding: 10px 15px;
+        border-radius: var(--border-radius);
+        box-shadow: var(--box-shadow);
+        display: flex;
+        align-items: center;
+        margin-bottom: 20px;
+    }
+
+    .timer-icon {
+        color: var(--error-color);
+        margin-right: 10px;
+        font-size: 1.2rem;
+    }
+
+    .timer-text {
+        font-weight: bold;
+        color: var(--error-color);
+    }
+
+    .submit-container {
+        margin-top: 30px;
+        text-align: center;
+    }
+
+    .submit-btn {
+        background-color: var(--primary-color);
+        color: white;
+        border: none;
+        border-radius: var(--border-radius);
+        padding: 10px 25px;
+        font-size: 1.1rem;
+        cursor: pointer;
+        transition: var(--transition);
+    }
+
+        .submit-btn:hover {
+            background-color: #3a7ad9;
+            transform: translateY(-2px);
+        }
+
+    .question-type {
+        font-size: 0.9rem;
+        background-color: #e9ecef;
+        padding: 4px 8px;
+        border-radius: 4px;
+        margin-left: 10px;
+        color: #495057;
+    }
+</style>
+
+<div class="container py-4">
+    <div class="timer-container" id="timer-container">
+        <div class="timer-icon">
+            <i class="bi bi-alarm"></i>
+        </div>
+        <div class="timer-text">
+            Time remaining: <span id="hours">@timeRemaining.Hours</span>:<span id="minutes">@timeRemaining.Minutes</span>:<span id="seconds">@timeRemaining.Seconds</span>
+        </div>
+    </div>
+
+    <div class="exam-container">
+        <div class="mb-4">
+            <h2>@ViewBag.ExamName</h2>
+            <p>Duration: @ViewBag.Duration minutes</p>
+            <hr>
+        </div>
+
+        <form id="examForm" asp-action="SubmitExam" asp-controller="Student" method="post">
+            <input type="hidden" name="examId" value="@ViewBag.ExamID" />
+
+            @for (int i = 0; i < Model.Count; i++)
+            {
+                var question = Model[i].Question;
+                var options = Model[i].Options;
+                var questionType = question.Type.ToUpper() == "TF" || question.Type == "T/F" ? "True/False" : "Multiple Choice";
+
+                <div class="question-card">
+                    <div class="d-flex align-items-center">
+                        <span class="question-number">Q@(i + 1)</span>
+                        <div>@question.QText</div>
+                        <span class="question-type">@questionType</span>
+                    </div>
+
+                    <div class="option-container">
+                        @foreach (var option in options)
+                        {
+                            <label class="option-label">
+                                <input type="radio" name="question_@(question.QID)" value="@option.OptNum" class="option-input" required />
+                                @option.OptText
+                            </label>
+                        }
+                    </div>
+                </div>
+            }
+
+            <div class="submit-container">
+                <button type="submit" class="submit-btn">Submit Exam</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        // Timer functionality
+        let examEndTime = new Date('@examEndTime.ToString("yyyy-MM-ddTHH:mm:ss")');
+
+        function updateTimer() {
+            const now = new Date();
+            const diff = examEndTime - now;
+
+            if (diff <= 0) {
+                // Time's up - auto-submit the exam
+                document.getElementById('examForm').submit();
+                return;
+            }
+
+            const hours = Math.floor(diff / (1000 * 60 * 60));
+            const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+            document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
+            document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
+            document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
+
+            // Change color to red when less than 5 minutes remain
+            if (diff < 5 * 60 * 1000) {
+                document.getElementById('timer-container').style.backgroundColor = '#ffebee';
+                document.querySelector('.timer-text').style.color = '#d50000';
+            }
+        }
+
+        // Update timer every second
+        updateTimer();
+        setInterval(updateTimer, 1000);
+
+        // Prevent form resubmission on page refresh/back
+        if (window.history.replaceState) {
+            window.history.replaceState(null, null, window.location.href);
+        }
+
+        // Warn before leaving the page
+        window.addEventListener('beforeunload', function(e) {
+            e.preventDefault();
+            e.returnValue = 'You are in the middle of an exam. Are you sure you want to leave?';
+        });
+    </script>
+}

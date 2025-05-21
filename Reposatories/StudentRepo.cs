@@ -103,6 +103,7 @@ namespace ExaminationSystemMVC.Reposatories
                 .Where(se => se.StdID == id)
                 .Include(se => se.Exam)
                     .ThenInclude(e => e.Crs)
+                .Include(se => se.Exam.QIDs)
                 .ToList();
         }
         public List<ExamQuestionWithAnswersVM> GetExamQuestionsWithAnswers(int examId, int studentId)
@@ -164,6 +165,161 @@ namespace ExaminationSystemMVC.Reposatories
                 .Include(e => e.Crs)
                 .FirstOrDefault(e => e.ExamID == examId);
         }
+
+        // Get exam questions for a specific exam
+        public List<ExamQuestion> GetExamQuestions(int examId)
+        {
+            var exam = Db.Exams
+                .Include(e => e.QIDs)
+                .FirstOrDefault(e => e.ExamID == examId);
+
+            if (exam == null)
+                return new List<ExamQuestion>();
+
+            var result = new List<ExamQuestion>();
+
+            foreach (var question in exam.QIDs)
+            {
+                var options = Db.Questions_Options
+                    .Where(o => o.QID == question.QID)
+                    .OrderBy(o => o.OptNum)
+                    .ToList();
+
+                result.Add(new ExamQuestion
+                {
+                    Question = question,
+                    Options = options
+                });
+            }
+
+            return result;
+        }
+
+        // Submit exam answers
+        public int SubmitExam(int studentId, int examId, Dictionary<int, string> answers)
+        {
+            var existingSubmission = Db.Student_Exams
+                .FirstOrDefault(se => se.StdID == studentId && se.ExamID == examId);
+
+            if (existingSubmission != null)
+                return -1;
+
+            var exam = Db.Exams
+                .Include(e => e.QIDs)
+                .FirstOrDefault(e => e.ExamID == examId);
+
+            if (exam == null)
+                return -2; 
+
+            int totalScore = 0;
+
+            foreach (var question in exam.QIDs)
+            {
+                if (answers.TryGetValue(question.QID, out string selectedAnswer))
+                {
+                    Db.Exam_Student_Questions.Add(new Exam_Student_Question
+                    {
+                        ExamID = examId,
+                        StdID = studentId,
+                        QID = question.QID,
+                        SelectedOpt = selectedAnswer
+                    });
+
+                    int correctOption = question.CorrectOptNum;
+                    if (selectedAnswer == correctOption.ToString())
+                    {
+                        totalScore += question.Points;
+                    }
+                }
+            }
+
+            var studentExam = new Student_Exam
+            {
+                StdID = studentId,
+                ExamID = examId,
+                Score = totalScore
+            };
+
+            Db.Student_Exams.Add(studentExam);
+            Db.SaveChanges();
+
+            UpdateStudentCourseGrade(studentId, examId);
+
+
+            return totalScore;
+        }
+
+        // Update student grade based on exam score
+        public void UpdateStudentCourseGrade(int studentId, int examId)
+        {
+            var studentExam = Db.Student_Exams
+                .Include(se => se.Exam)
+                .FirstOrDefault(se => se.StdID == studentId && se.ExamID == examId);
+
+            if (studentExam == null)
+                return;
+
+            int courseId = studentExam.Exam.CrsID;
+
+            var allCourseExams = Db.Exams
+                .Where(e => e.CrsID == courseId)
+                .Select(e => e.ExamID)
+                .ToList();
+
+            var allAttempts = Db.Student_Exams
+                .Where(se => se.StdID == studentId && allCourseExams.Contains(se.ExamID))
+                .Include(se => se.Exam)
+                    .ThenInclude(e => e.QIDs)
+                .ToList();
+
+            if (!allAttempts.Any())
+                return;
+
+            double totalPercentage = 0;
+
+            foreach (var attempt in allAttempts)
+            {
+                int totalExamPoints = attempt.Exam.QIDs.Sum(q => q.Points);
+                double percentage = totalExamPoints > 0 ? (double)attempt.Score / totalExamPoints * 100 : 0;
+
+                totalPercentage += percentage;
+            }
+
+            double averagePercentage = totalPercentage / allAttempts.Count;
+
+            var studentCourse = Db.Student_Courses
+                .FirstOrDefault(sc => sc.StdID == studentId && sc.CrsID == courseId);
+
+            if (studentCourse == null)
+            {
+                studentCourse = new Student_Course
+                {
+                    StdID = studentId,
+                    CrsID = courseId
+                };
+                Db.Student_Courses.Add(studentCourse);
+            }
+
+            studentCourse.Grade = GetLetterGrade(averagePercentage);
+
+            Db.SaveChanges();
+        }
+
+        private string GetLetterGrade(double percentage)
+        {
+            if (percentage >= 95) return "A+";
+            if (percentage >= 90) return "A";
+            if (percentage >= 85) return "A-";
+            if (percentage >= 80) return "B+";
+            if (percentage >= 75) return "B";
+            if (percentage >= 70) return "B-";
+            if (percentage >= 65) return "C+";
+            if (percentage >= 60) return "C";
+            if (percentage >= 55) return "C-";
+            if (percentage >= 50) return "D";
+            return "F";
+        }
+
 
     }
 }

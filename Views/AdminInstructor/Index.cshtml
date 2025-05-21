@@ -36,7 +36,14 @@
                             <td class="fw-semibold text-center">@instructor.InsID</td>
                             <td>@instructor.InsName</td>
                             <td>@instructor.Email</td>
-                            <td class="text-center">@instructor.PhoneNumber</td>
+                            @if (instructor.PhoneNumber == null)
+                            {
+                                <td class="text-center">N/A</td>
+                            }
+                            else
+                            {
+                                <td class="text-center">0@(instructor.PhoneNumber)</td>
+                            }
                             <td class="text-center">$@instructor.Salary</td>
                             <td class="text-center">
                                 <span class="badge bg-info">@instructor.Courses.Count</span>
