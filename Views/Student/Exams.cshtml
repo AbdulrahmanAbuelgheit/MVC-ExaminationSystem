@@ -363,6 +363,7 @@
                                         <small class="text-muted">Exam ID: @exam.ExamID</small>
                                     </div>
                                 </div>
+                               
                                 <div class="mb-3">
                                     <strong><i class="bi bi-calendar me-2"></i>Date Taken:</strong>
                                     @exam.ExamDatetime.ToString("MMMM d, yyyy")
@@ -383,6 +384,12 @@
                                     <span class="@resultClass fw-bold">@resultText</span>
                                 </div>
                             </div>
+                                <div class="card-footer bg-transparent">
+                                    <a asp-action="ExamDetails" asp-route-examId="@exam.ExamID"
+                                       class="btn btn-sm btn-outline-primary">
+                                        <i class="bi bi-eye-fill"></i> Details
+                                    </a>
+                                </div>
                         </div>
                     </div>
                 }

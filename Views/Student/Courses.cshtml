@@ -2,6 +2,26 @@
 @{
     ViewData["Title"] = "Student Courses";
     Layout = "~/Views/Shared/StudentLayout.cshtml";
+
+    // Helper function to get appropriate CSS class for each grade
+    string GetGradeClass(string grade)
+    {
+        return grade switch
+        {
+            "A+" => "grade-aplus",
+            "A" => "grade-a",
+            "A-" => "grade-aminus",
+            "B+" => "grade-bplus",
+            "B" => "grade-b",
+            "B-" => "grade-bminus",
+            "C+" => "grade-cplus",
+            "C" => "grade-c",
+            "C-" => "grade-cminus",
+            "D" => "grade-d",
+            "F" => "grade-f",
+            _ => "grade-enrolled"
+        };
+    }
 }
 
 <div class="container-fluid py-4">
@@ -26,8 +46,8 @@
                             <h5 class="mb-0">@course.Crs.CrsName</h5>
                             @if (!string.IsNullOrEmpty(course.Grade))
                             {
-                                <span class="badge grade-badge @($"grade-{course.Grade}")">
-                                    <i class="bi bi-check-circle-fill me-1"></i> Grade: @course.Grade
+                                <span class="badge grade-badge @GetGradeClass(course.Grade)">
+                                    <i class="bi bi-award me-1"></i> Grade: @course.Grade
                                 </span>
                             }
                             else
@@ -52,6 +72,31 @@
                             <p>
                                 <strong>Duration:</strong> @course.Crs.Duration hours
                             </p>
+                            @if (!string.IsNullOrEmpty(course.Grade))
+                            {
+                                <div class="grade-info mt-3">
+                                    <div class="grade-description">
+                                        @{
+                                            string gradeDescription = course.Grade switch
+                                            {
+                                                "A+" => "Excellent (95-100%)",
+                                                "A" => "Excellent (90-94%)",
+                                                "A-" => "Very Good (85-89%)",
+                                                "B+" => "Very Good (80-84%)",
+                                                "B" => "Good (75-79%)",
+                                                "B-" => "Good (70-74%)",
+                                                "C+" => "Satisfactory (65-69%)",
+                                                "C" => "Satisfactory (60-64%)",
+                                                "C-" => "Passing (55-59%)",
+                                                "D" => "Passing (50-54%)",
+                                                "F" => "Failing (Below 50%)",
+                                                _ => "Not Graded"
+                                            };
+                                        }
+                                        <small class="text-muted">@gradeDescription</small>
+                                    </div>
+                                </div>
+                            }
                         </div>
                     </div>
                 </div>
@@ -72,6 +117,20 @@
 
 <style>
     /* Additional specific styles for Courses page */
+    :root {
+        --grade-aplus: #3d9970;
+        --grade-a: #4CAF50;
+        --grade-aminus: #8BC34A;
+        --grade-bplus: #CDDC39;
+        --grade-b: #FFC107;
+        --grade-bminus: #FFB74D;
+        --grade-cplus: #FF9800;
+        --grade-c: #FF7043;
+        --grade-cminus: #FF5722;
+        --grade-d: #F44336;
+        --grade-f: #D32F2F;
+    }
+
     .course-header {
         background-color: white;
         border-radius: var(--border-radius);
@@ -98,8 +157,56 @@
         font-size: 0.85rem;
         padding: 0.35rem 0.75rem;
         border-radius: 20px;
-        background-color: var(--success-color);
         color: white;
+        font-weight: 600;
+    }
+
+    /* Grade-specific styling */
+    .grade-aplus {
+        background-color: var(--grade-aplus);
+    }
+
+    .grade-a {
+        background-color: var(--grade-a);
+    }
+
+    .grade-aminus {
+        background-color: var(--grade-aminus);
+    }
+
+    .grade-bplus {
+        background-color: var(--grade-bplus);
+        color: var(--dark-color);
+    }
+
+    .grade-b {
+        background-color: var(--grade-b);
+        color: var(--dark-color);
+    }
+
+    .grade-bminus {
+        background-color: var(--grade-bminus);
+        color: var(--dark-color);
+    }
+
+    .grade-cplus {
+        background-color: var(--grade-cplus);
+    }
+
+    .grade-c {
+        background-color: var(--grade-c);
+    }
+
+    .grade-cminus {
+        background-color: var(--grade-cminus);
+    }
+
+    .grade-d {
+        background-color: var(--grade-d);
+    }
+
+    .grade-f {
+        background-color: var(--grade-f);
     }
 
     .enrolled-badge {
@@ -127,5 +234,15 @@
         border-bottom: 1px solid #eee;
         border-top-left-radius: var(--border-radius) !important;
         border-top-right-radius: var(--border-radius) !important;
+    }
+
+    .grade-info {
+        border-top: 1px solid #eee;
+        padding-top: 15px;
+    }
+
+    .grade-description {
+        display: flex;
+        align-items: center;
     }
 </style>
