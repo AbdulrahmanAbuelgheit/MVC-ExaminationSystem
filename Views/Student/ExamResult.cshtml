@@ -1,0 +1,125 @@
+﻿@model ExaminationSystemMVC.Models.Student_Exam
+@{
+    ViewData["Title"] = "Exam Result";
+    Layout = "~/Views/Shared/StudentLayout.cshtml";
+
+    // Calculate total possible points
+    var totalPossiblePoints = 0;
+    foreach (var question in Model.Exam.QIDs)
+    {
+        totalPossiblePoints += question.Points;
+    }
+
+    bool isPassed = Model.Score >= (totalPossiblePoints / 2); // Pass if 50% or more of total points
+    string resultClass = isPassed ? "text-success" : "text-danger";
+    string resultText = isPassed ? "Passed" : "Failed";
+    string resultIcon = isPassed ? "bi-check-circle" : "bi-x-circle";
+}
+
+<style>
+    /* Use consistent styles */
+    :root {
+        --primary-color: #4e91fc;
+        --primary-light: #a8c9ff;
+        --secondary-color: #7f5af0;
+        --dark-color: #1a1a2e;
+        --light-color: #f8f9fa;
+        --success-color: #4cc9f0;
+        --error-color: #f72585;
+        --border-radius: 8px;
+        --box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        --transition: all 0.3s ease;
+    }
+
+    .result-container {
+        background-color: white;
+        border-radius: var(--border-radius);
+        padding: 30px;
+        box-shadow: var(--box-shadow);
+        text-align: center;
+        margin-top: 50px;
+    }
+
+    .result-icon {
+        font-size: 5rem;
+        margin-bottom: 20px;
+    }
+
+        .result-icon.text-success {
+            color: var(--success-color);
+        }
+
+        .result-icon.text-danger {
+            color: var(--error-color);
+        }
+
+    .score-display {
+        margin: 20px auto;
+        width: 150px;
+        height: 150px;
+        border-radius: 50%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        background-color: rgba(78, 145, 252, 0.08);
+        border: 3px solid var(--primary-light);
+        color: var(--primary-color);
+    }
+
+    .score-value {
+        font-size: 3rem;
+        font-weight: bold;
+    }
+
+    .score-label {
+        font-size: 1rem;
+        text-transform: uppercase;
+    }
+
+    .exam-details {
+        margin-top: 30px;
+        text-align: left;
+    }
+
+    .action-buttons {
+        margin-top: 30px;
+    }
+
+    .btn-primary {
+        background-color: var(--primary-color);
+        border-color: var(--primary-color);
+        transition: var(--transition);
+    }
+
+        .btn-primary:hover {
+            background-color: #3a7ad9;
+            transform: translateY(-2px);
+        }
+</style>
+
+<div class="container py-4">
+    <div class="result-container">
+        <i class="bi @resultIcon result-icon @resultClass"></i>
+        <h1>Exam Result: <span class="@resultClass">@resultText</span></h1>
+
+        <div class="score-display">
+            <div class="score-value">@Model.Score</div>
+            <div class="score-label">Points</div>
+        </div>
+
+        <p class="mt-2">Out of @totalPossiblePoints total points</p>
+
+        <div class="exam-details">
+            <h4>@Model.Exam.Crs.CrsName Exam</h4>
+            <hr>
+         
+        </div>
+
+        <div class="action-buttons">
+            <a href="@Url.Action("Exams", "Student")" class="btn btn-primary">
+                <i class="bi bi-arrow-left me-2"></i>Return to All Exams
+            </a>
+        </div>
+    </div>
+</div>
