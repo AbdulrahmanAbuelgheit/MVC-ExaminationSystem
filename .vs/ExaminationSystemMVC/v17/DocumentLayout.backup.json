@@ -1,5 +1,20 @@
 {
   "Version": 1,
+<<<<<<< HEAD
+  "WorkspaceRootPath": "C:\\Users\\ahmaa\\OneDrive\\Desktop\\Project\\MVC-ExaminationSystem\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{8E37184C-1207-2929-66F8-D4D153605B76}|ExaminationSystemMVC.csproj|c:\\users\\ahmaa\\onedrive\\desktop\\project\\mvc-examinationsystem\\controllers\\admininstructorcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8E37184C-1207-2929-66F8-D4D153605B76}|ExaminationSystemMVC.csproj|solutionrelative:controllers\\admininstructorcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8E37184C-1207-2929-66F8-D4D153605B76}|ExaminationSystemMVC.csproj|c:\\users\\ahmaa\\onedrive\\desktop\\project\\mvc-examinationsystem\\controllers\\adminstudentcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8E37184C-1207-2929-66F8-D4D153605B76}|ExaminationSystemMVC.csproj|solutionrelative:controllers\\adminstudentcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8E37184C-1207-2929-66F8-D4D153605B76}|ExaminationSystemMVC.csproj|c:\\users\\ahmaa\\onedrive\\desktop\\project\\mvc-examinationsystem\\views\\admininstructor\\addinstructor.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{8E37184C-1207-2929-66F8-D4D153605B76}|ExaminationSystemMVC.csproj|solutionrelative:views\\admininstructor\\addinstructor.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+=======
   "WorkspaceRootPath": "C:\\Users\\abdelrahman\\Desktop\\ww\\MVC-ExaminationSystem\\",
   "Documents": [
     {
@@ -105,6 +120,7 @@
     {
       "AbsoluteMoniker": "D:0:0:{8E37184C-1207-2929-66F8-D4D153605B76}|ExaminationSystemMVC.csproj|c:\\users\\abdelrahman\\desktop\\ww\\mvc-examinationsystem\\viewmodels\\examquestionwithanswersvm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{8E37184C-1207-2929-66F8-D4D153605B76}|ExaminationSystemMVC.csproj|solutionrelative:viewmodels\\examquestionwithanswersvm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+>>>>>>> main
     }
   ],
   "DocumentGroupContainers": [
@@ -114,6 +130,17 @@
       "DocumentGroups": [
         {
           "DockedWidth": 273,
+<<<<<<< HEAD
+          "SelectedChildIndex": 3,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+=======
           "SelectedChildIndex": 5,
           "Children": [
             {
@@ -166,10 +193,21 @@
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-05-19T20:00:07.428Z",
               "EditorCaption": ""
+>>>>>>> main
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
+<<<<<<< HEAD
+              "Title": "AdminStudentController.cs",
+              "DocumentMoniker": "C:\\Users\\ahmaa\\OneDrive\\Desktop\\Project\\MVC-ExaminationSystem\\Controllers\\AdminStudentController.cs",
+              "RelativeDocumentMoniker": "Controllers\\AdminStudentController.cs",
+              "ToolTip": "C:\\Users\\ahmaa\\OneDrive\\Desktop\\Project\\MVC-ExaminationSystem\\Controllers\\AdminStudentController.cs",
+              "RelativeToolTip": "Controllers\\AdminStudentController.cs",
+              "ViewState": "AgIAACQAAAAAAAAAAAAmwEIAAABJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-20T21:35:06.137Z",
+=======
               "Title": "Index.cshtml",
               "DocumentMoniker": "C:\\Users\\abdelrahman\\Desktop\\ww\\MVC-ExaminationSystem\\Views\\ManagerTrack\\Index.cshtml",
               "RelativeDocumentMoniker": "Views\\ManagerTrack\\Index.cshtml",
@@ -178,11 +216,22 @@
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2025-05-19T19:51:50.492Z",
+>>>>>>> main
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 0,
+<<<<<<< HEAD
+              "Title": "AdminInstructorController.cs",
+              "DocumentMoniker": "C:\\Users\\ahmaa\\OneDrive\\Desktop\\Project\\MVC-ExaminationSystem\\Controllers\\AdminInstructorController.cs",
+              "RelativeDocumentMoniker": "Controllers\\AdminInstructorController.cs",
+              "ToolTip": "C:\\Users\\ahmaa\\OneDrive\\Desktop\\Project\\MVC-ExaminationSystem\\Controllers\\AdminInstructorController.cs",
+              "RelativeToolTip": "Controllers\\AdminInstructorController.cs",
+              "ViewState": "AgIAACEAAAAAAAAAAAAmwDQAAAAvAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-20T21:33:56.636Z",
+=======
               "Title": "Index.cshtml",
               "DocumentMoniker": "C:\\Users\\abdelrahman\\Desktop\\ww\\MVC-ExaminationSystem\\Views\\Manager\\Index.cshtml",
               "RelativeDocumentMoniker": "Views\\Manager\\Index.cshtml",
@@ -228,10 +277,23 @@
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAA3AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2025-05-19T19:47:08.144Z",
+>>>>>>> main
               "EditorCaption": ""
             },
             {
               "$type": "Document",
+<<<<<<< HEAD
+              "DocumentIndex": 2,
+              "Title": "AddInstructor.cshtml",
+              "DocumentMoniker": "C:\\Users\\ahmaa\\OneDrive\\Desktop\\Project\\MVC-ExaminationSystem\\Views\\AdminInstructor\\AddInstructor.cshtml",
+              "RelativeDocumentMoniker": "Views\\AdminInstructor\\AddInstructor.cshtml",
+              "ToolTip": "C:\\Users\\ahmaa\\OneDrive\\Desktop\\Project\\MVC-ExaminationSystem\\Views\\AdminInstructor\\AddInstructor.cshtml",
+              "RelativeToolTip": "Views\\AdminInstructor\\AddInstructor.cshtml",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAABMAAABpAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-05-20T21:33:39.444Z",
+              "EditorCaption": ""
+=======
               "DocumentIndex": 6,
               "Title": "CourseDetails.cshtml",
               "DocumentMoniker": "C:\\Users\\abdelrahman\\Desktop\\ww\\MVC-ExaminationSystem\\Views\\ManagerTrack\\CourseDetails.cshtml",
@@ -433,6 +495,7 @@
               "ViewState": "AgIAAHoAAAAAAAAAAAAIwG8AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-05-18T08:41:31.795Z"
+>>>>>>> main
             }
           ]
         }

@@ -50,6 +50,13 @@ namespace ExaminationSystemMVC.Controllers
             return 0;
         }
 
+        [Route("Student/Home")]
+        public IActionResult StudentHome()
+        {
+            ViewData["Layout"] = "~/Views/Shared/StudentLayout.cshtml";
+            return View("~/Views/Home/Index.cshtml");
+        }
+
         public IActionResult Dashboard()
         {
             int studentId = GetCurrentStudentId();
@@ -142,5 +149,105 @@ namespace ExaminationSystemMVC.Controllers
 
             return View(examDetails);
         }
+
+        public IActionResult TakeExam(int id)
+        {
+            int studentId = GetCurrentStudentId();
+            if (studentId == 0)
+                return RedirectToAction("Login", "Account");
+
+            var exam = StudentRepo.Db.Exams
+                .Include(e => e.Crs)
+                .FirstOrDefault(e => e.ExamID == id);
+
+            if (exam == null)
+                return NotFound();
+
+            if (exam.ExamDatetime > DateTime.Now)
+            {
+                return RedirectToAction("Exams");
+            }
+
+            if (exam.Expire_Date < DateTime.Now)
+            {
+                return RedirectToAction("Exams");
+            }
+
+            var existingExam = StudentRepo.Db.Student_Exams
+                .FirstOrDefault(se => se.StdID == studentId && se.ExamID == id);
+
+            if (existingExam != null)
+            {
+                return RedirectToAction("Exams");
+            }
+
+            var examQuestions = StudentRepo.GetExamQuestions(id);
+
+            if (!examQuestions.Any())
+            {
+                return RedirectToAction("Exams");
+            }
+
+            ViewBag.ExamID = id;
+            ViewBag.ExamName = exam.Crs.CrsName;
+            ViewBag.Duration = exam.ExamDuration;
+            ViewBag.EndTime = DateTime.Now.AddMinutes(exam.ExamDuration);
+
+            return View(examQuestions);
+        }
+
+        [HttpPost]
+        public IActionResult SubmitExam(int examId, IFormCollection form)
+        {
+            int studentId = GetCurrentStudentId();
+            if (studentId == 0)
+                return RedirectToAction("Login", "Account");
+
+            var answers = new Dictionary<int, string>();
+
+            foreach (var key in form.Keys)
+            {
+                if (key.StartsWith("question_"))
+                {
+                    string questionIdStr = key.Substring(9); 
+                    if (int.TryParse(questionIdStr, out int questionId))
+                    {
+                        answers[questionId] = form[key];
+                    }
+                }
+            }
+
+            // Submit the exam and get the score
+            int score = StudentRepo.SubmitExam(studentId, examId, answers);
+
+            if (score < 0)
+            {
+                return RedirectToAction("Exams");
+            }
+
+
+            return RedirectToAction("ExamResult", new { id = examId });
+        }
+
+        public IActionResult ExamResult(int id)
+        {
+            int studentId = GetCurrentStudentId();
+            if (studentId == 0)
+                return RedirectToAction("Login", "Account");
+
+            var studentExam = StudentRepo.Db.Student_Exams
+                .Include(se => se.Exam)
+                .ThenInclude(e => e.Crs)
+                .FirstOrDefault(se => se.StdID == studentId && se.ExamID == id);
+
+            if (studentExam == null)
+            {
+                return RedirectToAction("Exams");
+            }
+
+            return View(studentExam);
+        }
+
+
     }
 }
