@@ -3,7 +3,7 @@
 ###
 <h2 align='center'>
 
-[![Typing SVG](https://readme-typing-svg.demolab.com?font=Fira+Code&size=25&pause=1000&color=F77575&center=true&vCenter=true&width=435&lines=Examination+Management+System+;Built+with+.Net+Core+(Mvc))](https://git.io/typing-svg)
+[![Typing SVG](https://readme-typing-svg.demolab.com?font=Fira+Code&size=25&pause=1000&color=F77575&center=true&vCenter=true&width=435&lines=Educational+Management+System+;Built+with+.Net+Core+(Mvc))](https://git.io/typing-svg)
 
 </h2>
 
