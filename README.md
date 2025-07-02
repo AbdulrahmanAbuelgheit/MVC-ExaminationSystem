@@ -1,64 +1,76 @@
-# 🎓 Comprehensive Education Management System
+<h1 align="left">Welcome to Our Educational Management System 👋</h1>
 
-A full-featured examination platform built with ASP.NET Core 9.0 that streamlines academic operations from student enrollment to exam results, featuring a sophisticated multi-level management system.
+###
+<h2 align='center'>
 
-## ✨ Features
+[![Typing SVG](https://readme-typing-svg.demolab.com?font=Fira+Code&size=25&pause=1000&color=F77575&center=true&vCenter=true&width=435&lines=Examination+Management+System+;Built+with+.Net+Core+(Mvc))](https://git.io/typing-svg)
 
-### 🔐 Advanced Role-Based System
-- **Students**: Exam taking, course enrollment, grade tracking
-- **Instructors**: Course management, exam creation, question authoring
-- **Track Supervisors**: Instructor management within tracks
-- **Branch Managers**: Track oversight, student assignment, resource allocation
-- **System Admins**: Complete system administration
+</h2>
 
-### 📚 Core Functionality
-- **Course Management**: Complete CRUD operations with instructor assignment
-- **Exam System**: Automated exam generation, real-time taking, and scoring
-- **Track Supervision**: Instructors can be promoted to supervise specific tracks
-- **Branch Management**: Instructors can manage entire branches with multiple tracks
-- **Student Assignment**: Dynamic track and course enrollment
-- **Real-time Features**: Live exam countdowns and status updates
-- **Comprehensive Reports**: Academic performance analytics
+<br clear="both">
 
-### 🎨 User Experience
-- Role-specific dashboards with hierarchical permissions
-- Modern card-based layouts with hover effects
-- Responsive design optimized for all devices
-- Color-coded grade systems (A+ to F)
-- Professional educational theme with smooth animations
+<div align="center">
+  <img height="200" src="https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExNGZmdWs2NnR0ZWc2ZjN4dWV6ajJyNnJwODB1bDl2dmNva21mdDVobiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/STroE7bTBLTzxQUrZc/giphy.gif"  />
+</div>
 
-## 🛠️ Tech Stack
 
-- **Framework**: ASP.NET Core 9.0 (MVC)
-- **Database**: Entity Framework Core with SQL Server
-- **Authentication**: JWT Authentication & Authorization
-- **Object Mapping**: AutoMapper
-- **Frontend**: Bootstrap 5 with custom CSS
-- **Password Hashing**: BCrypt.Net
-- **Reporting**: Microsoft Reporting Services
-- **Validation**: jQuery Validation
+<h2 align="left">About the project</h2>
 
-## 🔑 Key Components
+###
 
-### Authentication & Authorization
-- JWT-based authentication with cookie storage
-- Role-based access control
-- Secure password hashing with BCrypt
+<p align="left">The Educational Management System is a web application built with C# and .NET (MVC). It empowers educational institutions and certification bodies to efficiently manage exams, student registrations, question banks, grading, and results. The system streamlines the entire examination lifecycle with features like CRUD operations for exam creation, automated scheduling, real-time progress tracking, and comprehensive reporting to ensure accuracy, transparency, and compliance.</p>
 
-### Database Architecture
-- Entity Framework Core with Code-First approach
-- Lazy loading for optimized performance
-- Repository pattern with Unit of Work
+###
 
-### Exam Management
-- Automated exam generation from question pools
-- Real-time exam taking with countdown timers
-- Automatic scoring and grade calculation
+<h2 align="left">Teck Stack</h2>
 
-### Hierarchical Management
-- Branch → Track → Course structure
-- Multi-role instructors (Teacher, Supervisor, Manager)
-- Dynamic permission system
+###
+
+<div align="left">
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/csharp/csharp-original.svg" height="40" alt="csharp logo"  />
+  <img width="12" />
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/dotnetcore/dotnetcore-original.svg" height="40" alt="dotnetcore logo"  />
+  <img width="12" />
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" height="40" alt="html5 logo"  />
+  <img width="12" />
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" height="40" alt="css3 logo"  />
+  <img width="12" />
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bootstrap/bootstrap-original.svg" height="40" alt="bootstrap logo"  />
+  <img width="12" />
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" height="40" alt="javascript logo"  />
+  <img width="12" />
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/jquery/jquery-original.svg" height="40" alt="jquery logo"  />
+</div>
+
+###
+
+<h3 align="left">Tools</h3>
+
+###
+
+<div align="left">
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/visualstudio/visualstudio-plain.svg" height="40" alt="visualstudio logo"  />
+</div>
+
+###
+
+<h3 align="left">Database</h3>
+
+###
+
+<div align="left">
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/microsoftsqlserver/microsoftsqlserver-plain.svg" height="40" alt="microsoftsqlserver logo"  />
+</div>
+
+###
+
+<h1 align="left">📌 ERD (Entity Relationship Diagram)</h1>
+
+###
+
+<img  height="450" src="https://i.postimg.cc/3xRk1GCf/Screenshot-2025-07-02-103813.png"  />
+
+###
 
 
 ## 🚀 Getting Started
